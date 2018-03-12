@@ -108,7 +108,7 @@
           loop: true,
           slidesPerView: 1,
           autoplay: {
-            delay: 5000
+            delay: 10000
           },
           keyboard: {
             enabled: true
