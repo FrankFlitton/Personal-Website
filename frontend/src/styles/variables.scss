@@ -1,1 +1,3 @@
-$header-top: 60px;
+$header-top: 89px;
+$slider-full: calc(100vh - #{$header-top});
+$slider-compact: calc(60vh - #{$header-top});

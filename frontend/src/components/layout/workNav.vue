@@ -1,26 +1,27 @@
 <template>
-  <div class="work-nav">
-    <b-container>
-      <b-button :pressed.sync="isCompact" variant="primary">Toggle Me</b-button> <br />
-      {{ this.windowWidth }} x {{ this.windowHeight }} : {{ this.swiperOption.height }}, {{this.isCompact}}
-    </b-container>
+  <div class="work-nav"
+    v-on:click="isCompact = !isCompact"
+  >
     <b-container 
      fluid
      class="work-slider"
      :class="{ 'is-compact' : this.isCompact, 'is-full' : !this.isCompact }"
      >
+     
       <!-- swiper -->
       <swiper :options.lazy="swiperOption">
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-        <swiper-slide>Slide 4</swiper-slide>
-        <swiper-slide>Slide 5</swiper-slide>
-        <swiper-slide>Slide 6</swiper-slide>
-        <swiper-slide>Slide 7</swiper-slide>
-        <swiper-slide>Slide 8</swiper-slide>
-        <swiper-slide>Slide 9</swiper-slide>
-        <swiper-slide>Slide 10</swiper-slide>
+        <swiper-slide
+         v-for="(n, index) in 10"
+         :key="index"
+        >
+
+          <work-poster 
+           :image="'http://frankflitton.com/img/_homePage/db1b7e16220067.562a7198d4f8f.jpg'"
+           :headline="index + 1 + ' headline'"
+           tagline="asdasd"
+          ></work-poster>
+
+        </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </b-container>
@@ -28,11 +29,15 @@
 </template>
 
 <script>
+  import workPoster from '@/components/layout/workPoster'
   export default {
+    components: {
+      workPoster
+    },
     props: {
       compact: {
         type: Boolean,
-        default: true
+        default: false
       }
     },
     watch: {
@@ -98,27 +103,30 @@
 </script>
 
 <style lang="scss">
+
+@import 'src/styles/variables.scss';
+
 .work-nav {
+  margin-top: $header-top;
   .work-slider {
-    height: 100vh;
+    padding: 0;
   }
   .is-compact {
-    height: 50vh;
+    height: $slider-compact;
     background: red;
     .swiper-slide {
-      height: 50vh !important;
+      height: $slider-compact !important;
     }
   }
   .is-full {
-    height: 60vh;
+    height: $slider-full;
     background: blue;
     .swiper-slide {
-      height: 60vh !important;
+      height: $slider-full !important;
     }
   }
   .swiper-slide {
     background: #f0f8ff9c;
   }
-  margin-top: 80px;
 }
 </style>
