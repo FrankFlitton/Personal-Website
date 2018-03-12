@@ -1,6 +1,6 @@
 # fje2018
 
-> Personal portfolio frontend
+> Personal portfolio FE
 
 ## Build Setup
 
