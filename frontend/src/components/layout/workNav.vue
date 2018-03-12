@@ -1,6 +1,6 @@
 <template>
   <div class="work-nav"
-    v-on:click="isCompact = !isCompact"
+    
   >
     <b-container 
      fluid
@@ -11,14 +11,15 @@
       <!-- swiper -->
       <swiper :options.lazy="swiperOption">
         <swiper-slide
-         v-for="(n, index) in 10"
+         v-for="(poster, index) in posters"
          :key="index"
         >
 
           <work-poster 
-           :image="'http://frankflitton.com/img/_homePage/db1b7e16220067.562a7198d4f8f.jpg'"
-           :headline="index + 1 + ' headline'"
-           tagline="asdasd"
+           :poster="poster"
+           :posterState="isCompact"
+           :counter="[index + 1, posters.length]"
+           v-on:state="updateState"
           ></work-poster>
 
         </swiper-slide>
@@ -60,6 +61,9 @@
           this.swiperOption.height = this.windowHeight * 1
         }
         this.swiperOption = JSON.parse(JSON.stringify(this.swiperOption))
+      },
+      updateState (payload) {
+        this.isCompact = payload
       }
     },
     mounted () {
@@ -83,11 +87,29 @@
         windowWidth: 0,
         sliderSize: 500,
         isCompact: this.compact,
+        posters: [
+          {
+            title: 'Post Title',
+            tag: 'Post Tag',
+            image: 'http://frankflitton.com/img/_homePage/db1b7e16220067.562a7198d4f8f.jpg',
+            color: '#ff0000'
+          },
+          {
+            title: 'Post Title',
+            tag: 'Post Tag',
+            image: 'http://frankflitton.com/img/aeris-0.jpg',
+            color: '#0000ff'
+          }
+        ],
         swiperOption: {
           direction: 'vertical',
           autoHeight: true,
+          effect: 'fade',
           loop: true,
           slidesPerView: 1,
+          autoplay: {
+            delay: 5000
+          },
           keyboard: {
             enabled: true
           },
@@ -108,25 +130,31 @@
 
 .work-nav {
   margin-top: $header-top;
+  * {
+    transition: all 1s ease;
+  }
   .work-slider {
     padding: 0;
   }
   .is-compact {
     height: $slider-compact;
-    background: red;
-    .swiper-slide {
+    background: black;
+    .swiper-slide, .swiper-wrapper {
       height: $slider-compact !important;
+      .color-strip {
+        height: $slider-compact;
+      }
     }
   }
   .is-full {
     height: $slider-full;
     background: blue;
-    .swiper-slide {
+    .swiper-slide, .swiper-wrapper {
       height: $slider-full !important;
+      .color-strip {
+        height: $slider-full;
+      }
     }
-  }
-  .swiper-slide {
-    background: #f0f8ff9c;
   }
 }
 </style>
