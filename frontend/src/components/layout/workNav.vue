@@ -110,6 +110,9 @@
           autoplay: {
             delay: 10000
           },
+          lazy: {
+            loadPrevNext: true,
+          }
           keyboard: {
             enabled: true
           },
