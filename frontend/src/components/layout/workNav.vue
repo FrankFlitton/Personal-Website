@@ -111,8 +111,8 @@
             delay: 10000
           },
           lazy: {
-            loadPrevNext: true,
-          }
+            loadPrevNext: true
+          },
           keyboard: {
             enabled: true
           },

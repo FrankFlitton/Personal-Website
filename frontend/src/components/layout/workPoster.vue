@@ -68,7 +68,7 @@
   background-color: rgba(0, 0, 0, 0.2);
   background-size: cover;
   height: 100%;
-  background-position: 50% 0%;
+  background-position: 50% -100%;
   &:before {
     content: " ";
     position: absolute;
