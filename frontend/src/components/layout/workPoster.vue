@@ -112,7 +112,6 @@ $borderColor: rgba(0,0,0,150);
 .circle {
   border-radius: 50%;
   border: 2px solid white;
-  // box-shadow: inset 0 0 0 2px white;
   width: 89px;
   height: 89px;
   margin: 0 auto;
