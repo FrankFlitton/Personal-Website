@@ -30,6 +30,6 @@ export default {
   color: #2c3e50;
 }
 * {
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 </style>

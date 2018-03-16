@@ -1,6 +1,7 @@
 <template>
-  <div class="work-poster" 
-   :style="{ 'background-image': 'url(' + posterLocal.image + ')' }"
+  <div 
+   class="work-poster position-relative"
+   :style="{ 'background-image': 'url(' + posterLocal.featuredImage + ')' }"
   >
     <b-container fluid>
       <b-row>
@@ -10,19 +11,28 @@
          md="4"
         >
           <b-row 
-            class="justify-content-center align-items-center color-strip"
-            :style="{ 'background-color': posterLocal.color + '' + 89 }"
+            class="justify-content-center align-items-center color-strip position-relative"
+          > 
+          <div 
+           class="color-bg position-absolute" 
+           :style="{ 'background-color': posterLocal.color }"
           >
+          </div>
             <b-col class="text-container">
-              <h2>
-                {{posterLocal.title}}
-              </h2>
-              <h3>
-                {{posterLocal.tag}}
-              </h3>
-              {{counter[0]}}
-              <hr/>
-              {{counter[1]}}
+              <h2 v-html="posterLocal.title"></h2>
+              <h3 v-html="posterLocal.description"></h3>
+              <div class="circle">
+                <svg viewBox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="44.5" cy="44.5" r="43.5"/>
+                </svg>
+                <span class="number">
+                  {{posterLocal.order}}
+                </span>
+                <hr />
+                <span class="number">
+                  {{posterLocal.total}}
+                </span>
+              </div>
               <br/>
               <br/>
               <b-button v-on:click="btnClick" variant="primary">{{posterButton}} Toggle Me</b-button>
@@ -64,11 +74,15 @@
 
 @import 'src/styles/variables.scss';
 
+$borderColor: rgba(0,0,0,150);
+
 .work-poster {
   background-color: rgba(0, 0, 0, 0.2);
   background-size: cover;
   height: 100%;
   background-position: 50% -100%;
+  color: white;
+  transition: none;
   &:before {
     content: " ";
     position: absolute;
@@ -78,20 +92,74 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6)
   }
-  color: white;
+  .number {
+    font-weight: 600;
+  }
+}
+.color-bg {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
 }
 
 .text-container {
   transform: translateY(-100vh);
   opacity: 0;
 }
+
+.circle {
+  border-radius: 50%;
+  border: 2px solid white;
+  // box-shadow: inset 0 0 0 2px white;
+  width: 89px;
+  height: 89px;
+  margin: 0 auto;
+  padding: 13px;
+  position: relative;
+  svg, circle {
+    position: absolute;
+    stroke-width: 2.5px;
+    stroke: black;
+    fill: transparent;
+    width: 89px;
+    top: -2px;
+    left: -2px;
+    transition: all 10s linear !important;
+    stroke-dasharray: 275;
+    stroke-dashoffset: 0;
+  }
+  hr {
+    margin: 5px auto;
+    border-top: 2px solid $borderColor;
+    width: 2em;
+  }
+}
+
 .swiper-slide-active {
-  .work-poster { 
+  transition: none;
+  .work-poster {
     background-position: 50% 50%;
   }
   .text-container {
     transform: translateY(0vh);
     opacity: 1;
   }
+  .circle {
+    svg, circle {
+      stroke-dashoffset: 275;
+    }
+  }
 }
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 275;
+  }
+}
+
 </style>

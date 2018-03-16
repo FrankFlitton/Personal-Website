@@ -6,10 +6,12 @@
      fluid
      class="work-slider"
      :class="{ 'is-compact' : this.isCompact, 'is-full' : !this.isCompact }"
-     >
-     
+     > 
       <!-- swiper -->
-      <swiper :options.lazy="swiperOption">
+      <swiper 
+       :options.lazy="swiperOption"
+       ref="workSwiper"
+      >
         <swiper-slide
          v-for="(poster, index) in posters"
          :key="index"
@@ -18,7 +20,7 @@
           <work-poster 
            :poster="poster"
            :posterState="isCompact"
-           :counter="[index + 1, posters.length]"
+           :counter="[poster.order + 1, posters.length]"
            v-on:state="updateState"
           ></work-poster>
 
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   import workPoster from '@/components/layout/workPoster'
   export default {
     components: {
@@ -45,6 +48,17 @@
       // whenever question changes, this function will run
       compact: function (newVal) {
         this.isCompact = newVal
+      },
+      swiper: function (newVal) {
+        console.log('waaatch')
+      }
+    },
+    computed: {
+      swiper () {
+        return this.$refs.workSwiper.swiper
+      },
+      getSwiperInfo (val) {
+        console.log(val)
       }
     },
     methods: {
@@ -81,26 +95,25 @@
       window.removeEventListener('resize', this.getWindowWidth)
       window.removeEventListener('resize', this.getWindowHeight)
     },
+    created () {
+      axios.get(`http://frankflitton.com/json`)
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.posters = response.data.pages
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+    },
     data () {
       return {
         windowHeight: 0,
         windowWidth: 0,
         sliderSize: 500,
+        sliderIndex: 0,
+        sliderAnimating: 0,
         isCompact: this.compact,
-        posters: [
-          {
-            title: 'Post Title',
-            tag: 'Post Tag',
-            image: 'http://frankflitton.com/img/_homePage/db1b7e16220067.562a7198d4f8f.jpg',
-            color: '#ff0000'
-          },
-          {
-            title: 'Post Title',
-            tag: 'Post Tag',
-            image: 'http://frankflitton.com/img/aeris-0.jpg',
-            color: '#0000ff'
-          }
-        ],
+        posters: {},
         swiperOption: {
           direction: 'vertical',
           autoHeight: true,
@@ -108,7 +121,7 @@
           loop: true,
           slidesPerView: 1,
           autoplay: {
-            delay: 10000
+            delay: 5000
           },
           lazy: {
             loadPrevNext: true
@@ -133,9 +146,6 @@
 
 .work-nav {
   margin-top: $header-top;
-  * {
-    transition: all 1s ease;
-  }
   .work-slider {
     padding: 0;
   }
