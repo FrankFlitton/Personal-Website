@@ -18,9 +18,9 @@
            :style="{ 'background-color': posterLocal.color }"
           >
           </div>
-            <b-col class="text-container">
-              <h2 v-html="posterLocal.title"></h2>
-              <h3 v-html="posterLocal.description"></h3>
+            <b-col cols="9" class="text-container">
+              <h2 class="title" v-html="posterLocal.title"></h2>
+              <h3 class="description" v-html="posterLocal.description"></h3>
               <div class="circle">
                 <svg viewBox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="44.5" cy="44.5" r="43.5"/>
@@ -35,7 +35,14 @@
               </div>
               <br/>
               <br/>
-              <b-button v-on:click="btnClick" variant="primary">{{posterButton}} Toggle Me</b-button>
+              <b-button 
+                class="toggle-button"
+                v-on:click="btnClick" 
+                :variant="'link'"
+                size="lg"
+              >
+                Toggle Me
+              </b-button>
             </b-col>
           </b-row>
         </b-col>
@@ -54,8 +61,12 @@
     },
     methods: {
       btnClick () {
+        // make slider shorter
         this.posterButton = !this.posterButton
         this.$emit('state', this.posterButton)
+
+        // transition page
+        this.$router.push('/pages/' + this.posterLocal.slug)
       }
     },
     data () {
@@ -95,6 +106,25 @@ $borderColor: rgba(0,0,0,150);
   .number {
     font-weight: 600;
   }
+  .title {
+    margin-bottom: 1em;
+    font-size: 2.5em;
+    font-weight: 600;
+  }
+  .description {
+    font-size: 2em;
+    margin-bottom: 2em;
+    line-height: 1.5em;
+  }
+  .toggle-button {
+    color: white;
+    &:after {
+      background: white;
+    }
+    &:hover {
+      color: white;
+    }
+  }
 }
 .color-bg {
   top: 0;
@@ -125,9 +155,12 @@ $borderColor: rgba(0,0,0,150);
     width: 89px;
     top: -2px;
     left: -2px;
-    transition: all 10s linear !important;
+    transition: all 8.25s linear !important;
     stroke-dasharray: 275;
     stroke-dashoffset: 0;
+  }
+  svg {
+    transform: rotate(270deg);
   }
   hr {
     margin: 5px auto;

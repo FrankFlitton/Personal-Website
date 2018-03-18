@@ -1,7 +1,5 @@
 <template>
-  <div class="work-nav"
-    
-  >
+  <div class="work-nav position-absolute">
     <b-container 
      fluid
      class="work-slider"
@@ -9,7 +7,7 @@
      > 
       <!-- swiper -->
       <swiper 
-       :options.lazy="swiperOption"
+       :options="swiperOption"
        ref="workSwiper"
       >
         <swiper-slide
@@ -25,7 +23,7 @@
           ></work-poster>
 
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-pagination d-none" slot="pagination"></div>
       </swiper>
     </b-container>
   </div>
@@ -54,9 +52,6 @@
       }
     },
     computed: {
-      swiper () {
-        return this.$refs.workSwiper.swiper
-      },
       getSwiperInfo (val) {
         console.log(val)
       }
@@ -98,6 +93,7 @@
     created () {
       axios.get(`http://frankflitton.com/json`)
       .then(response => {
+        console.log(response.data.pages)
         // JSON responses are automatically parsed.
         this.posters = response.data.pages
       })
@@ -121,7 +117,8 @@
           loop: true,
           slidesPerView: 1,
           autoplay: {
-            delay: 5000
+            delay: 8000,
+            disableOnInteraction: false
           },
           lazy: {
             loadPrevNext: true
@@ -129,11 +126,7 @@
           keyboard: {
             enabled: true
           },
-          mousewheel: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          }
+          mousewheel: true
         }
       }
     }
@@ -145,7 +138,7 @@
 @import 'src/styles/variables.scss';
 
 .work-nav {
-  margin-top: $header-top;
+  width: 100%;
   .work-slider {
     padding: 0;
   }

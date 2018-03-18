@@ -1,20 +1,21 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <work-nav></work-nav>
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <transition 
+      name="fade"
+      >
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 import topHeader from '@/components/layout/topHeader'
-import workNav from '@/components/layout/workNav'
 
 export default {
   name: 'app',
   components: {
-    topHeader, workNav
+    topHeader
   }
 }
 </script>
@@ -28,8 +29,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top: $header-top;
 }
 * {
-  transition: all 0.25s;
+  transition: all 0.75s;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>
