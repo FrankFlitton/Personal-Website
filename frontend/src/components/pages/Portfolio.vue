@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col class="text-center">
-          <h1 v-html="page.title"></h1>
+          <h1 v-html="uriDecode(page.title)"></h1>
         </b-col>
       </b-row>
       <b-row>
@@ -155,7 +155,11 @@ export default {
   },
   data () {
     return {
-      page: []
+      page: {
+        title: '',
+        description: '',
+        body: ''
+      }
     }
   },
   metaInfo: {

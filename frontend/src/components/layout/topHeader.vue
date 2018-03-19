@@ -28,7 +28,7 @@
             <b-row class="justify-content-center align-items-center position-relative h-100">
               <b-col cols="12">
                 <b-button 
-                  class="toggle-button"
+                  class="toggle-button d-block"
                   variant="link"
                   size="lg"
                   to="/"
@@ -36,7 +36,7 @@
                   Work
                 </b-button>
                 <!-- <b-button 
-                  class="toggle-button"
+                  class="toggle-button d-block"
                   variant="link"
                   size="lg"
                   to="#"
@@ -44,7 +44,7 @@
                   About
                 </b-button> -->
                 <b-button 
-                  class="toggle-button"
+                  class="toggle-button d-block"
                   variant="link"
                   size="lg"
                   to="contact"
@@ -146,6 +146,7 @@ export default {
     }
     .toggle-button {
       width: 144px;
+      color: black;
     }
   }
 }

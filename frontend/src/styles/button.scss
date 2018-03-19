@@ -1,4 +1,4 @@
-.toggle-button {
+.btn {
     color: black;
     transition: all 0.25s linear;
     display: block;
@@ -17,7 +17,7 @@
         transition: all 0.25s;
     }
     &:hover {
-        text-decoration: none;
+        text-decoration: none !important;
         color: black;
         &:after {
         width: 100%;
