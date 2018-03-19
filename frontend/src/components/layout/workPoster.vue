@@ -23,6 +23,21 @@
               
               <h3 class="description" v-if="posterLocal.projectTagline" v-html="posterLocal.projectTagline"></h3>
               <h3 class="description" v-else v-html="posterLocal.description"></h3>
+              <!-- <div class="pick">
+                <svg viewBox="-1 -1 92 92" xmlns="http://www.w3.org/2000/svg">
+                  <path class="st0" d="M19,0.5c-6.4,0-12.3,3.3-15.7,8.8c-3.4,5.5-3.7,12.2-0.8,18l25.8,51.6C31.5,85.2,37.6,89,44.8,89
+	s13.3-3.8,16.5-10.2l25.8-51.6c2.9-5.8,2.6-12.5-0.8-18S77,0.5,70.6,0.5H19z"/>
+                  <path class="st1" d="M19,0.5c-6.4,0-12.3,3.3-15.7,8.8c-3.4,5.5-3.7,12.2-0.8,18l25.8,51.6C31.5,85.2,37.6,89,44.8,89
+	s13.3-3.8,16.5-10.2l25.8-51.6c2.9-5.8,2.6-12.5-0.8-18S77,0.5,70.6,0.5H19z"/>
+                </svg>
+                <span class="number">
+                  {{posterLocal.order}}
+                </span>
+                <hr />
+                <span class="number">
+                  {{posterLocal.total}}
+                </span>
+              </div> -->
               <div class="circle">
                 <svg viewBox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="44.5" cy="44.5" r="43.5"/>
@@ -43,7 +58,7 @@
                 :variant="'link'"
                 size="lg"
               >
-                Toggle Me
+                Learn More
               </b-button>
             </b-col>
           </b-row>
@@ -141,7 +156,7 @@ $borderColor: rgba(0,0,0,150);
   opacity: 0;
 }
 
-.circle {
+.circle, .pick {
   border-radius: 50%;
   border: 2px solid white;
   width: 89px;
@@ -149,6 +164,7 @@ $borderColor: rgba(0,0,0,150);
   margin: 0 auto;
   padding: 13px;
   position: relative;
+  transform: scale(0.8);
   svg, circle {
     position: absolute;
     stroke-width: 2.5px;
@@ -171,6 +187,43 @@ $borderColor: rgba(0,0,0,150);
   }
 }
 
+.pick {
+  border: none;
+  padding: 13px;
+  padding-left: 8px;
+  font-size: 0.89em;
+  svg, path {
+    transition: all 8.25s linear !important;
+    transform: rotate(0deg) scale(0.89);
+    top: 0;
+    left: 0;
+    width: 85px;
+    height: 85px;
+    stroke-dasharray: 275;
+    stroke: white;
+    stroke-width: 3;
+  }
+  svg {
+    transform-origin: 50% 45%;
+  }
+  .st1 {
+    transform: scaleX(-1) translateX(2px);
+    transform-origin: 50% 50%;
+    stroke-width: 3.5;
+    stroke-dashoffset: 0;
+  }
+  .st0 {
+    transform: rotate(0deg);
+    stroke-dasharray: 0 !important;
+    stroke: black;
+    opacity: 0.3
+  }
+  hr {
+    opacity: 0.35;
+    margin-top: 3px;
+  }
+}
+
 .swiper-slide-active {
   transition: none;
   .work-poster {
@@ -180,19 +233,18 @@ $borderColor: rgba(0,0,0,150);
     transform: translateY(0vh);
     opacity: 1;
   }
-  .circle {
-    svg, circle {
+  .circle, .pick {
+    svg, circle, path {
       stroke-dashoffset: 275;
     }
   }
-}
-
-@keyframes dash {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 275;
+  .pick {
+    svg {
+      transform: rotate(360deg) scale(0.89);
+    }
+    svg, path {
+      stroke-dashoffset: -273;
+    }
   }
 }
 

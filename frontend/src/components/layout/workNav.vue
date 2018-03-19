@@ -46,14 +46,6 @@
       // whenever question changes, this function will run
       compact: function (newVal) {
         this.isCompact = newVal
-      },
-      swiper: function (newVal) {
-        console.log('waaatch')
-      }
-    },
-    computed: {
-      getSwiperInfo (val) {
-        console.log(val)
       }
     },
     methods: {
@@ -93,7 +85,6 @@
     created () {
       axios.get(`http://frankflitton.com/json`)
       .then(response => {
-        console.log(response.data.pages)
         // JSON responses are automatically parsed.
         this.posters = response.data.pages
       })
@@ -154,7 +145,7 @@
   }
   .is-full {
     height: $slider-full;
-    background: blue;
+    background:#efefef;
     .swiper-slide, .swiper-wrapper {
       height: $slider-full !important;
       .color-strip {

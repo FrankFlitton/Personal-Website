@@ -8,6 +8,9 @@ import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'swiper/dist/css/swiper.css'
+import Meta from 'vue-meta'
+
+Vue.use(Meta)
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
@@ -17,6 +20,8 @@ Vue.use(VueAwesomeSwiper,
     // Config
   }
 )
+
+Vue.config.silent = true
 
 /* eslint-disable no-new */
 new Vue({

@@ -27,37 +27,30 @@
           <b-container class="h-100 justify-content-center align-items-center position-relative">
             <b-row class="justify-content-center align-items-center position-relative h-100">
               <b-col cols="12">
-                <div 
-                  class="close-button"
-                  @click="closeNav"
-                >
-                  close me
-                </div>
                 <b-button 
                   class="toggle-button"
                   variant="link"
                   size="lg"
-                  to="#"
+                  to="/"
                 >
                   Work
                 </b-button>
-                <b-button 
+                <!-- <b-button 
                   class="toggle-button"
                   variant="link"
                   size="lg"
                   to="#"
                 >
                   About
-                </b-button>
+                </b-button> -->
                 <b-button 
                   class="toggle-button"
                   variant="link"
                   size="lg"
-                  to="#"
+                  to="contact"
                 >
                   Contact
                 </b-button>
-                linkedin button
               </b-col>
             </b-row>
           </b-container>
@@ -74,7 +67,6 @@ export default {
     },
     navItem () {
       this.navOpen = !this.navOpen
-      console.log(this.navOpen)
     }
   },
   data () {

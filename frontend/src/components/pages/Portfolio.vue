@@ -118,6 +118,24 @@
 <script>
 import axios from 'axios'
 
+function _kabobConvert (message) {
+  const KABOB = /-[a-z\u00E0-\u00F6\u00F8-\u00FE]/g
+
+  message = message.replace(KABOB, function (match) {
+    return match.slice(1).toUpperCase()
+  })
+
+  message = message.replace(/([A-Z])/g, ' $1')
+
+  message = message.charAt(0).toUpperCase() + message.slice(1)
+
+  return message
+}
+
+function _getId () {
+  return _kabobConvert(window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1))
+}
+
 export default {
   name: 'portfolio',
   methods: {
@@ -128,7 +146,6 @@ export default {
   created () {
     axios.get(`http://frankflitton.com/pages/` + this.$route.params.id + `/json`)
     .then(response => {
-      console.log(response.data)
       // JSON responses are automatically parsed.
       this.page = response.data.page
     })
@@ -139,6 +156,14 @@ export default {
   data () {
     return {
       page: []
+    }
+  },
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: _getId(),
+    // all titles will be injected into this template
+    meta: {
+      name: 'description', content: 'Frank JE  Flitton is a Full Stack Designer specializing in UI / UX. Frank is based in Kitchener/Waterloo, Ontario, Canada.'
     }
   }
 }
@@ -159,7 +184,7 @@ export default {
   }
   h1 {
     font-size: 4em;
-    margin-top: 1.5em;
+    margin-top: 1em;
     margin-bottom: 1.5em;
   }
   h2, {
@@ -199,7 +224,7 @@ export default {
     padding-top: 3em;
     padding-bottom: 3em;
     width: 100%;
-    
+    font-size: 18px;
     &.images {
       background: #efefef;
       background: white;
@@ -225,6 +250,29 @@ export default {
     margin: 0 auto;
     max-height: 500px;
     display: block;
+  }
+  table {
+    tr {
+      margin-bottom: 15px;
+      td {
+        min-width: 120px;
+        padding: 15px;
+        
+          @media(max-width:575px){
+            display: block;
+          }
+        &:nth-child(1) {
+          background: black;
+        }
+      }
+    }
+    a {
+      display: block;
+    }
+    img {
+      width: 100px;
+    }
+    text-align: left;
   }
 } 
 </style>
