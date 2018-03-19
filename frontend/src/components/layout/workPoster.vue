@@ -20,7 +20,9 @@
           </div>
             <b-col cols="9" class="text-container">
               <h2 class="title" v-html="posterLocal.title"></h2>
-              <h3 class="description" v-html="posterLocal.description"></h3>
+              
+              <h3 class="description" v-if="posterLocal.projectTagline" v-html="posterLocal.projectTagline"></h3>
+              <h3 class="description" v-else v-html="posterLocal.description"></h3>
               <div class="circle">
                 <svg viewBox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="44.5" cy="44.5" r="43.5"/>

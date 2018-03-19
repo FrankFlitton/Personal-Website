@@ -67,35 +67,13 @@
           </b-row>
 
 
-          <b-row>
-            <b-col cols="12" md="8" offset-md="4">
-              <div class="divider" :style="{'background': page.color}"></div>
-            </b-col>
-          </b-row>
-
-
-          <b-row>
-            <b-col cols="12" md="8" offset-md="4">
-              <b-button
-           to="/"
-          >
-            goback
-          </b-button>
-            </b-col>
-          </b-row>
-
-
-          
-
-          <b-row>
-            <b-col cols="12" md="8" offset-md="4">
-              <div class="divider" :style="{'background': page.color}"></div>
-            </b-col>
-          </b-row>
-
-
         </b-col>
         <b-col class="right-col" cols="12" offset="0" offset-sm="0" md="2" offset-lg="1">
+          <b-row class="d-flex d-md-none">
+            <b-col cols="12">
+              <div class="divider mb-4 mt-4" :style="{'background': page.color}"></div>
+            </b-col>
+          </b-row>
           <b-row class="position-sticky">
             <b-col cols="6" md="12">
               <h5><strong>Client</strong></h5>
@@ -127,7 +105,7 @@
       </b-row>
       <b-row class="d-flex d-md-none">
         <b-col cols="12">
-          <div class="divider" :style="{'background': page.color}"></div>
+          <div class="divider mt-3" :style="{'background': page.color}"></div>
         </b-col>
       </b-row>
 
