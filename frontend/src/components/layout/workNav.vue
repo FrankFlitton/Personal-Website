@@ -83,7 +83,7 @@
       window.removeEventListener('resize', this.getWindowHeight)
     },
     created () {
-      axios.get(`http://frankflitton.com/json`)
+      axios.get(`http://craft.frankflitton.com/json`)
       .then(response => {
         // JSON responses are automatically parsed.
         this.posters = response.data.pages

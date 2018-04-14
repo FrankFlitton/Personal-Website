@@ -8,7 +8,8 @@
         <b-col 
          cols="12"
          sm="12"
-         md="4"
+         md="5"
+         lg="4"
         >
           <b-row 
             class="justify-content-center align-items-center color-strip position-relative"
@@ -50,7 +51,6 @@
                   {{posterLocal.total}}
                 </span>
               </div>
-              <br/>
               <br/>
               <b-button 
                 class="toggle-button"
@@ -127,11 +127,17 @@ $borderColor: rgba(0,0,0,150);
     margin-bottom: 1em;
     font-size: 2.5em;
     font-weight: 600;
+    @media(max-width:575px){
+      font-size: 2em;
+    }
   }
   .description {
     font-size: 2em;
     margin-bottom: 2em;
     line-height: 1.5em;
+    @media(max-width:575px){
+      font-size: 1.5em;
+    }
   }
   .toggle-button {
     color: white;

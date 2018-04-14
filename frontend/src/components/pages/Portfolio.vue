@@ -144,7 +144,7 @@ export default {
     }
   },
   created () {
-    axios.get(`http://frankflitton.com/pages/` + this.$route.params.id + `/json`)
+    axios.get(`http://craft.frankflitton.com/pages/` + this.$route.params.id + `/json`)
     .then(response => {
       // JSON responses are automatically parsed.
       this.page = response.data.page
