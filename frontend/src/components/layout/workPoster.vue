@@ -1,27 +1,27 @@
 <template>
-  <div 
+  <div
    class="work-poster position-relative"
    :style="{ 'background-image': 'url(' + posterLocal.featuredImage + ')' }"
   >
     <b-container fluid>
       <b-row>
-        <b-col 
+        <b-col
          cols="12"
          sm="12"
          md="5"
          lg="4"
         >
-          <b-row 
+          <b-row
             class="justify-content-center align-items-center color-strip position-relative"
-          > 
-          <div 
-           class="color-bg position-absolute" 
+          >
+          <div
+           class="color-bg position-absolute"
            :style="{ 'background-color': posterLocal.color }"
           >
           </div>
             <b-col cols="9" class="text-container">
               <h2 class="title" v-html="posterLocal.title"></h2>
-              
+
               <h3 class="description" v-if="posterLocal.projectTagline" v-html="posterLocal.projectTagline"></h3>
               <h3 class="description" v-else v-html="posterLocal.description"></h3>
               <!-- <div class="pick">
@@ -52,9 +52,9 @@
                 </span>
               </div>
               <br/>
-              <b-button 
+              <b-button
                 class="toggle-button"
-                v-on:click="btnClick" 
+                v-on:click="btnClick"
                 :variant="'link'"
                 size="lg"
               >
