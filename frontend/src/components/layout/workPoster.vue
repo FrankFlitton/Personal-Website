@@ -111,6 +111,11 @@ $borderColor: rgba(0,0,0,150);
   background-position: 50% -100%;
   color: white;
   transition: none;
+
+  @media(max-width:767px) {
+    font-size: 13px;
+  }
+
   &:before {
     content: " ";
     position: absolute;

@@ -42,14 +42,14 @@
             class="block images"
             cols="12"
             >
-              <b-row 
+              <b-row
               v-for="image in block.images"
               :key="image.title"
               class="image"
               >
                 <b-col>
-                  <img 
-                  :src="image.url" 
+                  <img
+                  :src="image.url"
                   :alt="image.title"
                   :width="image.width"
                   :height="image.height"
@@ -109,7 +109,7 @@
         </b-col>
       </b-row>
 
-      
+
 
     </b-container>
   </div>
@@ -181,6 +181,11 @@ export default {
   text-align: left;
   background: #dadada;
   background: #ffffff;
+
+  @media(max-width:767px) {
+    font-size: 17px;
+  }
+
   .container {
     background: white;
     min-height: 100vh;
@@ -190,9 +195,15 @@ export default {
     font-size: 4em;
     margin-top: 1em;
     margin-bottom: 1.5em;
+    @media(max-width:767px) {
+      font-size: 3em;
+    }
   }
-  h2, {
+  h2 {
     margin-bottom: 1em;
+    @media(max-width:767px) {
+      font-size: 2em;
+    }
   }
   .body {
     font-size: 1.5em;
@@ -261,7 +272,7 @@ export default {
       td {
         min-width: 120px;
         padding: 15px;
-        
+
           @media(max-width:575px){
             display: block;
           }
@@ -278,5 +289,5 @@ export default {
     }
     text-align: left;
   }
-} 
+}
 </style>
