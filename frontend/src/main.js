@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'swiper/dist/css/swiper.css'
 import Meta from 'vue-meta'
+import VueImg from 'v-img'
 
 Vue.use(Meta)
 
@@ -20,6 +21,8 @@ Vue.use(VueAwesomeSwiper,
     // Config
   }
 )
+
+Vue.use(VueImg)
 
 Vue.config.silent = true
 

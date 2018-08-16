@@ -49,6 +49,7 @@
               >
                 <b-col>
                   <img
+                  v-img:group
                   :src="image.url"
                   :alt="image.title"
                   :width="image.width"
@@ -118,24 +119,6 @@
 <script>
 import axios from 'axios'
 
-function _kabobConvert (message) {
-  const KABOB = /-[a-z\u00E0-\u00F6\u00F8-\u00FE]/g
-
-  message = message.replace(KABOB, function (match) {
-    return match.slice(1).toUpperCase()
-  })
-
-  message = message.replace(/([A-Z])/g, ' $1')
-
-  message = message.charAt(0).toUpperCase() + message.slice(1)
-
-  return message
-}
-
-function _getId () {
-  return _kabobConvert(window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1))
-}
-
 export default {
   name: 'portfolio',
   methods: {
@@ -143,7 +126,7 @@ export default {
       return decodeURIComponent(message)
     }
   },
-  created () {
+  mounted () {
     axios.get(`http://craft.frankflitton.com/pages/` + this.$route.params.id + `/json`)
     .then(response => {
       // JSON responses are automatically parsed.
@@ -162,12 +145,14 @@ export default {
       }
     }
   },
-  metaInfo: {
-    // if no subcomponents specify a metaInfo.title, this title will be used
-    title: _getId(),
-    // all titles will be injected into this template
-    meta: {
-      name: 'description', content: 'Frank JE  Flitton is a Full Stack Designer specializing in UI / UX. Frank is based in Kitchener/Waterloo, Ontario, Canada.'
+  metaInfo () {
+    return {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: this.page.title || '',
+      // all titles will be injected into this template
+      meta: {
+        name: 'description', content: this.page.description
+      }
     }
   }
 }
