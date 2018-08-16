@@ -181,13 +181,15 @@ export default {
     margin-top: 1em;
     margin-bottom: 1.5em;
     @media(max-width:767px) {
-      font-size: 3em;
+      font-size: 2.5em;
+      margin-bottom: 1em;
     }
   }
   h2 {
     margin-bottom: 1em;
     @media(max-width:767px) {
-      font-size: 2em;
+      font-size: 1.65em;
+      line-height: 1.5em;
     }
   }
   .body {
