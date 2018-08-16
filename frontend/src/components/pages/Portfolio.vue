@@ -227,6 +227,10 @@ export default {
     padding-bottom: 3em;
     width: 100%;
     font-size: 18px;
+    @media(max-width:767px) {
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+    }
     &.images {
       background: #efefef;
       background: white;
