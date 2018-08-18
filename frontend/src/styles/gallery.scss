@@ -1,3 +1,5 @@
+// Desktop
+
 .fullscreen-v-img {
     background-color: rgba(255, 255, 255, 0.7) !important;
     .header-v-img {
@@ -49,4 +51,11 @@
         margin-right: 1.5em;
         transform: scaleX(-1) rotate(45deg);
     }
+}
+
+// Mobile
+
+.slider {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    z-index: 1080 !important;
 }
