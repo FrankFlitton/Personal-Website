@@ -9,7 +9,7 @@
           </div>
         </router-link>
 
-        <b-nav-item 
+        <b-nav-item
           class="text-right nav-toggle"
           v-on:click="navItem"
           title="toggle nav"
@@ -19,7 +19,7 @@
 
         </b-nav-item>
 
-        <li 
+        <li
           class="coveralls"
           :class="{'active': navOpen}"
           @click="closeNav"
@@ -27,7 +27,7 @@
           <b-container class="h-100 justify-content-center align-items-center position-relative">
             <b-row class="justify-content-center align-items-center position-relative h-100">
               <b-col cols="12">
-                <b-button 
+                <b-button
                   class="toggle-button d-block"
                   variant="link"
                   size="lg"
@@ -35,7 +35,7 @@
                 >
                   Work
                 </b-button>
-                <!-- <b-button 
+                <!-- <b-button
                   class="toggle-button d-block"
                   variant="link"
                   size="lg"
@@ -43,11 +43,11 @@
                 >
                   About
                 </b-button> -->
-                <b-button 
+                <b-button
                   class="toggle-button d-block"
                   variant="link"
                   size="lg"
-                  to="contact"
+                  to="/contact"
                 >
                   Contact
                 </b-button>
