@@ -49,11 +49,20 @@
               >
                 <b-col>
                   <img
-                  v-img:group
-                  :src="image.url"
-                  :alt="image.title"
-                  :width="image.width"
-                  :height="image.height"
+                    class="d-block d-md-none"
+                    v-gallery:group="false"
+                    :src="image.url"
+                    :alt="image.title"
+                    :width="image.width"
+                    :height="image.height"
+                  >
+                  <img
+                    class="d-none d-md-block"
+                    v-img:group="true"
+                    :src="image.url"
+                    :alt="image.title"
+                    :width="image.width"
+                    :height="image.height"
                   >
                 </b-col>
               </b-row>

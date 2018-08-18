@@ -10,6 +10,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'swiper/dist/css/swiper.css'
 import Meta from 'vue-meta'
 import VueImg from 'v-img'
+import gallery from '../../../img-vuer'
+
+Vue.use(gallery, {
+  swipeThreshold: 150  // default 100 ,new in 0.12.0
+})
 
 Vue.use(Meta)
 
