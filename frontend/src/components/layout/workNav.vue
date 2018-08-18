@@ -1,12 +1,12 @@
 <template>
   <div class="work-nav position-absolute">
-    <b-container 
+    <b-container
      fluid
      class="work-slider"
      :class="{ 'is-compact' : this.isCompact, 'is-full' : !this.isCompact }"
-     > 
+     >
       <!-- swiper -->
-      <swiper 
+      <swiper
        :options="swiperOption"
        ref="workSwiper"
       >
@@ -15,7 +15,7 @@
          :key="index"
         >
 
-          <work-poster 
+          <work-poster
            :poster="poster"
            :posterState="isCompact"
            :counter="[poster.order + 1, posters.length]"

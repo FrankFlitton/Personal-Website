@@ -8,7 +8,7 @@
 import workNav from '@/components/layout/workNav'
 
 export default {
-  name: 'hello',
+  name: 'home',
   components: {
     workNav
   },

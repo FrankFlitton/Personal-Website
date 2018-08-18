@@ -34,6 +34,7 @@ export default {
     title: 'Contact'
   }
 }
+
 </script>
 
 <style lang="scss">
