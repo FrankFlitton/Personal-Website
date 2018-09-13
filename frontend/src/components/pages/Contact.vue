@@ -21,15 +21,22 @@
                   <a href="https://www.behance.net/frankflitton" target="_blank">Behance</a>
                 </p>
               </b-col>
+              <b-col>
+                <contact-form></contact-form>
+              </b-col>
           </b-row>
       </b-container>
   </div>
 </template>
 
 <script>
+import contactForm from '@/components/forms/contactForm.vue'
 
 export default {
   name: 'contact',
+  components: {
+    contactForm
+  },
   metaInfo: {
     title: 'Contact'
   }
