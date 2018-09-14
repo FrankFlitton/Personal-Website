@@ -156,12 +156,11 @@ export default {
   },
   methods: {
     onSubmit () {
-      // this.$validator.validateAll().then((result) => {
-      //   if (result) {
-      //     this.sendMail()
-      //   }
-      // })
-      this.submitted = true
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          this.sendMail()
+        }
+      })
     },
     sendMail () {
       let vm = this
