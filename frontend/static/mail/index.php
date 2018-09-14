@@ -40,93 +40,81 @@ LOG;
 
     		} else {  // if first method is not working, for example because of wrong file permissions, email the data
 
-    			$to = 'ADMIN@gmail.com';
+    			$to = 'frontdesk@frankflitton.com';
             	$subject = 'HACK ATTEMPT';
-            	$header = 'From: ADMIN@gmail.com';
+            	$header = 'From: fflitton@gmail.com';
             	if (mail($to, $subject, $logging, $header)) {
             		echo "Sent notice to admin.";
             	}
 
     		}
-    }
+	}
 
 
-	// CHECK TO SEE IF THIS IS A MAIL POST
-	if (isset($_POST['URL-main'])) {
+	// Building a whitelist array with keys which will send through the form, no others would be accepted later on
+	$whitelist = array("name","email","subject","comments");
 
-		// Building a whitelist array with keys which will send through the form, no others would be accepted later on
-		$whitelist = array('name','email','subject','comments');
+	// Set up data
+	$data = json_decode(file_get_contents("php://input"), true);
+	$name = $data['name'];
+	$email = $data['email'];
+	$subject = $data['subject'];
+	$comments = $data['comments'];
 
-		// Building an array with the $_POST-superglobal
-		foreach ($_POST as $key=>$item) {
+	// Building an array with the $_POST-superglobal
+	foreach ($_POST as $key=>$item) {
 
-				// Check if the value $key (fieldname from $_POST) can be found in the whitelisting array, if not, die with a short message to the hacker
-				if (!in_array($key, $whitelist)) {
+		writeLog($key);
 
-					writeLog('Unknown form fields');
-					die("Hack-Attempt detected. Please use only the fields in the form");
+		// Check if the value $key (fieldname from $_POST) can be found in the whitelisting array, if not, die with a short message to the hacker
+		if (!in_array($key, $whitelist)) {
 
-				}
+			writeLog('Unknown form fields' . $key);
+			die("Hack-Attempt detected. Please use only the fields in the form");
+
 		}
-
-		// Lets check the URL whether it's a real URL or not. if not, stop the script
-
-		if(!filter_var($_POST['URL-main'],FILTER_VALIDATE_URL)) {
-					writeLog('URL Validation');
-				die('Hack-Attempt detected. Please insert a valid URL');
-		}
-
-		// PREPARE THE BODY OF THE MESSAGE
-
-		$message = '<html><body>';
-		$message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
-		$message .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . strip_tags($_POST['name']) . "</td></tr>";
-		$message .= "<tr style='background: #eee;'><td><strong>Email:</strong> </td><td>" . strip_tags($_POST['email']) . "</td></tr>";
-		$message .= "<tr style='background: #eee;'><td><strong>Subject:</strong> </td><td>" . strip_tags($_POST['subject']) . "</td></tr>";
-		$message .= "<tr style='background: #eee;'><td><strong>Comments:</strong> </td><td>" . strip_tags($_POST['comments']) . "</td></tr>";
-		$message .= "</table>";
-		$message .= "</body></html>";
+	}
 
 
-		//  MAKE SURE THE "FROM" EMAIL ADDRESS DOESN'T HAVE ANY NASTY STUFF IN IT
+	// PREPARE THE BODY OF THE MESSAGE
 
-		$pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i";
-		if (preg_match($pattern, trim(strip_tags($_POST['req-email'])))) {
-			$cleanedFrom = trim(strip_tags($_POST['req-email']));
-		} else {
-			return "The email address you entered was invalid. Please try again!";
-		}
+	$message = '<html><body>';
+	$message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
+	$message .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . strip_tags($name) . "</td></tr>";
+	$message .= "<tr style='background: #eee;'><td><strong>Email:</strong> </td><td>" . strip_tags($email) . "</td></tr>";
+	$message .= "<tr style='background: #eee;'><td><strong>Subject:</strong> </td><td>" . strip_tags($subject) . "</td></tr>";
+	$message .= "<tr style='background: #eee;'><td><strong>Comments:</strong> </td><td>" . strip_tags($comments) . "</td></tr>";
+	$message .= "</table>";
+	$message .= "</body></html>";
 
 
-		//   CHANGE THE BELOW VARIABLES TO YOUR NEEDS
+	//  MAKE SURE THE "FROM" EMAIL ADDRESS DOESN'T HAVE ANY NASTY STUFF IN IT
 
-		$to = 'frontdesk@frankflitton.com';
-
-		$subject = "📬 " . strip_tags($_POST['subject']);
-
-		$headers = "From: " . $cleanedFrom . "\r\n";
-		$headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
-		$headers .= "MIME-Version: 1.0\r\n";
-		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-		if (mail($to, $subject, $message, $headers)) {
-			echo 'Your message has been sent.';
-		} else {
-			echo 'There was a problem sending the email.';
-		}
-
-		// DON'T BOTHER CONTINUING TO THE HTML...
-		die();
-
+	$pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i";
+	if (preg_match($pattern, trim(strip_tags($email)))) {
+		$cleanedFrom = trim(strip_tags($email));
 	} else {
+		return "The email address you entered was invalid. Please try again!";
+	}
 
-   		if (!isset($_SESSION[$form.'_token'])) {
 
-   		} else {
-   			echo "Hack-Attempt detected. Got ya!.";
-   			writeLog('Formtoken');
-   	    }
+	//   CHANGE THE BELOW VARIABLES TO YOUR NEEDS
 
-   	}
+	$to = 'frontdesk@frankflitton.com';
+
+	$subject = "FJE Frontdesk: " . strip_tags($subject);
+
+	$headers = "From: " . $cleanedFrom . "\r\n";
+	$headers .= "Reply-To: ". strip_tags($email) . "\r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+	if (mail($to, $subject, $message, $headers)) {
+		echo 'Your message has been sent.';
+	} else {
+		echo 'There was a problem sending the email.';
+	}
+
+	die();
 
 ?>
