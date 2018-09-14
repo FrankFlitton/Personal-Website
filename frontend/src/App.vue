@@ -33,13 +33,14 @@ export default {
 }
 * {
   transition: all 0.75s;
+  transform: translate3d(0, 0%, 0);
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
+    transition: opacity 1s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+    opacity: 0;
 }
 
 </style>

@@ -104,7 +104,7 @@ export default {
 .contact {
   font-size: 21px;
     a {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(226, 226, 226, 0.7);
     }
     img {
       display: block;
@@ -113,24 +113,24 @@ export default {
       max-width: 400px;
     }
     .full-screen {
-      height: 80vh;
+      min-height: 80vh;
+      overflow: hidden;
       @media(min-width:768px){
-        height: $slider-full
+        min-height: $slider-full
       }
-      &:first-of-type:after {
+      &:after {
         content: ' ';
         display: block;
         position: absolute;
         width: 34px;
         height: 34px;
-        top: calc(80vh - 17px);
+        top: calc(0vh - 17px);
         left: 10vw;
         background: #007bff;
-        z-index: 99;
         transform: rotate(45deg);
         @media(min-width:768px){
           top: 2.5em;
-          left: calc(50vw - 17px);
+          left: calc(0vw - 17px);
         }
       }
     }
