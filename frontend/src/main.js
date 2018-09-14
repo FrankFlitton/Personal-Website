@@ -5,12 +5,11 @@ import BootstrapVue from 'bootstrap-vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'swiper/dist/css/swiper.css'
 import Meta from 'vue-meta'
 import VueImg from 'v-img'
 import gallery from '../../../img-vuer'
+import VueFormly from 'vue-formly'
+import VueFormlyBootstrap from 'vue-formly-bootstrap'
 
 Vue.use(gallery, {
   swipeThreshold: 150  // default 100 ,new in 0.12.0
@@ -29,7 +28,14 @@ Vue.use(VueAwesomeSwiper,
 
 Vue.use(VueImg)
 
+Vue.use(VueFormly)
+Vue.use(VueFormlyBootstrap)
+
 Vue.config.silent = true
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'swiper/dist/css/swiper.css'
 
 /* eslint-disable no-new */
 new Vue({
