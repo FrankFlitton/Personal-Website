@@ -11,6 +11,19 @@ import gallery from '../../../img-vuer'
 import VueFormly from 'vue-formly'
 import VueFormlyBootstrap from 'vue-formly-bootstrap'
 import VeeValidate from 'Vee-Validate'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin, faBehance, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add([
+  faCoffee,
+  faTimes,
+  faLinkedin,
+  faBehance,
+  faGithub
+])
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(gallery, {
   swipeThreshold: 150  // default 100 ,new in 0.12.0

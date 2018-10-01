@@ -5,30 +5,28 @@
         <b-col
           md="6"
           id="row1"
-          class="bg-primary text-white full-screen"
+          class="bg-primary text-white full-screen mobile-small"
         >
           <b-container>
             <b-row>
               <b-col
                 md="10"
                 offset-md="1"
-                class="pt-5 pb-5"
+                class="pt-5 pb-5 h-100"
               >
-                <h1 class="mb-5 pb-3">
+                <h1 class="mb-5">
                   Let's talk.
                 </h1>
-                <h3>Frank JE Flitton</h3>
-                <h4 class="mb-4">Fullstack Designer</h4>
-                <p>
-                  Kitchener, Ontario, Canada
-                </p>
-                <p>
-                  1.226.748.9015 <br>
-                  frontdesk@frankflitton.com
-                </p>
-                <p>
-                  <a href="https://www.linkedin.com/in/frank-flitton-52691239/" target="_blank">Linkedin</a> <br>
-                  <a href="https://www.behance.net/frankflitton" target="_blank">Behance</a>
+                <p class="icons">
+                  <a href="https://www.github.com/frankflitton" target="_blank">
+                    <font-awesome-icon :icon="['fab', 'github']" />
+                  </a>&ensp;
+                  <a href="https://www.behance.net/frankflitton" target="_blank">
+                    <font-awesome-icon :icon="['fab', 'behance']" />
+                  </a>&ensp;
+                  <a href="https://www.linkedin.com/in/frankflitton/" target="_blank">
+                    <font-awesome-icon :icon="['fab', 'linkedin']" />
+                  </a>&ensp;
                 </p>
               </b-col>
             </b-row>
@@ -52,33 +50,6 @@
           </b-container>
         </b-col>
       </b-row>
-
-
-
-
-          <!-- <b-row>
-              <b-col md="5" offset-md="1">
-                <img src="http://frankflitton.com/img/fflitton-head.jpg" alt="">
-              </b-col>
-              <b-col md="5">
-                <h2>Frank J.E. Flitton</h2>
-                <h3>Fullstack Designer</h3>
-                <p>&nbsp;<br></p>
-                <p>
-                  Kitchener, Ontario, Canada
-                </p>
-                <p>
-                  1.226.748.9015 <br>
-                  frontdesk@frankflitton.com <br>
-                </p>
-                <p>
-                  <a href="https://www.linkedin.com/in/frank-flitton-52691239/" target="_blank">Linkedin</a> <br>
-                  <a href="https://www.behance.net/frankflitton" target="_blank">Behance</a>
-                </p>
-              </b-col>
-              <b-col>
-              </b-col>
-          </b-row> -->
     </b-container>
   </div>
 </template>
@@ -113,8 +84,15 @@ export default {
       max-width: 400px;
     }
     .full-screen {
-      min-height: 80vh;
+      min-height: 100vh;
+      height: auto;
       overflow: hidden;
+      &.mobile-small {
+        @media(max-width:767px){
+          min-height: 13em;
+          height: 13em;
+        }
+      }
       @media(min-width:768px){
         min-height: $slider-full
       }
@@ -132,6 +110,10 @@ export default {
           top: 2.5em;
           left: calc(0vw - 17px);
         }
+      }
+      .icons {
+        position: absolute;
+        top: 100%;
       }
     }
 }
