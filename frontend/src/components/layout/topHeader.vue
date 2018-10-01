@@ -22,9 +22,14 @@
         <li
           class="coveralls"
           :class="{'active': navOpen}"
-          @click="closeNav"
         >
-          <b-container class="h-100 justify-content-center align-items-center position-relative">
+        <!-- <li
+          class="coveralls"
+          :class="{'active': navOpen}"
+          @click="closeNav"
+        > -->
+        <contactPage></contactPage>
+          <!-- <b-container class="h-100 justify-content-center align-items-center position-relative">
             <b-row class="justify-content-center align-items-center position-relative h-100">
               <b-col cols="12">
                 <b-button
@@ -35,14 +40,6 @@
                 >
                   Work
                 </b-button>
-                <!-- <b-button
-                  class="toggle-button d-block"
-                  variant="link"
-                  size="lg"
-                  to="#"
-                >
-                  About
-                </b-button> -->
                 <b-button
                   class="toggle-button d-block"
                   variant="link"
@@ -53,14 +50,19 @@
                 </b-button>
               </b-col>
             </b-row>
-          </b-container>
+          </b-container> -->
         </li>
     </b-nav>
 </template>
 
 <script>
+import contactPage from '@/components/pages/Contact'
+
 export default {
   name: 'topHeader',
+  components: {
+    contactPage
+  },
   methods: {
     closeNav () {
       this.navOpen = false
@@ -136,10 +138,13 @@ export default {
     opacity: 0;
     transition: all 1s;
     z-index: -1;
+    top: 0;
+    overflow-y: scroll;
     &.active {
       opacity: 1;
       z-index: 4;
-      height: 100vh;
+      height: $slider-full;
+      top: $header-top;
     }
     .h-100 {
       height: 100vh;

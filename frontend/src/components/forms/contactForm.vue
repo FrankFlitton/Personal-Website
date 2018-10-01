@@ -191,7 +191,7 @@ export default {
     position: absolute;
     font-weight: bold;
     right: 8px;
-    top: -2.5em;
+    top: 1.1em;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity 1s;
