@@ -33,7 +33,6 @@ export default {
 }
 * {
   transition: all 0.75s;
-  transform: translate3d(0, 0%, 0);
 }
 
 .fade-enter-active, .fade-leave-active {

@@ -10,7 +10,6 @@
         <b-col class="left-col" cols="12" md="9">
           <b-row>
             <b-col>
-              <h2 v-html="uriDecode(page.description)"></h2>
               <p class="body" v-html="uriDecode(page.body)"></p>
             </b-col>
           </b-row>
@@ -48,22 +47,21 @@
               class="image"
               >
                 <b-col>
-                  <img
-                    class="d-block d-md-none"
-                    v-gallery:group="false"
+                  <!-- <img
+                    class=""
+                    v-gallery
                     :src="image.url"
                     :alt="image.title"
                     :width="image.width"
                     :height="image.height"
-                  >
+                  > -->
+                  <!-- {{image.url}} -->
                   <img
                     class="d-none d-md-block"
-                    v-img:group="true"
+                    v-img:group
                     :src="image.url"
                     :alt="image.title"
-                    :width="image.width"
-                    :height="image.height"
-                  >
+                  />
                 </b-col>
               </b-row>
             </b-col>
@@ -229,7 +227,7 @@ export default {
     }
   }
   .blocks {
-    background: #fbfbfb;
+    background: #f3f1f1;
   }
   .block {
     padding-top: 3em;

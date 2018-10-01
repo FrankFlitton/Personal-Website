@@ -130,6 +130,7 @@
 
 .work-nav {
   width: 100%;
+  transform: translate3d(0, 0%, 0);
   .work-slider {
     padding: 0;
   }
