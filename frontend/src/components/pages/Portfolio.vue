@@ -227,7 +227,7 @@ export default {
     }
   }
   .blocks {
-    background: #f3f1f1;
+    background: #eeeeee;
   }
   .block {
     padding-top: 3em;
