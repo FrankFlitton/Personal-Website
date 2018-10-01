@@ -4,3 +4,16 @@
 .vh-80 {
     height: 80vh;
 }
+// smooth scrolling everywhere
+* {
+    scroll-behavior: smooth;
+}
+.overflow-scroll {
+    -webkit-overflow-scrolling: touch !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    -webkit-backface-visibility: hidden !important;
+    -webkit-perspective: 1000 !important;
+    transform: translate3d(0, 0, 0) !important;
+    backface-visibility: hidden !important;
+    perspective: 1000 !important;
+}
