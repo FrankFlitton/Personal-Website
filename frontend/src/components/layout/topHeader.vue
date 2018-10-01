@@ -15,7 +15,8 @@
           title="toggle nav"
         >
 
-          <span class="navbar-toggler-icon"></span>
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="material-icons text-dark">menu</i>
 
         </b-nav-item>
 
@@ -28,7 +29,11 @@
           :class="{'active': navOpen}"
           @click="closeNav"
         > -->
-        <contactPage></contactPage>
+        <div
+          class="nacClose"
+          v-on:click="navItem"
+        ></div>
+        <contactPage class="navContact"></contactPage>
           <!-- <b-container class="h-100 justify-content-center align-items-center position-relative">
             <b-row class="justify-content-center align-items-center position-relative h-100">
               <b-col cols="12">
@@ -131,7 +136,6 @@ export default {
   }
   .coveralls {
     position: absolute;
-    background: white;
     display: block;
     height: 0vh;
     width: 100vw;
@@ -140,11 +144,16 @@ export default {
     z-index: -1;
     top: 0;
     overflow-y: scroll;
+    .nacClose {
+      height: $header-top;
+    }
+    .navContact {
+      position: relative;
+    }
     &.active {
       opacity: 1;
       z-index: 4;
-      height: $slider-full;
-      top: $header-top;
+      height: 100vh;
     }
     .h-100 {
       height: 100vh;
