@@ -164,11 +164,9 @@ export default {
     },
     sendMail () {
       let vm = this
-      console.log(vm.model)
 
       axios.post('static/mail/index.php', vm.model)
       .then(function (response) {
-        console.log(response)
         vm.submitted = true
       })
       .catch(function (error) {
