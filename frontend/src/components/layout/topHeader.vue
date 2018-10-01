@@ -14,54 +14,27 @@
           v-on:click="navItem"
           title="toggle nav"
         >
-
-          <!-- <span class="navbar-toggler-icon"></span> -->
-          <i class="material-icons text-dark">menu</i>
-
+          <transition name="fade">
+            <font-awesome-icon v-if="!navOpen" icon="coffee" class="text-dark" />
+            <font-awesome-icon v-if="navOpen" icon="times" class="text-dark" />
+          </transition>
         </b-nav-item>
 
         <li
-          class="coveralls"
+          class="coveralls overflow-scroll"
           :class="{'active': navOpen}"
         >
-        <!-- <li
-          class="coveralls"
-          :class="{'active': navOpen}"
-          @click="closeNav"
-        > -->
         <div
-          class="nacClose"
+          class="navClose"
           v-on:click="navItem"
         ></div>
         <contactPage class="navContact"></contactPage>
-          <!-- <b-container class="h-100 justify-content-center align-items-center position-relative">
-            <b-row class="justify-content-center align-items-center position-relative h-100">
-              <b-col cols="12">
-                <b-button
-                  class="toggle-button d-block"
-                  variant="link"
-                  size="lg"
-                  to="/"
-                >
-                  Work
-                </b-button>
-                <b-button
-                  class="toggle-button d-block"
-                  variant="link"
-                  size="lg"
-                  to="/contact"
-                >
-                  Contact
-                </b-button>
-              </b-col>
-            </b-row>
-          </b-container> -->
         </li>
     </b-nav>
 </template>
 
 <script>
-import contactPage from '@/components/pages/Contact'
+import contactPage from '@/components/pages/Contact.vue'
 
 export default {
   name: 'topHeader',
@@ -69,11 +42,13 @@ export default {
     contactPage
   },
   methods: {
-    closeNav () {
-      this.navOpen = false
-    },
     navItem () {
       this.navOpen = !this.navOpen
+      if (this.navOpen) {
+        this.$router.push({hash: '#contact'})
+      } else {
+        this.$router.push({hash: ''})
+      }
     }
   },
   data () {
@@ -144,7 +119,7 @@ export default {
     z-index: -1;
     top: 0;
     overflow-y: scroll;
-    .nacClose {
+    .navClose {
       height: $header-top;
     }
     .navContact {
