@@ -47,14 +47,14 @@
               class="image"
               >
                 <b-col>
-                  <!-- <img
-                    class=""
+                  <img
+                    class="d-block d-md-none"
                     v-gallery
                     :src="image.url"
                     :alt="image.title"
                     :width="image.width"
                     :height="image.height"
-                  > -->
+                  >
                   <!-- {{image.url}} -->
                   <img
                     class="d-none d-md-block"
