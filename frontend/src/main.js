@@ -8,8 +8,6 @@ import router from './router'
 import Meta from 'vue-meta'
 import VueImg from 'v-img'
 import gallery from '../../../img-vuer'
-import VueFormly from 'vue-formly'
-import VueFormlyBootstrap from 'vue-formly-bootstrap'
 import VeeValidate from 'Vee-Validate'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -42,8 +40,6 @@ Vue.use(VueAwesomeSwiper,
 
 Vue.use(VueImg)
 
-Vue.use(VueFormly)
-Vue.use(VueFormlyBootstrap)
 Vue.use(VeeValidate)
 
 Vue.config.silent = true
