@@ -10,13 +10,39 @@
           <b-container>
             <b-row>
               <b-col
-                md="10"
-                offset-md="1"
-                class="pt-5 pb-5 h-100"
+                cols="6"
+                sm="4"
+                md="6"
+                lg="4"
+                offset-md="3"
+                offset-lg="1"
+                class="pt-5 h-100 text-center"
+              >
+                <img
+                  class="rounded-circle"
+                  src="/static/img/fflitton-headshot-2018-web.jpg"
+                  alt="Photo of Frank"
+                />
+              </b-col>
+              <b-col
+                cols="6"
+                sm="8"
+                md="12"
+                lg="5"
+                offset-lg="0"
+                class="pt-5 pt-md-0 pt-lg-5 pb-5 h-100 ml-md-4 mt-3 mt-sm-0"
               >
                 <h1 class="mb-5">
                   Let's talk.
                 </h1>
+                <p class="d-sm-block d-none">
+                  Frank is a Full Stack Designer with 8 years
+                  of experience in software engineering, UX
+                  research, and product design.
+                </p>
+                <p class="d-sm-block d-none mb-5">
+                  Available for freelance and other opportunities.
+                </p>
                 <p class="icons">
                   <a href="https://www.github.com/frankflitton" target="_blank">
                     <font-awesome-icon :icon="['fab', 'github']" />
@@ -74,48 +100,51 @@ export default {
 
 .contact {
   font-size: 21px;
-    a {
-      color: rgba(226, 226, 226, 0.7);
+  a {
+    color: rgba(226, 226, 226, 0.7);
+  }
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: 3em;
+    max-width: 400px;
+  }
+  .full-screen {
+    min-height: 100vh;
+    height: auto;
+    overflow: hidden;
+    &.mobile-small {
+      @media(max-width:767px){
+      }
+      @media(max-width:767px){
+        min-height: 14em;
+      }
     }
-    img {
+    @media(min-width:768px){
+      min-height: $slider-full
+    }
+    &:after {
+      content: ' ';
       display: block;
-      width: 100%;
-      margin-bottom: 3em;
-      max-width: 400px;
-    }
-    .full-screen {
-      min-height: 100vh;
-      height: auto;
-      overflow: hidden;
-      &.mobile-small {
-        @media(max-width:767px){
-          min-height: 13em;
-          height: 13em;
-        }
-      }
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      top: calc(0vh - 17px);
+      left: 10vw;
+      background: #007bff;
+      transform: rotate(45deg);
       @media(min-width:768px){
-        min-height: $slider-full
-      }
-      &:after {
-        content: ' ';
-        display: block;
-        position: absolute;
-        width: 34px;
-        height: 34px;
-        top: calc(0vh - 17px);
-        left: 10vw;
-        background: #007bff;
-        transform: rotate(45deg);
-        @media(min-width:768px){
-          top: 2.5em;
-          left: calc(0vw - 17px);
-        }
-      }
-      .icons {
-        position: absolute;
-        top: 100%;
+        top: 2.5em;
+        left: calc(0vw - 17px);
       }
     }
+    .icons {
+      position: absolute;
+      top: 100%;
+      margin-top: -3em;
+      letter-spacing: 0.3em;
+    }
+  }
 }
 </style>
 
