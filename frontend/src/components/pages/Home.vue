@@ -18,7 +18,7 @@ export default {
     // all titles will be injected into this template
     titleTemplate: '%s | Frank JE Flitton',
     meta: {
-      name: 'description', content: 'Frank JE  Flitton is a Full Stack Designer specializing in UI / UX. Frank is based in Kitchener/Waterloo, Ontario, Canada.'
+      name: 'description', content: 'Frank is a Full Stack Designer with 8 years of experience in software engineering, UX research, and product design. Available for freelance and other opportunities.'
     }
   }
 }
