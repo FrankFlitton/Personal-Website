@@ -2,10 +2,10 @@
     <b-nav fill pills class="fixed-top top-nav navbar-light">
         <router-link class="logo nav-item" to="/">
           <div class="brand">
-            <img src="http://frankflitton.com/img/logo.png" alt="">
+            <img src="http://frankflitton.com/img/logo.png" alt="Frank JE Flitton">
           </div>
           <div class="wordmark">
-            <img src="http://frankflitton.com/img/logo.png" alt="">
+            <h1>Frank JE Flitton</h1>
           </div>
         </router-link>
 
@@ -76,6 +76,7 @@ export default {
     width: 30%;
     min-width: 320px;
     margin-right: 20%;
+    overflow: show;
     div {
       background: black;
       width: 41px;
@@ -91,13 +92,15 @@ export default {
       position: absolute;
     }
     .wordmark {
-      left: 75px;
-      width: 180px;
-      top: 24px;
-      height: 35px;
-      img {
-        bottom: 0;
-        left: 0;
+      left: 80px;
+      width: auto;
+      background: none;
+      top: 27px;
+      h1 {
+        font-weight: 900;
+        text-transform: uppercase;
+        color: black;
+        font-size: 25px;
       }
     }
   }
