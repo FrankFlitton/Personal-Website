@@ -16,10 +16,10 @@
                 lg="4"
                 offset-md="3"
                 offset-lg="1"
-                class="pt-5 h-100 text-center"
+                class="pt-5 h-100 text-center mb-3 mb-sm-0 pb-1 pb-sm-0"
               >
                 <img
-                  class="rounded-circle"
+                  class="rounded-circle mb-4 mb-sm-5"
                   src="/static/img/fflitton-headshot-2018-web.jpg"
                   alt="Photo of Frank"
                 />
@@ -117,7 +117,7 @@ export default {
       @media(max-width:767px){
       }
       @media(max-width:767px){
-        min-height: 14em;
+        min-height: 10em;
       }
     }
     @media(min-width:768px){
