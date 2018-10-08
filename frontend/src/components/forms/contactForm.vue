@@ -1,8 +1,8 @@
 <template>
 
-  <div class="position-relative">
+  <div class="position-relative h-100 bg-light">
     <transition name="fade">
-      <div v-if="!submitted" class="position-absolute w-100">
+      <div v-if="!submitted" class="position-absolute w-100 bg-light pl-4 pr-4">
         <b-form @submit="onSubmit">
 
           <!-- Name -->
@@ -102,7 +102,7 @@
           <b-button
             @tap="onSubmit"
             @click="onSubmit"
-            variant="primary text-white w-100"
+            variant="primary text-white w-100 mt-4 mb-4"
           >
             Submit
           </b-button>
@@ -120,7 +120,7 @@
     </transition>
 
     <transition name="fade">
-      <div v-if="submitted" class="position-absolute w-100">
+      <div v-if="submitted" class="position-absolute w-100 bg-light pl-4 pr-4">
         <h1 class="pb-5">
           Your message is&nbsp;sent!
         </h1>

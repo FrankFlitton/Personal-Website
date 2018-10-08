@@ -7,7 +7,7 @@
           id="row1"
           class="bg-primary text-white full-screen mobile-small"
         >
-          <b-container>
+          <b-container fluid>
             <b-row>
               <b-col
                 cols="6"
@@ -62,14 +62,14 @@
         <b-col
           md="6"
           id="row2"
-          class="bg-light text-primary full-screen"
+          class="bg-light text-primary full-screen pl-0 pr-0"
         >
-          <b-container>
+          <b-container fluid>
             <b-row>
               <b-col
                 md="8"
                 offset-md="2"
-                class="pt-5 pb-5">
+                class="pt-5 pb-5 pl-0 pr-0">
                 <contact-form></contact-form>
               </b-col>
             </b-row>
@@ -112,7 +112,7 @@ export default {
   .full-screen {
     min-height: 100vh;
     height: auto;
-    overflow: hidden;
+    // overflow: hidden;
     &.mobile-small {
       @media(max-width:767px){
       }
@@ -123,13 +123,13 @@ export default {
     @media(min-width:768px){
       min-height: $slider-full
     }
-    &:after {
+    &:nth-child(2):after {
       content: ' ';
       display: block;
       position: absolute;
       width: 34px;
       height: 34px;
-      top: calc(0vh - 17px);
+      top: calc(0vh - 18px);
       left: 10vw;
       background: #007bff;
       transform: rotate(45deg);
