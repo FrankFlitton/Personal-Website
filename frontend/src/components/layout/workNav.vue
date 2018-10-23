@@ -9,6 +9,8 @@
       <swiper
        :options="swiperOption"
        ref="workSwiper"
+       v-on:reachBeginning="sliderStart()"
+       v-on:reachEnd="sliderEnd()"
       >
         <swiper-slide
          v-for="(poster, index) in posters"
@@ -31,7 +33,9 @@
 
 <script>
   import axios from 'axios'
+  import _ from 'lodash'
   import workPoster from '@/components/layout/workPoster'
+
   export default {
     components: {
       workPoster
@@ -65,6 +69,31 @@
       },
       updateState (payload) {
         this.isCompact = payload
+      },
+      sliderEnd () {
+        this.toSlide(1)
+      },
+      sliderStart () {
+        this.toSlide(
+          this.posters.length - 2
+        )
+      },
+      toSlide (i) {
+        this.$nextTick(() => {
+          this.$refs.workSwiper.swiper.slideTo(i, 0)
+        })
+      },
+      preparePosters (posters) {
+        // The slider misbehaves when loop = true.
+        // Create a false first and last slide to
+        // work around it for now.
+
+        const firstPage = posters[0]
+        const lastPage = posters[posters.length - 1]
+        posters.push(firstPage)
+        posters.unshift(lastPage)
+
+        return posters
       }
     },
     mounted () {
@@ -85,11 +114,20 @@
     created () {
       axios.get(`http://craft.frankflitton.com/json`)
       .then(response => {
-        // JSON responses are automatically parsed.
-        this.posters = response.data.pages
+        // parse obj to array
+        let posters = []
+        _.forEach(response.data.pages, (page) => {
+          posters.push(page)
+        })
+
+        // Format to loop
+        this.posters = this.preparePosters(posters)
+
+        // Navigate to first slide
+        this.toSlide(1)
       })
       .catch(e => {
-        this.errors.push(e)
+        console.log(e)
       })
     },
     data () {
@@ -100,13 +138,14 @@
         sliderIndex: 0,
         sliderAnimating: 0,
         isCompact: this.compact,
-        posters: {},
+        initialSlide: 2,
+        posters: [],
         swiperOption: {
           direction: 'vertical',
           autoHeight: true,
           effect: 'fade',
-          loop: true,
           slidesPerView: 1,
+          slidesPerGroup: 1,
           autoplay: {
             delay: 8000,
             disableOnInteraction: false
