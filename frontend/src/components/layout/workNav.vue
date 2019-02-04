@@ -52,6 +52,11 @@
         this.isCompact = newVal
       }
     },
+    computed: {
+      isMobile () {
+        return this.getWindowWidth() < 768
+      }
+    },
     methods: {
       getWindowWidth (event) {
         this.windowWidth = document.documentElement.clientWidth
@@ -73,12 +78,12 @@
         this.isCompact = payload
       },
       sliderEnd () {
-        if (this.getWindowWidth() > 450) {
+        if (!this.isMobile) {
           this.toSlide(1)
         }
       },
       sliderStart () {
-        if (this.getWindowWidth() > 450) {
+        if (!this.isMobile) {
           this.toSlide(
             this.posters.length - 2
           )
@@ -94,14 +99,10 @@
         // Create a false first and last slide to
         // work around it for now.
 
-        console.log(this.getWindowWidth())
-
-        if (this.getWindowWidth() > 450) {
-          const firstPage = posters[0]
-          const lastPage = posters[posters.length - 1]
-          posters.push(firstPage)
-          posters.unshift(lastPage)
-        }
+        const firstPage = posters[0]
+        const lastPage = posters[posters.length - 1]
+        posters.push(firstPage)
+        posters.unshift(lastPage)
 
         return posters
       }
@@ -130,13 +131,17 @@
           posters.push(page)
         })
 
-        // Format to loop
-        this.posters = this.preparePosters(posters)
+        if (!this.isMobile) {
+          // Format to loop
+          this.posters = this.preparePosters(posters)
 
-        // Navigate to first slide
-        this.$nextTick(() => {
-          // this.toSlide(1)
-        })
+          // Navigate to first slide
+          this.$nextTick(() => {
+            this.toSlide(1)
+          })
+        } else {
+          this.posters = posters
+        }
       })
       .catch(e => {
         console.log(e)
