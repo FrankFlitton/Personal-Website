@@ -55,9 +55,11 @@
     methods: {
       getWindowWidth (event) {
         this.windowWidth = document.documentElement.clientWidth
+        return this.windowWidth
       },
       getWindowHeight (event) {
         this.windowHeight = document.documentElement.clientHeight
+        return this.windowHeight
       },
       getSliderSize () {
         if (this.compact) {
@@ -71,12 +73,16 @@
         this.isCompact = payload
       },
       sliderEnd () {
-        this.toSlide(1)
+        if (this.getWindowWidth() > 450) {
+          this.toSlide(1)
+        }
       },
       sliderStart () {
-        this.toSlide(
-          this.posters.length - 2
-        )
+        if (this.getWindowWidth() > 450) {
+          this.toSlide(
+            this.posters.length - 2
+          )
+        }
       },
       toSlide (i) {
         this.$nextTick(() => {
@@ -88,10 +94,14 @@
         // Create a false first and last slide to
         // work around it for now.
 
-        const firstPage = posters[0]
-        const lastPage = posters[posters.length - 1]
-        posters.push(firstPage)
-        posters.unshift(lastPage)
+        console.log(this.getWindowWidth())
+
+        if (this.getWindowWidth() > 450) {
+          const firstPage = posters[0]
+          const lastPage = posters[posters.length - 1]
+          posters.push(firstPage)
+          posters.unshift(lastPage)
+        }
 
         return posters
       }
@@ -124,7 +134,9 @@
         this.posters = this.preparePosters(posters)
 
         // Navigate to first slide
-        this.toSlide(1)
+        this.$nextTick(() => {
+          // this.toSlide(1)
+        })
       })
       .catch(e => {
         console.log(e)
@@ -151,7 +163,7 @@
             disableOnInteraction: false
           },
           lazy: {
-            loadPrevNext: true
+            loadPrevNext: this.getWindowWidth() > 450
           },
           keyboard: {
             enabled: true
