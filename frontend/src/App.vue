@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <transition
-      name="fade"
-      >
+    <transition name="fade">
       <router-view></router-view>
     </transition>
   </div>
@@ -21,8 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-
-@import 'src/styles/index.scss';
+@import 'src/assets/styles/index.scss';
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -41,5 +38,4 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
-
 </style>

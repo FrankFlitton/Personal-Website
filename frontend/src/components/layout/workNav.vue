@@ -182,7 +182,7 @@
 
 <style lang="scss">
 
-@import 'src/styles/variables.scss';
+@import 'src/assets/styles/variables.scss';
 
 .work-nav {
   width: 100%;

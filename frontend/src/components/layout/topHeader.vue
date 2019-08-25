@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import contactPage from '@/components/pages/Contact.vue'
+import contactPage from '@/views/Contact.vue'
 
 export default {
   name: 'topHeader',
@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss">
 
-@import 'src/styles/variables.scss';
+@import 'src/assets/styles/variables.scss';
 
 .top-nav {
   width: 100%;
