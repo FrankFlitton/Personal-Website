@@ -2,11 +2,7 @@
   <div class="contact text-left">
     <b-container fluid>
       <b-row>
-        <b-col
-          md="6"
-          id="row1"
-          class="bg-primary text-white full-screen mobile-small"
-        >
+        <b-col md="6" id="row1" class="bg-black text-white full-screen mobile-small">
           <b-container fluid>
             <b-row>
               <b-col
@@ -32,17 +28,13 @@
                 offset-lg="0"
                 class="pt-5 pt-md-0 pt-lg-5 pb-5 h-100 ml-md-4 mt-3 mt-sm-0"
               >
-                <h1 class="mb-5">
-                  Let's talk.
-                </h1>
+                <h1 class="mb-5">Let's talk.</h1>
                 <p class="d-sm-block d-none">
                   Frank is a Fullstack UX Engineer with 8 years
                   of experience in software engineering, UX
                   research, and product design.
                 </p>
-                <p class="d-sm-block d-none mb-5">
-                  Available for freelance and other opportunities.
-                </p>
+                <p class="d-sm-block d-none mb-5">Available for freelance and other opportunities.</p>
                 <p class="icons">
                   <a href="https://www.github.com/frankflitton" target="_blank">
                     <font-awesome-icon :icon="['fab', 'github']" />
@@ -59,17 +51,10 @@
           </b-container>
         </b-col>
 
-        <b-col
-          md="6"
-          id="row2"
-          class="bg-light text-primary full-screen pl-0 pr-0"
-        >
+        <b-col md="6" id="row2" class="bg-light text-dark full-screen pl-0 pr-0">
           <b-container fluid>
             <b-row>
-              <b-col
-                md="8"
-                offset-md="2"
-                class="pt-5 pb-5 pl-0 pr-0">
+              <b-col md="8" offset-md="2" class="pt-5 pb-5 pl-0 pr-0">
                 <contact-form></contact-form>
               </b-col>
             </b-row>
@@ -89,11 +74,10 @@ export default {
     contactForm
   }
 }
-
 </script>
 
 <style lang="scss">
-@import 'src/assets/styles/variables.scss';
+@import "src/assets/styles/variables.scss";
 
 .contact {
   font-size: 21px;
@@ -109,28 +93,25 @@ export default {
   .full-screen {
     min-height: 100vh;
     height: auto;
-    // overflow: hidden;
     &.mobile-small {
-      @media(max-width:767px){
-      }
-      @media(max-width:767px){
+      @media (max-width: 767px) {
         min-height: 10em;
       }
     }
-    @media(min-width:768px){
-      min-height: $slider-full
+    @media (min-width: 768px) {
+      min-height: $slider-full;
     }
     &:nth-child(2):after {
-      content: ' ';
+      content: " ";
       display: block;
       position: absolute;
       width: 34px;
       height: 34px;
       top: calc(0vh - 18px);
       left: 10vw;
-      background: #007bff;
+      background: #000000;
       transform: rotate(45deg);
-      @media(min-width:768px){
+      @media (min-width: 768px) {
         top: 2.5em;
         left: calc(0vw - 17px);
       }
@@ -144,4 +125,3 @@ export default {
   }
 }
 </style>
-

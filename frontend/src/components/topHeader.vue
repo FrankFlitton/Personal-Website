@@ -1,36 +1,26 @@
 <template>
-    <b-nav fill pills class="fixed-top top-nav navbar-light">
-        <router-link class="logo nav-item" to="/">
-          <div class="brand">
-            <img src="http://frankflitton.com/img/logo.png" alt="Frank JE Flitton">
-          </div>
-          <div class="wordmark">
-            <h1>Frank JE Flitton</h1>
-          </div>
-        </router-link>
+  <b-nav fill pills class="fixed-top top-nav navbar-light">
+    <router-link class="logo nav-item" to="/">
+      <div class="brand">
+        <img src="http://frankflitton.com/img/logo.png" alt="Frank JE Flitton" />
+      </div>
+      <div class="wordmark d-none d-sm-block">
+        <h1>Frank JE Flitton</h1>
+      </div>
+    </router-link>
 
-        <b-nav-item
-          class="text-right nav-toggle"
-          v-on:click="navItem"
-          title="toggle nav"
-        >
-          <transition name="fade">
-            <font-awesome-icon v-if="!navOpen" icon="coffee" class="text-dark" />
-            <font-awesome-icon v-if="navOpen" icon="times" class="text-dark" />
-          </transition>
-        </b-nav-item>
+    <b-nav-item class="text-right nav-toggle" v-on:click="navItem" title="toggle nav">
+      <transition name="fade">
+        <font-awesome-icon v-if="!navOpen" icon="coffee" class="text-dark" />
+        <font-awesome-icon v-if="navOpen" icon="times" class="text-dark" />
+      </transition>
+    </b-nav-item>
 
-        <li
-          class="coveralls overflow-scroll"
-          :class="{'active': navOpen}"
-        >
-        <div
-          class="navClose"
-          v-on:click="navItem"
-        ></div>
-        <contactPage class="navContact"></contactPage>
-        </li>
-    </b-nav>
+    <li class="coveralls overflow-scroll" :class="{'active': navOpen}">
+      <div class="navClose" v-on:click="navItem"></div>
+      <contactPage class="navContact"></contactPage>
+    </li>
+  </b-nav>
 </template>
 
 <script>
@@ -45,9 +35,9 @@ export default {
     navItem () {
       this.navOpen = !this.navOpen
       if (this.navOpen) {
-        this.$router.push({hash: '#contact'})
+        this.$router.push({ hash: '#contact' })
       } else {
-        this.$router.push({hash: ''})
+        this.$router.push({ hash: '' })
       }
     }
   },
@@ -59,10 +49,8 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
-
-@import 'src/assets/styles/variables.scss';
+@import "src/assets/styles/variables.scss";
 
 .top-nav {
   width: 100%;

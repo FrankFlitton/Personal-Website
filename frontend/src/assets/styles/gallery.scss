@@ -1,5 +1,4 @@
 // Desktop
-
 .fullscreen-v-img {
     background-color: rgba(255, 255, 255, 0.7) !important;
     position: fixed !important;
@@ -54,8 +53,12 @@
 }
 
 // Mobile
-
 .slider {
     background-color: rgba(255, 255, 255, 0.7) !important;
     z-index: 1080 !important;
+}
+
+// Home Page
+.home-slider-height {
+    height: $slider-full !important;
 }

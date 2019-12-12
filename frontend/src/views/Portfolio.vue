@@ -1,147 +1,142 @@
 <template>
-  <div class="portfolio">
-    <b-container>
-      <b-row>
-        <b-col class="text-center">
-          <h1 v-html="uriDecode(page.title)"></h1>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col class="left-col" cols="12" md="9">
-          <b-row>
-            <b-col>
-              <p class="body" v-html="uriDecode(page.body)"></p>
-            </b-col>
-          </b-row>
-          <b-row class="d-none d-md-flex">
-            <b-col cols="10">
-              <div class="divider" :style="{'background': page.color}"></div>
-            </b-col>
-          </b-row>
+  <div class="portfolio" :class="{'bg-black': !loading, 'bg-white': loading}">
+    <transition name="fade">
+      <preloader v-if="!loading" :class="{'bg-black': !loading, 'bg-white': loading}" />
+      <b-container v-else class="position-relative">
+        <b-row>
+          <b-col class="mb-5 mt-5 text-sm-left" sm="6" offset-sm="3">
+            <b-btn variant="inline" :href="page.projectUrl" target="_blank" size="sm">
+              <h1 v-html="uriDecode(page.title)"></h1>
+            </b-btn>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center mb-5 pb-5">&nbsp;</b-col>
+        </b-row>
+        <b-row>
+          <b-col class="left-col" cols="12" md="9">
+            <b-row>
+              <b-col>
+                <p class="body" v-html="uriDecode(page.body)"></p>
+              </b-col>
+            </b-row>
+            <b-row class="d-none d-md-flex">
+              <b-col cols="10">
+                <div class="divider" :style="{'background': page.color}"></div>
+              </b-col>
+            </b-row>
 
+            <!-- Page Sections Start -->
 
-          <!-- Page Sections Start -->
-
-          <b-row
-          v-for="(block, index) in page.html"
-          :key="'block' + index"
-          class="blocks"
-          >
-            <b-col
-            v-if="block.type === 'text'"
-            class="block text text-center"
-            cols="10"
-            offset="1"
-            >
-              <span v-html="uriDecode(block.text)"></span>
-            </b-col>
-
-            <b-col
-            v-else-if="block.type === 'image' || block.type === 'gif'"
-            class="block images"
-            cols="12"
-            >
-              <b-row
-              v-for="image in block.images"
-              :key="image.title"
-              class="image"
+            <b-row v-for="(block, index) in page.html" :key="'block' + index" class="blocks">
+              <b-col
+                v-if="block.type === 'text'"
+                class="block text text-center"
+                cols="10"
+                offset="1"
               >
-                <b-col>
-                  <img
-                    class="d-block d-md-none"
-                    v-gallery
-                    :src="image.url"
-                    :alt="image.title"
-                    :width="image.width"
-                    :height="image.height"
-                  >
-                  <!-- {{image.url}} -->
-                  <img
-                    class="d-none d-md-block"
-                    v-img:group
-                    :src="image.url"
-                    :alt="image.title"
-                  />
-                </b-col>
-              </b-row>
-            </b-col>
-            <b-col
-            v-else
-            class="block exception"
-            cols="12"
-            >
-            exception
-            </b-col>
-          </b-row>
+                <span v-html="uriDecode(block.text)"></span>
+              </b-col>
 
-
-        </b-col>
-        <b-col class="right-col" cols="12" offset="0" offset-sm="0" md="2" offset-lg="1">
-          <b-row class="d-flex d-md-none">
-            <b-col cols="12">
-              <div class="divider mb-4 mt-4" :style="{'background': page.color}"></div>
-            </b-col>
-          </b-row>
-          <b-row class="position-sticky">
-            <b-col cols="6" md="12">
-              <h5><strong>Client</strong></h5>
-              <p>
-                <a v-html="page.client" :href="page.clientUrl" target="_blank"></a>
-              </p>
-            </b-col>
-            <b-col cols="6" md="12">
-              <h5><strong>Category</strong></h5>
-              <p v-html="page.category"></p>
-            </b-col>
-            <b-col cols="6" md="12"
-             class="contributions"
-            >
-              <h5><strong>Contributions</strong></h5>
-              <span v-html="uriDecode(page.contributions)"></span>
-            </b-col>
-            <b-col cols="6" md="12"
-             class="contributions"
-             v-if="page.projectUrl"
-            >
-              <h5><strong>Project Link</strong></h5>
-              <p>
-                <a :href="page.projectUrl" target="_blank">See More</a>
-              </p>
-            </b-col>
-          </b-row>
-        </b-col>
-      </b-row>
-      <b-row class="d-flex d-md-none">
-        <b-col cols="12">
-          <div class="divider mt-3" :style="{'background': page.color}"></div>
-        </b-col>
-      </b-row>
-
-
-
-    </b-container>
+              <b-col
+                v-else-if="block.type === 'image' || block.type === 'gif'"
+                class="block images"
+                cols="12"
+              >
+                <b-row v-for="image in block.images" :key="image.title" class="image">
+                  <b-col>
+                    <img
+                      class="d-block d-md-none"
+                      v-gallery
+                      :src="image.url"
+                      :alt="image.title"
+                      :width="image.width"
+                      :height="image.height"
+                    />
+                    <img class="d-none d-md-block" v-img:group :src="image.url" :alt="image.title" />
+                  </b-col>
+                </b-row>
+              </b-col>
+              <b-col v-else class="block exception" cols="12">exception</b-col>
+            </b-row>
+          </b-col>
+          <b-col class="right-col" cols="12" offset="0" offset-sm="0" md="2" offset-lg="1">
+            <b-row class="d-flex d-md-none">
+              <b-col cols="12">
+                <div class="divider mb-4 mt-4" :style="{'background': page.color}"></div>
+              </b-col>
+            </b-row>
+            <b-row class="position-sticky">
+              <b-col cols="6" md="12">
+                <h5>
+                  <strong>Client</strong>
+                </h5>
+                <p>
+                  <a v-html="page.client" :href="page.clientUrl" target="_blank"></a>
+                </p>
+              </b-col>
+              <b-col cols="6" md="12">
+                <h5>
+                  <strong>Category</strong>
+                </h5>
+                <p v-html="page.category"></p>
+              </b-col>
+              <b-col cols="6" md="12" class="contributions">
+                <h5>
+                  <strong>Contributions</strong>
+                </h5>
+                <span v-html="uriDecode(page.contributions)"></span>
+              </b-col>
+              <b-col cols="6" md="12" class="contributions" v-if="page.projectUrl">
+                <h5>
+                  <strong>Project Link</strong>
+                </h5>
+                <p>
+                  <a :href="page.projectUrl" target="_blank">See More</a>
+                </p>
+              </b-col>
+            </b-row>
+          </b-col>
+        </b-row>
+        <b-row class="d-flex d-md-none">
+          <b-col cols="12">
+            <div class="divider mt-3" :style="{'background': page.color}"></div>
+          </b-col>
+        </b-row>
+      </b-container>
+    </transition>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import preloader from '@/components/preloader.vue'
 
 export default {
   name: 'portfolio',
+  components: {
+    preloader
+  },
   methods: {
     uriDecode: function (message) {
       return decodeURIComponent(message)
     }
   },
   mounted () {
-    axios.get(`http://craft.frankflitton.com/pages/` + this.$route.params.id + `/json`)
-    .then(response => {
-      // JSON responses are automatically parsed.
-      this.page = response.data.page
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    this.loading = false
+
+    axios
+      .get(
+        `http://craft.frankflitton.com/pages/` + this.$route.params.id + `/json`
+      )
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.page = response.data.page
+        this.loading = true
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   },
   data () {
     return {
@@ -149,22 +144,22 @@ export default {
         title: '',
         description: '',
         body: ''
-      }
+      },
+      loading: false
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import '@/assets/styles/variables.scss';
+@import "@/assets/styles/variables.scss";
 
 .portfolio {
   text-align: left;
   background: #dadada;
   background: #ffffff;
 
-  @media(max-width:767px) {
+  @media (max-width: 767px) {
     font-size: 17px;
   }
 
@@ -174,17 +169,33 @@ export default {
     max-width: 1200px;
   }
   h1 {
-    font-size: 4em;
-    margin-top: 1em;
-    margin-bottom: 1.5em;
-    @media(max-width:767px) {
+    font-size: 3em;
+    position: relative;
+    @media (max-width: 767px) {
       font-size: 2.5em;
       margin-bottom: 1em;
+    }
+    &:after {
+      content: "VIEW";
+      position: absolute;
+      bottom: -2.2em;
+      left: 0;
+      width: 100%;
+      font-size: 0.18em;
+      opacity: 0.3;
+      letter-spacing: 3pt;
+      transition: all 0.5s ease;
+    }
+    &:hover {
+      &:after {
+        opacity: 1;
+        bottom: -3.2em;
+      }
     }
   }
   h2 {
     margin-bottom: 1em;
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       font-size: 1.65em;
       line-height: 1.5em;
     }
@@ -208,7 +219,8 @@ export default {
       color: black;
       margin-bottom: 0.5em;
     }
-    p, a {
+    p,
+    a {
       font-size: 1rem;
       color: grey;
     }
@@ -224,7 +236,7 @@ export default {
     padding-bottom: 3em;
     width: 100%;
     font-size: 18px;
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       padding-top: 1.5em;
       padding-bottom: 1.5em;
     }
@@ -261,9 +273,9 @@ export default {
         min-width: 120px;
         padding: 15px;
 
-          @media(max-width:575px){
-            display: block;
-          }
+        @media (max-width: 575px) {
+          display: block;
+        }
         &:nth-child(1) {
           background: black;
         }

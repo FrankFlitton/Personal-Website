@@ -1,9 +1,23 @@
 .vh-100 {
     height: 100vh;
 }
+.vw-100 {
+    width: 100vw;
+}
 .vh-80 {
     height: 80vh;
 }
+.o-50 {
+    opacity: 0.5;
+}
+.bg-cover {
+    background-size: cover;
+    background-position: center center;
+}
+.bg-black {
+    background-color: #000000!important;
+}
+
 // smooth scrolling everywhere
 * {
     scroll-behavior: smooth;

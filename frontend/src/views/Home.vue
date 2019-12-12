@@ -1,16 +1,16 @@
 <template>
   <div class="home">
-    <work-nav></work-nav>
+    <feature-slider></feature-slider>
   </div>
 </template>
 
 <script>
-import workNav from '@/components/layout/workNav'
+import featureSlider from '@/components/featuredSider/featureSlider.vue'
 
 export default {
   name: 'home',
   components: {
-    workNav
+    featureSlider
   }
 }
 </script>

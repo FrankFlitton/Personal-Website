@@ -1,10 +1,8 @@
 <template>
-
   <div class="position-relative h-100 bg-light">
     <transition name="fade">
       <div v-if="!submitted" class="position-absolute w-100 bg-light pl-4 pr-4">
         <b-form @submit="onSubmit">
-
           <!-- Name -->
           <b-form-group
             id="nameGroup"
@@ -23,8 +21,7 @@
               class="text-dark"
               type="text"
               placeholder="What's your name?"
-            >
-            </b-form-input>
+            ></b-form-input>
           </b-form-group>
 
           <!-- Email -->
@@ -45,8 +42,7 @@
               class="text-dark"
               type="text"
               placeholder="you@awesome.com"
-            >
-            </b-form-input>
+            ></b-form-input>
           </b-form-group>
 
           <!-- Subject -->
@@ -67,8 +63,7 @@
               class="text-dark"
               type="text"
               placeholder="What do you want to chat about?"
-            >
-            </b-form-input>
+            ></b-form-input>
           </b-form-group>
 
           <!-- Comments -->
@@ -80,9 +75,7 @@
             :class="{'input': true, 'text-danger': errors.has('comments') }"
             class="position-relative"
           >
-            <span class="counter text-muted">
-              {{model.comments.length}}/100
-            </span>
+            <span class="counter text-muted">{{model.comments.length}}/100</span>
             <b-form-textarea
               id="commentsInput"
               name="comments"
@@ -94,46 +87,32 @@
               type="text"
               placeholder="Your message..."
               rows="4"
-            >
-            </b-form-textarea>
+            ></b-form-textarea>
           </b-form-group>
-
 
           <b-button
             @tap="onSubmit"
             @click="onSubmit"
-            variant="primary text-white w-100 mt-4 mb-4"
-          >
-            Submit
-          </b-button>
+            variant="dark bg-black text-white w-100 mt-4 mb-4"
+          >Submit</b-button>
         </b-form>
 
         <ul>
-          <li
-            v-for="(error, index) in errors.collect('field')"
-            :key="index"
-          >
-            {{ error }}
-          </li>
+          <li v-for="(error, index) in errors.collect('field')" :key="index">{{ error }}</li>
         </ul>
       </div>
     </transition>
 
     <transition name="fade">
       <div v-if="submitted" class="position-absolute w-100 bg-light pl-4 pr-4">
-        <h1 class="pb-5">
-          Your message is&nbsp;sent!
-        </h1>
-        <p class="text-dark">
-          Thanks for getting in touch, I'll keep an eye out for your&nbsp;message.
-        </p>
-        <p class="text-dark">
-          Talk soon!
-        </p>
+        <h1 class="pb-5">Your message is&nbsp;sent!</h1>
+        <p
+          class="text-dark"
+        >Thanks for getting in touch, I'll keep an eye out for your&nbsp;message.</p>
+        <p class="text-dark">Talk soon!</p>
       </div>
     </transition>
   </div>
-
 </template>
 
 <script>
@@ -156,7 +135,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$validator.validateAll().then((result) => {
+      this.$validator.validateAll().then(result => {
         if (result) {
           this.sendMail()
         }
@@ -165,37 +144,38 @@ export default {
     sendMail () {
       let vm = this
 
-      axios.post('static/mail/index.php', vm.model)
-      .then(function (response) {
-        vm.submitted = true
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+      axios
+        .post('static/mail/index.php', vm.model)
+        .then(function (response) {
+          vm.submitted = true
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }
 </script>
 
 <style>
-  .help-block {
-    font-size: 0.7em;
-  }
-  .form-group small{
-    color: inherit !important;
-  }
-  .counter {
-    font-size: 0.5em;
-    position: absolute;
-    font-weight: bold;
-    right: 8px;
-    top: 1.1em;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity 1s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-      opacity: 0;
-  }
+.help-block {
+  font-size: 0.7em;
+}
+.form-group small {
+  color: inherit !important;
+}
+.counter {
+  font-size: 0.5em;
+  position: absolute;
+  font-weight: bold;
+  right: 8px;
+  top: 1.1em;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
-
