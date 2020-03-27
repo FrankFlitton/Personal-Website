@@ -1,6 +1,6 @@
 <template>
   <b-nav fill pills class="fixed-top top-nav navbar-light">
-    <router-link class="logo nav-item" to="/">
+    <router-link class="logo nav-item" to="/" @click.native="logoLink()">
       <div class="brand">
         <img src="http://frankflitton.com/img/logo.png" alt="Frank JE Flitton" />
       </div>
@@ -9,7 +9,7 @@
       </div>
     </router-link>
 
-    <b-nav-item class="text-right nav-toggle" v-on:click="navItem" title="toggle nav">
+    <b-nav-item class="text-right nav-toggle orange" v-on:click.stop="navItem(!navOpen)" title="toggle nav">
       <transition name="fade">
         <font-awesome-icon v-if="!navOpen" icon="coffee" class="text-dark" />
         <font-awesome-icon v-if="navOpen" icon="times" class="text-dark" />
@@ -17,7 +17,7 @@
     </b-nav-item>
 
     <li class="coveralls overflow-scroll" :class="{'active': navOpen}">
-      <div class="navClose" v-on:click="navItem"></div>
+      <div class="navClose" v-on:click="navItem(!navOpen)"></div>
       <contactPage class="navContact"></contactPage>
     </li>
   </b-nav>
@@ -31,14 +31,30 @@ export default {
   components: {
     contactPage
   },
+  props: {
+    isContact: {
+      defalut: false,
+      type: Boolean
+    }
+  },
   methods: {
-    navItem () {
-      this.navOpen = !this.navOpen
+    navItem (val) {
+      this.navOpen = val
       if (this.navOpen) {
         this.$router.push({ hash: '#contact' })
       } else {
         this.$router.push({ hash: '' })
       }
+    },
+    logoLink () {
+      this.navItem(false)
+      this.$router.push('/')
+    }
+  },
+  created () {
+    const url = this.$route.hash ? this.$route.hash : ''
+    if (url.includes('contact')) {
+      this.navItem(true)
     }
   },
   data () {
@@ -63,8 +79,10 @@ export default {
   .logo {
     width: 30%;
     min-width: 320px;
+    max-width: 320px;
     margin-right: 20%;
     overflow: show;
+    z-index: 999999;
     div {
       background: black;
       width: 41px;

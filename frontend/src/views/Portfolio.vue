@@ -4,9 +4,17 @@
       <preloader v-if="!loading" :class="{'bg-black': !loading, 'bg-white': loading}" />
       <b-container v-else class="position-relative">
         <b-row>
-          <b-col class="mb-5 mt-5 text-sm-left" sm="6" offset-sm="3">
+          <b-col class="mt-5 text-sm-left" sm="6" offset-sm="3">
             <b-btn variant="inline" :href="page.projectUrl" target="_blank" size="sm">
               <h1 v-html="uriDecode(page.title)"></h1>
+            </b-btn>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="mb-5 text-sm-left" sm="6" offset-sm="3">
+            <b-btn variant="inline" :href="page.projectUrl" target="_blank" size="sm">
+              <h3 v-if="$route.path.includes('confederation') || $route.path.includes('cigi')">View</h3>
+              <h3 v-else>Buy</h3>
             </b-btn>
           </b-col>
         </b-row>
@@ -176,7 +184,6 @@ export default {
       margin-bottom: 1em;
     }
     &:after {
-      content: "VIEW";
       position: absolute;
       bottom: -2.2em;
       left: 0;
