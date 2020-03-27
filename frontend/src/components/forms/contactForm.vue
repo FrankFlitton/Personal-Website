@@ -150,7 +150,7 @@ export default {
           vm.submitted = true
         })
         .catch(function (error) {
-          console.log(error)
+          throw error
         })
     }
   }
