@@ -155,7 +155,7 @@ export default {
 
           projects.push(responseData.pages[key])
         }
-        this.projects = projects
+        this.projects = projects.filter((project) => { return project.project === '1' })
       })
       .then(() => {
         this.createSlider()
