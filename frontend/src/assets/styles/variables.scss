@@ -1,5 +1,6 @@
 $header-top: 82px;
-$slider-full: calc(100vh - #{$header-top});
+$slider-full: calc(100vh - #{$header-top} - 20px);
+$full-page: calc(100vh - #{$header-top});
 $slider-compact: calc(60vh - #{$header-top});
 $primary: black;
 $custom-control-indicator-size: 1em;
