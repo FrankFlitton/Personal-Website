@@ -99,7 +99,7 @@ export default {
       }
     }
     @media (min-width: 768px) {
-      min-height: $slider-full;
+      min-height: $full-page;
     }
     &:nth-child(2):after {
       content: " ";
