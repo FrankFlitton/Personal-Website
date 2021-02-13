@@ -28,9 +28,6 @@ export default {
   color: #2c3e50;
   padding-top: $header-top;
 }
-* {
-  transition: all 0.75s;
-}
 body,
 html {
   background: black;
