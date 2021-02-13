@@ -1,5 +1,5 @@
 <template>
-  <div class="home-slider home-slider-height vw-100">
+  <div class="home-slider home-slider-height w-100">
     <!-- Slider main container -->
     <div class="swiper-container home-slider-height" id="home-page-swiper">
       <div class="swiper-wrapper">
@@ -7,7 +7,7 @@
         <div
           v-for="(project, index) in projects"
           :key="`${index}project.id`"
-          class="swiper-slide home-slider-height bg-cover vw-100 slider-content"
+          class="swiper-slide home-slider-height bg-cover w-100 slider-content"
           :style="{
             'background-image': `url(${project.featuredImage})`,
           }"
@@ -65,7 +65,8 @@
   background: black;
   color: white;
   height: $slider-full;
-  width: 100vw;
+  width: calc(100vw - 40px) !important;
+  margin-left: 20px;
 }
 .slider-content {
   transition: all 1s ease;
@@ -177,16 +178,13 @@ export default {
     createSlider () {
       let vm = this
       vm.swiper = new Swiper('#home-page-swiper', {
-        direction: 'vertical',
+        // direction: 'vertical',
         effect: 'fade',
         fadeEffect: {
           crossFade: true
         },
         loop: true,
         slidesPerGroup: 1,
-        mousewheel: {
-          invert: false
-        },
         autoplay: {
           delay: 8000,
           disableOnInteraction: false
