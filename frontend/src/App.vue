@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-black">
+  <div id="app" class="bg-white">
     <top-header></top-header>
     <transition name="fade">
       <router-view></router-view>
