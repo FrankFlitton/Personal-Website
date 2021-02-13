@@ -10,7 +10,6 @@
         v-for="post in posts"
         :key="post.title"
       >
-
         <a :href="post.link" class="d-flex row text-dark text-left">
           <b-col md="8" cols="12">
             <h2>{{ post.title }}</h2>
@@ -20,7 +19,6 @@
             <img :src="post.image" class="w-100 p-0">
           </b-col>
         </a>
-
       </b-col>
     </b-row>
   </b-container>
