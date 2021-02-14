@@ -1,14 +1,13 @@
+@import './variables.scss';
+
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #000000;
 }
 
-body, p {
-    font-family: "futura-pt", sans-serif !important;
-    @media(max-width:767px) {
-        font-size: 14px;
-    }
+h1,h2,h3,h4,h5,h6 {
+    font-family: $heading-font-family;
 }
 
 body p {
