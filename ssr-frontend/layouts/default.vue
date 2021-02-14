@@ -1,6 +1,6 @@
 <template>
-  <v-app :dark="false" class="p-rele">
-    <headerNav class="p-fixed top" />
+  <v-app>
+    <headerNav />
     <v-main>
       <v-container>
         <transition name="fade">
