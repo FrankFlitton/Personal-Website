@@ -3,7 +3,9 @@
     <headerNav class="p-fixed top" />
     <v-main>
       <v-container>
-        <nuxt />
+        <transition name="fade">
+          <nuxt />
+        </transition>
       </v-container>
     </v-main>
   </v-app>
