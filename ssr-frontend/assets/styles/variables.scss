@@ -4,6 +4,7 @@
 // $font-size-root: 20px;
 
 $header-height: 80px;
+$header-top: $header-height;
 $slider-full: calc(100vh - #{$header-height} - 20px);
 $full-page: calc(100vh - #{$header-height});
 $slider-compact: calc(60vh - #{$header-height});
