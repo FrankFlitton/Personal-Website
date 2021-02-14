@@ -1,0 +1,31 @@
+.btn {
+    color: black;
+    transition: all 0.25s linear;
+    display: block;
+    width: auto;
+    position: relative;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    &:after {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0%;
+        height: 2px;
+        background: black;
+        transition: all 0.25s;
+    }
+    &:hover {
+        text-decoration: none !important;
+        color: black;
+        &:after {
+        width: 100%;
+        left: 0%;
+        }
+    }
+    &:focus, &:focus-within, &:active {
+        outline: none;
+        box-shadow: none;
+    }
+}

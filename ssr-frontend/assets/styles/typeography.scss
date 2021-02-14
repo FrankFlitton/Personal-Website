@@ -1,0 +1,12 @@
+body, p {
+    font-family: "futura-pt", sans-serif !important;
+    @media(max-width:767px) {
+        font-size: 14px;
+    }
+}
+
+body p {
+    @media(max-width:767px) {
+        font-size: 18px;
+    }
+}
