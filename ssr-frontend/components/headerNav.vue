@@ -11,7 +11,7 @@
         <v-spacer />
         <v-col>
             <v-btn
-              class="d-flex ml-auto"
+              class="d-flex ml-auto white"
               fab
               elevation="0"
               @click="toggle"
