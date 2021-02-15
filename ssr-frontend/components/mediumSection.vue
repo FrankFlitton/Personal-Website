@@ -13,7 +13,7 @@
           </v-btn>
       </v-col>
     </v-row>
-    <transition name="fade">
+    <transition-group name="fade">
       <preloader v-if="$fetchState.pending" style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"/>
 
       <v-row
@@ -54,7 +54,7 @@
           <v-img :src="post.image"></v-img>
         </v-col>
       </v-row>
-    </transition>
+    </transition-group>
   </div>
 </template>
 
