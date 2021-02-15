@@ -9,7 +9,7 @@
             color="white"
             elevation="0"
           >
-            <v-icon class="black--text">mdi-github</v-icon>&nbsp;<h2>Projects</h2>
+            <v-icon class="black--text">mdi-github</v-icon>&nbsp;<h2>Open Source Code</h2>
           </v-btn>
       </v-col>
     </v-row>
@@ -30,7 +30,7 @@
           <v-card-title
             :class="[{'pb-0': project.stargazerCount > 0}]"
           >
-            {{ project.name }}
+            {{ titleCase(project.name) }}
           </v-card-title>
 
           <v-card-text v-if="project.stargazerCount" class="pb-0">
@@ -78,3 +78,15 @@
     </v-row>
   </div>
 </template>
+
+<script>
+import {startCase, toLower} from 'lodash'
+
+export default {
+  methods: {
+    titleCase (string) {
+      return startCase(toLower(string));
+    }
+  }
+}
+</script>
