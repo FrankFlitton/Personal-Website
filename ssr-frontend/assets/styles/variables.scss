@@ -9,7 +9,7 @@ $heading-font-family: $body-font-family;
 
 $header-height: 80px;
 $header-top: $header-height;
-$slider-full: calc(100vh - #{$header-height} - 20px);
+$slider-full: calc(100vh - #{$header-height} - 12px);
 $full-page: calc(100vh - #{$header-height});
 $slider-compact: calc(60vh - #{$header-height});
 $primary: black;
