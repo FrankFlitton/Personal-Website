@@ -40,7 +40,6 @@
           <v-card-text>
             <p>{{ project.description }}</p>
             <v-chip-group
-              v-model="selection"
               active-class="deep-purple accent-4 white--text"
               column
             >

@@ -17,7 +17,7 @@
       <preloader v-if="$fetchState.pending" style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"/>
 
       <v-row
-        v-if-else
+        v-else
         v-for="post in posts"
         :key="post.link"
         class="mb-5"

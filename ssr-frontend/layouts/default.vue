@@ -2,11 +2,9 @@
   <v-app>
     <headerNav />
     <v-main>
-      <v-container>
-        <transition name="fade">
-          <nuxt />
-        </transition>
-      </v-container>
+      <transition name="fade">
+        <nuxt />
+      </transition>
     </v-main>
     <transition name="fade">
       <contactPage v-if="isContactVisible"/>
