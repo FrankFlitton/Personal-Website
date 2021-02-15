@@ -13,8 +13,9 @@
           v-model="realIndex"
         >
           <v-carousel-item
-            v-for="i in 5"
-            :key="i"
+            v-if="!!projects.length"
+            v-for="(project, index) in projects"
+            :key="projects.slug"
           >
             <v-sheet
               color="black"
@@ -22,7 +23,7 @@
               tile
             >
               <v-img
-                src="/img/projects/momentum/momentumFeature.jpg"
+                :src="project.featuredImage"
                 height="100%"
                 tile
                 class="d-flex"
@@ -38,28 +39,28 @@
                       tile
                     />
                     <nuxt-link
-                      :to="'/momentum'"
+                      :to="'/projects/' + project.slug"
                       class="poster align-center row fill-height text-decoration-none white--text"
                     >
                       <div class="project-info mx-auto text-center">
                         <h2 class="text-h4 font-weight-bold mb-4">
-                          Momentum
+                          {{ project.title }}
                         </h2>
                         <p class="text-h6 mb-15">
-                          Never get slowed down by your samples
+                          {{ project.description }}
                         </p>
                         <div class="mb-5">
                           <transition name="fade">
                             <progress-circle
-                              v-if="realIndex === i - 1"
+                              v-if="realIndex === index"
                               :realIndex="realIndex + 1"
-                              :markerIndex="i"
-                              :totalLength="5"
+                              :markerIndex="index"
+                              :totalLength="projects.length"
                             />
                           </transition>
                         </div>
                         <v-btn
-                          :to="'/project'"
+                          :to="'/projects/' + project.slug"
                           color="white"
                           elevation="0"
                           class="text-h6 text-capitalize py-6"
@@ -87,12 +88,16 @@ export default {
   components: {
     progressCircle
   },
+  props: {
+    projects: {
+      required: true,
+      type: Array
+    }
+  },
   data () {
     return {
       realIndex: 0
     }
-  },
-  methods: {
   }
 }
 </script>

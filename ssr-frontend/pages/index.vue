@@ -1,6 +1,9 @@
 <template>
   <div class="index-page">
-    <featureSlider class="mb-15" />
+    <featureSlider
+      class="mb-15"
+      :projects="projects"
+    />
     <v-container class="mb-15">
       <v-row>
         <v-col>
@@ -21,9 +24,14 @@ export default {
   },
   async asyncData ({ $content }) {
     const page = await $content('hello').fetch()
+    const projects = await $content('projects')
+      .without(['body'])
+      .fetch()
     console.log(page)
+    console.log(projects)
     return {
-      page
+      page,
+      projects
     }
   }
 }
