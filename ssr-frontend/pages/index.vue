@@ -1,22 +1,21 @@
 <template>
-  <v-row>
-    <v-col>
-      <h1>{{ page.title }}</h1>
-      <nuxt-content :document="page" />
-
-      {{ $github }}
-    </v-col>
-  </v-row>
+  <v-container>
+    <v-row>
+      <v-col>
+        <h1>{{ page.title }}</h1>
+        <nuxt-content :document="page" />
+      </v-col>
+    </v-row>
+    <githubSection />
+  </v-container>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
-// import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import githubSection from '~/components/githubSection.vue'
 
 export default {
   components: {
-    // Logo,
-    // VuetifyLogo
+    githubSection
   },
   async asyncData ({ $content }) {
     const page = await $content('hello').fetch()
