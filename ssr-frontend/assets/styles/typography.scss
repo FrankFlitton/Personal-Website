@@ -5,14 +5,19 @@
     -moz-osx-font-smoothing: grayscale;
     color: #000000;
 }
+
 .v-application {
     font-family: $body-font-family;
 }
+
 h1,h2,h3,h4,h5,h6 {
     font-family: $heading-font-family;
 }
 
-body p {
+
+
+body p, .v-application {
+    font-size: 16px;
     @media(max-width:767px) {
         font-size: 18px;
     }
