@@ -1,5 +1,5 @@
 <template>
-  <div class="github-section w-100">
+  <div class="github-section w-100 mb-15">
     <v-row>
       <v-col>
           <v-btn
@@ -22,10 +22,10 @@
         md="4"
         xl="3"
       >
-        <v-img
+        <!-- <v-img
           height="250"
           :src="project.openGraphImageUrl"
-        ></v-img>
+        ></v-img> -->
         <v-card>
           <v-card-title
             :class="[{'pb-0': project.stargazerCount > 0}]"
