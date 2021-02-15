@@ -8,17 +8,24 @@
         </transition>
       </v-container>
     </v-main>
+    <transition name="fade">
+      <contactPage v-if="isContactVisible"/>
+    </transition>
   </v-app>
 </template>
 
 <script>
 import headerNav from '~/components/headerNav.vue'
+import contactPage from '~/components/contactPage.vue'
+
 export default {
   components: {
-    headerNav
+    headerNav,
+    contactPage
   },
-  data () {
-    return {
+  computed: {
+    isContactVisible () {
+      return this.$store.state.contact.isVisible
     }
   }
 }
