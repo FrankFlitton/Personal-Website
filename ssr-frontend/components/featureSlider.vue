@@ -37,9 +37,9 @@
                       height="100%"
                       tile
                     />
-                    <v-row
-                      class="fill-height poster"
-                      align="center"
+                    <nuxt-link
+                      :to="'/momentum'"
+                      class="poster align-center row fill-height text-decoration-none white--text"
                     >
                       <div class="project-info mx-auto text-center">
                         <h2 class="text-h4 font-weight-bold mb-4">
@@ -62,12 +62,13 @@
                           :to="'/project'"
                           color="white"
                           elevation="0"
+                          class="text-h6 text-capitalize py-6"
                           text
                         >
-                          <span class="text-h6 text-capitalize">Learn More</span>
+                          Learn More
                         </v-btn>
                       </div>
-                    </v-row>
+                    </nuxt-link>
                   </v-col>
                 </v-row>
               </v-img>
@@ -113,6 +114,14 @@ export default {
         top: 12px;
         left: 24px;
         right: 24px;
+        .v-btn:after {
+          content: ' ';
+          position: absolute;
+          background: white;
+          width: 100%;
+          height: 1px;
+          bottom: 0;
+        }
       }
     }
   }
