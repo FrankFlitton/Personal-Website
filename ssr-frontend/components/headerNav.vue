@@ -4,7 +4,7 @@
       <v-row>
         <nuxt-link
           to="/"
-          class="ma-0 pa-0 d-flex"
+          class="ma-0 pa-0 d-flex black--text"
         >
           <v-col class="brand-logo align-start">
             <v-img class="d-block" src="/img/branding/logo.svg"></v-img>
