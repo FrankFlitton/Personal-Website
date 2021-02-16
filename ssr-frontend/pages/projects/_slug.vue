@@ -1,5 +1,6 @@
 <template>
   <div class="project-page">
+    <imageSlider v-if="longDescHTML"/>
     <v-container class="mb-15">
       <v-row>
         <v-col class="mt-15 text-xs-center">
@@ -75,7 +76,12 @@
 </template>
 
 <script>
+import imageSlider from '~/components/imageSlider.vue';
+
 export default {
+  components: {
+    imageSlider
+  },
   async asyncData ({ $content, params }) {
     console.log(params)
     const page = await $content('projects')
@@ -91,8 +97,8 @@ export default {
   },
   computed: {
     longDescHTML () {
-      if (this.page.longDescription.length === 0) {
-        return ''
+      if (!this.page['longDescription']) {
+        return '<p></p>'
       }
       let longDesc = this.page.longDescription
       const searchRegExp = /\n\n/g;
