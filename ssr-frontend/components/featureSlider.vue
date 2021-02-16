@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="py-0 p-relative">
         <v-carousel
-          :continuous="false"
+          :continuous="true"
           :cycle="true"
           :interval="6000"
           :show-arrows="false"
@@ -109,7 +109,7 @@ export default {
   },
   data () {
     return {
-      realIndex: 0,
+      realIndex: -1,
       loaded: false,
     }
   }
