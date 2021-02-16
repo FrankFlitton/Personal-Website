@@ -29,6 +29,9 @@
 .p-absolute {
     position: absolute !important;
 }
+.p-top {
+    top: 0;
+}
 // smooth scrolling everywhere
 * {
     scroll-behavior: smooth;
