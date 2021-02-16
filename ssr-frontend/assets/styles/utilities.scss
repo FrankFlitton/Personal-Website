@@ -1,5 +1,11 @@
+.v-100 {
+    height: 100% !important;
+}
 .vh-100 {
     height: 100vh;
+}
+.w-100 {
+    width: 100% !important;
 }
 .vw-100 {
     width: 100vw;
@@ -17,7 +23,12 @@
 .bg-black {
     background-color: #000000!important;
 }
-
+.p-relative {
+    position: relative !important;
+}
+.p-absolute {
+    position: absolute !important;
+}
 // smooth scrolling everywhere
 * {
     scroll-behavior: smooth;
