@@ -111,14 +111,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "assets/styles/variables.scss";
-
-$matte-color: #DFE0DF;
-
 .project-page {
-  p {
-    font-size: 1.3em;
-  }
   .long-desc p {
     font-size: 1.6em;
   }
@@ -126,20 +119,6 @@ $matte-color: #DFE0DF;
     height: 5px;
     width: 68%;
     border: none;
-  }
-
-  img, iframe {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    border: 3em solid $matte-color;
-  }
-  img {
-    width: 100%;
-  }
-  h2 {
-    font-weight: 300;
-    font-size: 2.1em;
-    margin-bottom: 0.5em;
   }
 }
 </style>
