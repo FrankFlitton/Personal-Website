@@ -54,7 +54,7 @@
                             <progress-circle
                               v-if="realIndex === index"
                               :realIndex="realIndex + 1"
-                              :markerIndex="index"
+                              :markerIndex="index + 1"
                               :totalLength="projects.length"
                             />
                           </transition>
