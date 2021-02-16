@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="feature-slider">
     <v-row>
-      <v-col class="py-0">
+      <v-col class="py-0 p-relative">
         <v-carousel
           :continuous="false"
           :cycle="true"
@@ -76,6 +76,9 @@
             </v-sheet>
           </v-carousel-item>
         </v-carousel>
+        <transition name="fade">
+          <preloader class="preloader p-absolute p-top" v-if="!loaded" />
+        </transition>
       </v-col>
     </v-row>
   </v-container>
@@ -83,10 +86,12 @@
 
 <script>
 import progressCircle from '~/components/progressCircle.vue'
+import preloader from '~/components/preloader.vue'
 
 export default {
   components: {
-    progressCircle
+    progressCircle,
+    preloader
   },
   props: {
     projects: {
@@ -94,9 +99,18 @@ export default {
       type: Array
     }
   },
+  created () {
+    let vm = this
+    if(process.client){
+      document.fonts.ready.then(function () {
+        vm.loaded = document.fonts.check('1em futura-pt') // true
+      });
+    }
+  },
   data () {
     return {
-      realIndex: 0
+      realIndex: 0,
+      loaded: false,
     }
   }
 }
@@ -106,7 +120,7 @@ export default {
   @import "assets/styles/variables.scss";
 
   .feature-slider {
-    .v-window, .v-window__container, .v-image {
+    .v-window, .v-window__container, .v-image, .preloader {
       height: $slider-full !important;
     }
     .poster-container {
