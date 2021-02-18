@@ -32,7 +32,7 @@
                   >
                     <v-sheet
                       class="color-block"
-                      color="teal accent-4"
+                      :color="project.color"
                       height="100%"
                       tile
                     />
