@@ -33,8 +33,7 @@
           <v-btn
             :disabled="!valid"
             color="black"
-            class="mr-4"
-            dark
+            class="mr-4 white--text"
             @click="sendForm"
           >
             Send Message
