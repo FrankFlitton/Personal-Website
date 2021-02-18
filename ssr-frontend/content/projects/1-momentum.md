@@ -11,9 +11,9 @@ category: Audio Product
 contributions:
   - UX Research
   - UX Design
+  - UI Design
   - Creative Direction
   - Logo and Branding
-  - UI Design
 longDescription: "In the music production world there are two ways to make music without the expense of a recording studio: loop samples and digital instruments. Digital instruments have come a long way over the last decade but their loop sample counterparts haven't enjoyed the same leaps in innovation.
 \n\n
 Loop samples are often regarded as a repetitive hassle or a cheap band-aid in the community due to the friction associated with working with them. This friction is caused by the lack of discoverability, cost of acquiring unique sound samples, and the cumbersome workarounds needed to tweak each loop to fit your music piece.
