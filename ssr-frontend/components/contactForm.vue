@@ -92,9 +92,11 @@
       },
       sendForm () {
         this.validate()
-        if (this.valid) {
-          this.handleSubmit()
-        }
+        this.$nextTick(() => {
+          if (this.valid) {
+            this.handleSubmit()
+          }
+        })
       },
       handleSubmit () {
         const dataPayload = {
