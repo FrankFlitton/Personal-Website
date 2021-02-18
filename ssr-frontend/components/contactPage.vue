@@ -37,7 +37,7 @@
         <v-col class="white py-15">
           <v-row>
             <v-col cols="12" md="10" offset="0" offset-sm="1">
-              Contact Form Here
+              <contactForm />
             </v-col>
           </v-row>
         </v-col>
@@ -47,10 +47,11 @@
 </template>
 
 <script>
+import contactForm from './contactForm'
+
 export default {
-  data () {
-    return {
-    }
+  components: {
+    contactForm
   },
   computed: {
     socials() {
