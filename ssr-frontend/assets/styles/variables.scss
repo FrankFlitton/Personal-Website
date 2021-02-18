@@ -4,7 +4,8 @@
 
 $font-size-root: 18px;
 
-$body-font-family: "futura-pt", sans-serif !important;
+$body-font-family: "futura-pt",
+sans-serif !important;
 $heading-font-family: $body-font-family;
 
 $header-height: 80px;
@@ -15,4 +16,4 @@ $slider-compact: calc(60vh - #{$header-height});
 $primary: black;
 $custom-control-indicator-size: 1em;
 
-$matte-color: #DFE0DF;
+$matte-color: #eeeeee;
