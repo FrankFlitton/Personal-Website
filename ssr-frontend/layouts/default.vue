@@ -12,6 +12,7 @@
     <v-container>
       <mediumSection />
       <githubSection />
+      <projectsSection />
     </v-container>
   </v-app>
 </template>
@@ -19,6 +20,7 @@
 <script>
 import mediumSection from '~/components/mediumSection.vue'
 import githubSection from '~/components/githubSection.vue'
+import projectsSection from '~/components/projectsSection.vue'
 import headerNav from '~/components/headerNav.vue'
 import contactPage from '~/components/contactPage.vue'
 
@@ -27,7 +29,8 @@ export default {
     headerNav,
     contactPage,
     mediumSection,
-    githubSection
+    githubSection,
+    projectsSection
   },
   computed: {
     isContactVisible () {
