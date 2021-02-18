@@ -102,6 +102,7 @@ export default {
   created () {
     let vm = this
     if(process.client){
+      // Prevent rendering issues.
       document.fonts.ready.then(function () {
         vm.loaded = document.fonts.check('1em futura-pt') // true
       });
