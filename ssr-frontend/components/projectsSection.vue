@@ -2,18 +2,17 @@
   <div class="projects-section w-100 mb-15">
     <v-row>
       <v-col>
-          <v-btn
-            href="/projects/"
-            class="px-0 mx-0"
-            color="white"
-            elevation="0"
-          >
-            <v-icon class="black--text">mdi-apps</v-icon>&nbsp;<h2>Projects</h2>
-          </v-btn>
+        <v-btn href="/projects/" class="px-0 mx-0" color="white" elevation="0">
+          <v-icon class="black--text">mdi-apps</v-icon>&nbsp;
+          <h2>Projects</h2>
+        </v-btn>
       </v-col>
     </v-row>
     <transition-group name="fade">
-      <preloader v-if="$fetchState.pending" style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"/>
+      <preloader
+        v-if="$fetchState.pending"
+        style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"
+      />
 
       <v-row
         v-else
@@ -21,16 +20,10 @@
         :key="project.slug"
         class="mb-5"
       >
-        <v-col
-          cols="12"
-          class="d-flex d-md-none"
-        >
+        <v-col cols="12" class="d-flex d-md-none">
           <v-img :src="project.featuredImage"></v-img>
         </v-col>
-        <v-col
-          cols="12"
-          md="8"
-        >
+        <v-col cols="12" md="8">
           <v-row>
             <v-col cols="12">
               <a :href="`/projects/${project.slug}`" class="black--text">
@@ -44,10 +37,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col
-          cols="4"
-          class="d-none d-md-flex"
-        >
+        <v-col cols="4" class="d-none d-md-flex">
           <v-img :src="project.featuredImage"></v-img>
         </v-col>
       </v-row>
@@ -60,19 +50,19 @@ import preloader from '~/components/preloader.vue'
 
 export default {
   components: {
-    preloader
+    preloader,
   },
-  data () {
+  data() {
     return {
-      projects: []
+      projects: [],
     }
   },
-  async fetch () {
+  async fetch() {
     this.projects = await this.$content('projects')
       .only(['title', 'longDescription', 'featuredImage', 'slug'])
       .fetch()
-      .catch(error => console.error(error))
-  }
+      .catch((error) => console.error(error))
+  },
 }
 </script>
 

@@ -1,9 +1,6 @@
 <template>
   <div class="index-page">
-    <featureSlider
-      class="mb-15"
-      :projects="projects"
-    />
+    <featureSlider class="mb-15" :projects="projects" />
     <v-container class="mb-15">
       <v-row>
         <v-col>
@@ -20,19 +17,17 @@ import featureSlider from '~/components/featureSlider.vue'
 
 export default {
   components: {
-    featureSlider
+    featureSlider,
   },
-  async asyncData ({ $content }) {
+  async asyncData({ $content }) {
     const page = await $content('hello').fetch()
-    const projects = await $content('projects')
-      .without(['body'])
-      .fetch()
+    const projects = await $content('projects').without(['body']).fetch()
     console.log(page)
     console.log(projects)
     return {
       page,
-      projects
+      projects,
     }
-  }
+  },
 }
 </script>

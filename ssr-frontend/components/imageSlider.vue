@@ -71,29 +71,31 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       imageData: [],
       currentIndex: 0,
       isVisible: false,
       desc: '',
-      pageFreezePosition: 0
+      pageFreezePosition: 0,
     }
   },
   methods: {
-    setCurrentIndex (index) {
+    setCurrentIndex(index) {
       console.log('index', index)
       this.isVisible = true
       this.currentIndex = index
     },
-    toggleVisible () {
+    toggleVisible() {
       this.isVisible = !this.isVisible
     },
-    freezeScrolling () {
+    freezeScrolling() {
       console.log('freeze')
-      if(process.client){
+      if (process.client) {
         const slider = document.getElementById('image-slider-container')
-        const scrollY = document.documentElement.style.getPropertyValue('--scroll-y')
+        const scrollY = document.documentElement.style.getPropertyValue(
+          '--scroll-y'
+        )
         const body = document.body
         this.pageFreezePosition = scrollY
         body.style.position = 'fixed'
@@ -103,9 +105,9 @@ export default {
         slider.style.top = '0px'
       }
     },
-    releaseScrolling () {
+    releaseScrolling() {
       console.log('release')
-      if(process.client){
+      if (process.client) {
         const slider = document.getElementById('image-slider-container')
         const body = document.body
         body.style.position = ''
@@ -116,21 +118,23 @@ export default {
         window.scrollTo(0, parseInt(this.pageFreezePosition || '0'))
       }
     },
-    createImageNodes () {
+    createImageNodes() {
       // Process DOM content from CMS after draw
       let vm = this
-      if(process.client){
+      if (process.client) {
         // Wait draw cycle
         vm.$nextTick(() => {
           // Examine generated img nodes
-          const nuxtContent = document.getElementsByClassName("nuxt-content")
-          const imageNodes = nuxtContent[0].querySelectorAll("img")
+          const nuxtContent = document.getElementsByClassName('nuxt-content')
+          const imageNodes = nuxtContent[0].querySelectorAll('img')
 
-          this.imageData = [ ...imageNodes]
-            .filter(n => !!n.src && !!n.alt) // Validate
+          this.imageData = [...imageNodes]
+            .filter((n) => !!n.src && !!n.alt) // Validate
             .map((node, index) => {
               // Create event handeler for navigation
-              let clickFn = () => { vm.setCurrentIndex(index) }
+              let clickFn = () => {
+                vm.setCurrentIndex(index)
+              }
               node.onclick = clickFn
               node.onmousedown = clickFn
               node.onpointerdown = clickFn
@@ -139,18 +143,20 @@ export default {
               // Pack Info
               const src = node.src
               const alt = node.alt
-              const id = [ ...node.attributes][2].name + index
+              const id = [...node.attributes][2].name + index
               return {
-                src, alt, id
+                src,
+                alt,
+                id,
               }
             })
         })
       }
-    }
+    },
   },
   watch: {
     currentIndex: function (newVal) {
-      if ( this.imageData[newVal] !== undefined ) {
+      if (this.imageData[newVal] !== undefined) {
         this.desc = this.imageData[newVal].alt
       }
     },
@@ -163,60 +169,64 @@ export default {
       } else {
         vm.releaseScrolling()
       }
-    }
+    },
   },
-  created () {
+  created() {
     let vm = this
-    if(process.client){
+    if (process.client) {
       // Cache scroll position
       window.addEventListener('scroll', () => {
-        document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
-      });
+        document.documentElement.style.setProperty(
+          '--scroll-y',
+          `${window.scrollY}px`
+        )
+      })
       vm.createImageNodes()
     }
   },
-  beforeDestroy () {
-    if(process.client){
+  beforeDestroy() {
+    if (process.client) {
       // Remove cache scroll position
       window.removeEventListener('scroll', () => {}, true)
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss">
-  @import "assets/styles/variables.scss";
+@import 'assets/styles/variables.scss';
 
-  .image-slider-container {
-    position: absolute;
-    top: -$header-height;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 99;
-    .image-meta {
-      height: $header-height;
-    }
-    .image-slider {
-      .v-carousel {
-        height: $full-page !important;
-        .v-window__prev, .v-window__next {
-          .v-btn {
-            color: white;
-          }
+.image-slider-container {
+  position: absolute;
+  top: -$header-height;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  .image-meta {
+    height: $header-height;
+  }
+  .image-slider {
+    .v-carousel {
+      height: $full-page !important;
+      .v-window__prev,
+      .v-window__next {
+        .v-btn {
+          color: white;
         }
       }
-      .v-image {
-        width: 100% !important;
-        height: 100% !important;
-        margin: 0 auto;
-        .v-image__image {
-          max-width: calc(100vw - 90px) !important;
-          max-height: calc(#{$full-page} - 50px) !important;
-          left: 45px;
-          margin: auto;
-        }
+    }
+    .v-image {
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0 auto;
+      .v-image__image {
+        max-width: calc(100vw - 90px) !important;
+        max-height: calc(#{$full-page} - 50px) !important;
+        left: 45px;
+        margin: auto;
       }
     }
   }
+}
 </style>

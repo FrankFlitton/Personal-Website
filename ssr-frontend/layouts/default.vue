@@ -7,7 +7,7 @@
       </transition>
     </v-main>
     <transition name="fade">
-      <contactPage v-if="isContactVisible"/>
+      <contactPage v-if="isContactVisible" />
     </transition>
     <v-container>
       <mediumSection />
@@ -30,16 +30,16 @@ export default {
     contactPage,
     mediumSection,
     githubSection,
-    projectsSection
+    projectsSection,
   },
   computed: {
-    isContactVisible () {
+    isContactVisible() {
       return this.$store.state.contact.isVisible
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-  @import "assets/styles/index.scss";
+@import 'assets/styles/index.scss';
 </style>

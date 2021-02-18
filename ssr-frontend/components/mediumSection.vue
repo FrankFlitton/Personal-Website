@@ -2,36 +2,29 @@
   <div class="medium-section w-100 mb-15">
     <v-row>
       <v-col>
-          <v-btn
-            href="http://frankflitton.medium.com/"
-            target="_blank"
-            class="px-0 mx-0"
-            color="white"
-            elevation="0"
-          >
-            <v-icon class="black--text">mdi-book</v-icon>&nbsp;<h2>Blog Posts</h2>
-          </v-btn>
+        <v-btn
+          href="http://frankflitton.medium.com/"
+          target="_blank"
+          class="px-0 mx-0"
+          color="white"
+          elevation="0"
+        >
+          <v-icon class="black--text">mdi-book</v-icon>&nbsp;
+          <h2>Blog Posts</h2>
+        </v-btn>
       </v-col>
     </v-row>
     <transition-group name="fade">
-      <preloader v-if="$fetchState.pending" style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"/>
+      <preloader
+        v-if="$fetchState.pending"
+        style="height: 400px !important; filter: invert(1) hue-rotate(45deg)"
+      />
 
-      <v-row
-        v-else
-        v-for="post in posts"
-        :key="post.link"
-        class="mb-5"
-      >
-        <v-col
-          cols="12"
-          class="d-flex d-md-none"
-        >
+      <v-row v-else v-for="post in posts" :key="post.link" class="mb-5">
+        <v-col cols="12" class="d-flex d-md-none">
           <v-img :src="post.image"></v-img>
         </v-col>
-        <v-col
-          cols="12"
-          md="8"
-        >
+        <v-col cols="12" md="8">
           <v-row>
             <v-col cols="12">
               <a :href="post.link" class="black--text">
@@ -47,10 +40,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col
-          cols="4"
-          class="d-none d-md-flex"
-        >
+        <v-col cols="4" class="d-none d-md-flex">
           <v-img :src="post.image"></v-img>
         </v-col>
       </v-row>
@@ -64,19 +54,21 @@ import preloader from '~/components/preloader.vue'
 
 export default {
   components: {
-    preloader
+    preloader,
   },
-  data () {
+  data() {
     return {
-      posts: []
+      posts: [],
     }
   },
-  async fetch () {
-    this.posts = await axios('https://mediumpostsapi.herokuapp.com/?usermedium=frankflitton')
+  async fetch() {
+    this.posts = await axios(
+      'https://mediumpostsapi.herokuapp.com/?usermedium=frankflitton'
+    )
       .then((response) => {
         return response.data.dataMedium
       })
-      .catch(error => console.error(error))
-  }
+      .catch((error) => console.error(error))
+  },
 }
 </script>

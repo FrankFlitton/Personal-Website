@@ -1,5 +1,5 @@
 <template>
-  <div class="progress-circle" :class="{'active': active}">
+  <div class="progress-circle" :class="{ active: active }">
     <svg viewBox="0 0 89 89" xmlns="http://www.w3.org/2000/svg">
       <circle cx="44.5" cy="44.5" r="43.5" />
     </svg>
@@ -54,23 +54,23 @@ export default {
   props: {
     realIndex: {
       type: Number,
-      required: true
+      required: true,
     },
     markerIndex: {
       type: Number,
-      required: true
+      required: true,
     },
     totalLength: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      active: null
+      active: null,
     }
   },
-  created () {
+  created() {
     this.$nextTick(() => {
       this.$nextTick(() => {
         this.active = this.markerIndex === this.realIndex

@@ -2,7 +2,14 @@
   <div class="preloader w-100 bg-black home-slider-height">
     <div class="lights">
       <svg viewBox="0 0 144 144">
-        <ellipse v-for="x in 3" :key="`lights-${x}`" cx="72" cy="72" rx="50" ry="50" />
+        <ellipse
+          v-for="x in 3"
+          :key="`lights-${x}`"
+          cx="72"
+          cy="72"
+          rx="50"
+          ry="50"
+        />
       </svg>
     </div>
     <img
@@ -15,7 +22,7 @@
 
 <script>
 export default {
-  name: 'preloader'
+  name: 'preloader',
 }
 </script>
 
