@@ -10,9 +10,9 @@
       <contactPage v-if="isContactVisible" />
     </transition>
     <v-container>
-      <mediumSection />
-      <githubSection />
       <projectsSection />
+      <githubSection />
+      <mediumSection />
     </v-container>
     <footerSection />
   </v-app>
