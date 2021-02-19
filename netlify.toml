@@ -1,0 +1,4 @@
+[build]
+  base = "ssr-frontend/"
+  publish = "dist/"
+  command = "npm run generate"
