@@ -2,7 +2,7 @@
   <div class="p-relative w-100 h-100">
     <transition name="fade">
       <div v-if="!submitted" class="p-absolute w-100 bg-white pl-4 pr-4">
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form ref="form" v-model="valid" lazy-validation data-netlify="true" name="website-contact" method="post">
           <input
             class="d-none"
             type="hidden"
