@@ -1,5 +1,5 @@
 ---
-title: CIGI Think tank
+title: CIGI Think Tank
 slug: cigi-think-tank-ux-ui-design-relaunch
 description: Improving access to Canada's foreign policy.
 featuredImage: /img/projects/cigi/cigi-featuredImage.jpg
