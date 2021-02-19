@@ -19,20 +19,7 @@
               <p class="d-none d-sm-block">
                 Available for freelance and other opportunities.
               </p>
-              <div class="social-links mt-10">
-                <v-btn
-                  v-for="social in socials"
-                  :key="social.url"
-                  :href="social.url"
-                  target="_blank"
-                  fab
-                  small
-                  color="white"
-                  class="mr-5"
-                >
-                  <v-icon>mdi-{{ social.icon }}</v-icon>
-                </v-btn>
-              </div>
+              <socialLinks class="mt-10" />
             </v-col>
           </v-row>
         </v-col>
@@ -50,33 +37,12 @@
 
 <script>
 import contactForm from './contactForm'
+import socialLinks from './socialLinks'
 
 export default {
   components: {
     contactForm,
-  },
-  computed: {
-    socials() {
-      let guthubUrl = this.$github.user.url
-      return [
-        {
-          icon: 'github',
-          url: guthubUrl,
-        },
-        {
-          icon: 'linkedin',
-          url: 'https://www.linkedin.com/in/frankflitton/',
-        },
-        {
-          icon: 'twitter',
-          url: 'http://twitter.com/frankflitton',
-        },
-        {
-          icon: 'palette',
-          url: 'http://behance.net/frankflitton',
-        },
-      ]
-    },
+    socialLinks,
   },
 }
 </script>
