@@ -22,7 +22,7 @@
 
       <v-row v-else v-for="post in posts" :key="post.link" class="mb-5">
         <v-col cols="12" class="d-flex d-md-none">
-          <v-img :src="post.image"></v-img>
+          <v-img :src="post.image" aspect-ratio="1.8" :contain="false"></v-img>
         </v-col>
         <v-col cols="12" md="8">
           <v-row>
@@ -41,7 +41,7 @@
           </v-row>
         </v-col>
         <v-col cols="4" class="d-none d-md-flex">
-          <v-img :src="post.image"></v-img>
+          <v-img :src="post.image" aspect-ratio="1.8" :contain="false"></v-img>
         </v-col>
       </v-row>
     </transition-group>

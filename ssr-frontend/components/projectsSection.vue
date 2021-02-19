@@ -21,7 +21,7 @@
         class="mb-5"
       >
         <v-col cols="12" class="d-flex d-md-none">
-          <v-img :src="project.featuredImage"></v-img>
+          <v-img :src="project.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
         </v-col>
         <v-col cols="12" md="8">
           <v-row>
@@ -38,7 +38,7 @@
           </v-row>
         </v-col>
         <v-col cols="4" class="d-none d-md-flex">
-          <v-img :src="project.featuredImage"></v-img>
+          <v-img :src="project.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
         </v-col>
       </v-row>
     </transition-group>
