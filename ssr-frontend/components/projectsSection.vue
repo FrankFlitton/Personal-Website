@@ -60,6 +60,7 @@ export default {
   async fetch() {
     this.projects = await this.$content('projects')
       .only(['title', 'longDescription', 'featuredImage', 'slug'])
+      .sortBy('path')
       .fetch()
       .catch((error) => console.error(error))
   },

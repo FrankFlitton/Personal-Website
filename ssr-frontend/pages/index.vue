@@ -21,9 +21,11 @@ export default {
   },
   async asyncData({ $content }) {
     const page = await $content('hello').fetch()
-    const projects = await $content('projects').without(['body']).fetch()
-    console.log(page)
-    console.log(projects)
+    const projects = await $content('projects')
+      .without(['body'])
+      .sortBy('path')
+      .fetch()
+
     return {
       page,
       projects,
