@@ -31,6 +31,8 @@
             required
           ></v-textarea>
 
+          <input type="hidden" name="contact" value="contact" />
+
           <v-btn
             :disabled="!valid"
             color="black"
