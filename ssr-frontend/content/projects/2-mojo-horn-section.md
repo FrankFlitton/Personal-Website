@@ -1,6 +1,6 @@
 ---
 title: "Mojo2: Horn Section"
-slug: mojo2-horn-section-audio-app-ux-design
+slug: mojo2-horn-section-audio-app-ux-ui-design
 description: Crafting the perfect horn section for any musical style.
 featuredImage: /img/projects/mojo2/mojo2-featuredImage.jpg
 client: Big Fish Audio
@@ -50,7 +50,7 @@ This is where the horn sound can have more coloring added - to get a phat wide h
 ![Effect screen](/img/projects/mojo2/mojo2-effects.jpg)
 ![Effect icons illustrations](/img/projects/mojo2/mojo2-effect-icons.jpg)
 
-## Reviews
+## Keyswitch Mapping
 
 For more complex composition needs, unused keys on the keyboard can be assigned to different articulations. By incorporating these mappings producers can achieve dynamic emotion in their performance and have a higher level of polish.
 
