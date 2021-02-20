@@ -1,5 +1,5 @@
 <template>
-  <div class="project-page">
+  <div class="project-page" :class="{ 'no-image-border': page.noImageBorder }">
     <imageSlider v-if="longDescHTML" />
     <v-container class="mb-15">
       <v-row>
