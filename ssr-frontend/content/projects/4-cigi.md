@@ -7,6 +7,7 @@ client: Centre for International Governance Innovation
 clientUrl: https://www.cigionline.org/
 projectUrl: https://www.cigionline.org/
 color: red accent-3
+noImageBorder: true
 category: UI/UX + SWE
 contributions:
   - UX Research
@@ -41,7 +42,7 @@ Solving this problem required mapping legacy data to a new unified data model to
 
 ## New Site Map
 
-Te new strategy was to move to a keyword focused navigation and away from a content type navigation. Using the new dynamic site map, new content is front and center and the user can deep dive on a topic and explore all of CIGI's research on the topic. Articles, podcasts, books and interactive essays on a topic appear along side each other to keep the user learning and exploring.
+The new strategy was to move to a keyword focused navigation and away from a content type navigation. Using the new dynamic site map, new content is front and center and the user can deep dive on a topic and explore all of CIGI's research on the topic. Articles, podcasts, books and interactive essays on a topic appear along side each other to keep the user learning and exploring.
 
 <iframe src="https://rawgit.com/FrankFlitton/CIGI-Online-Site-Map/master/index.html" width="100%" height="650" frameborder="0" style="min-width:400px;min-height:400px;"></iframe>
 
