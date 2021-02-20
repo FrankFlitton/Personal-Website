@@ -21,7 +21,11 @@
         class="mb-5"
       >
         <v-col cols="12" class="d-flex d-md-none">
-          <v-img :src="project.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
+          <v-img
+            :src="project.featuredImage"
+            aspect-ratio="1.8"
+            :contain="false"
+          ></v-img>
         </v-col>
         <v-col cols="12" md="8">
           <v-row>
@@ -38,7 +42,11 @@
           </v-row>
         </v-col>
         <v-col cols="4" class="d-none d-md-flex">
-          <v-img :src="project.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
+          <v-img
+            :src="project.featuredImage"
+            aspect-ratio="1.8"
+            :contain="false"
+          ></v-img>
         </v-col>
       </v-row>
     </transition-group>
@@ -57,12 +65,30 @@ export default {
       projects: [],
     }
   },
+  methods: {
+    async loadProjects() {
+      return this.$content('projects')
+        .only(['title', 'longDescription', 'featuredImage', 'slug'])
+        .sortBy('path')
+        .fetch()
+        .catch((error) => console.error(error))
+    },
+    filterProjects(allProjects) {
+      const slug = this.$route.params.slug
+      return allProjects.filter((f) => f.slug !== slug)
+    },
+  },
   async fetch() {
-    this.projects = await this.$content('projects')
-      .only(['title', 'longDescription', 'featuredImage', 'slug'])
-      .sortBy('path')
-      .fetch()
-      .catch((error) => console.error(error))
+    const allProjects = await this.loadProjects()
+    this.projects = this.filterProjects(allProjects)
+  },
+  watch: {
+    '$route.params.slug': function () {
+      const vm = this
+      this.loadProjects().then((allProjects) => {
+        vm.projects = vm.filterProjects(allProjects)
+      })
+    },
   },
 }
 </script>
