@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html {{ HTML_ATTRS }}>
-  <head {{ HEAD_ATTRS }}>
-    {{ HEAD }}
-  </head>
-  <body {{ BODY_ATTRS }}>
-    {{ APP }}
-  </body>
 
-  <!-- Load Adobe Fonts -->
-  <script src="https://use.typekit.net/btp2pnd.js"></script>
-  <script>try { Typekit.load({ async: true })  } catch (e) { }</script>
+<head {{ HEAD_ATTRS }}>
+  {{ HEAD }}
+</head>
+
+<body {{ BODY_ATTRS }}>
+  {{ APP }}
 
   <!-- Netlify Hidden Form -->
   <form name="contact" netlify netlify-honeypot="subject" hidden>
@@ -17,4 +14,16 @@
     <input type="text" name="email" />
     <textarea name="message" /></textarea>
   </form>
+  <!-- Load Adobe Fonts -->
+  <script src="https://use.typekit.net/btp2pnd.js"></script>
+  <script>
+    try {
+      Typekit.load({
+        async: true
+      })
+    } catch (e) {}
+
+  </script>
+</body>
+
 </html>
