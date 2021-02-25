@@ -41,10 +41,10 @@
                       class="poster align-center row fill-height text-decoration-none white--text"
                     >
                       <div class="project-info mx-auto text-center">
-                        <h2 class="text-h4 font-weight-bold mb-4">
+                        <h2 class="text-h4 font-weight-bold mb-4 px-10">
                           {{ project.title }}
                         </h2>
-                        <p class="text-h6 mb-15">
+                        <p class="text-h6 mb-15 px-10">
                           {{ project.description }}
                         </p>
                         <div class="mb-5">
@@ -104,6 +104,9 @@ export default {
       document.fonts.ready.then(function () {
         vm.loaded = document.fonts.check('1em futura-pt') // true
       })
+      setTimeout(function () {
+        vm.loaded = true
+      }, 2000)
     }
   },
   data() {
@@ -124,6 +127,7 @@ export default {
   .v-image,
   .preloader {
     height: $slider-full !important;
+    width: calc(100vw - 26px) !important;
   }
   .poster-container {
     position: relative;
