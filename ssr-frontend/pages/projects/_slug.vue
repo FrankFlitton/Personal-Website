@@ -112,6 +112,11 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.page.longDescription
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: this.page.featuredImage
         }
       ]
     }
