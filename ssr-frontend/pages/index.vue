@@ -31,5 +31,10 @@ export default {
       projects,
     }
   },
+  head() {
+    return {
+      title: 'Developing Great Products',
+    }
+  },
 }
 </script>

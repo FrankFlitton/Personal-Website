@@ -104,6 +104,18 @@ export default {
       page: page[0],
     }
   },
+  head() {
+    return {
+      title: this.page.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.page.longDescription
+        }
+      ]
+    }
+  },
   computed: {
     longDescHTML() {
       if (!this.page['longDescription']) {

@@ -6,12 +6,12 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - ssr-frontend',
-    title: 'ssr-frontend',
+    titleTemplate: '%s - Frank JE Flitton',
+    title: 'Developer and Designer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Frank is a Full Stack Software Engineer and Lead Designer specializing in software engineering, UX research, and product design. Available for freelance and other opportunities.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
