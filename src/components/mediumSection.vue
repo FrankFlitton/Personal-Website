@@ -62,13 +62,14 @@ export default {
     }
   },
   async fetch() {
-    this.posts = await axios(
-      'https://mediumpostsapi.herokuapp.com/?usermedium=frankflitton'
-    )
-      .then((response) => {
-        return response.data.dataMedium
-      })
-      .catch((error) => console.error(error))
+    try {
+      const response = await axios(
+        'https://mediumpostsapi.herokuapp.com/?usermedium=frankflitton'
+      )
+      this.posts = response.data.dataMedium
+    } catch(error) {
+      console.error(error)
+    }
   },
 }
 </script>
