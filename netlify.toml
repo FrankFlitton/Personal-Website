@@ -4,3 +4,5 @@
   command = "npm run generate"
   functions = "functions/"
 
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
