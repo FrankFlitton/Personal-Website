@@ -1,4 +1,14 @@
-# ssr-frontend
+# Personal Website
+
+This site is built with Vue centric JAM stack technologies and pre-rendered. All content is served over the Netlify CDN as static HTML.
+
+## Tech Stack
+- [Vue](https://vuejs.org/): javascript framework
+- [Nuxt](https://nuxtjs.org/): static HTML generation
+- [Github](https://docs.github.com/en/graphql): GraphQL API
+- [Medium](https://medium.com/): API for blog entries
+- [Netlify](https://www.netlify.com/): hosting, forms
+- [Content](https://content.nuxtjs.org/): Markdown based CMS
 
 ## Build Setup
 
