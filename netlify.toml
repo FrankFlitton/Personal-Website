@@ -2,3 +2,5 @@
   base = "src/"
   publish = "dist/"
   command = "npm run generate"
+  functions = "functions/"
+
