@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex vw-100 vh-100 contactForm">
-    <v-container fluid class="h-100 red">
+  <div class="d-flex vw-100 vh-100 contactForm white">
+    <v-container fluid class="h-100">
       <v-row class="h-100 fill-height">
-        <v-col class="black white--text py-15 left-col" cols="12" md="6">
+        <v-col class="left-col black white--text py-15" cols="12" md="6">
           <v-row>
             <v-col cols="4" md="3" offset="0" offset-sm="1">
               <v-img
@@ -23,10 +23,10 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col class="white py-15">
+        <v-col class="white py-15 right-col">
           <v-row>
             <v-col cols="12" md="10" offset="0" offset-sm="1">
-              <contactForm />
+              <contactForm class="h-100" />
             </v-col>
           </v-row>
         </v-col>
@@ -53,6 +53,8 @@ export default {
 .contactForm {
   position: fixed;
   top: $header-height;
+  overflow-y: scroll;
+  height: 100%;
   z-index: 99;
   .left-col {
     position: relative;
@@ -73,6 +75,11 @@ export default {
         bottom: ($size * 0.5 * -1);
         left: 3rem;
       }
+    }
+  }
+  .right-col {
+    @media (max-width: 767px) {
+      min-height: 100vh;
     }
   }
 }
