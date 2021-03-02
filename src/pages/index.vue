@@ -4,7 +4,19 @@
     <v-container class="mb-15">
       <v-row>
         <v-col>
-          <h1>{{ page.title }}</h1>
+          <v-btn
+            target="_blank"
+            class="px-0 mx-0"
+            color="white"
+            elevation="0"
+          >
+            <v-icon class="black--text">mdi-guitar-acoustic</v-icon>&nbsp;
+            <h2>About Me</h2>
+          </v-btn>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
           <nuxt-content :document="page" />
         </v-col>
       </v-row>
