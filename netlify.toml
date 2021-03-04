@@ -6,3 +6,20 @@
 
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
+
+# old content, preserve page rank
+[[redirects]]
+  from = "/vue-2-img/"
+  to = "https://vue-2-img.frankflitton.com/"
+
+[[redirects]]
+  from = "/pages/korg-iwavestation"
+  to = "/projects/korg-iwavestation-ios-x-ui-design"
+
+[[redirects]]
+  from = "/pages/apollo-cinematic-guitars"
+  to = "/projects/apollo-cinematic-guitars-x-ui-design/"
+
+[[redirects]]
+  from = "/pages/the-confederation-debates"
+  to = "/projects/confederation-debates/"
