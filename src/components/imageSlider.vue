@@ -135,10 +135,8 @@ export default {
               let clickFn = () => {
                 vm.setCurrentIndex(index)
               }
-              node.onclick = clickFn
-              node.onmousedown = clickFn
-              node.onpointerdown = clickFn
-              node.onauxclick = clickFn
+
+              node.addEventListener('click', clickFn)
 
               // Pack Info
               const src = node.src
