@@ -118,9 +118,25 @@ export default {
     hostname: 'https://frankflitton.com',
     gzip: true,
     exclude: [
+      '/inspire',
       '/admin/**',
       '/.netlify/**',
-    ]
+    ],
+    routes: async () => {
+      // Great Examples using Nuxt $content
+      // https://redfern.dev/articles/adding-a-sitemap-using-nuxt-content/
+
+      const { $content } = require("@nuxt/content")
+
+      const projects = await $content('projects')
+        .only(['slug'])
+        .fetch()
+        .catch((error) => console.error(error))
+
+      const projectUrls = projects.map(project => `/projects/${project.slug}/`)
+
+      return [...projectUrls]
+    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
