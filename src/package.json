@@ -21,6 +21,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
     "@nuxt/typescript-build": "^2.0.4",
+    "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/vuetify": "^1.11.3",
     "@vue/test-utils": "^1.1.2",
     "babel-core": "7.0.0-bridge.0",
