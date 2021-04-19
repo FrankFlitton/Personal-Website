@@ -46,6 +46,8 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // https://www.npmjs.com/package/nuxt-github-api
+    '@nuxtjs/sitemap',
+    //https://www.npmjs.com/package/@nuxtjs/sitemap
     [
       'nuxt-github-api',
       {
@@ -94,8 +96,8 @@ export default {
         variables: {
           login: 'frankflitton'
         }
-      }
-    ]
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -110,6 +112,16 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
+
+  // Nuxt Sitemap module configuration: https://www.npmjs.com/package/@nuxtjs/sitemap#usage
+  sitemap: {
+    hostname: 'https://frankflitton.com',
+    gzip: true,
+    exclude: [
+      '/admin/**',
+      '/.netlify/**',
+    ]
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
