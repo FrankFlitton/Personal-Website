@@ -1,6 +1,6 @@
 var Feed = require('rss-to-json');
 
-async function getMedium () {
+async function getMedium() {
   const storyFeed = await Feed.load('https://medium.com/feed/@FrankFlitton')
 
   const author = {
@@ -14,20 +14,31 @@ async function getMedium () {
       // Featured image from first src tag attribute
       const featuredImage = item.content
         .match(/src="(.*?)"/g)[0]
-        .replace(/(src=)?"/g,'')
+        .replace(/(src=)?"/g, "")
 
-      // Description from first paragraph, strip tags
-      const description = item.content
-        .match(/<p>(.*?)<\/p>/g)[0]
-        .replace(/<\/?[A-Za-z]>/g,'')
+      // Check for subtitle
+      const checkSubtitle = item.content.indexOf("</h3><h3>")
+      const isSubtitle = checkSubtitle >= 0 && checkSubtitle < 100
+
+      // Extract subtitle or
+      // description from first paragraph
+      // strip HTML tags
+      const rawDescription = isSubtitle
+        ? item.content
+          .match(/<\/h3><h3>(.*?)<\/h3>/)[0]
+        : item.content
+          .match(/<p>(.*?)<\/p>/g)[0]
+
+      const description = rawDescription
+        .replace(/<[\/]{0,1}[a-zA-Z0-9]{1,}>/g, "")
 
       const story = {
         title: item.title,
         id: item.id,
         url: item.url,
         published: item.published,
-        featuredImage: featuredImage,
-        description: description,
+        featuredImage,
+        description,
       }
 
       return story
@@ -39,11 +50,11 @@ async function getMedium () {
   }
 }
 
-exports.handler = async function(event, context) {
+exports.handler = async function (event, context) {
   const response = await getMedium()
   return {
-      statusCode: 200,
-      body: JSON.stringify(response, null, 2)
+    statusCode: 200,
+    body: JSON.stringify(response, null, 2)
   };
 }
 
