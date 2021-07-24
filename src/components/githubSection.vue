@@ -27,7 +27,7 @@
           height="250"
           :src="project.openGraphImageUrl"
         ></v-img> -->
-        <v-card>
+        <v-card elevation="0" class="grey lighten-5">
           <v-card-title :class="[{ 'pb-0': project.stargazerCount > 0 }]">
             {{ titleCase(project.name) }}
           </v-card-title>
@@ -59,7 +59,7 @@
               v-if="project.url"
               :href="project.url"
               target="_blank"
-              color="deep-purple lighten-2"
+              color="black lighten-3"
               text
             >
               GitHub
@@ -68,7 +68,7 @@
               v-if="project.homepageUrl"
               :href="project.homepageUrl"
               target="_blank"
-              color="deep-purple lighten-2"
+              color="black lighten-3"
               text
             >
               Example
@@ -81,12 +81,15 @@
 </template>
 
 <script>
-import { startCase, toLower } from 'lodash'
+import capitalize from 'lodash/capitalize'
 
 export default {
   methods: {
     titleCase(string) {
-      return startCase(toLower(string))
+      return string
+        .split('-')
+        .map(capitalize)
+        .join(' ');
     },
   },
 }
