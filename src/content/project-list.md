@@ -19,30 +19,35 @@ Ku Ku Harajuku interactive games for TV show launch.
 ### Bluejays
 Kinect AR Batting Cage
 
-### University of Waterloo
-AR dinosaur puzzle
-AR water cycle and pollution impact activity
+### University of Waterloo, Earth Science Museum
+AR dinosaur puzzle exhibit
+AR water cycle and pollution impact exhibit
 
 ### TD Bank Innovation LAB
 - AI Powered Wealth Advisor Matching Portal
 - Peer to peer money sending application
 - Money management and data visualization apps
 - Financial term definition chrome extension
-- ML algorithm to group products across merchants
+- ML algorithm to group common products across merchants
 - Sketch to iOS AI pipeline
 - Firebase powered CMS
-- Demo video editing python script
+- App demo video python script
 
 ## UX Design
 
 ### Umlaut Audio
+
 ### Korg
+
 ### Big Fish Audio
+
 ### Vir2
 - Apollo
 - Mojo2
 - Aeris
+
 ### Dieguis Audio
+
 ### Volko Audio
 
 ## Startups
