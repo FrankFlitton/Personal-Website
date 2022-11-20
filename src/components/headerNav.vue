@@ -2,12 +2,12 @@
   <div class="d-flex w-100">
     <v-container fluid class="white sticky-header">
       <v-row>
-        <nuxt-link to="/" class="ma-0 pa-0 d-flex black--text">
+        <nuxt-link to="/" class="ma-0 pa-0 d-flex black--text row">
           <v-col class="brand-logo align-start">
             <v-img class="d-block" src="/img/branding/logo.svg"></v-img>
           </v-col>
-          <v-col class="align-self-center pa-0 d-none d-sm-flex">
-            <h1 class="d-flex">Frank JE Flitton</h1>
+          <v-col class="align-self-center pa-0 d-none d-sm-flex w-100">
+            <h1 class="d-block">Frank JE Flitton</h1>
           </v-col>
         </nuxt-link>
         <v-spacer />
