@@ -13,7 +13,7 @@
             <v-col cols="8" md="5" offset="0" offset-sm="1">
               <h2 class="text-h3 mb-5">Let's Talk</h2>
               <p class="d-none d-sm-block">
-                Frank is a Fullstack UX Engineer with 8 years of experience in
+                Frank is a Fullstack UX Engineer @ Google with a decade of experience in
                 software engineering, UX research, and product design.
               </p>
               <p class="d-none d-sm-block">
