@@ -7,7 +7,7 @@
             <v-img class="d-block" src="/img/branding/logo.svg"></v-img>
           </v-col>
           <v-col class="align-self-center pa-0 d-none d-sm-flex">
-            <h1 class="d-flex">Frank&nbsp;JE&nbsp;Flitton</h1>
+            <h1 class="d-flex">Frank JE Flitton</h1>
           </v-col>
         </nuxt-link>
         <v-spacer />

@@ -2,6 +2,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&family=PT+Sans&display=swap');
 
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/book.woff2') format('woff2'),
+       url('/fonts/book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/bold.woff2') format('woff2'),
+       url('/fonts/bold.woff') format('woff');
+  font-weight: 700;
+  font-style: bold;
+
+}
+
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
