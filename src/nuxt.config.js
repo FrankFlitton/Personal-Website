@@ -143,6 +143,9 @@ export default {
   vuetify: {
     treeShake: true,
     customVariables: ['~/assets/styles/variables.scss'],
+    defaultAssets: {
+      font: false
+    },
     theme: {
       dark: false,
       themes: {
