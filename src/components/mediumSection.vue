@@ -21,8 +21,8 @@
       />
 
       <v-row v-else v-for="post in posts" :key="post.id" class="mb-5">
-        <v-col cols="12" class="d-flex d-md-none">
-          <v-img :src="post.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
+        <v-col cols="12" class="d-flex d-md-none" v-if="post.featuredImage">
+          <img :src="post.featuredImage" class="w-100" />
         </v-col>
         <v-col cols="12" md="8">
           <v-row>
@@ -40,8 +40,8 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="4" class="d-none d-md-flex">
-          <v-img :src="post.featuredImage" aspect-ratio="1.8" :contain="false"></v-img>
+        <v-col cols="4" class="d-none d-md-flex" v-if="post.featuredImage">
+          <img :src="post.featuredImage" class="w-100" />
         </v-col>
       </v-row>
     </transition-group>
