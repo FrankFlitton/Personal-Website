@@ -9,7 +9,7 @@ async function getMedium() {
     image: storyFeed.image,
   }
 
-  const stories = [storyFeed.items[4]].map((item) => {
+  const stories = storyFeed.items.map((item) => {
     // Featured image from first src tag attribute
     const featuredImage = item.content
       .match(/src="(.*?)"/g)[0]
@@ -58,4 +58,4 @@ exports.handler = async function (event, context) {
 }
 
 // getMedium().then((res) => console.log(res.stories[0]))
-getMedium();
+// getMedium();
