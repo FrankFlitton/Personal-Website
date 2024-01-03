@@ -14,11 +14,12 @@ contributions:
   - UI Design
   - Creative Direction
   - Logo and Branding
-longDescription: "The modern‑day horn section, various combos of sax, trumpet, trombone and other brass or reeds, forms a crucial and distinctive part of the sound of big band, soul, funk and ska. Think Benny Goodman, Birth Of The Cool, James Brown's JB Horns, Tower Of Power, or Steely Dan/Don Fagen.
-\n\n
-Hardware workstations frequently fail miserably with horns and their various specialized playing techniques, and even dedicated sample libraries sometimes only scrape the surface.
-\n\n
-Mojo2 was designed from the ground up to give the flexibility of many horn techniques to the composer as they create their track. The UI is clean, simple and feature packed giving the user 4 different eras to choose from at the highest level with the ability to dive deep to settings down to room mic positions."
+longDescription: |
+  The modern‑day horn section, various combos of sax, trumpet, trombone and other brass or reeds, forms a crucial and distinctive part of the sound of big band, soul, funk and ska. Think Benny Goodman, Birth Of The Cool, James Brown's JB Horns, Tower Of Power, or Steely Dan/Don Fagen.
+  \n\n
+  Hardware workstations frequently fail miserably with horns and their various specialized playing techniques, and even dedicated sample libraries sometimes only scrape the surface.
+  \n\n
+  Mojo2 was designed from the ground up to give the flexibility of many horn techniques to the composer as they create their track. The UI is clean, simple and feature packed giving the user 4 different eras to choose from at the highest level with the ability to dive deep to settings down to room mic positions.
 ---
 
 ![Mojo2 animating through the different sound eras](/img/projects/mojo2/mojo2-ring-animation.gif)

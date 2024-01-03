@@ -19,13 +19,14 @@ contributions:
   - CSS Animation
   - Django
   - Drupal
-longDescription: "I was approached in 2016 to rebrand the Centre for International Governance Innovation's (CIGI) website.
-\n\n
-CIGI is a Canadian non-partisan privately funded think tank. Their research, opinions, and public voice strives to make a difference by bringing clarity and innovative thinking to global policy making.
-\n\n
-Since the beginning, CIGI's publishing platform was driven by their researchers and board members needs. Due to the stakeholders' divergent directions and needs, their online presence became a collection of inconsistent microsites over time.
-\n\n
-The goal of this project is to better communicate what CIGI is to the public at large and simplify their publishing platform to increase readership, article discoverability and long term scalability."
+longDescription: |
+  I was approached in 2016 to rebrand the Centre for International Governance Innovation's (CIGI) website.
+  \n\n
+  CIGI is a Canadian non-partisan privately funded think tank. Their research, opinions, and public voice strives to make a difference by bringing clarity and innovative thinking to global policy making.
+  \n\n
+  Since the beginning, CIGI's publishing platform was driven by their researchers and board members needs. Due to the stakeholders' divergent directions and needs, their online presence became a collection of inconsistent microsites over time.
+  \n\n
+  The goal of this project is to better communicate what CIGI is to the public at large and simplify their publishing platform to increase readership, article discoverability and long term scalability.
 ---
 
 ## Old CIGI Site
@@ -44,7 +45,7 @@ Solving this problem required mapping legacy data to a new unified data model to
 
 The new strategy was to move to a keyword focused navigation and away from a content type navigation. Using the new dynamic site map, new content is front and center and the user can deep dive on a topic and explore all of CIGI's research on the topic. Articles, podcasts, books and interactive essays on a topic appear along side each other to keep the user learning and exploring.
 
-<iframe src="https://rawgit.com/FrankFlitton/CIGI-Online-Site-Map/master/index.html" width="100%" height="650" frameborder="0" style="min-width:400px;min-height:400px;"></iframe>
+<IFrame src="https://rawgit.com/FrankFlitton/CIGI-Online-Site-Map/master/index.html" width="100%" height="650" frameBorder="0" style={{minWidth:400,minHeight:400,}}></IFrame>
 
 ## Home Page
 
@@ -81,12 +82,15 @@ CIGI launched a new weekly research series with the rebranded website launch. Th
 It was a true test of the new features built-in for interactive essays and get realtime feedback on the new platform with a wide audience.
 
 ### Web Layouts
+
 ![New Thinking On Innovation web layouts](/img/projects/cigi/inno-web.jpg)
 
 ### Email Notifications
+
 ![Email notifications](/img/projects/cigi/inno-email-notifications.jpg)
 
 ### Book Cover
+
 ![Book covers](/img/projects/cigi/inno-book.jpg)
 
 ## OpenCanada.ca
@@ -96,11 +100,14 @@ The refresh efforts also crossed over to their sister publisher, Open Canada. Op
 The final application to launch their new brand appeared on the redesigned their 2016 Open Canada Annual Report. It has a rich, interactive, and smooth reading experience using the new CIGI style and tools.
 
 ### Report Cover
+
 The report cover featured all contributor author names.
 ![OpenCanada 2016 Report, featuring all contributor names](/img/projects/cigi/oc-cover.jpg)
 
 ### Articles
+
 ![OpenCanada 2016 Report, articles](/img/projects/cigi/oc-articles.jpg)
 
 ### Navigation
+
 ![OpenCanada 2016 Report, articles](/img/projects/cigi/oc-nav.jpg)

@@ -14,16 +14,18 @@ contributions:
   - UI Design
   - Creative Direction
   - Logo and Branding
-longDescription: "This top-rated sound design interface marries the music industry's traditional vintage analog look with a modern UI experience.
-\n\n
-By mixing textures, lighting effects, and line work, Apollo visually evokes the familiarity of a guitar amp with flat design to create a truly unique experience."
+longDescription: |
+  This top-rated sound design interface marries the music industry's traditional vintage analog look with a modern UI experience.
+  \n\n
+  By mixing textures, lighting effects, and line work, Apollo visually evokes the familiarity of a guitar amp with flat design to create a truly unique experience.
 ---
 
 ## Promo Video
 
-<iframe width="100%" height="480" src="https://www.youtube.com/embed/bDPC_T_pZwc" frameborder="0" allowfullscreen=""></iframe>
+<YouTube id="bDPC_T_pZwc" />
 
 ## Initial Screen
+
 The initial screen resembles a guitar amp. It uses familiar imagery of the hard leather exterior and metal finishes to ground the user in a familiar place while the orange and blue lighting effects give a hint of the ethereal sound scapes to come.
 
 From here, the user is encouraged to explore presets and adjust the sound of the guitar with the amp controls above and the effect pallet below.
@@ -56,7 +58,7 @@ The mastering and compression tools alow the subtle peaks of the designed ambien
 
 ## Product Overview
 
-<iframe width="100%" height="480" src="https://www.youtube.com/embed/ANKCB0zy1D4" frameborder="0" allowfullscreen=""></iframe>
+<YouTube id="ANKCB0zy1D4" />
 
 ## Reviews
 

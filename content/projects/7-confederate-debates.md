@@ -13,7 +13,8 @@ contributions:
   - Lead Developer
   - Creative Direction
   - UI Design
-longDescription: "In 2017, a team of proud Canadian volunteers including myself, digitized our country's founding documents in celebration of Canada's 150th anniversary."
+longDescription: |
+  In 2017, a team of proud Canadian volunteers including myself, digitized our country's founding documents in celebration of Canada's 150th anniversary.
 ---
 
 To celebrate Canada's 150 year anniversary, I joined a team that was leading an effort to crowd source the digitization of the founding Canadian documents. This project converted all historic transcriptions (including First Nations) into a transcription database and custom website. Lastly, we wrote new Grade 7-12 lesson plans that cater to each provinces’ history and curriculum.
@@ -47,10 +48,11 @@ Top contributors gained a spot on the project home page. Some healthy competitio
 ![Contribution leader board](/img/projects/confed/confed-leaderboard.jpg)
 
 ### Campus event poster
+
 Speaking events were held on university campuses to both promote the crowdsourcing project and open a dialogue around current events.
 ![Campus event poster](/img/projects/confed/confed-poster.jpg)
 
 ### Ontario text book
+
 Once the project was completed a series of textbooks and lesson plans were created to match each Provinces curriculum for grades seven through twelve.
 ![Ontario text book](/img/projects/confed/confed-book.jpg)
-

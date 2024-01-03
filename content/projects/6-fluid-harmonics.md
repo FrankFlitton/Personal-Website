@@ -14,21 +14,24 @@ contributions:
   - UX Design
   - UI Design
   - Creative Direction
-longDescription: "Fluid Harmonics is a triple play instrument featuring a sound bank of 30 guitars.
-\n\n
-The digital synth's three arpeggiators move in sync to create a fluid sound. This is graphically supported by the pick shaped knobs that visually fill with rolling water based on intensity."
+longDescription: |
+  Fluid Harmonics is a triple play instrument featuring a sound bank of 30 guitars.
+  \n\n
+  The digital synth's three arpeggiators move in sync to create a fluid sound. This is graphically supported by the pick shaped knobs that visually fill with rolling water based on intensity.
 ---
 
 ## Synth Demo
 
-<iframe width="100%" height="480" src="https://www.youtube.com/embed/vBugi_QD3fE" frameborder="0" allowfullscreen=""></iframe>
+<YouTube id="vBugi_QD3fE" />
 
 ## Sound Designer
 
 ### Layers
+
 The performances in the Fluid Harmonics sound engine are created by three guitar samples layered on top of each other. The tabs along the top of the interface provide key information and navigation between the sound layers. The user can see and adjust the output volume and left-right panning as well as change the base sound samples.
 
 ### Synthesis
+
 The base sound can then be colored by additional filters and oscillators that fine tune the performance per note. Many of these settings can further humanize the performance in addition to adding color. Settings like randomness and phase help performances sound less robotic from note to note.
 
 Finally, chains of up to six effects can by applied both per layer and to the master output.
@@ -52,14 +55,14 @@ All layers have the same controls and are visually differentiated by color throu
 
 ## Behind The Scenes
 
-<iframe width="100%" height="480" src="https://www.youtube.com/embed/VKaTfr7xClo" frameborder="0" allowfullscreen=""></iframe>
+<YouTube id="VKaTfr7xClo" />
 
 ## Reviews
 
 "Fluid Harmonics is a gem. The presets are sources of inspiration… creating your own melodic and rhythmic soundscapes becomes a breeze." <br/>
 [Pierre Esteve for KR Home-Studio Magazine](https://www.kr-homestudio.fr/)
 
-"Fluid Harmonics provides instant gratification… Inspiring with a magnitude of sonic possibilities, Fluid Harmonics is a joy to work with."  <br/>
+"Fluid Harmonics provides instant gratification… Inspiring with a magnitude of sonic possibilities, Fluid Harmonics is a joy to work with." <br/>
 [Don Bodin for Sample Library Review](https://www.samplelibraryreview.com/the-reviews/review-fluid-harmonics-from-in-session-audio/)
 
 "6/6! Its strength are flowing arpeggios and complex melodic textures with pulsating rhythms… an inspiring source of ideas." <br />
