@@ -1,7 +1,5 @@
 import type { GetStaticProps, Metadata } from "next";
 import "../styles/globals.css";
-import { readFileSync, readdirSync } from "fs";
-import { join } from "path";
 import { MDLoadDir, MDLoadFile } from "@/Content/loader";
 import { MDRenderer } from "@/Content/renderer";
 
