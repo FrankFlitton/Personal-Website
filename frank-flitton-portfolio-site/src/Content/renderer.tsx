@@ -10,6 +10,7 @@ const YouTube = ({ id }: { id: string }) => {
       height="480"
       frameBorder="0"
       allowFullScreen
+      style={{ maxWidth: 800, margin: "0 auto" }}
     ></iframe>
   );
 };
@@ -23,9 +24,9 @@ const IFrame = (
   return (
     <iframe
       width="100%"
-      height="650"
+      height="600"
       frameBorder="0"
-      style={{ minWidth: 400, minHeight: 400 }}
+      style={{ maxWidth: 800, margin: "0 auto" }}
       {...props}
     />
   );
