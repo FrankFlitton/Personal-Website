@@ -1,5 +1,6 @@
 import React from "react";
 import { MDXRemote } from "next-mdx-remote";
+import Image from "next/image";
 
 const YouTube = ({ id }: { id: string }) => {
   return (
@@ -19,14 +20,44 @@ const IFrame = (
     HTMLIFrameElement
   >
 ) => {
-  return <iframe {...props} />;
+  return (
+    <iframe
+      width="100%"
+      height="650"
+      frameBorder="0"
+      style={{ minWidth: 400, minHeight: 400 }}
+      {...props}
+    />
+  );
+};
+
+const p = (
+  // @ts-ignore
+  { children }
+) => {
+  return <p className="mb-4 block">{children}</p>;
+};
+
+const img = (
+  // @ts-ignore
+  props
+) => {
+  return (
+    // eslint-disable-next-line jsx-a11y/alt-text
+    <Image
+      {...props}
+      width={500}
+      height={500}
+      className="w-full mb-4 inline-block"
+    />
+  );
 };
 
 const Test = () => {
   return "TESTING123123";
 };
 
-const components = { Test, YouTube, IFrame };
+const components = { Test, YouTube, IFrame, img, p };
 
 export function MDRenderer({
   // @ts-ignore

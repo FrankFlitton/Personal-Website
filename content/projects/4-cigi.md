@@ -45,7 +45,7 @@ Solving this problem required mapping legacy data to a new unified data model to
 
 The new strategy was to move to a keyword focused navigation and away from a content type navigation. Using the new dynamic site map, new content is front and center and the user can deep dive on a topic and explore all of CIGI's research on the topic. Articles, podcasts, books and interactive essays on a topic appear along side each other to keep the user learning and exploring.
 
-<IFrame src="https://rawgit.com/FrankFlitton/CIGI-Online-Site-Map/master/index.html" width="100%" height="650" frameBorder="0" style={{minWidth:400,minHeight:400,}}></IFrame>
+<IFrame src="https://rawgit.com/FrankFlitton/CIGI-Online-Site-Map/master/index.html" />
 
 ## Home Page
 
