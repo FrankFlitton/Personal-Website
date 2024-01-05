@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <div className="font-futura flex min-h-screen flex-col p-4 w-full">
+      <div className="font-futura flex min-h-screen flex-col pl-4 pr-4 w-full">
         {children}
       </div>
     </>

@@ -1,0 +1,35 @@
+.progress-ring {
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 89px;
+  height: 89px;
+  margin: 0 auto;
+  padding: 13px;
+  position: relative;
+  transform: scale(0.8);
+}
+.progress-ring svg,
+.progress-ring circle {
+  position: absolute;
+  stroke-width: 2.5px;
+  stroke: black;
+  fill: transparent;
+  width: 89px;
+  top: -2px;
+  left: -2px;
+  transition: all 5s linear !important;
+  stroke-dasharray: 275;
+  stroke-dashoffset: 0;
+}
+.progress-ring svg {
+  transform: rotate(270deg);
+}
+.progress-ring hr {
+  margin: 5px auto;
+  border-top: 2px solid white;
+  width: 2em;
+}
+.progress-ring.active svg,
+.progress-ring.active circle {
+  stroke-dashoffset: 275 !important;
+}

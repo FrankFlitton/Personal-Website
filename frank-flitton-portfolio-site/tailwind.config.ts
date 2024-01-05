@@ -16,6 +16,22 @@ const config: Config = {
       //   "gradient-conic":
       //     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       // },
+      keyframes: {
+        featureSliderInKF: {
+          "0%": { opacity: "0", left: "-300vw" },
+          "0.11%": { left: "0" },
+          "100%": { opacity: "1", left: "0" },
+        },
+        featureSliderOutKF: {
+          "0%": { opacity: "1", left: "0" },
+          "99.99%": { left: "0" },
+          "100%": { opacity: "0", left: "-300vw" },
+        },
+      },
+      animation: {
+        featureSliderIn: "featureSliderInKF 1s ease forwards",
+        featureSliderOut: "featureSliderOutKF 0.5s ease forwards",
+      },
     },
   },
   plugins: [],

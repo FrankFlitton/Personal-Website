@@ -6,7 +6,7 @@ featuredImage: /img/projects/confed/confed-featuredImage.jpg
 client: KORG, USA, Japan
 clientUrl: http://www.korg.com/
 projectUrl: http://www.korg.com/us/products/software/korg_iwavestation/
-color: red
+color: "#f44336"
 noImageBorder: false
 category: UI/UX + SWE
 contributions:

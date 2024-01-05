@@ -68,14 +68,14 @@ export default {
   data() {
     return {
       active: null,
-    }
+    };
   },
   created() {
     this.$nextTick(() => {
       this.$nextTick(() => {
-        this.active = this.markerIndex === this.realIndex
-      })
-    })
+        this.active = this.markerIndex === this.realIndex;
+      });
+    });
   },
   // watch: {
   //   realIndex (newVal, oldVal) {
@@ -84,5 +84,5 @@ export default {
   //     })
   //   }
   // }
-}
+};
 </script>

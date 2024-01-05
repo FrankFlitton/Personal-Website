@@ -6,7 +6,7 @@ featuredImage: /img/projects/apollo/apollo-featuredImage.jpg
 client: Vir2 Instruments, California
 clientUrl: https://www.vir2.com/
 projectUrl: https://www.vir2.com/instruments/apollo-cinematic-guitars/
-color: blue accent-5
+color: "#2196f3"
 category: Audio Product
 contributions:
   - UX Research

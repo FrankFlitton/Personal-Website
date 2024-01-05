@@ -6,7 +6,7 @@ featuredImage: /img/projects/mojo2/mojo2-featuredImage.jpg
 client: Big Fish Audio
 clientUrl: https://www.bigfishaudio.com/
 projectUrl: https://www.bigfishaudio.com/momentum.html
-color: amber darken-1
+color: "#ffb300"
 category: Audio Product
 contributions:
   - UX Research

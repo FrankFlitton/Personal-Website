@@ -35,7 +35,7 @@ export const MDLoadDir = async (path: string) => {
   const documents = await Promise.all(
     documentSources.map(async (document) => {
       const projectSource = await MDLoadFile(join(path, document));
-      return { slug: document.replace(".md", ""), ...projectSource };
+      return { id: document.replace(".md", ""), ...projectSource };
     })
   );
 

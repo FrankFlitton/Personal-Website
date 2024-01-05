@@ -6,7 +6,7 @@ featuredImage: /img/projects/fluid/fluid-featuredImage.jpg
 client: In Session Audio, Nashville
 clientUrl: https://insessionaudio.com/
 projectUrl: https://insessionaudio.com/products/fluid-harmonics/
-color: yellow darken-3
+color: "#f9a825"
 noImageBorder: false
 category: UI/UX
 contributions:

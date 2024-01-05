@@ -6,7 +6,7 @@ featuredImage: /img/projects/cigi/cigi-featuredImage.jpg
 client: Centre for International Governance Innovation
 clientUrl: https://www.cigionline.org/
 projectUrl: https://www.cigionline.org/
-color: red accent-3
+color: "#ff1744"
 noImageBorder: true
 category: UI/UX + SWE
 contributions:

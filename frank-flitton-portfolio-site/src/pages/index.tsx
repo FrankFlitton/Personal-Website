@@ -1,7 +1,9 @@
 import type { GetStaticProps, Metadata } from "next";
-import "../styles/globals.css";
 import { MDLoadDir, MDLoadFile } from "@/Content/loader";
 import { MDRenderer } from "@/Content/renderer";
+import { FeatureSlider } from "@/components/featureSlider";
+
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -11,7 +13,6 @@ export const metadata: Metadata = {
 
 export const getStaticProps: GetStaticProps = async () => {
   const homeSource = await MDLoadFile("../content/pages/home.md");
-  console.log(homeSource);
   const projectSources = await MDLoadDir("../content/projects");
 
   return {
@@ -29,9 +30,17 @@ export default function Home({
   about: any;
   projects: any[];
 }) {
-  console.log(about)
+  const slides = projects.map((project) => ({
+    slug: project.data.slug,
+    title: project.data.title,
+    description: project.data.description,
+    image: project.data.featuredImage,
+    color: project.data.color,
+  }));
+
   return (
     <main>
+      <FeatureSlider slides={slides} />
       {projects &&
         projects.map((project) => (
           <span key={project.data.slug}>

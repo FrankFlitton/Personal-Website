@@ -6,7 +6,7 @@ featuredImage: /img/projects/momentum/momentumFeaturedImage.jpg
 client: Big Fish Audio
 clientUrl: https://www.bigfishaudio.com/
 projectUrl: https://www.bigfishaudio.com/momentum.html
-color: teal accent-4
+color: "#00bfa5"
 category: Audio Product
 contributions:
   - UX Research

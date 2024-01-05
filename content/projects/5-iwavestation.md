@@ -6,7 +6,7 @@ featuredImage: /img/projects/iwavestation/iwavestation-featuredImage.jpg
 client: KORG, USA, Japan
 clientUrl: http://www.korg.com/
 projectUrl: http://www.korg.com/us/products/software/korg_iwavestation/
-color: indigo darken-3
+color: "#283593"
 noImageBorder: true
 category: UI/UX + SWE
 contributions:
