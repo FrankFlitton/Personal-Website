@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import typographyPlugin from "@tailwindcss/typography";
+import containerQueriesPlugin from "@tailwindcss/container-queries";
 
 const config: Config = {
   content: [
@@ -8,7 +9,7 @@ const config: Config = {
     "./src/Content/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  plugins: [typographyPlugin],
+  plugins: [typographyPlugin, containerQueriesPlugin],
   theme: {
     extend: {
       fontFamily: {

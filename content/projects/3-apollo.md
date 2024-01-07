@@ -16,7 +16,7 @@ contributions:
   - Logo and Branding
 longDescription: |
   This top-rated sound design interface marries the music industry's traditional vintage analog look with a modern UI experience.
-  \n\n
+
   By mixing textures, lighting effects, and line work, Apollo visually evokes the familiarity of a guitar amp with flat design to create a truly unique experience.
 ---
 

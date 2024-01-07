@@ -16,7 +16,7 @@ contributions:
   - Creative Direction
 longDescription: |
   Fluid Harmonics is a triple play instrument featuring a sound bank of 30 guitars.
-  \n\n
+
   The digital synth's three arpeggiators move in sync to create a fluid sound. This is graphically supported by the pick shaped knobs that visually fill with rolling water based on intensity.
 ---
 

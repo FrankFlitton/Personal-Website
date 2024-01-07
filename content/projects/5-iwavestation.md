@@ -17,9 +17,9 @@ contributions:
   - 3D Modeling
 longDescription: |
   KORG iWaveStation is an authentic reproduction of the original 90s device that was used by artists such as Michael Jackson, Phil Collins, and Depeche Mode.
-  \n\n
+
   The WaveStation was the first to feature an advanced vector synthesis system that created new sounds by combining multiple waveforms. To this day it's still considered a legendary and unique instrument.
-  \n\n
+
   This project was a dream come true. With KORG being the leading brand in music technology, it's the equivalent of being asked to reimagine the original Porsche 911 for the 21st century.
 ---
 

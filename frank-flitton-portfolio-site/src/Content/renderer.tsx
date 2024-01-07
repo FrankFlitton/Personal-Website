@@ -1,18 +1,19 @@
 import React from "react";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
-import { MDXDocument } from "@/types";
 
 const YouTube = ({ id }: { id: string }) => {
   return (
-    <iframe
-      src={"https://www.youtube.com/embed/" + id}
-      width="100%"
-      height="480"
-      frameBorder="0"
-      allowFullScreen
-      style={{ maxWidth: 800, margin: "0 auto" }}
-    ></iframe>
+    <p>
+      <iframe
+        src={"https://www.youtube.com/embed/" + id}
+        width="100%"
+        height="480"
+        frameBorder="0"
+        allowFullScreen
+        style={{ maxWidth: 800, margin: "0 auto" }}
+      ></iframe>
+    </p>
   );
 };
 
@@ -23,21 +24,16 @@ const IFrame = (
   >
 ) => {
   return (
-    <iframe
-      width="100%"
-      height="600"
-      frameBorder="0"
-      style={{ maxWidth: 800, margin: "0 auto" }}
-      {...props}
-    />
+    <p>
+      <iframe
+        width="100%"
+        height="600"
+        frameBorder="0"
+        style={{ maxWidth: 800, margin: "0 auto" }}
+        {...props}
+      />
+    </p>
   );
-};
-
-const p = (
-  // @ts-ignore
-  { children }
-) => {
-  return <p className="mb-4 block">{children}</p>;
 };
 
 const img = (
@@ -55,11 +51,7 @@ const img = (
   );
 };
 
-const Test = () => {
-  return "TESTING123123";
-};
-
-const components = { Test, YouTube, IFrame, img, p };
+const components = { YouTube, IFrame, img, };
 
 export function MDRenderer({
   source,

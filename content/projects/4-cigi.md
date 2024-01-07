@@ -21,11 +21,11 @@ contributions:
   - Drupal
 longDescription: |
   I was approached in 2016 to rebrand the Centre for International Governance Innovation's (CIGI) website.
-  \n\n
+
   CIGI is a Canadian non-partisan privately funded think tank. Their research, opinions, and public voice strives to make a difference by bringing clarity and innovative thinking to global policy making.
-  \n\n
+
   Since the beginning, CIGI's publishing platform was driven by their researchers and board members needs. Due to the stakeholders' divergent directions and needs, their online presence became a collection of inconsistent microsites over time.
-  \n\n
+
   The goal of this project is to better communicate what CIGI is to the public at large and simplify their publishing platform to increase readership, article discoverability and long term scalability.
 ---
 

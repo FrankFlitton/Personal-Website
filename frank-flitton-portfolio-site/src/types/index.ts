@@ -10,7 +10,7 @@ export interface FeatureProjectData {
   projectUrl: string;
   color: string;
   category: string;
-  contributions: string;
+  contributions: string[];
   longDescription: string;
 }
 
