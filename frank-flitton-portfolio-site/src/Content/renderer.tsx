@@ -1,6 +1,7 @@
 import React from "react";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
+import { MDXDocument } from "@/types";
 
 const YouTube = ({ id }: { id: string }) => {
   return (
@@ -61,11 +62,14 @@ const Test = () => {
 const components = { Test, YouTube, IFrame, img, p };
 
 export function MDRenderer({
-  // @ts-ignore
   source,
+  className = "",
+}: {
+  source: any;
+  className?: string;
 }) {
   return (
-    <div className="wrapper">
+    <div className={`wrapper prose prose-slate ${className}`}>
       <MDXRemote {...source} components={components} />
     </div>
   );
