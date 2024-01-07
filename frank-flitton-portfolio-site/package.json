@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "next": "14.0.4",
     "next-mdx-remote": "^4.4.1",
     "react": "^18",

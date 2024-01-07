@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { useRouter } from "next/router";
-import { MDLoadDir, MDLoadFile } from "@/Content/loader";
+import { MDLoadDir } from "@/Content/loader";
+import { FeatureProjectData } from "@/types";
 
 export const getStaticPaths = (async () => {
-  const projectSources = await MDLoadDir("../content/projects");
+  const projectSources = await MDLoadDir<FeatureProjectData>("../content/projects");
   const paths = projectSources.map((project) => ({
     params: {
       slug: project.data.slug,
@@ -17,7 +17,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const projectSources = await MDLoadDir("../content/projects");
+  const projectSources = await MDLoadDir<FeatureProjectData>("../content/projects");
   const slug = context?.params?.slug ?? "";
   const project = projectSources.find((project) => project.data.slug === slug);
 

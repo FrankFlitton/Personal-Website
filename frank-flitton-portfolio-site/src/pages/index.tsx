@@ -4,6 +4,9 @@ import { MDRenderer } from "@/Content/renderer";
 import { FeatureSlider } from "@/components/featureSlider";
 
 import "../styles/globals.css";
+import { ProjectList } from "@/components/projectList";
+import { FeatureProjectData, MDXDocument, ProjectMDXDocument } from "@/types";
+import { GithubList } from "@/components/githubList";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -12,13 +15,76 @@ export const metadata: Metadata = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const githubReq = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_API_TOKEN}`,
+    },
+    body: JSON.stringify({
+      variables: {
+        login: "FrankFlitton",
+      },
+      query: `
+          query GetUser($login: String!) {
+            user(login: $login) {
+              avatarUrl
+              pinnedItems(first: 10) {
+                totalCount
+                nodes {
+                  ... on Repository {
+                    id
+                    name
+                    homepageUrl
+                    url
+                    description
+                    openGraphImageUrl
+                    latestRelease {
+                      name
+                      tagName
+                    }
+                    languages(first: 5, orderBy: {field: SIZE, direction: DESC}) {
+                      nodes {
+                        name
+                        color
+                      }
+                      edges {
+                        size
+                      }
+                    }
+                    stargazerCount
+                    usesCustomOpenGraphImage
+                    repositoryTopics(first: 10) {
+                      nodes {
+                        topic {
+                          name
+                          id
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              url
+              twitterUsername
+            }
+          }
+          `,
+    }),
+  });
+
+  const githubRes = await githubReq.json();
+
   const homeSource = await MDLoadFile("../content/pages/home.md");
-  const projectSources = await MDLoadDir("../content/projects");
+  const projectSources = await MDLoadDir<FeatureProjectData>(
+    "../content/projects"
+  );
+  console.log(process.env.GITHUB_API_TOKEN);
 
   return {
     props: {
       about: homeSource,
       projects: projectSources,
+      githubRes,
     },
   };
 };
@@ -26,9 +92,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function Home({
   about,
   projects,
+  githubRes,
 }: {
-  about: any;
-  projects: any[];
+  about: MDXDocument;
+  projects: ProjectMDXDocument[];
+  githubRes: any;
 }) {
   const slides = projects.map((project) => ({
     slug: project.data.slug,
@@ -41,56 +109,14 @@ export default function Home({
   return (
     <main>
       <FeatureSlider slides={slides} />
-      {projects &&
-        projects.map((project) => (
-          <span key={project.data.slug}>
-            {JSON.stringify(project.data)}
-            <MDRenderer source={project.content} />
-          </span>
-        ))}
+      <div className="w-full my-8">
+        <GithubList githubRes={githubRes} />
+      </div>
+      <ProjectList projects={projects} />
+
       {about && <MDRenderer source={about.content} />}
 
-      <h1 className={`mb-3 text-6xl font-bold`}>Developing Great Products</h1>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
-      <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
-        Frank is a Full Stack Software Engineer and Lead Designer specializing
-        in software engineering, UX research, and product design.
-      </p>
+      <h2 className={`mb-3 text-6xl font-bold`}>Developing Great Products</h2>
       <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>
         Frank is a Full Stack Software Engineer and Lead Designer specializing
         in software engineering, UX research, and product design.
