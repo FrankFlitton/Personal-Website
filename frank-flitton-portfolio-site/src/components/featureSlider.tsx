@@ -1,9 +1,10 @@
 import NextImage from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ProgressRing } from "./progressRing";
-import { act } from "react-dom/test-utils";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Preloader } from "./preloader";
 
 type FeatureSlide = {
   slug: string;
@@ -45,7 +46,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
       interval.current = setInterval(() => {
         setActiveSlide((prev) => {
           if (prev === -1) return prev;
-          return (prev + 1) % slides.length;
+          return prev + 1;
         });
       }, 5000);
     }, 1000);
@@ -59,11 +60,12 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
     setActiveSlide(index);
     if (interval.current) clearInterval(interval.current);
     interval.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
+      setActiveSlide((prev) => prev + 1);
     }, 5000);
   };
 
-  const isLoading = activeSlide === -1;
+  const isLoading = useMemo(() => activeSlide === -1, [activeSlide]);
+  console.log(activeSlide, isLoading);
 
   return (
     <div className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black">
@@ -73,9 +75,14 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
             <div
               key={slide.slug}
               className={`${
-                activeSlide === index
-                  ? "animate-featureSliderIn"
-                  : "animate-featureSliderOut"
+                // activeSlide === index % slides.length
+                //   ? activeSlide >= 0
+                //     ? "opacity-100 left-0 duration-0 animate-none"
+                //     : "animate-featureSliderIn"
+                //   : "animate-featureSliderOut"
+                activeSlide === index % slides.length
+                  ? "left-0 opacity-100"
+                  : "left-[-300vw]"
               } ${
                 activeSlide === -1 ? "hidden" : "visible"
               } opacity-0 absolute w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] top-0 left-0 overflow-hidden bg-black`}
@@ -85,7 +92,9 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
             >
               <div
                 className={`${
-                  activeSlide === index ? "inset-[0rem]" : "inset-[-2rem]"
+                  activeSlide % slides.length === index
+                    ? "inset-[0rem]"
+                    : "inset-[-2rem]"
                 } transition-inset duration-[2000ms] absolute`}
               >
                 <NextImage
@@ -118,7 +127,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
                     {!isLoading && (
                       <ProgressRing
                         className="none sm:block"
-                        activeIndex={activeSlide}
+                        activeIndex={activeSlide % slides.length}
                         markerIndex={index}
                         totalLength={slides.length}
                       />
@@ -140,13 +149,15 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
 
       <ul className="absolute z-3 sm:bottom-1 right-2 sm:top-[unset] top-2 bottom-[unset] h-fit">
         {slides.length &&
-          slides.map((slide, index) => {
+          slides.map((_, index) => {
             return (
               <li
                 key={index}
                 role="button"
                 className={`${
-                  activeSlide === index ? `text-white bg-black` : ""
+                  activeSlide % slides.length === index
+                    ? `text-white bg-black`
+                    : ""
                 } w-[2rem] h-[2rem] flex hover:bg-white/30 text-center justify-center items-center transition-colors duration-200`}
                 onClick={() => goToSlide(index)}
               >
@@ -156,9 +167,19 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
           })}
       </ul>
 
-      {isLoading && (
-        <div className="absolute z-5 bottom-1 left-1 bg-black">Loading...</div>
-      )}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            className="absolute z-5 inset-0"
+            exit={{
+              opacity: 0,
+              transition: { ease: "easeOut", duration: 1, delay: 0.1 },
+            }}
+          >
+            <Preloader />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

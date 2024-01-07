@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import "@/styles/globals.css";
 import "@/styles/progressRing.css";
+import "@/styles/preloader.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

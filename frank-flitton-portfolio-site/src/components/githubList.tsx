@@ -38,6 +38,13 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
     ? ([...githubRes.data.user.pinnedItems.nodes] as Repo[])
     : [];
 
+  const languages = repos.map((r) =>
+    r.languages.nodes.filter((_, i) => {
+      const sum = r.languages.edges.reduce((acc, cur) => acc + cur.size, 0);
+      return r.languages.edges[i].size / sum > 0.1;
+    })
+  );
+
   const formatLang = (lang: string) => {
     switch (lang) {
       case "JavaScript":
@@ -160,25 +167,18 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                     )}
                   </div>
                   <div className="flex items-end justify-end">
-                    {repo.languages &&
-                      repo.languages.nodes
-                        .filter((_, i) => {
-                          const sum = repo.languages.edges.reduce(
-                            (acc, cur) => acc + cur.size,
-                            0
-                          );
-                          return repo.languages.edges[i].size / sum > 0.1;
-                        })
-                        .map((lang) => (
-                          <Icon
-                            key={lang.name}
-                            path={formatLang(lang.name)}
-                            color={lang.color}
-                            title={lang.name}
-                            size={1}
-                            className="mt-[-0.5rem] inline-block bg-blend-multiply"
-                          />
-                        ))}
+                    {languages[i] &&
+                      languages[i].map((lang) => (
+                        <Icon
+                          key={lang.name}
+                          id={`${repo.id}-${lang.name}`}
+                          path={formatLang(lang.name)}
+                          color={lang.color}
+                          title={lang.name}
+                          size={1}
+                          className="mt-[-0.5rem] inline-block bg-blend-multiply"
+                        />
+                      ))}
                   </div>
                 </div>
               </div>
