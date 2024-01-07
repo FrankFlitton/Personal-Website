@@ -1,4 +1,3 @@
-import "@/styles/progressRing.css";
 import { useEffect, useState } from "react";
 
 export const ProgressRing = ({

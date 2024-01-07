@@ -2,11 +2,10 @@ import type { GetStaticProps, Metadata } from "next";
 import { MDLoadDir, MDLoadFile } from "@/Content/loader";
 import { MDRenderer } from "@/Content/renderer";
 import { FeatureSlider } from "@/components/featureSlider";
-
-import "../styles/globals.css";
 import { ProjectList } from "@/components/projectList";
 import { FeatureProjectData, MDXDocument, ProjectMDXDocument } from "@/types";
 import { GithubList } from "@/components/githubList";
+import { Page } from "@/components/page";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -78,8 +77,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
     "../content/projects"
   );
-  console.log(process.env.GITHUB_API_TOKEN);
-
   return {
     props: {
       about: homeSource,
@@ -107,7 +104,7 @@ export default function Home({
   }));
 
   return (
-    <main>
+    <Page>
       <div className="w-full mb-16">
         <FeatureSlider slides={slides} />
       </div>
@@ -196,6 +193,6 @@ export default function Home({
           </p>
         </a>
       </div>
-    </main>
+    </Page>
   );
 }

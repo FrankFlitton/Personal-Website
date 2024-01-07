@@ -5,6 +5,7 @@ import { MDRenderer } from "@/Content/renderer";
 import { serialize } from "next-mdx-remote/serialize";
 import Link from "next/link";
 import { ProjectMeta } from "@/components/projectMeta";
+import { Page } from "@/components/page";
 
 export const getStaticPaths = (async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
@@ -29,7 +30,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const slug = context?.params?.slug ?? "";
   const project = projectSources.find((project) => project.data.slug === slug);
 
-  console.log("*** projectSources", projectSources);
   let longDescription = null;
   if (project) {
     longDescription = await serialize(project.data.longDescription);
@@ -50,43 +50,48 @@ export default function Home({
   project: MDXDocument<FeatureProjectData>;
   longDescription: any;
 }) {
-  console.log(project);
-
   return (
-    <div className="w-full">
-      <div className="text-center py-16">
-        <h2 className="text-3xl md:text-4xl font-bold">{project.data.title}</h2>
-        <Link
-          href={project.data.projectUrl}
-          className="text-xl md:text-2xl hover:bg-black/10 text-black p-4 inline-block"
-        >
-          Buy
-        </Link>
-      </div>
+    <Page>
+      <div className="w-full">
+        <div className="text-center py-16">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            {project.data.title}
+          </h2>
+          <Link
+            href={project.data.projectUrl}
+            className="text-xl md:text-2xl hover:bg-black/10 text-black p-4 inline-block"
+          >
+            Buy
+          </Link>
+        </div>
 
-      <div className="w-full max-w-screen-xl m-auto">
-        <article className="pb-16 relative grid grid-cols-3">
-          <div className="col-span-3 md:col-span-2">
-            <MDRenderer
-              className="prose-xl max-w-full pb-16"
-              source={longDescription}
-            />
-            <div className="flex md:hidden pb-16">
-              <ProjectMeta project={project} row />
+        <div className="w-full max-w-screen-xl m-auto">
+          <article className="pb-16 relative grid grid-cols-3">
+            <div className="col-span-3 md:col-span-2">
+              <MDRenderer
+                className="prose-xl max-w-full pb-16"
+                source={longDescription}
+              />
+              <div className="flex md:hidden pb-16">
+                <ProjectMeta project={project} row />
+              </div>
+              <div
+                className="h-1 w-[45%] mb-16"
+                style={{ backgroundColor: project.data.color }}
+              ></div>
+              <MDRenderer
+                className="md:ml-auto col-span-8"
+                source={project.content}
+              />
             </div>
-            <div className="h-1 w-[45%] mb-16" style={{backgroundColor: project.data.color}}></div>
-            <MDRenderer
-              className="md:ml-auto col-span-8"
-              source={project.content}
-            />
-          </div>
-          <div className="col-span-1 pl-8 hidden md:flex relative">
-            <div className="sticky top-[80px] flex h-[fit-content]">
-              <ProjectMeta project={project} />
+            <div className="col-span-1 pl-8 hidden md:flex relative">
+              <div className="sticky top-[80px] flex h-[fit-content]">
+                <ProjectMeta project={project} />
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
-    </div>
+    </Page>
   );
 }
