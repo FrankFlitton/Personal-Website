@@ -3,9 +3,9 @@ title: The Confederation Debates
 slug: confederation-debates
 description: Celebrating Canada's birth as a nation in 1867.
 featuredImage: /img/projects/confed/confed-featuredImage.jpg
-client: KORG, USA, Japan
-clientUrl: http://www.korg.com/
-projectUrl: http://www.korg.com/us/products/software/korg_iwavestation/
+client: U Vic, Daniel Heidt
+clientUrl: https://hcmc.uvic.ca/confederation/
+projectUrl: https://hcmc.uvic.ca/confederation/
 color: "#f44336"
 noImageBorder: false
 category: UI/UX + SWE
