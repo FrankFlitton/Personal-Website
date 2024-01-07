@@ -108,8 +108,13 @@ export default function Home({
 
   return (
     <main>
-      <FeatureSlider slides={slides} />
-      <div className="w-full my-8">
+      <div className="w-full mb-16">
+        <FeatureSlider slides={slides} />
+      </div>
+      <div className="w-full mb-16 max-w-screen-lg m-auto">
+        {about && <MDRenderer source={about.content} />}
+      </div>
+      <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />
       </div>
       <ProjectList projects={projects} />

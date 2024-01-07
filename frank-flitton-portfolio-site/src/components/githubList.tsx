@@ -79,7 +79,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
               !!repo.usesCustomOpenGraphImage
                 ? "row-span-2 md:row-span-1"
                 : "row-span-1"
-            } rounded-xl border-2 border-slate-400/10 bg-neutral-100 dark:bg-neutral-900 ${
+            } rounded-xl bg-neutral-100 dark:bg-neutral-900 ${
               !!repo.usesCustomOpenGraphImage
                 ? "md:col-span-2"
                 : "md:col-span-1"
