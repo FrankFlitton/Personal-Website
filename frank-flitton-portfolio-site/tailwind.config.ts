@@ -27,8 +27,8 @@ const config: Config = {
         },
       },
       animation: {
-        featureSliderIn: "featureSliderInKF 1s ease forwards",
-        featureSliderOut: "featureSliderOutKF 0.5s ease forwards",
+        featureSliderIn: "featureSliderInKF 0.2s ease forwards",
+        featureSliderOut: "featureSliderOutKF 0.2s ease forwards",
       },
     },
   },

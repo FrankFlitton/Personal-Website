@@ -1,7 +1,6 @@
 import NextImage from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ProgressRing } from "./progressRing";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Preloader } from "./preloader";
@@ -75,14 +74,11 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
             <div
               key={slide.slug}
               className={`${
-                // activeSlide === index % slides.length
-                //   ? activeSlide >= 0
-                //     ? "opacity-100 left-0 duration-0 animate-none"
-                //     : "animate-featureSliderIn"
-                //   : "animate-featureSliderOut"
                 activeSlide === index % slides.length
-                  ? "left-0 opacity-100"
-                  : "left-[-300vw]"
+                  ? activeSlide >= 0
+                    ? "opacity-100 left-0 duration-0 animate-none"
+                    : "animate-featureSliderIn"
+                  : "animate-featureSliderOut"
               } ${
                 activeSlide === -1 ? "hidden" : "visible"
               } opacity-0 absolute w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] top-0 left-0 overflow-hidden bg-black`}
@@ -167,19 +163,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
           })}
       </ul>
 
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            className="absolute z-5 inset-0"
-            exit={{
-              opacity: 0,
-              transition: { ease: "easeOut", duration: 1, delay: 0.1 },
-            }}
-          >
-            <Preloader />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Preloader isActive={isLoading} className="absolute z-5 inset-0" />
     </div>
   );
 };
