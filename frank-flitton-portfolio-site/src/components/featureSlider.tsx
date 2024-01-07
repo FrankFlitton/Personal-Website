@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ProgressRing } from "./progressRing";
 import { act } from "react-dom/test-utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type FeatureSlide = {
   slug: string;
@@ -16,6 +17,12 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
   const [activeSlide, setActiveSlide] = useState(-1);
 
   const interval = useRef<NodeJS.Timeout | null>(null);
+
+  const router = useRouter();
+
+  const goToProject = (index: number) => {
+    router.push(`/projects/${slides[index].slug}`);
+  };
 
   // increment activeSlide every 5 seconds
   useEffect(() => {
@@ -59,7 +66,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
   const isLoading = activeSlide === -1;
 
   return (
-    <div className="relative w-full h-[calc(100dvh-80px-1rem)] mb-4 bg-black">
+    <div className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black">
       {slides.length &&
         slides.map((slide, index) => {
           return (
@@ -71,7 +78,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
                   : "animate-featureSliderOut"
               } ${
                 activeSlide === -1 ? "hidden" : "visible"
-              } opacity-0 absolute w-full h-[calc(100dvh-80px-1rem)] top-0 left-0 overflow-hidden bg-black`}
+              } opacity-0 absolute w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] top-0 left-0 overflow-hidden bg-black`}
               style={{
                 backgroundColor: slide.color,
               }}
@@ -91,24 +98,26 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
               </div>
 
               <div
-                className="absolute h-full top-0 left-0 bottom-0 right-0 md:right-[45%] lg:right-[60%] xl:right-[70%] bg-black text-white text-center"
-                style={{ backgroundColor: `${slide.color}DD` }}
+                className={`absolute h-full top-0 left-0 bottom-0 right-0 md:right-[45%] lg:right-[60%] xl:right-[70%] text-white text-center cursor-pointer group`}
+                style={{ backgroundColor: `${slide.color.toUpperCase()}DD` }}
+                onClick={() => goToProject(index)}
               >
-                <div className="grid grid-rows-4 grid-flow-col gap-8 h-[75%] p-8 mt-[12.5%]">
+                {/* background color hover modifier */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="grid grid-rows-4 grid-flow-col gap-8 md:h-[75%] h-[90%] p-8 md:mt-[12.5%] mt-5 z-1 relative">
                   {/* flex center */}
                   <div className="flex items-end justify-center">
-                    <h2 className="text-5xl md:text-4xl font-bold">
+                    <h2 className="text-3xl md:text-4xl font-bold">
                       {slide.title}
                     </h2>
                   </div>
                   <div className="flex items-start justify-center">
-                    <h3 className="text-3xl md:text-2xl">
-                      {slide.description}
-                    </h3>
+                    <h3 className="text-2xl">{slide.description}</h3>
                   </div>
                   <div className="flex items-center justify-center">
                     {!isLoading && (
                       <ProgressRing
+                        className="none sm:block"
                         activeIndex={activeSlide}
                         markerIndex={index}
                         totalLength={slides.length}
@@ -129,7 +138,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
           );
         })}
 
-      <ul className="absolute z-3 bottom-1 right-2">
+      <ul className="absolute z-3 sm:bottom-1 right-2 sm:top-[unset] top-2 bottom-[unset] h-fit">
         {slides.length &&
           slides.map((slide, index) => {
             return (
