@@ -1,8 +1,8 @@
-import NextImage from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ProgressRing } from "./progressRing";
+import NextImage from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ProgressRing } from "./progressRing";
 import { Preloader } from "./preloader";
 
 type FeatureSlide = {
@@ -64,7 +64,6 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
   };
 
   const isLoading = useMemo(() => activeSlide === -1, [activeSlide]);
-  console.log(activeSlide, isLoading);
 
   return (
     <div className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black">
@@ -74,13 +73,11 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
             <div
               key={slide.slug}
               className={`${
-                activeSlide === index % slides.length
-                  ? activeSlide >= 0
-                    ? "opacity-100 left-0 duration-0 animate-none"
-                    : "animate-featureSliderIn"
+                activeSlide % slides.length === index
+                  ? "animate-featureSliderIn"
                   : "animate-featureSliderOut"
               } ${
-                activeSlide === -1 ? "hidden" : "visible"
+                activeSlide === -1 ? "hidden" : ""
               } opacity-0 absolute w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] top-0 left-0 overflow-hidden bg-black`}
               style={{
                 backgroundColor: slide.color,

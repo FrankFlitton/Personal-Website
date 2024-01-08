@@ -6,6 +6,8 @@ import { ProjectList } from "@/components/projectList";
 import { FeatureProjectData, MDXDocument, ProjectMDXDocument } from "@/types";
 import { GithubList } from "@/components/githubList";
 import { Page } from "@/components/page";
+import { mediumRSSFeed } from "@/Content/medium";
+import { MediumList } from "@/components/mediumList";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -77,11 +79,15 @@ export const getStaticProps: GetStaticProps = async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
     "../content/projects"
   );
+
+  const mediumFeed = await mediumRSSFeed;
+
   return {
     props: {
       about: homeSource,
       projects: projectSources,
       githubRes,
+      mediumFeed: mediumFeed,
     },
   };
 };
@@ -90,10 +96,12 @@ export default function Home({
   about,
   projects,
   githubRes,
+  mediumFeed,
 }: {
   about: MDXDocument;
   projects: ProjectMDXDocument[];
   githubRes: any;
+  mediumFeed: any;
 }) {
   const slides = projects.map((project) => ({
     slug: project.data.slug,
@@ -114,9 +122,12 @@ export default function Home({
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />
       </div>
-      <ProjectList projects={projects} />
-
-      {about && <MDRenderer source={about.content} />}
+      <div className="w-full mb-16 max-w-screen-lg m-auto">
+        <MediumList mediumFeed={mediumFeed} />
+      </div>
+      <div className="w-full mb-16 max-w-screen-lg m-auto">
+        <ProjectList projects={projects} />
+      </div>
 
       <h2 className={`mb-3 text-6xl font-bold`}>Developing Great Products</h2>
       <p className={`m-0 max-w-[30ch] text-2xl opacity-50`}>

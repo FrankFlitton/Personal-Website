@@ -15,7 +15,7 @@ export interface FeatureProjectData {
 }
 
 export interface MDXDocument<T = Record<string, unknown> | null> {
-  id: string,
+  id: string;
   data: T;
   content: MDXRemoteSerializeResult<
     Record<string, unknown>,
@@ -24,3 +24,17 @@ export interface MDXDocument<T = Record<string, unknown> | null> {
 }
 
 export interface ProjectMDXDocument extends MDXDocument<FeatureProjectData> {}
+
+export type Blog = {
+  bar: number;
+  categories: string[];
+  "content:encoded": string;
+  "content:encodedSnippet": string;
+  creator: string;
+  "dc:creator": string;
+  guid: string;
+  isoDate: string;
+  link: string;
+  pubDate: string;
+  title: string;
+};

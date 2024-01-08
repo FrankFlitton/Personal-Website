@@ -23,7 +23,7 @@ export const ProjectMeta = ({
         >
           <h3 className="text-md font-bold my-0">{meta.title}</h3>
           {Array.isArray(meta.value) ? (
-            <ul className="mb-2 w-full">
+            <ul className="mb-2 w-full list-outside">
               {meta.value &&
                 meta.value.map((item) => (
                   <li key={item} className="text-gray-500 my-0 w-full">
