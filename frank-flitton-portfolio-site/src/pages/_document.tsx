@@ -47,12 +47,12 @@ class MyDocument extends Document {
           <NextScript />
 
           {/* <!-- Netlify Hidden Form --> */}
-          {/* @ts-ignore */}
-          {/* <form name="contact" netlify netlify-honeypot="subject" hidden>
-            <input type="text" name="name" />
-            <input type="text" name="email" />
-            <textarea name="message" />
-          </form> */}
+          <form hidden method="post" name="contact">
+            <input type="hidden" name="form-name" value="contact" />
+            <input name="name" />
+            <input name="email" />
+            <textarea name="message"> </textarea>
+          </form>
         </body>
       </Html>
     );

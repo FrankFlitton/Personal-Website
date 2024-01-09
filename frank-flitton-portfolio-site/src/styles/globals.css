@@ -38,3 +38,7 @@ body {
   min-height: 100dvh;
   min-width: 100dvw;
 }
+
+.no-scroll {
+  overflow: hidden !important;
+}
