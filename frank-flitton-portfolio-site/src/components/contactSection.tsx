@@ -11,8 +11,6 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
     setTimeout(() => {
       const firstInput = document.querySelector("input");
       if (isNavOpen && firstInput) {
-        console.log("focus");
-        console.log(firstInput);
         firstInput.focus();
       }
     }, 100);
