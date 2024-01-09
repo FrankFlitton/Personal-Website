@@ -35,6 +35,10 @@ interface Repo {
 }
 
 export const GithubList = ({ githubRes }: { githubRes: any }) => {
+  const title = "Open Source Code";
+  const blurb =
+    "Check out my open source code on Github. Here are a short list of software projects I can share.";
+
   const repos: Repo[] = githubRes?.data?.user?.pinnedItems?.nodes
     ? ([...githubRes.data.user.pinnedItems.nodes] as Repo[])
     : [];
@@ -80,23 +84,33 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
             size={1.25}
             className="inline-block mt-[-0.5rem] mr-2"
           />
-          GitHub Projects
+          {title}
         </h2>
-        <p>Open source code on github.</p>
+        <p>{blurb}</p>
       </div>
       <div
         className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px]`}
       >
-        <div className="col-span-3 md:col-span-1 hidden md:block">
+        <div className="col-span-3 md:col-span-1 hidden md:grid justify-between grid-cols-1">
           <h2 className="text-3xl font-bold mb-2 block w-full">
             <Icon
               path={mdiGithub}
               size={1.25}
               className="inline-block mt-[-0.5rem] mr-2"
             />
-            GitHub Projects
+            {title}
           </h2>
-          <p>Open source code on github.</p>
+          <p>{blurb}</p>
+          <div>
+            <a
+              className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 self-end p-4 ml-[-1rem]"
+              role="button"
+              href="https://github.com/frankflitton"
+              target="_blank"
+            >
+              @FrankFlitton
+            </a>
+          </div>
         </div>
         {repos &&
           repos.map((repo, i) => (
