@@ -85,7 +85,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                   name="message"
                   id="message"
                   rows={5}
-                  placeholder="Message"
+                  defaultValue="Message"
                   required
                 ></textarea>
               </div>
