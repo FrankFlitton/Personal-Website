@@ -14,6 +14,9 @@ const config: Config = {
       fontFamily: {
         futura: ["Futura", "sans-serif"],
       },
+      screens: {
+        'hzphone': { 'raw': '(min-device-width: 480px) and (max-height: 600px) and (orientation: landscape)' }
+      },
       keyframes: {
         featureSliderInKF: {
           "0%": { opacity: "0", left: "-300vw" },
