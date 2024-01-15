@@ -53,7 +53,7 @@ export default function Home({
     return () => parse(html);
   }, [html]);
 
-  const pubDate = new Date(blog?.isoDate ?? "").toLocaleDateString();
+  const pubDate = new Date(blog?.isoDate ?? "").toDateString();
 
   if (!blog) return "not found";
 
