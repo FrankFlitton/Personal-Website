@@ -8,6 +8,8 @@ import { GithubList } from "@/components/githubList";
 import { Page } from "@/components/page";
 import { mediumRSSFeed } from "@/Content/medium";
 import { MediumList } from "@/components/mediumList";
+import Icon from "@mdi/react";
+import { mdiGuitarAcoustic } from "@mdi/js";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -117,7 +119,11 @@ export default function Home({
         <FeatureSlider slides={slides} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
-        {about && <MDRenderer source={about.content} />}
+        <h2 className="text-3xl font-bold mb-2 block w-full">
+          <Icon path={mdiGuitarAcoustic} className="inline mt-[-0.5rem]" size={1.5} />
+          About Me
+        </h2>
+        {about && <MDRenderer className="w-full" source={about.content} />}
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />
