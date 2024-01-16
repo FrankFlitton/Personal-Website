@@ -1,0 +1,135 @@
+/* Compiled SASS code
+
+.preloader {
+  position: relative;
+  .logo-overlay,
+  .lights {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 144px;
+    height: 144px;
+    margin-left: 0px - (144/2);
+    margin-top: 0px - (144/2);
+  }
+  .lights {
+    width: 144px;
+    height: 144px;
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 144px;
+      height: 144px;
+      ellipse {
+        mix-blend-mode: screen;
+        $lightColors: rgb(237, 15, 67), rgb(136, 225, 35), rgb(144, 58, 230);
+        @for $i from 1 through 3 {
+          &:nth-child(3n + #{$i}) {
+            fill: nth($lightColors, $i);
+            transform-origin: 44% + random(6) 44% + random(6);
+            animation: lightshow (5s * $i) linear -1s * $i infinite forwards;
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes lightshow {
+  from {
+    transform: translate(0px, 0px) rotate(0deg) scaleX(1) scaleY(1);
+  }
+  @for $i from 1 through 3 {
+    #{$i * 25%} {
+      transform: translate(random(13) + px, random(13) + px)
+        rotate(((360 / 4) * $i) + deg)
+        scaleX((random(60) / 100) + 0.7)
+        scaleY((random(30) / 100) + 0.7);
+    }
+  }
+  to {
+    transform: translate(0px, 0px) rotate(360deg) scaleX(1) scaleY(1);
+  }
+}
+*/
+
+.preloader {
+  position: relative;
+}
+.preloader .lights,
+.preloader .logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 144px;
+  height: 144px;
+  margin-left: -72px;
+  margin-top: -72px;
+  overflow: visible;
+}
+.preloader .lights,
+.preloader .lights svg {
+  width: 144px;
+  height: 144px;
+  overflow: visible;
+}
+.preloader .lights svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.preloader .lights svg ellipse {
+  mix-blend-mode: screen;
+}
+.preloader .lights svg ellipse:nth-child(3n + 1) {
+  fill: #ed0f43;
+  transform-origin: 47% 45%;
+  -webkit-animation: lightshow 5s linear -1s infinite forwards;
+  animation: lightshow 5s linear -1s infinite forwards;
+}
+.preloader .lights svg ellipse:nth-child(3n + 2) {
+  fill: #88e123;
+  transform-origin: 45% 50%;
+  -webkit-animation: lightshow 10s linear -2s infinite forwards;
+  animation: lightshow 10s linear -2s infinite forwards;
+}
+.preloader .lights svg ellipse:nth-child(3n + 3) {
+  fill: #903ae6;
+  transform-origin: 45% 49%;
+  -webkit-animation: lightshow 15s linear -3s infinite forwards;
+  animation: lightshow 15s linear -3s infinite forwards;
+}
+@-webkit-keyframes lightshow {
+  0% {
+    transform: translate(0) rotate(0deg) scaleX(1) scaleY(1);
+  }
+  25% {
+    transform: translate(11px, 10px) rotate(90deg) scaleX(1.12) scaleY(0.99);
+  }
+  50% {
+    transform: translate(7px, 6px) rotate(180deg) scaleX(1.26) scaleY(0.71);
+  }
+  75% {
+    transform: translate(6px, 12px) rotate(270deg) scaleX(1.19) scaleY(0.76);
+  }
+  to {
+    transform: translate(0) rotate(1turn) scaleX(1) scaleY(1);
+  }
+}
+@keyframes lightshow {
+  0% {
+    transform: translate(0) rotate(0deg) scaleX(1) scaleY(1);
+  }
+  25% {
+    transform: translate(11px, 10px) rotate(90deg) scaleX(1.12) scaleY(0.99);
+  }
+  50% {
+    transform: translate(7px, 6px) rotate(180deg) scaleX(1.26) scaleY(0.71);
+  }
+  75% {
+    transform: translate(6px, 12px) rotate(270deg) scaleX(1.19) scaleY(0.76);
+  }
+  to {
+    transform: translate(0) rotate(1turn) scaleX(1) scaleY(1);
+  }
+}
