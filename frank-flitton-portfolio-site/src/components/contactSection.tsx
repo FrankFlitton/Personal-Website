@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useLayoutEffect } from "react";
+import { Socials } from "./socials";
 
 export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   const inputClass =
@@ -37,6 +38,8 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 engineering and product design, I&apos;m excited to explore new
                 professional avenues.
               </p>
+
+              <Socials />
             </div>
           </div>
           <div className="absolute top-10 left-[calc(100%-1rem)] w-8 h-8 rotate-45 bg-black"></div>

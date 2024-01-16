@@ -1,3 +1,5 @@
+import { Footer } from "./footer";
+
 export const Page = ({
   children,
   className = "",
@@ -6,8 +8,13 @@ export const Page = ({
   className?: string;
 }) => {
   return (
-    <div className={`font-futura flex min-h-screen flex-col pl-4 pr-4 w-full ${className}`}>
-      {children}
-    </div>
+    <>
+      <div
+        className={`font-futura flex min-h-screen flex-col pl-4 pr-4 w-full ${className}`}
+      >
+        {children}
+      </div>
+      <Footer />
+    </>
   );
-}
+};
