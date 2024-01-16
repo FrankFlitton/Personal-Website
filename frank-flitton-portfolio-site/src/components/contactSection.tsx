@@ -87,7 +87,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                   rows={5}
                   defaultValue="Message"
                   required
-                ></textarea>
+                />
               </div>
               <div>
                 <button

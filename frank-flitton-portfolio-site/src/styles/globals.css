@@ -36,7 +36,8 @@ body {
   color: rgb(var(--foreground-rgb));
   background: white;
   min-height: 100dvh;
-  min-width: 100dvw;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .no-scroll {

@@ -83,7 +83,7 @@ export function MDRenderer({
 
       const images = Array.from(imageNodes).filter((n) => {
         const img = n as HTMLImageElement;
-        return n?.nodeName === "IMG";
+        return img?.nodeName === "IMG";
       });
 
       // list of image src

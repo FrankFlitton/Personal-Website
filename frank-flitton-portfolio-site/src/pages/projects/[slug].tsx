@@ -56,7 +56,7 @@ export default function Home({
     <Page>
       <div className="w-full">
         <div className="text-center py-16">
-          <h2 className="text-3xl md:text-5xl font-bold">
+          <h2 className="text-3xl md:text-5xl font-bold text-black">
             {project?.data?.title}
           </h2>
           <Link

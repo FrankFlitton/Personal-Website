@@ -21,10 +21,10 @@ export async function MDLoadFile<T>(path: string) {
 
   const readLines = readFile.split("\n");
   readLines.shift();
-  const yamlEndIndex = readLines.indexOf("---");
+  const yamlEndIndex = readLines.findIndex((s) => s.trim().startsWith("---"));
 
   const yamlLines = readLines.slice(0, yamlEndIndex);
-  const yamlString = yamlLines.join("\n");
+  const yamlString = yamlLines.join("\n").replace(/\-\-\-/g, '');
   const data: T = parse(yamlString);
 
   const contentSource = readLines.slice(yamlEndIndex + 1).join("\n");

@@ -61,7 +61,7 @@ export default function Home({
     <Page>
       <div className="w-full max-w-screen-lg m-auto">
         <div className="text-center pt-16">
-          <h2 className="text-3xl md:text-5xl font-bold">{blog?.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black">{blog?.title}</h2>
         </div>
         <div className="py-16 grid grid-cols-2 prose prose-slate m-auto">
           <div>

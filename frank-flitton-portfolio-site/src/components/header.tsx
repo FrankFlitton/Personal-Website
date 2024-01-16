@@ -50,7 +50,7 @@ export default function Header() {
               height={48}
               priority
             />
-            <h1 className="text-2xl font-bold pr-2">Frank JE Flitton</h1>
+            <h1 className="text-2xl font-bold pr-2 text-black">Frank JE Flitton</h1>
           </Link>
           <button
             className="items-end justify-center"
