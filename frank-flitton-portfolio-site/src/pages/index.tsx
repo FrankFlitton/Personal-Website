@@ -10,6 +10,7 @@ import { mediumRSSFeed } from "@/Content/medium";
 import { MediumList } from "@/components/mediumList";
 import Icon from "@mdi/react";
 import { mdiGuitarAcoustic } from "@mdi/js";
+import { PageMeta } from "@/components/pageMeta";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -115,6 +116,7 @@ export default function Home({
 
   return (
     <Page>
+      <PageMeta color="#000000" />
       <div className="w-full mb-16">
         <FeatureSlider slides={slides} />
       </div>

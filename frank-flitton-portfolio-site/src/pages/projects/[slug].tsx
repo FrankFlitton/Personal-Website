@@ -6,6 +6,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import Link from "next/link";
 import { ProjectMeta } from "@/components/projectMeta";
 import { Page } from "@/components/page";
+import { PageMeta } from "@/components/pageMeta";
 
 export const getStaticPaths = (async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
@@ -52,13 +53,22 @@ export default function Home({
   project: MDXDocument<FeatureProjectData>;
   longDescription: any;
 }) {
+  const title = project?.data?.title;
+  const description = project?.data?.description;
+  const featureImage = project?.data?.featuredImage;
+  const color = project?.data?.color;
+
   return (
     <Page>
+      <PageMeta
+        title={title}
+        description={description}
+        image={featureImage}
+        color={color}
+      />
       <div className="w-full">
         <div className="text-center py-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black">
-            {project?.data?.title}
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black">{title}</h2>
           <Link
             href={project?.data?.projectUrl}
             className="text-xl md:text-2xl hover:bg-black/10 text-black p-4 inline-block"
@@ -79,7 +89,7 @@ export default function Home({
               </div>
               <div
                 className="h-1 w-[45%] mb-16"
-                style={{ backgroundColor: project?.data?.color ?? "black" }}
+                style={{ backgroundColor: color ?? "black" }}
               ></div>
               <MDRenderer
                 className="md:ml-auto col-span-8"

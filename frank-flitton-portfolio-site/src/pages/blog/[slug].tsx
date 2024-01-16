@@ -11,6 +11,7 @@ import parse from "html-react-parser";
 import { useMemo } from "react";
 import kebabCase from "lodash/kebabCase";
 import { MediumList } from "@/components/mediumList";
+import { PageMeta } from "@/components/pageMeta";
 
 export const getStaticPaths = (async () => {
   const mediumFeed = await mediumRSSFeed;
@@ -57,11 +58,24 @@ export default function Home({
 
   if (!blog) return "not found";
 
+  const title = blog?.title;
+  const description = blog?.["content:encodedSnippet"]?.split("\n")[0];
+  const featureImage = blog?.["content:encoded"]
+    ?.match(/src="(.*?)"/g)
+    ?.at(0)
+    ?.replace(/(src=)?"/g, "");
+
   return (
     <Page>
+      <PageMeta
+        title={title}
+        description={description}
+        image={featureImage}
+        color="#000000"
+      />
       <div className="w-full max-w-screen-lg m-auto">
         <div className="text-center pt-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black">{blog?.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black">{title}</h2>
         </div>
         <div className="py-16 grid grid-cols-2 prose prose-slate m-auto">
           <div>
