@@ -113,7 +113,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                   name="message"
                   id="message"
                   rows={5}
-                  defaultValue="Message"
+                  placeholder="Message"
                   required
                 />
               </div>
