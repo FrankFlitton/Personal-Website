@@ -1,21 +1,46 @@
 import Image from "next/image";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Socials } from "./socials";
 
 export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   const inputClass =
     "block w-full p-4 mt-2 text-gray-900 border border-gray-300 bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500";
 
+  const [message, setMessage] = useState("");
+
   // add focus to first input when nav opens
   useLayoutEffect(() => {
     if (!globalThis.window) return;
     setTimeout(() => {
+      const isMobile = window.innerWidth < 640;
+      if (isMobile) return;
       const firstInput = document.querySelector("input");
       if (isNavOpen && firstInput) {
         firstInput.focus();
       }
     }, 100);
   }, [isNavOpen]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const myForm = e.target as HTMLFormElement;
+    const formData = new FormData(myForm);
+
+    setMessage("Sending...");
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then(() => {
+        setMessage("Form successfully submitted");
+      })
+      .catch(() => {
+        setMessage("Form submission failed");
+      });
+  };
 
   return (
     <div className="h-[calc(100dvh-80px)] w-full box overflow-y-scroll">
@@ -48,8 +73,8 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
           <form
             className="flex flex-col h-full mb-8"
             name="contact"
-            method="POST"
             data-netlify="true"
+            onSubmit={handleSubmit}
           >
             <div className="grid grid-cols-1 gap-4 p-4">
               <div>
@@ -99,6 +124,19 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 >
                   Send Message
                 </button>
+              </div>
+              <div>
+                {message && (
+                  <p
+                    className={`text-sm ${
+                      !message.includes("fail")
+                        ? "text-gray-400"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {message}
+                  </p>
+                )}
               </div>
             </div>
           </form>
