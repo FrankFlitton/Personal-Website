@@ -43,7 +43,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   };
 
   return (
-    <div className="h-[calc(100dvh-80px)] w-full box overflow-y-scroll">
+    <div className="h-full w-full box overflow-y-scroll">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full sm:min-h-full">
         <div className="h-full bg-black text-white px-4 py-12 relative">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

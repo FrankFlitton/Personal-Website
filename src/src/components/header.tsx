@@ -1,9 +1,10 @@
-import { mdiClose, mdiCoffee } from "@mdi/js";
-import Icon from "@mdi/react";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactSection } from "./contactSection";
 import { useLayoutEffect, useState } from "react";
+import { mdiClose, mdiCoffee } from "@mdi/js";
+import Icon from "@mdi/react";
+import { ContactSection } from "./contactSection";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -50,7 +51,9 @@ export default function Header() {
               height={48}
               priority
             />
-            <h1 className="text-2xl font-bold pr-2 text-black">Frank JE Flitton</h1>
+            <h1 className="text-2xl font-bold pr-2 text-black">
+              Frank JE Flitton
+            </h1>
           </Link>
           <button
             className="items-end justify-center"
@@ -64,7 +67,21 @@ export default function Header() {
             ></Icon>
           </button>
         </div>
-        {isNavOpen && <ContactSection isNavOpen={isNavOpen} />}
+        <AnimatePresence mode="popLayout">
+          {isNavOpen && (
+            <motion.div
+              className="h-[calc(100dvh-80px)] w-full box overflow-y-scroll"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{
+                duration: 0.5,
+              }}
+            >
+              <ContactSection key="contact-container" isNavOpen={isNavOpen} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       {/* Spacer */}
       <div className="h-[80px]"></div>
