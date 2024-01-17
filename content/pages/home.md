@@ -1,12 +1,11 @@
 ---
 data: 123
 ---
-I believe a great piece of software is like a great guitar: it feels great to use, looks amazing, and the musician can create amazing music for everyone to enjoy.
 
-I grew up in the music industry and cut my teeth programming music plugins, websites, and designing album packages. Realizing that UX was at the heart of great software, I attended design school to learn how to create scalable communication systems while teaching myself to code.
+In my view, exceptional software parallels a fine guitar: intuitively usable, aesthetically pleasing, and empowering users to create remarkable outcomes. My journey in technology began in the music industry, where I honed my skills in developing music plugins, creating websites, and designing album artwork. Recognizing the pivotal role of User Experience (UX) in software excellence, I pursued design education to master scalable communication systems, concurrently enhancing my coding expertise.
 
-Throughout my career I’ve built CMS sites for local and national businesses, instructional courses for the University of Waterloo, and digital campaigns for ad agencies. These experiences helped me understand how businesses work and how technology solves their problems.
+My career has spanned a range of projects, including the crucible of leading digital campaigns in advertising, creating educational materials for the University of Waterloo, and full stack APIs, React, and iOS applications. My tenure at Google as a UX Engineer and at TD Bank have enriched my understanding of how technology can address business challenges.
 
-I have lead software engineering teams at startups and enterprise companies, building full-stack products with front-end and back-end, database, and containerized cloud infrastructure. I’ve also gained experience prototyping solutions for cross platform iOS and Android apps, and embedding AI models into web APIs.
+I have led software engineering teams in both startups and large enterprises, focusing on delivering comprehensive full-stack products. This includes expertise in front-end, back-end, database management, and cloud-based infrastructures. My skills extend to prototyping cross-platform applications for iOS and Android and integrating AI models into web APIs.
 
-Currently I'm a UX Engineer at Google responsible for front end development and UX design. In my spare time, I create audio production software and custom design ops tooling (Sketch plugins and Python tooling) to help me manage large UI/UX projects.
+My passion for audio production software and developing custom design operations tools (like Figma plugins, Chrome extensions, and Python scripts) continues to drive my interest in managing large UI/UX projects.
