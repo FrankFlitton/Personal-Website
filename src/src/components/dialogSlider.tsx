@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
 export const DialogSlider = ({
   images = [],
@@ -31,11 +32,34 @@ export const DialogSlider = ({
     };
 
     window.addEventListener("keydown", handleEsc);
-
     return () => {
       window.removeEventListener("keydown", handleEsc);
     };
   }, [onClose]);
+
+  const config = {
+    delta: 10, // min distance(px) before a swipe starts. *See Notes*
+    preventScrollOnSwipe: false, // prevents scroll during swipe (*See Details*)
+    trackTouch: true, // track touch input
+    trackMouse: true, // track mouse input
+    rotationAngle: 0, // set a rotation angle
+    swipeDuration: Infinity, // allowable duration of a swipe (ms). *See Notes*
+    touchEventOptions: { passive: true }, // options for touch listeners (*See Details*)
+  };
+
+  const swipeProps = useSwipeable({
+    onSwiped: (eventData) => {
+      if (eventData.dir === "Left") {
+        const newVal = imageIndex - 1;
+        const moduloFix = newVal < 0 ? images.length - 1 : newVal;
+        goToImage(moduloFix);
+      } else if (eventData.dir === "Right") {
+        const newVal = (imageIndex + 1) % images.length;
+        goToImage(newVal);
+      }
+    },
+    ...config,
+  });
 
   return (
     <dialog
@@ -43,6 +67,7 @@ export const DialogSlider = ({
         ${imageIndex > -1 ? `opacity-100` : `opacity-0`}
         `}
       open={imageIndex > -1}
+      {...swipeProps}
     >
       {images.map((image, index) => {
         return (
@@ -61,6 +86,7 @@ export const DialogSlider = ({
               className="absolute top-0 left-0 w-full h-full object-contain p-4 bg-black"
               src={image}
               alt={descriptions[index]}
+              title={descriptions[imageIndex]}
               onClick={() => goToImage((index + 1) % images.length)}
             />
           </div>
@@ -82,7 +108,7 @@ export const DialogSlider = ({
         </div>
       </div>
 
-      <div className="absolute bottom-2 left-2 right-2 w-full text-white flex">
+      <div className="absolute bottom-2 left-2 right-2 w-full text-white hidden md:flex">
         <p className="flex m-auto object-center bg-black/50 p-2 text-center">
           {imageIndex > -1 && !!descriptions.length && (
             <span>{descriptions[imageIndex]}</span>
@@ -90,7 +116,7 @@ export const DialogSlider = ({
         </p>
       </div>
 
-      <ul className="absolute z-3 top-[80px] bottom-0 right-0 h-fit my-auto">
+      <ul className="absolute z-3 top-[80px] bottom-0 right-0 h-fit my-auto hidden md:block">
         {images.length &&
           images.map((image, index) => {
             return (

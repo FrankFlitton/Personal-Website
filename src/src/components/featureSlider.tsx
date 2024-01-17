@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ProgressRing } from "./progressRing";
 import { Preloader } from "./preloader";
+import { useSwipeable } from "react-swipeable";
 
 type FeatureSlide = {
   slug: string;
@@ -65,8 +66,36 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
 
   const isLoading = useMemo(() => activeSlide === -1, [activeSlide]);
 
+  const config = {
+    delta: 10, // min distance(px) before a swipe starts. *See Notes*
+    preventScrollOnSwipe: false, // prevents scroll during swipe (*See Details*)
+    trackTouch: true, // track touch input
+    trackMouse: true, // track mouse input
+    rotationAngle: 0, // set a rotation angle
+    swipeDuration: Infinity, // allowable duration of a swipe (ms). *See Notes*
+    touchEventOptions: { passive: true }, // options for touch listeners (*See Details*)
+  };
+
+  const swipeProps = useSwipeable({
+    onSwiped: (eventData) => {
+      if (isLoading) return;
+      if (eventData.dir === "Left") {
+        const newVal = activeSlide - 1;
+        const moduloFix = newVal < 0 ? slides.length - 1 : newVal;
+        goToSlide(moduloFix);
+      } else if (eventData.dir === "Right") {
+        const newVal = (activeSlide + 1) % slides.length;
+        goToSlide(newVal);
+      }
+    },
+    ...config,
+  });
+
   return (
-    <div className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black">
+    <div
+      className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black"
+      {...swipeProps}
+    >
       {slides.length &&
         slides.map((slide, index) => {
           return (
@@ -106,7 +135,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
               >
                 {/* background color hover modifier */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
-                <div className="grid grid-rows-4 grid-flow-col gap-8 md:h-[75%] h-[90%] p-8 md:mt-[12.5%] mt-5 z-1 relative">
+                <div className="grid grid-rows-4 grid-flow-col gap-8 h-full p-8 z-1 relative">
                   {/* flex center */}
                   <div className="flex items-end justify-center">
                     <h2 className="text-3xl md:text-4xl font-bold">
@@ -140,7 +169,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
           );
         })}
 
-      <ul className="absolute z-3 sm:bottom-1 right-2 sm:top-[unset] top-2 bottom-[unset] h-fit">
+      <ul className="absolute z-3 sm:bottom-1 right-2 hidden sm:visible sm:top-[unset] top-2 bottom-[unset] h-fit">
         {slides.length &&
           slides.map((_, index) => {
             return (
