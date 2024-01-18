@@ -47,7 +47,13 @@ class MyDocument extends Document {
           <NextScript />
 
           {/* <!-- Netlify Hidden Form --> */}
-          <form hidden method="post" name="contact">
+          <form
+            hidden
+            method="post"
+            name="contact"
+            netlify-honeypot="bot-field"
+            data-netlify="true"
+          >
             <input type="hidden" name="form-name" value="contact" />
             <input name="name" />
             <input name="email" />

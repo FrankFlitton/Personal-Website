@@ -89,12 +89,12 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 />
               </div>
               {/* Honeypot */}
-              <label htmlFor="website-contact" className="hidden">
+              <label htmlFor="form-name" className="hidden">
                 Website Contact
               </label>
               <input
                 type="hidden"
-                name="website-contact"
+                name="form-name"
                 placeholder="website-contact"
                 className="hidden"
               ></input>
