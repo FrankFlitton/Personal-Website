@@ -4,7 +4,7 @@ import { Socials } from "./socials";
 
 export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   const inputClass =
-    "block w-full p-4 mt-2 text-gray-900 border border-gray-300 bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500";
+    "block w-full p-4 mt-2 text-gray-900 border border-gray-300 bg-gray-50 text-lg focus:ring-blue-500 focus:border-blue-500";
 
   const [message, setMessage] = useState("");
 
@@ -43,7 +43,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   };
 
   return (
-    <div className="h-full w-full box overflow-y-scroll">
+    <div className="h-full w-full box overflow-y-scroll bg-white md:bg-transparent">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full sm:min-h-full">
         <div className="h-full bg-black text-white px-4 py-12 relative">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -67,9 +67,9 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
               <Socials />
             </div>
           </div>
-          <div className="absolute top-10 left-[calc(100%-1rem)] w-8 h-8 rotate-45 bg-black"></div>
+          <div className="absolute top-[calc(100%-1rem)] md:top-10 left-5 md:left-[calc(100%-1rem)] w-8 h-8 rotate-45 bg-black"></div>
         </div>
-        <div>
+        <div className="pt-4 md:pt-0">
           <form
             className="flex flex-col h-full mb-8"
             name="contact"
