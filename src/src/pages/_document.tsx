@@ -51,7 +51,7 @@ class MyDocument extends Document {
             hidden
             method="post"
             name="contact"
-            netlify-honeypot="bot-field"
+            netlify-honeypot="form-name"
             data-netlify="true"
           >
             <input type="hidden" name="form-name" value="contact" />

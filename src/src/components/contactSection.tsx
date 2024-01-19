@@ -29,7 +29,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
 
     setMessage("Sending...");
 
-    fetch("https://frankflitton.com/", {
+    fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData as any).toString(),
@@ -76,6 +76,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
             data-netlify="true"
             method="post"
             onSubmit={handleSubmit}
+            data-netlify-honeypot="form-name"
           >
             <div className="grid grid-cols-1 gap-4 p-4">
               <div>
@@ -97,6 +98,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 type="hidden"
                 name="form-name"
                 placeholder="website-contact"
+                value="contact"
                 className="hidden"
               ></input>
               <div>
