@@ -1,14 +1,13 @@
 # Personal Website
 
-This site is built with Vue centric JAM stack technologies and pre-rendered. All content is served over the Netlify CDN as static HTML.
+This site is built with React/Next.js centric JAM stack. All content is pre-rendered and served over the Netlify CDN as static HTML.
 
 ## Tech Stack
-- [Vue](https://vuejs.org/): javascript framework
-- [Nuxt](https://nuxtjs.org/): static HTML generation
+- [React](https://react.dev/): Javascript framework
+- [Next.js](https://nextjs.org/): static HTML generation
 - [Github](https://docs.github.com/en/graphql): GraphQL API
+- [Netlify](https://www.netlify.com/): hosting, forms, serverless functions
 - [Medium](https://medium.com/): Serverless API for blog entries
-- [Netlify](https://www.netlify.com/): hosting, forms
-- [Content](https://content.nuxtjs.org/): Markdown based CMS
 
 ## Build Setup
 
@@ -24,7 +23,8 @@ $ npm run build
 $ npm run start
 
 # generate static project
-$ npm run generate
+$ npm run build
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation on how things work, check out [Next.js docs](https://nextjs.org).
+
