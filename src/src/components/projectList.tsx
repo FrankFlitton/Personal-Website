@@ -9,7 +9,7 @@ export const ProjectList = ({
 }) => {
   return (
     <div className="w-full">
-      <div className="block w-full mb-4">
+      <div className="block w-full mb-4 text-black">
         <h2 className="text-3xl font-bold mb-2 block w-full">
           <Icon
             path={mdiPalette}

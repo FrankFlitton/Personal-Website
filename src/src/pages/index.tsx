@@ -121,14 +121,11 @@ export default function Home({
         <FeatureSlider slides={slides} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <h2 className={`mb-3 text-6xl font-bold text-black`}>
-          Developing Great Products
-        </h2>
         <p className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black mb-16`}>
           Frank is a Full Stack Software Engineer and Lead Designer specializing
           in software engineering, UX research, and product design.
         </p>
-        <h2 className="text-3xl font-bold mb-2 block w-full">
+        <h2 className="text-3xl font-bold mb-2 block w-full text-black">
           <Icon
             path={mdiGuitarAcoustic}
             className="inline mt-[-0.5rem]"
