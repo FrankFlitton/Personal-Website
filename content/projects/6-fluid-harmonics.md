@@ -1,6 +1,7 @@
 ---
 title: Fluid Harmonics
 slug: fluid-harmonics-ios-x-ui-design
+featured: true
 description: Designed to help artists create layered melodic patterns with ease.
 featuredImage: /img/projects/fluid/fluid-featuredImage.jpg
 client: In Session Audio, Nashville

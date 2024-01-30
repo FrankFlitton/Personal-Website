@@ -1,6 +1,7 @@
 ---
 title: Korg iWavestation iOS
 slug: korg-iwavestation-ios-x-ui-design
+featured: true
 description: Korg brings back the 90's for the world to hear.
 featuredImage: /img/projects/iwavestation/iwavestation-featuredImage.jpg
 client: KORG, USA, Japan

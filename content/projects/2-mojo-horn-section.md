@@ -1,6 +1,7 @@
 ---
 title: "Mojo2: Horn Section"
 slug: mojo2-horn-section-audio-app-ux-ui-design
+featured: true
 description: Crafting the perfect horn section for any musical style.
 featuredImage: /img/projects/mojo2/mojo2-featuredImage.jpg
 client: Big Fish Audio

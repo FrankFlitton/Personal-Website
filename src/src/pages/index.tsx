@@ -106,13 +106,15 @@ export default function Home({
   githubRes: any;
   mediumFeed: any;
 }) {
-  const slides = projects.map((project) => ({
-    slug: project.data.slug,
-    title: project.data.title,
-    description: project.data.description,
-    image: project.data.featuredImage,
-    color: project.data.color,
-  }));
+  const slides = projects
+    .filter((p) => !!p.data?.featured)
+    .map((project) => ({
+      slug: project.data.slug,
+      title: project.data.title,
+      description: project.data.description,
+      image: project.data.featuredImage,
+      color: project.data.color,
+    }));
 
   return (
     <Page>

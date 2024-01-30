@@ -1,6 +1,7 @@
 ---
 title: CIGI Think Tank
 slug: cigi-think-tank-ux-ui-design-relaunch
+featured: false
 description: Improving access to Canada's foreign policy.
 featuredImage: /img/projects/cigi/cigi-featuredImage.jpg
 client: Centre for International Governance Innovation

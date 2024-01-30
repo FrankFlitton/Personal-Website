@@ -1,6 +1,7 @@
 ---
 title: Apollo Cinematic Guitars
 slug: apollo-cinematic-guitars-x-ui-design
+featured: true
 description: Apollo revolutionized audio interfaces for the modern day composer.
 featuredImage: /img/projects/apollo/apollo-featuredImage.jpg
 client: Vir2 Instruments, California

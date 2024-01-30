@@ -3,6 +3,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 export interface FeatureProjectData {
   title: string;
   slug: string;
+  featured: boolean;
   description: string;
   featuredImage: string;
   client: string;

@@ -1,6 +1,7 @@
 ---
 title: Momentum
 slug: momentum-audio-app-ux-ui-design
+featured: true
 description: Never get slowed down by your samples.
 featuredImage: /img/projects/momentum/momentumFeaturedImage.jpg
 client: Big Fish Audio
