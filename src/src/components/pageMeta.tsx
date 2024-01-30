@@ -17,7 +17,10 @@ export const PageMeta = ({
   const metaDescription = description
     ? description
     : "Frank is a Full Stack Software Engineer and Lead Designer specializing in software engineering, UX research, and product design.";
-  const metaImage = image ? image : "/img/og-image.png";
+  const metaImage = !!image?.length ? image : "/img/og-image.png";
+  const metaImageURL = metaImage.startsWith("http")
+    ? metaImage
+    : `https://frankflitton.com${metaImage}`;
   const metaColor = color ? color : "#000000";
 
   return (
@@ -30,9 +33,10 @@ export const PageMeta = ({
       <meta name="twitter:creator" content={"@frankflitton"} />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:image" content={metaImageURL} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={metaTitle} />
+      <meta property="og:image" content={metaImageURL} />
     </Head>
   );
 };
