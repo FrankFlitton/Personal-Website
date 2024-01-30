@@ -77,7 +77,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
 
   return (
     <>
-      <div className="block md:hidden mb-8">
+      <div className="block md:hidden mb-8 text-black">
         <h2 className="text-3xl font-bold mb-2 w-full block">
           <Icon
             path={mdiGithub}
@@ -89,7 +89,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
         <p>{blurb}</p>
       </div>
       <div
-        className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px]`}
+        className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px] text-black`}
       >
         <div className="col-span-3 md:col-span-1 hidden md:grid justify-between grid-cols-1">
           <h2 className="text-3xl font-bold mb-2 block w-full">
@@ -120,11 +120,11 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                 !!repo.usesCustomOpenGraphImage
                   ? "row-span-2 md:row-span-1"
                   : "row-span-1"
-              } bg-neutral-100 dark:bg-neutral-900 ${
+              } bg-neutral-100 ${
                 !!repo.usesCustomOpenGraphImage
                   ? "md:col-span-2"
                   : "md:col-span-1"
-              } hover:bg-neutral-200 hover:dark:bg-neutral-800 transition-colors duration-200`}
+              } hover:bg-neutral-200 transition-colors duration-200`}
             >
               <div
                 className={`grid ${
