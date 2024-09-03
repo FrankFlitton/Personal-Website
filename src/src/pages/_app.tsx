@@ -11,7 +11,7 @@ import "@/styles/preloader.css";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  if (router.pathname.startsWith("/gist/")) {
+  if (router.pathname === "/gist") {
     return <Component {...pageProps} />;
   }
 

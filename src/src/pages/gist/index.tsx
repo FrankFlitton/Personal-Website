@@ -7,7 +7,7 @@ import GistClient from "@/components/gistClient";
  */
 function Page() {
   const router = useRouter();
-  const slug = router.query.slug === "[slug]" ? "" : router.query.slug;
+  const slug = router.query.gist || "";
 
   const isServer = !globalThis.window;
   if (isServer) return <></>;
