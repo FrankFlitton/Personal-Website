@@ -1,17 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { MDLoadDir } from "@/Content/loader";
-import { Blog, FeatureProjectData, MDXDocument } from "@/types";
-import { MDRenderer } from "@/Content/renderer";
-import { serialize } from "next-mdx-remote/serialize";
+import { Blog } from "@/types";
 import Link from "next/link";
-import { ProjectMeta } from "@/components/projectMeta";
 import { Page } from "@/components/page";
 import { mediumRSSFeed } from "@/Content/medium";
 import parse from "html-react-parser";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import kebabCase from "lodash/kebabCase";
 import { MediumList } from "@/components/mediumList";
 import { PageMeta } from "@/components/pageMeta";
+import { fixMediumGistIframes } from "@/util/fixMediumGistIframes";
 
 export const getStaticPaths = (async () => {
   const mediumFeed = await mediumRSSFeed;
@@ -32,6 +29,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const mediumFeed = await mediumRSSFeed;
   const slug = `${context?.params?.slug ?? ""}`;
   const blog = mediumFeed.items.find((item) => kebabCase(item.title) === slug);
+
+  if (blog) {
+    const html = blog ? blog["content:encoded"] : "";
+    const fixedIframes = await fixMediumGistIframes(html);
+    blog["content:encoded"] = fixedIframes;
+  }
 
   return {
     props: {
@@ -55,6 +58,33 @@ export default function Home({
   }, [html]);
 
   const pubDate = new Date(blog?.isoDate ?? "").toDateString();
+
+  const handleIframeResize = (e: MessageEvent<any>) => {
+    if (globalThis.window) {
+      if (e.data === "GIST_IFRAME_UPDATED") {
+        const gistFrames =
+          globalThis.window.document.getElementsByClassName("gist-iframe");
+        for (let i = 0; i < gistFrames.length; i++) {
+          const gistFrame = gistFrames[i] as HTMLIFrameElement;
+          // @ts-ignore
+          const gistWindow: Window = gistFrame.contentWindow;
+          if (!gistWindow) continue;
+
+          const height = gistWindow.document.documentElement.scrollHeight;
+          gistFrame.style.height = `${height}px`;
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (globalThis.window) {
+      window.addEventListener("message", handleIframeResize);
+      return () => {
+        window.removeEventListener("message", handleIframeResize);
+      };
+    }
+  }, []);
 
   if (!blog) return "not found";
 
