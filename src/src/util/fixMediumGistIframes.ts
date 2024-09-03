@@ -1,4 +1,4 @@
-const mediumMediaIdToGistId = (match: RegExpExecArray) =>
+const mediumMediaIdToGistId = (match: any) =>
   fetch(match[1])
     .then((res) => {
       return res.text();
