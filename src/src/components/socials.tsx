@@ -1,7 +1,10 @@
 import { mdiGithub, mdiLinkedin, mdiPalette, mdiTwitter } from "@mdi/js";
 import Icon from "@mdi/react";
+import { useId } from "react";
 
 export const Socials = () => {
+  const id = useId();
+
   const socials = [
     {
       name: "GitHub",
@@ -34,6 +37,7 @@ export const Socials = () => {
           href={social.url}
           target="_blank"
           title={`Frank Flitton on ${social.name}`}
+          key={`${social.name}_${id}`}
         >
           <Icon className="p-1" path={social.icon} color="black" size={1.5} />
         </a>
