@@ -9,6 +9,7 @@ import kebabCase from "lodash/kebabCase";
 import { MediumList } from "@/components/mediumList";
 import { PageMeta } from "@/components/pageMeta";
 import { fixMediumGistIframes } from "@/util/fixMediumGistIframes";
+import { fixMediumPublicationFooter } from "@/util/fixMediumPublicationFooter";
 
 export const getStaticPaths = (async () => {
   const mediumFeed = await mediumRSSFeed;
@@ -32,7 +33,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (blog) {
     const html = blog ? blog["content:encoded"] : "";
-    const fixedIframes = await fixMediumGistIframes(html);
+    const noPubFooter = fixMediumPublicationFooter(html)
+    const fixedIframes = await fixMediumGistIframes(noPubFooter);
     blog["content:encoded"] = fixedIframes;
   }
 
