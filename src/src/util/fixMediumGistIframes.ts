@@ -32,16 +32,11 @@ export const fixMediumGistIframes = async (html: string): Promise<string> => {
   });
   const ids = await Promise.all(promises);
 
-  console.log("***");
-  console.log(findAll);
-
-  console.log(ids);
   // Replace the iframes with the href content
   let newHtml = html;
   for (let i = 0; i < ids.length; i++) {
     const id = ids[i];
     newHtml = newHtml.replace(id.find, gistReferenceTemplate(id.replace));
-    console.log(html.includes(id.find));
   }
 
   return newHtml;
