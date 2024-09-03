@@ -7,6 +7,9 @@
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # old content, preserve page rank
 [[redirects]]
   from = "/vue-2-img/"
