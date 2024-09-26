@@ -8,14 +8,13 @@ export const ProjectMeta = ({
   project: MDXDocument<FeatureProjectData>;
   row?: boolean;
 }) => {
-  const id = Math.floor(Math.random() * 100000000);
   const metaSection = [
     { title: "Client", value: project.data.client },
     { title: "Category", value: project.data.category },
     { title: "Contributions", value: project.data.contributions },
   ];
   return (
-    <div className="prose prose-slate grid grid-cols-3 w-full">
+    <div className="prose prose-slate dark:prose-invert grid grid-cols-3 w-full">
       {metaSection.map((meta) => (
         <div
           className={`mb-2 ${row ? "col-span-1" : "col-span-3"} w-full`}
@@ -26,24 +25,24 @@ export const ProjectMeta = ({
             <ul className="mb-2 w-full list-outside">
               {meta.value &&
                 meta.value.map((item) => (
-                  <li key={item} className="text-gray-500 my-0 w-full">
+                  <li key={item} className="text-gray-500 dark:text-gray-300 my-0 w-full">
                     {item}
                   </li>
                 ))}
             </ul>
           ) : (
-            <p className="text-gray-500 mb-2">{meta.value}</p>
+            <p className="text-gray-500 dark:text-gray-300 mb-2">{meta.value}</p>
           )}
         </div>
       ))}
       <div
-        className={`mb-2 prose col-span-1 ${row ? "col-span-1" : "col-span-3"}`}
+        className={`mb-2 prose dark:prose-invert col-span-1 ${row ? "col-span-1" : "col-span-3"}`}
       >
         <h3 className="text-md font-bold my-0">Project Link</h3>
         <p className="mb-2">
           <Link
             href={project.data.projectUrl}
-            className="text-gray-500 hover:underline-offset-4 no-underline hover:underline"
+            className="text-gray-500 dark:text-gray-300 hover:underline-offset-4 no-underline hover:underline"
           >
             See More
           </Link>

@@ -77,7 +77,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
 
   return (
     <>
-      <div className="block md:hidden mb-8 text-black">
+      <div className="block md:hidden mb-8 text-black dark:text-white">
         <h2 className="text-3xl font-bold mb-2 w-full block">
           <Icon
             path={mdiGithub}
@@ -89,7 +89,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
         <p>{blurb}</p>
       </div>
       <div
-        className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px] text-black`}
+        className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px] text-black dark:text-white`}
       >
         <div className="col-span-3 md:col-span-1 hidden md:grid justify-between grid-cols-1">
           <h2 className="text-3xl font-bold mb-2 block w-full">
@@ -103,7 +103,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
           <p>{blurb}</p>
           <div>
             <a
-              className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 self-end p-4 ml-[-1rem]"
+              className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 self-end p-4 ml-[-1rem]"
               role="button"
               href="https://github.com/frankflitton"
               target="_blank"
@@ -120,11 +120,11 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                 !!repo.usesCustomOpenGraphImage
                   ? "row-span-2 md:row-span-1"
                   : "row-span-1"
-              } bg-neutral-100 ${
+              } bg-neutral-100 dark:bg-neutral-900 ${
                 !!repo.usesCustomOpenGraphImage
                   ? "md:col-span-2"
                   : "md:col-span-1"
-              } hover:bg-neutral-200 transition-colors duration-200`}
+              } hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200`}
             >
               <div
                 className={`grid ${
@@ -162,7 +162,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                           : repo.name}
                       </h3>
                     </div>
-                    <div className="flex justify-end align-middle text-black/70">
+                    <div className="flex justify-end align-middle text-black/70 dark:text-white/70">
                       <Icon
                         path={mdiStar}
                         title="Github Stargazer Count"
@@ -173,7 +173,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-start justify-start text-black/70">
+                  <div className="flex items-start justify-start text-black/70 dark:text-white/70">
                     <p className="line-clamp-2 md:line-clamp-2">
                       {repo.description}
                     </p>
@@ -185,7 +185,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                         href={repo.url}
                         target="_blank"
                         role="button"
-                        className="hover:bg-black/10 p-2 ml-[-0.5rem] mb-[-0.5rem]"
+                        className="hover:bg-black/10 dark:hover:bg-white/20 p-2 ml-[-0.5rem] mb-[-0.5rem]"
                       >
                         Code on GitHub
                       </a>
@@ -194,7 +194,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                           href={repo.homepageUrl}
                           target="_blank"
                           role="button"
-                          className="hover:bg-black/10 p-2 mb-[-0.5rem]"
+                          className="hover:bg-black/10 dark:hover:bg-white/20 p-2 mb-[-0.5rem]"
                         >
                           View Demo
                         </a>

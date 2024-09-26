@@ -31,7 +31,7 @@ const GistClient = ({ id }: { id: string }) => {
   }, []);
 
   return (
-    <div id={id}>
+    <div id={id} className="dark:invert dark:hue-rotate-180">
       <ReactEmbedGist gist={`FrankFlitton/${id}`} titleClass="hidden" />
     </div>
   );

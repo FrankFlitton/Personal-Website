@@ -17,7 +17,7 @@ const mediumMediaIdToGistId = (match: any) =>
     });
 
 export const gistReferenceTemplate = (id: string) => {
-  return `<iframe id="gist-${id}" class="gist-iframe" width="600" height="auto" frameborder="0" src="/gist/?gist=${id}"></iframe>`;
+  return `<iframe id="gist-${id}" class="gist-iframe dark:outline dark:outline-black/50 dark:outline-1" width="600" height="auto" frameborder="0" src="/gist/?gist=${id}"></iframe>`;
 };
 
 export const fixMediumGistIframes = async (html: string): Promise<string> => {

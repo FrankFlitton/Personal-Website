@@ -68,10 +68,12 @@ export default function Home({
       />
       <div className="w-full">
         <div className="text-center py-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black">{title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+            {title}
+          </h2>
           <Link
             href={project?.data?.projectUrl}
-            className="text-xl md:text-2xl hover:bg-black/10 text-black p-4 inline-block"
+            className="text-xl md:text-2xl hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white p-4 inline-block min-w-40"
           >
             Buy
           </Link>

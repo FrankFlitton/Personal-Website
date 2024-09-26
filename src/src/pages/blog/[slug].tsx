@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (blog) {
     const html = blog ? blog["content:encoded"] : "";
-    const noPubFooter = fixMediumPublicationFooter(html)
+    const noPubFooter = fixMediumPublicationFooter(html);
     const fixedIframes = await fixMediumGistIframes(noPubFooter);
     blog["content:encoded"] = fixedIframes;
   }
@@ -107,12 +107,14 @@ export default function Home({
       />
       <div className="w-full max-w-screen-lg m-auto">
         <div className="text-center pt-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black">{title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+            {title}
+          </h2>
         </div>
-        <div className="py-16 grid grid-cols-2 prose prose-slate m-auto">
+        <div className="py-16 grid grid-cols-2 prose prose-slate dark:prose-invert m-auto">
           <div>
             <h3 className="text-md font-bold my-0">Published On</h3>
-            <p className="text-gray-500 mb-2">{pubDate}</p>
+            <p className="text-gray-500 dark:text-gray-200 mb-2">{pubDate}</p>
           </div>
           <div>
             <h3 className="text-md font-bold my-0">Original Post</h3>
@@ -120,7 +122,7 @@ export default function Home({
               <Link
                 target="_blank"
                 href={blog.link}
-                className="text-gray-500 hover:underline-offset-4 no-underline hover:underline"
+                className="text-gray-500 dark:text-gray-200 hover:underline-offset-4 no-underline hover:underline"
               >
                 Medium Link
               </Link>
@@ -133,7 +135,7 @@ export default function Home({
                 blog.categories.map((item) => (
                   <li
                     key={item}
-                    className="text-gray-500 my-0 w-auto inline-block rounded-full bg-neutral-100 hover:bg-neutral-200 px-2 mr-1 mb-1 capitalize"
+                    className="text-gray-500 dark:text-gray-200 my-0 w-auto inline-block rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 px-2 mr-1 mb-1 capitalize"
                   >
                     {item}
                   </li>
@@ -142,7 +144,7 @@ export default function Home({
           </div>
         </div>
 
-        <article className="prose prose-slate m-auto mb-16">
+        <article className="prose prose-slate dark:prose-invert m-auto mb-16">
           <div className="h-1 w-[45%] mb-16 bg-black"></div>
           <Content />
         </article>

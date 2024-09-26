@@ -63,7 +63,7 @@ export const DialogSlider = ({
 
   return (
     <dialog
-      className={`dialog fixed top-0 left-0 right-0 z-50 bg-white w-full h-[100dvh]
+      className={`dialog fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black w-full h-[100dvh]
         ${imageIndex > -1 ? `opacity-100` : `opacity-0`}
         `}
       open={imageIndex > -1}
@@ -83,7 +83,7 @@ export const DialogSlider = ({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              className="absolute top-0 left-0 w-full h-full object-contain p-4 bg-black"
+              className="absolute top-0 left-0 w-full h-full object-contain p-[2rem] bg-black"
               src={image}
               alt={descriptions[index]}
               title={descriptions[imageIndex]}
@@ -94,8 +94,8 @@ export const DialogSlider = ({
       })}
 
       {/* Index */}
-      <div className="absolute top-0 left-0 z-50 p-4 text-sm text-white block">
-        <div className="bg-black w-[48px] h-[48px] relative">
+      <div className="absolute top-0 left-0 z-50 p-4 text-sm text-white dark:text-black block">
+        <div className="bg-black dark:bg-white w-[48px] h-[48px] relative">
           <div className="text-center top-1 left-1 absolute right-6">
             {imageIndex + 1}
           </div>

@@ -39,6 +39,11 @@ body {
   width: 100%;
   max-width: 100vw;
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    background: black;
+  }
+}
 
 .no-scroll {
   overflow: hidden !important;

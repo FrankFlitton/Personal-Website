@@ -11,6 +11,8 @@ import { MediumList } from "@/components/mediumList";
 import Icon from "@mdi/react";
 import { mdiGuitarAcoustic } from "@mdi/js";
 import { PageMeta } from "@/components/pageMeta";
+import { use } from "react";
+import useIsDark from "@/hooks/useIsDark";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -116,26 +118,35 @@ export default function Home({
       color: project.data.color,
     }));
 
+  const isDark = useIsDark();
+
   return (
     <Page>
       <PageMeta color="#000000" />
       <div className="w-full mb-16">
         <FeatureSlider slides={slides} />
       </div>
-      <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <p className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black mb-16`}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full max-w-screen-lg m-auto">
+        <p
+          className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black dark:text-white mb-16 col-span-1`}
+        >
           Frank is a Full Stack Software Engineer and Lead Designer specializing
           in software engineering, UX research, and product design.
         </p>
-        <h2 className="text-3xl font-bold mb-2 block w-full text-black">
-          <Icon
-            path={mdiGuitarAcoustic}
-            className="inline mt-[-0.5rem]"
-            size={1.5}
-          />
-          About Me
-        </h2>
-        {about && <MDRenderer className="w-full" source={about.content} />}
+        <div className="col-span-1 md:col-span-2">
+          <h2 className="text-3xl font-bold mb-2 block w-full text-black dark:text-white">
+            <Icon
+              path={mdiGuitarAcoustic}
+              className="inline mt-[-0.5rem]"
+              size={1.5}
+              color={isDark ? "white" : "black"}
+            />
+            About Me
+          </h2>
+          {about && (
+            <MDRenderer className="w-full mb-16" source={about.content} />
+          )}
+        </div>
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />

@@ -104,7 +104,7 @@ export function MDRenderer({
         onClose={(i) => setImageIndex(i)}
       />
       <div
-        className={`wrapper prose prose-slate ${className}`}
+        className={`wrapper prose prose-slate dark:prose-invert ${className}`}
         ref={ref}
         onClick={handleClick}
       >

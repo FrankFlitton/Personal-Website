@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 import { mdiClose, mdiCoffee } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ContactSection } from "./contactSection";
 import { motion, AnimatePresence } from "framer-motion";
+import useIsDark from "@/hooks/useIsDark";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -32,26 +33,33 @@ export default function Header() {
     }
   }, [isNavOpen, body?.classList, body]);
 
+  const isDark = useIsDark();
+
   return (
     <>
       <div
-        className={`font-futura z-10 w-full text-sm flex flex-col backdrop-blur-md bg-white/80 fixed ${
+        className={`font-futura z-10 w-full text-sm flex flex-col backdrop-blur-md bg-white/80 dark:bg-black/40 fixed ${
           isNavOpen ? "h-screen" : "h-[80px]"
         }`}
       >
         <div className="w-screen items-center justify-between flex h-[80px] p-4">
           <Link
-            className="flex items-center gap-2 mix-ble bg-black/0 hover:bg-black/20 transition-colors duration-200"
+            className="flex items-center gap-2 mix-ble bg-black/0 hover:bg-black/20 dark:hover:bg-white/20 transition-colors duration-200"
             href="/"
           >
             <Image
-              src="/img/branding/logo-transparent.svg"
+              src={
+                isDark
+                  ? "/img/branding/logo-black.svg"
+                  : "/img/branding/logo-transparent.svg"
+              }
               alt="Frank JE Flitton Logo"
+              className="dark:bg-white"
               width={48}
               height={48}
               priority
             />
-            <h1 className="text-2xl font-bold pr-2 text-black">
+            <h1 className="text-2xl font-bold pr-2 text-black dark:text-white">
               Frank JE Flitton
             </h1>
           </Link>
@@ -60,9 +68,9 @@ export default function Header() {
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
             <Icon
-              className="hover:bg-black/10 p-2 mb-[-0.5rem]"
+              className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.5rem]"
               path={isNavOpen ? mdiClose : mdiCoffee}
-              color="black"
+              color={isDark ? "white" : "black"}
               size={1.5}
             ></Icon>
           </button>
@@ -84,7 +92,7 @@ export default function Header() {
         </AnimatePresence>
       </div>
       {/* Spacer */}
-      <div className="h-[80px]"></div>
+      <div className="h-[80px] bg-white dark:bg-black"></div>
     </>
   );
 }

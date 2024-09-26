@@ -43,9 +43,9 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   };
 
   return (
-    <div className="h-full w-full box overflow-y-scroll bg-white md:bg-transparent">
+    <div className="h-full w-full box overflow-y-scroll bg-white md:bg-transparent dark:bg-black/80 dark:md:bg-black/80">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full sm:min-h-full">
-        <div className="h-full bg-black text-white px-4 py-12 relative">
+        <div className="h-full bg-black dark:bg-black/50 text-white px-4 py-12 relative">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="col-span-1">
               <Image
@@ -125,7 +125,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
               </div>
               <div>
                 <button
-                  className="bg-black hover:bg-gray-800 text-white py-4 px-8 text-xl text-left mt-4 inline-block"
+                  className="bg-white/10 hover:bg-white/20 text-white py-4 px-8 text-xl text-left mt-4 inline-block"
                   type="submit"
                 >
                   Send Message

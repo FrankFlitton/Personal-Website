@@ -1,9 +1,8 @@
-import Link from "next/link";
 import { Socials } from "./socials";
 
 export const Footer = () => {
   return (
-    <footer className="font-futura bg-black text-white">
+    <footer className="font-futura bg-black dark:bg-neutral-900 text-white">
       {/* two cols */}
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4 px-4 py-16">
         <div>
