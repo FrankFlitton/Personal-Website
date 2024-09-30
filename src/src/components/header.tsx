@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useMemo, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { mdiClose, mdiCoffee } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ContactSection } from "./contactSection";

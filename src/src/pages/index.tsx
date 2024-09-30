@@ -11,7 +11,6 @@ import { MediumList } from "@/components/mediumList";
 import Icon from "@mdi/react";
 import { mdiGuitarAcoustic } from "@mdi/js";
 import { PageMeta } from "@/components/pageMeta";
-import { use } from "react";
 import useIsDark from "@/hooks/useIsDark";
 
 export const metadata: Metadata = {
