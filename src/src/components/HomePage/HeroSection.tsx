@@ -45,7 +45,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="w-9/12 h-[calc(95dvh-80px)] mx-auto relative">
-        <div className="h-full w-full sm:w-9/12 md:w-4/12 min-w-[300px] max-w-[600px] md:ml-[50%] mx-auto absolute inset-0">
+        <div className="h-full w-full sm:w-9/12 md:w-4/12 lg:w-5/12 xl:w-4/12 min-w-[300px] max-w-[600px] md:ml-[50%] mx-auto absolute inset-0">
           {/* Border */}
           <div className="absolute inset-[-1px] rounded-xl border bg-black border-neutral-600 dark:border-neutral-900 shadow-2xl"></div>
 
@@ -110,8 +110,8 @@ export default function HeroSection() {
             ></div>
           </div>
 
-          {/* Top Gold */}
-          <div className="absolute top-10 right-full w-[13vmin] h-[13vmin] rounded-full mr-[-0.5rem] overflow-hidden shadow-md">
+          {/* Top Gold 1 */}
+          <div className="absolute top-10 right-full w-[8vmin] h-[8vmin] rounded-full mr-[-0.5rem] overflow-hidden shadow-md">
             {/* Gold Bar */}
             <div className="absolute h-full w-full bg-gradient-to-bl from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div>
             {/* Gold Blob */}
@@ -122,11 +122,14 @@ export default function HeroSection() {
         <div className="h-full md:w-6/12 w-full rounded-xl absolute inset-0">
           {/* center vertically */}
           <h2 className="md:text-7xl text-4xl font-bold stroke stroke-black text-white md:text-white drop-shadow-lg md:drop-shadow-none dark:text-white py-10 items-end md:items-center text-center sm:text-left flex h-full pt-20">
-            <span className="p-5  flex flex-col w-full md:w-[--min-content]">
-              <span>Lorem Ipsum </span>
-              <span className="text-amber-500 dark:text-blue-700 drop-shadow-md">
-                Dolor Amet
+            <span className="p-5 flex flex-col w-full md:w-[--min-content]">
+              <span>Let&apos;s Build the Future Together</span>
+              <span className="bg-amber-500 dark:bg-blue-700 h-1 w-3/6 md:w-2/6 mx-auto md:mx-0 mt-10 mb-5">
+                &nbsp;
               </span>
+              {/* <span className="text-amber-500 dark:text-blue-700 drop-shadow-md">
+                Dolor Amet
+              </span> */}
             </span>
           </h2>
         </div>
