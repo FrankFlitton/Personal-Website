@@ -84,6 +84,7 @@ const EndlessCircleAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    let isMobile = window.innerWidth < 768;
     const image = new Image();
     image.src = "/icon.png";
     if (!canvasRef.current) {
@@ -97,16 +98,17 @@ const EndlessCircleAnimation = () => {
     }
 
     let animationFrameId: number;
-    let w: number, h: number;
+    let w: number, h: number, cursorX: number, cursorY: number;
 
     const handleMouseMove = (e?: MouseEvent) => {
-      cursorX = e?.clientX || 0;
-      cursorY = e?.clientY || 0;
+      cursorX = isMobile ? 0 : e?.clientX || 0;
+      cursorY = isMobile ? 0 : e?.clientY || 0;
       updateVariables();
     };
 
     // Function to resize the canvas to full window size
     const resizeCanvas = () => {
+      isMobile = window.innerWidth < 768;
       w = canvas.clientWidth * window.devicePixelRatio;
       h = canvas.clientHeight * window.devicePixelRatio;
       canvas.width = w;
@@ -118,14 +120,12 @@ const EndlessCircleAnimation = () => {
     let centerX: number,
       centerY: number,
       radiusInner: number,
-      radiusOuter: number,
-      cursorX: number,
-      cursorY: number;
+      radiusOuter: number;
 
     // Update variables when canvas size changes
     const updateVariables = () => {
-      centerX = w / 2 + ((cursorX - w) / w) * -50;
-      centerY = h * 0.34 + ((cursorY - h) / h) * -50;
+      centerX = isMobile ? w / 2 : w / 2 + ((cursorX - w) / w) * -50;
+      centerY = isMobile ? h * 0.34 : h * 0.34 + ((cursorY - h) / h) * -50;
       radiusInner = Math.max(w, h) * 0.34;
       radiusOuter = Math.max(w, h) * 0.89;
     };
@@ -133,7 +133,7 @@ const EndlessCircleAnimation = () => {
     // Initialize canvas size and variables
     handleMouseMove();
     resizeCanvas();
-    const debouncedResize = debounce(resizeCanvas, 100);
+    const debouncedResize = debounce(resizeCanvas, 5);
     const debouncedMouseMove = debounce(handleMouseMove, 5);
     window.addEventListener("resize", debouncedResize);
     window.addEventListener("mousemove", debouncedMouseMove);
@@ -176,8 +176,8 @@ const EndlessCircleAnimation = () => {
 
       ringCluster(
         ctx,
-        centerX + ((cursorX - w) / w) * -10,
-        centerY + ((cursorY - h) / h) * -10,
+        isMobile ? centerX : centerX + ((cursorX - w) / w) * -10,
+        isMobile ? centerY : centerY + ((cursorY - h) / h) * -10,
         radiusOuter,
         currentAngle,
         "#444444",
@@ -189,8 +189,12 @@ const EndlessCircleAnimation = () => {
       ctx.globalCompositeOperation = "source-over";
       ctx.drawImage(
         image,
-        centerX - radiusInner * 0.17 + ((cursorX - w) / w) * -10,
-        centerY - radiusInner * 0.17 + ((cursorY - h) / h) * -10,
+        isMobile
+          ? centerX - radiusInner * 0.17
+          : centerX - radiusInner * 0.17 + ((cursorX - w) / w) * -10,
+        isMobile
+          ? centerY - radiusInner * 0.17
+          : centerY - radiusInner * 0.17 + ((cursorY - h) / h) * -10,
         radiusInner * 0.34,
         radiusInner * 0.34
       );
@@ -198,8 +202,12 @@ const EndlessCircleAnimation = () => {
 
       ctx.globalCompositeOperation = "multiply";
       ctx.rect(
-        centerX - radiusInner * 0.16 + ((cursorX - w) / w) * -10,
-        centerY - radiusInner * 0.16 + ((cursorY - h) / h) * -10,
+        isMobile
+          ? centerX - radiusInner * 0.16
+          : centerX - radiusInner * 0.16 + ((cursorX - w) / w) * -10,
+        isMobile
+          ? centerY - radiusInner * 0.16
+          : centerY - radiusInner * 0.16 + ((cursorY - h) / h) * -10,
         radiusInner * 0.32,
         radiusInner * 0.32
       );
