@@ -3,8 +3,8 @@ import EndlessCircleAnimation from "./EndlessCircleAnimation";
 
 export default function HeroSection() {
   return (
-    <div className="w-full h-full mx-auto relative ">
-      <div className="absolute inset-0 sm:inset-10 ">
+    <div className="w-[100cqw] h-full h-min-screen mx-auto relative overflow-x-clip ml-[-1em]">
+      <div className="absolute inset-0 sm:inset-10">
         {/* <div className="absolute inset-5 bg-gradient-to-tr from-orange-300 to-cyan-100 dark:from-blue-950 dark:to-stone-700 opacity-20 dark:opacity-50"></div>
         <div className="absolute inset-5 bg-gradient-to-t from-amber-100 to-stone-400 dark:from-neutral-900 dark:to-black opacity-20 dark:opacity-60"></div> */}
 
@@ -26,7 +26,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="w-9/12 h-[calc(95dvh-80px)] mx-auto relative">
-        <div className="h-full w-12/12 sm:w-9/12 md:w-4/12 min-w-[300px] max-w-[600px] md:ml-[50%] mx-auto absolute inset-0">
+        <div className="h-full w-full sm:w-9/12 md:w-4/12 min-w-[300px] max-w-[600px] md:ml-[50%] mx-auto absolute inset-0">
           {/* Border */}
           <div className="absolute inset-[-1px] rounded-xl border bg-black border-neutral-600 dark:border-neutral-900 shadow-2xl"></div>
 
@@ -96,8 +96,8 @@ export default function HeroSection() {
             {/* Gold Bar */}
             <div className="absolute h-full w-full bg-gradient-to-bl from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div>
             {/* Gold Blob */}
-            <div className="absolute rounded-full top-10 right-5 w-[13cqh] h-[13cqh] bg-gradient-to-tr from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div>
-            <div className="absolute rounded-full top-10 left-10 w-[21cqh] h-[21cqh] bg-gradient-to-tr from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div>
+            {/* <div className="absolute rounded-full top-1/4 right-[21%] w-[113%] h-[113%] bg-gradient-to-tr from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div> */}
+            <div className="absolute rounded-full top-1/4 left-[21%] w-[100%] h-[100%] bg-gradient-to-tr from-amber-400 to-amber-500 dark:from-blue-600 dark:to-blue-800"></div>
           </div>
         </div>
         <div className="h-full md:w-6/12 w-full rounded-xl absolute inset-0">
