@@ -9,13 +9,32 @@ export default function HeroSection() {
         <div className="absolute inset-5 bg-gradient-to-t from-amber-100 to-stone-400 dark:from-neutral-900 dark:to-black opacity-20 dark:opacity-60"></div> */}
 
         {/* light */}
-        <div className="absolute inset-5 bg-gradient-to-t from-stone-700 to-neutral-800 opacity-100 dark:opacity-0"></div>
-        <div className="absolute inset-5 bg-gradient-to-tr from-amber-900 to-amber-400 opacity-30 dark:opacity-0 bg-blend-color-burn"></div>
+        <div className="absolute inset-5 bg-gradient-to-t from-slate-400 to-neutral-300 opacity-100 dark:opacity-0"></div>
+        <div className="absolute inset-5 bg-gradient-to-tr from-amber-600 to-amber-400 opacity-30 dark:opacity-0 bg-blend-color-burn"></div>
         {/* dark */}
         <div className="absolute inset-5 bg-gradient-to-tr from-orange-300 to-cyan-100 dark:from-blue-950 dark:to-stone-700 opacity-0 dark:opacity-50"></div>
         <div className="absolute inset-5 bg-gradient-to-t from-neutral-900 to-black opacity-0 dark:opacity-60"></div>
 
-        <div className="absolute inset-5 object-cover mix-blend-overlay opacity-20 dark:opacity:60">
+        <div className="absolute inset-5 object-cover opacity-100 dark:opacity:20">
+          <Image
+            className="object-cover w-full h-full"
+            alt="Scan texture"
+            src="/img/branding/blurA.png"
+            width={960}
+            height={540}
+          ></Image>
+        </div>
+        <div className="absolute inset-5 object-cover opacity-60 dark:opacity:30">
+          <Image
+            className="object-cover w-full h-full"
+            alt="Scan texture"
+            src="/img/branding/blurB.png"
+            width={960}
+            height={540}
+          ></Image>
+        </div>
+
+        <div className="absolute inset-5 object-cover mix-blend-overlay dark:mix-blend-normal opacity-10 dark:opacity:100">
           <Image
             className="object-cover w-full h-full"
             alt="Scan texture"
@@ -103,10 +122,10 @@ export default function HeroSection() {
         <div className="h-full md:w-6/12 w-full rounded-xl absolute inset-0">
           {/* center vertically */}
           <h2 className="md:text-7xl text-4xl font-bold stroke stroke-black text-white md:text-white drop-shadow-lg md:drop-shadow-none dark:text-white py-10 items-end md:items-center text-center sm:text-left flex h-full pt-20">
-            <span className="p-5  flex flex-col w-[--min-content]">
-              <span>Let&apos;s build something </span>
+            <span className="p-5  flex flex-col w-full md:w-[--min-content]">
+              <span>Lorem Ipsum </span>
               <span className="text-amber-500 dark:text-blue-700 drop-shadow-md">
-                AMAZING
+                Dolor Amet
               </span>
             </span>
           </h2>
