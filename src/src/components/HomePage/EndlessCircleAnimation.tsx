@@ -200,17 +200,6 @@ const EndlessCircleAnimation = () => {
       );
       ctx.beginPath();
 
-      ctx.globalCompositeOperation = "multiply";
-      ctx.rect(
-        isMobile
-          ? centerX - radiusInner * 0.16
-          : centerX - radiusInner * 0.16 + ((cursorX - w) / w) * -10,
-        isMobile
-          ? centerY - radiusInner * 0.16
-          : centerY - radiusInner * 0.16 + ((cursorY - h) / h) * -10,
-        radiusInner * 0.32,
-        radiusInner * 0.32
-      );
       ctx.fillStyle = "goldenrod"; // hue doesn't matter here
       ctx.fill();
 
