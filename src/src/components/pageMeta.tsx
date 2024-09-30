@@ -18,7 +18,7 @@ export const PageMeta = ({
     : "Frank JE Flitton | Developing Great Products";
   const metaDescription = description
     ? description
-    : "Frank is a Full Stack Software Engineer and Lead Designer specializing in software engineering, UX research, and product design.";
+    : "Frank is a Software Engineer and Lead Designer specializing engineering software for the web, UX research, and product design.";
   const metaImage = !!image?.length ? image : "/img/og-image.jpg";
   const metaImageURL = metaImage.startsWith("http")
     ? metaImage

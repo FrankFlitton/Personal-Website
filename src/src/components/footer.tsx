@@ -10,9 +10,8 @@ export const Footer = () => {
             Developing Great Products
           </h2>
           <p className="m-0 max-w-[30ch] text-2xl opacity-50 mb-16">
-            Frank is a Full Stack Software Engineer and Lead Designer
-            specializing in software engineering, UX research, and product
-            design.
+            Frank is a Software Engineer and Lead Designer specializing
+            engineering software for the web, UX research, and product design.
           </p>
           <Socials />
           <p className="mt-8 max-w-[30ch] opacity-50 mb-16">

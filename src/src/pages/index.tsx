@@ -16,7 +16,7 @@ import useIsDark from "@/hooks/useIsDark";
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
   description:
-    "Frank is a Full Stack Software Engineer and Lead Designer specializing in software engineering, UX research, and product design.",
+    "Frank is a Software Engineer and Lead Designer specializing engineering software for the web, UX research, and product design.",
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -129,8 +129,8 @@ export default function Home({
         <p
           className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black dark:text-white mb-16 col-span-1`}
         >
-          Frank is a Full Stack Software Engineer and Lead Designer specializing
-          in software engineering, UX research, and product design.
+          Frank is a Software Engineer and Lead Designer specializing
+          engineering software for the web, UX research, and product design.
         </p>
         <div className="col-span-1 md:col-span-2">
           <h2 className="text-3xl font-bold mb-2 block w-full text-black dark:text-white">

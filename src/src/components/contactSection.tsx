@@ -67,7 +67,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
               <Socials />
             </div>
           </div>
-          <div className="absolute top-[calc(100%-1rem)] md:top-10 left-5 md:left-[calc(100%-1rem)] w-8 h-8 rotate-45 bg-black"></div>
+          <div className="absolute top-[calc(100%-1rem)] md:top-[3.5rem] left-5 md:left-[calc(100%-1rem)] w-8 h-8 rotate-45 bg-black"></div>
         </div>
         <div className="pt-4 md:pt-0">
           <form
