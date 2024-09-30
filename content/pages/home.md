@@ -2,10 +2,10 @@
 data: 123
 ---
 
-In my view, exceptional software parallels a fine guitar: intuitively usable, aesthetically pleasing, and empowering users to create remarkable outcomes. My journey in technology began in the music industry, where I honed my skills in developing music plugins, creating websites, and designing album artwork. Recognizing the pivotal role of User Experience (UX) in software excellence, I pursued design education to master scalable communication systems, concurrently enhancing my coding expertise.
+I believe exceptional software is like a finely crafted instrument—intuitive, visually appealing, and capable of empowering users to achieve great results. My tech journey began in the music industry, where I developed music plugins, built websites, and designed album artwork. Realizing the importance of User Experience (UX) in creating impactful software, I focused on mastering scalable HCI UI/UX systems while deepening my software engineering expertise.
 
-My career has spanned a range of projects, including the crucible of leading digital campaigns in advertising, creating educational materials for the University of Waterloo, and full stack APIs, React, and iOS applications. My tenure at Google as a UX Engineer and at TD Bank have enriched my understanding of how technology can address business challenges.
+Over the course of my career, I’ve led engineering teams in both startups and large enterprises, building everything from full-stack web applications to AI-driven systems and cloud infrastructure. My work spans industries and technologies, including AI/ML tools, scalable web platforms, and data-driven solutions for global users.
 
-I have led software engineering teams in both startups and large enterprises, focusing on delivering comprehensive full-stack products. This includes expertise in front-end, back-end, database management, and cloud-based infrastructures. My skills extend to prototyping cross-platform applications for iOS and Android and integrating AI models into web APIs.
+I’ve had the privilege of working at Google, TD Bank, and leading AI companies, where I’ve tackled complex challenges in web-centric architectures, big data processing, and full-stack development. Whether building robust APIs, architecting cloud-native solutions, or integrating AI models into scalable products, I’m driven by the opportunity to turn complex problems into elegant, scalable software solutions.
 
-My passion for audio production software and developing custom design operations tools (like Figma plugins, Chrome extensions, and Python scripts) continues to drive my interest in managing large UI/UX projects.
+Now, I’m focused on delivering high-impact software that drives innovation, reduces complexity, and scales to meet the needs of global businesses.
