@@ -6,10 +6,11 @@ import React, { useEffect, useRef } from "react";
 const amber500 = "#f59e0b";
 const amber400 = "#fbbf24";
 
-const polarToCartesian = (
-  theta: number,
+const angleToCartesian = (
+  angle: number,
   magnitude: number
 ): { x: number; y: number } => {
+  const theta = angle * (Math.PI / 180);
   const x = magnitude * Math.cos(theta);
   const y = magnitude * Math.sin(theta);
   return { x, y };
@@ -26,7 +27,6 @@ const ring = (
 ) => {
   // Draw the arc from 0 to currentAngle
   ctx.beginPath();
-  const { x, y } = polarToCartesian(currentAngle * -1, radius);
   ctx.arc(centerX, centerY, radius, 0, 360);
   const grd = ctx.createConicGradient(
     currentAngle,
@@ -40,13 +40,15 @@ const ring = (
     // radius * 1.34
   );
   grd.addColorStop(0, "#000000");
-  grd.addColorStop(0.05, color);
+  grd.addColorStop(0.08, color);
+  grd.addColorStop(0.34, color2);
+  grd.addColorStop(0.45, "#000000");
+  grd.addColorStop(0.55, color);
   grd.addColorStop(0.89, color2);
   grd.addColorStop(1, "#000000");
 
   ctx.strokeStyle = grd;
   ctx.lineWidth = 1;
-  // ctx.globalCompositeOperation = "screen";
   ctx.stroke();
 };
 
@@ -60,20 +62,17 @@ const ringCluster = (
   color2: string
 ) => {
   // Draw the arc from 0 to currentAngle
-  const ringSteps = 28;
-  for (let i = 0; i <= ringSteps; i++) {
+  // const ringSteps = 28;
+  const ringSteps = 21;
+  for (let i = 0; i < ringSteps; i++) {
     const ringStepDeg = Math.floor(360 / ringSteps);
-    const { x, y } = polarToCartesian(
-      (ringStepDeg * i) / Math.PI,
-      radius * 0.21
-    );
-
+    const { x, y } = angleToCartesian(ringStepDeg * i, radius * 0.21);
     ring(
       ctx,
       centerX + x,
       centerY + y,
       radius / 2,
-      currentAngle + i * ringStepDeg,
+      currentAngle + (i * 2 * Math.PI) / ringSteps, // pulse effect
       color,
       color2
     );
@@ -179,14 +178,12 @@ const EndlessCircleAnimation = () => {
         isMobile ? centerX : centerX + ((cursorX - w) / w) * -10,
         isMobile ? centerY : centerY + ((cursorY - h) / h) * -10,
         radiusOuter,
-        currentAngle,
+        currentAngle + 180,
         "#444444",
         "#444444"
       );
 
       // place image in center
-      // ctx.globalCompositeOperation = "source-over";
-      ctx.globalCompositeOperation = "source-over";
       ctx.drawImage(
         image,
         isMobile
