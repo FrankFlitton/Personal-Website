@@ -1,13 +1,13 @@
 export default function LargeDotLine({
   className,
-  color = "amber-500",
-  colorDark = "blue-600",
-  textAlign = 'justify',
+  color,
+  colorDark,
+  textAlign,
 }: {
   className?: string;
   color?: string;
   colorDark?: string;
-  textAlign?: 'left' | 'right' | 'justify';
+  textAlign?: "left" | "right" | "justify";
 }) {
   return (
     // Array builder for the dotline
@@ -19,12 +19,12 @@ export default function LargeDotLine({
         after:w-full
         after:h-full
         after:inset-0
-        after:text-${color}
-        after:dark:text-${colorDark}
+        after:text-${color || "amber-500"}
+        after:dark:text-${colorDark || "blue-600"}
         after:tracking-[0.5rem]
         after:leading-[1.5rem]
         after:text-[1rem]
-        after:text-${textAlign}
+        after:text-${textAlign || "justify"}
         after:overflow-hidden
         after:break-words
         after:content-['••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••']

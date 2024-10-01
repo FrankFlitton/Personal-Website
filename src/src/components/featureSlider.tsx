@@ -93,7 +93,7 @@ export const FeatureSlider = ({ slides = [] }: { slides: FeatureSlide[] }) => {
 
   return (
     <div
-      className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] mb-4 bg-black"
+      className="relative w-full h-[calc(100dvh-80px-1rem)] min-h-[400px] bg-black"
       {...swipeProps}
     >
       {slides.length &&

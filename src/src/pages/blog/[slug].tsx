@@ -10,6 +10,7 @@ import { MediumList } from "@/components/mediumList";
 import { PageMeta } from "@/components/pageMeta";
 import { fixMediumGistIframes } from "@/util/fixMediumGistIframes";
 import { fixMediumPublicationFooter } from "@/util/fixMediumPublicationFooter";
+import LargeDotLine from "@/components/HomePage/LargeDotline";
 
 export const getStaticPaths = (async () => {
   const mediumFeed = await mediumRSSFeed;
@@ -145,8 +146,17 @@ export default function Home({
         </div>
 
         <article className="prose prose-slate dark:prose-invert m-auto mb-16">
-          <div className="h-1 w-[45%] mb-16 bg-black"></div>
+          <LargeDotLine
+            className="relative h-4 w-[45%] mb-16 mx-auto"
+            color="black"
+            colorDark="white"
+          />
           <Content />
+          <LargeDotLine
+            className="relative h-4 w-[45%] my-16 mx-auto"
+            color="black"
+            colorDark="white"
+          />
         </article>
       </div>
       {mediumFeed && (

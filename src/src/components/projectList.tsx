@@ -1,7 +1,5 @@
 import useIsDark from "@/hooks/useIsDark";
 import { FeatureProjectData, MDXDocument } from "@/types";
-import { mdiBook, mdiPalette } from "@mdi/js";
-import Icon from "@mdi/react";
 
 export const ProjectList = ({
   projects,
@@ -12,16 +10,8 @@ export const ProjectList = ({
   return (
     <div className="w-full">
       <div className="block w-full mb-4 text-black dark:text-white">
-        <h2 className="text-3xl font-bold mb-2 block w-full">
-          <Icon
-            path={mdiPalette}
-            size={1.25}
-            className="inline-block mt-[-0.5rem] mr-2"
-            color={isDark ? "white" : "black"}
-          />
-          UI/UX Projects
-        </h2>
-        <p>A selection of projects where I led UX research and UI design.</p>
+        <h2 className="text-3xl font-bold mb-2 block w-full">UI/UX Projects</h2>
+        <p>A selection of UI/UX design projects.</p>
       </div>
 
       <div className="grid grid-cols-1 auto-rows-[175px] md:auto-rows-[200px] gap-4">

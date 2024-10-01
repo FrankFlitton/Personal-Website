@@ -1,11 +1,14 @@
 import Image from "next/image";
 import EndlessCircleAnimation from "./EndlessCircleAnimation";
 import LargeDotLine from "./LargeDotline";
+import useIsDark from "@/hooks/useIsDark";
+import { tagline } from "@/const/const";
 
 export default function HeroSection() {
+  const isDark = useIsDark();
   return (
     <>
-      <div className="w-[100cqw] h-full h-min-screen mx-auto relative overflow-x-clip ml-[-1em]">
+      <div className="w-[100cqw] h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip ml-[-1em]">
         <div className="absolute inset-0 sm:inset-10">
           {/* light */}
           <div className="absolute inset-5 bg-gradient-to-t from-slate-400 to-neutral-300 opacity-100 dark:opacity-0"></div>
@@ -43,18 +46,18 @@ export default function HeroSection() {
             ></Image> */}
           </div>
         </div>
-        <div className="w-9/12 h-[calc(95dvh-80px)] mx-auto relative">
+        <div className="w-9/12 h-[calc(75dvh)] mx-auto relative">
           <div className="h-full w-full mx-auto absolute inset-0">
             {/* Border */}
             <div className="absolute inset-[-1px] rounded-xl border bg-black border-neutral-600 dark:border-neutral-900 shadow-2xl"></div>
 
             <div className="absolute w-full h-full top-2 left-2 rounded-xl bg-neutral-800 blur opacity-20"></div>
             <div className="absolute w-full h-full top-2 left-2 rounded-xl bg-amber-500 dark:bg-blue-600 shadow-lg"></div>
-            <div className="absolute inset-0 rounded-xl overflow-hidden dark:hue-rotate-180 dark:brightness-75 dark:saturate-150">
-              <EndlessCircleAnimation />
+            <div className="absolute inset-0 rounded-xl overflow-hidden">
+              <EndlessCircleAnimation isDark={isDark} />
             </div>
 
-            <div className="dark:hue-rotate-180 dark:saturate-150 absolute w-full h-full">
+            <div className="absolute w-full h-full">
               {/* Top dotted border */}
               <LargeDotLine className="absolute top-5 left-5 right-5 h-5" />
               {/* Bottom dotted border */}
@@ -68,8 +71,8 @@ export default function HeroSection() {
               <LargeDotLine className="absolute top-10 right-5 bottom-10 w-5" />
             </div>
 
-            <div className="h-full w-full rounded-xl absolute inset-15">
-              <div className="items-end md:items-center text-center flex h-full flex-col md:justify-end justify-end">
+            <div className="h-full w-full absolute inset-15">
+              {/* <div className="items-end md:items-center text-center flex h-full flex-col md:justify-end justify-end">
                 <div>
                   <h2 className="md:text-7xl text-4xl font-bold stroke stroke-black text-white md:text-white drop-shadow-lg md:drop-shadow-none dark:text-white py-10 items-end md:items-center pt-20">
                     <span className="px-5 pb-10 md:pb-0 flex flex-col w-full">
@@ -80,18 +83,17 @@ export default function HeroSection() {
                     </span>
                   </h2>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           {/* end black */}
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full max-w-screen-lg m-auto mt-20">
+      <div className="h-full max-w-screen-lg w-full mt-16 mx-auto">
         <p
-          className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black dark:text-white mb-16 col-span-1 mx-auto`}
+          className="mx-auto text-center text-2xl text-neutral-500 dark:text-neutral-400 mb-16 w-full sm:w-2/3"
         >
-          Frank is a Software Engineer and Lead Designer specializing
-          engineering software for the web, UX research, and product design.
+          {tagline}
         </p>
       </div>
     </>

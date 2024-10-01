@@ -5,6 +5,8 @@ import React, { useEffect, useRef } from "react";
 
 const amber500 = "#f59e0b";
 const amber400 = "#fbbf24";
+const blue600 = "#2563eb";
+const blue800 = "#1e40af";
 
 const angleToCartesian = (
   angle: number,
@@ -79,7 +81,7 @@ const ringCluster = (
   }
 };
 
-const EndlessCircleAnimation = () => {
+const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -124,9 +126,9 @@ const EndlessCircleAnimation = () => {
     // Update variables when canvas size changes
     const updateVariables = () => {
       centerX = isMobile ? w / 2 : w / 2 + ((cursorX - w) / w) * -50;
-      centerY = isMobile ? h * 0.34 : h * 0.34 + ((cursorY - h) / h) * -50;
-      radiusInner = Math.max(w, h) * 0.34;
-      radiusOuter = Math.max(w, h) * 0.89;
+      centerY = isMobile ? h * 0.45 : h * 0.45 + ((cursorY - h) / h) * -50;
+      radiusInner = isMobile ? Math.max(w, h) * 0.34 : Math.min(w, h) * 0.54;
+      radiusOuter = isMobile ? Math.max(w, h) * 0.89 : Math.min(w, h) * 1.32;
     };
 
     // Initialize canvas size and variables
@@ -150,8 +152,8 @@ const EndlessCircleAnimation = () => {
         centerY,
         radiusInner,
         currentAngle,
-        amber500,
-        amber400
+        isDark ? blue600 : amber500,
+        isDark ? blue800 : amber400
       );
 
       // shadow puppet
@@ -169,7 +171,7 @@ const EndlessCircleAnimation = () => {
         0,
         360
       );
-      ctx.strokeStyle = amber400;
+      ctx.strokeStyle = isDark ? blue600 : amber400;
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -216,7 +218,7 @@ const EndlessCircleAnimation = () => {
       window.removeEventListener("mousemove", debouncedMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isDark]);
 
   return (
     <canvas

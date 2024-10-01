@@ -12,6 +12,7 @@ import Icon from "@mdi/react";
 import { mdiGuitarAcoustic } from "@mdi/js";
 import { PageMeta } from "@/components/pageMeta";
 import useIsDark from "@/hooks/useIsDark";
+import HeroSection from "@/components/HomePage/HeroSection";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -107,54 +108,17 @@ export default function Home({
   githubRes: any;
   mediumFeed: any;
 }) {
-  const slides = projects
-    .filter((p) => !!p.data?.featured)
-    .map((project) => ({
-      slug: project.data.slug,
-      title: project.data.title,
-      description: project.data.description,
-      image: project.data.featuredImage,
-      color: project.data.color,
-    }));
-
-  const isDark = useIsDark();
-
   return (
     <Page>
       <PageMeta color="#000000" />
-      <div className="w-full mb-16">
-        <FeatureSlider slides={slides} />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full max-w-screen-lg m-auto">
-        <p
-          className={`m-0 max-w-[30ch] text-2xl opacity-50 text-black dark:text-white mb-16 col-span-1`}
-        >
-          Frank is a Software Engineer and Lead Designer specializing
-          engineering software for the web, UX research, and product design.
-        </p>
-        <div className="col-span-1 md:col-span-2">
-          <h2 className="text-3xl font-bold mb-2 block w-full text-black dark:text-white">
-            <Icon
-              path={mdiGuitarAcoustic}
-              className="inline mt-[-0.5rem]"
-              size={1.5}
-              color={isDark ? "white" : "black"}
-            />
-            About Me
-          </h2>
-          {about && (
-            <MDRenderer className="w-full mb-16" source={about.content} />
-          )}
-        </div>
+      <div className="mb-20">
+        <HeroSection />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <MediumList mediumFeed={mediumFeed} />
-      </div>
-      <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <ProjectList projects={projects} />
       </div>
     </Page>
   );

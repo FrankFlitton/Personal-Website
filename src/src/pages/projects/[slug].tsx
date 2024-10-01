@@ -7,6 +7,8 @@ import Link from "next/link";
 import { ProjectMeta } from "@/components/projectMeta";
 import { Page } from "@/components/page";
 import { PageMeta } from "@/components/pageMeta";
+import { ProjectList } from "@/components/projectList";
+import LargeDotLine from "@/components/HomePage/LargeDotline";
 
 export const getStaticPaths = (async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
@@ -40,6 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      projects: projectSources,
       project: project,
       longDescription: longDescription,
     },
@@ -47,9 +50,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default function Home({
+  projects,
   project,
   longDescription,
 }: {
+  projects: MDXDocument<FeatureProjectData>[];
   project: MDXDocument<FeatureProjectData>;
   longDescription: any;
 }) {
@@ -104,7 +109,15 @@ export default function Home({
               </div>
             </div>
           </article>
+          <LargeDotLine
+            className="relative h-4 w-[45%] my-8 mx-auto"
+            color="black"
+            colorDark="white"
+          />
         </div>
+      </div>
+      <div className="w-full my-20 max-w-screen-lg m-auto">
+        {!!projects?.length && <ProjectList projects={projects} />}
       </div>
     </Page>
   );

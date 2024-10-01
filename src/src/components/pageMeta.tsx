@@ -1,3 +1,4 @@
+import { tagline } from "@/const/const";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -14,11 +15,9 @@ export const PageMeta = ({
 }) => {
   const router = useRouter();
   const metaTitle = title
-    ? `${title} | Frank JE Flitton | Developing Great Products`
-    : "Frank JE Flitton | Developing Great Products";
-  const metaDescription = description
-    ? description
-    : "Frank is a Software Engineer and Lead Designer specializing engineering software for the web, UX research, and product design.";
+    ? `${title} | Frank JE Flitton | Tech Lead and UX Designer`
+    : "Frank JE Flitton | Tech Lead and UX Designer";
+  const metaDescription = description ? description : tagline;
   const metaImage = !!image?.length ? image : "/img/og-image.jpg";
   const metaImageURL = metaImage.startsWith("http")
     ? metaImage

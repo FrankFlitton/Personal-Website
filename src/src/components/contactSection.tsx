@@ -125,7 +125,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
               </div>
               <div>
                 <button
-                  className="bg-white/10 hover:bg-white/20 text-white py-4 px-8 text-xl text-left mt-4 inline-block"
+                  className="bg-black hover:bg-black/80 dark:bg-white/20 dark:hover:bg-white/10 text-white py-4 px-8 text-xl text-left mt-4 inline-block"
                   type="submit"
                 >
                   Send Message
