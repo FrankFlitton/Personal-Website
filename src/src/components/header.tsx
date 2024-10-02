@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useIsDark from "@/hooks/useIsDark";
 import { useIsScrollPastY } from "@/hooks/useIsScrollPastY";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -46,6 +47,7 @@ export default function Header() {
   }, [isNavOpen, body?.classList, body]);
 
   const isDark = useIsDark();
+  const isHomePage = usePathname() === "/";
 
   return (
     <>
@@ -73,7 +75,7 @@ export default function Header() {
             }}
           >
             <AnimatePresence mode="popLayout">
-              {(isVisible || isMobile) && (
+              {(isVisible || isMobile || !isHomePage) && (
                 <motion.div
                   className="relative"
                   initial={{ opacity: 0, right: 100 }}
