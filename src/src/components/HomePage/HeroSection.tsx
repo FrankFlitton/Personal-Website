@@ -59,16 +59,16 @@ export default function HeroSection() {
 
             <div className="absolute w-full h-full">
               {/* Top dotted border */}
-              <LargeDotLine className="absolute top-5 left-5 right-5 h-5" />
+              {/* <LargeDotLine className="absolute top-5 left-5 right-5 h-5" /> */}
               {/* Bottom dotted border */}
-              <LargeDotLine
+              {/* <LargeDotLine
                 className="absolute bottom-5 left-5 right-5 h-5 text-right"
                 textAlign="right"
-              />
+              /> */}
               {/* Left dotted border */}
-              <LargeDotLine className="absolute top-10 left-5 bottom-10 w-5" />
+              {/* <LargeDotLine className="absolute top-10 left-5 bottom-10 w-5" /> */}
               {/* Right dotted border */}
-              <LargeDotLine className="absolute top-10 right-5 bottom-10 w-5" />
+              {/* <LargeDotLine className="absolute top-10 right-5 bottom-10 w-5" /> */}
             </div>
 
             <div className="h-full w-full absolute inset-15">
