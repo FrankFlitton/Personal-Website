@@ -13,6 +13,7 @@ import {
   mdiVuejs,
 } from "@mdi/js";
 import Icon from "@mdi/react";
+import CircleFlourish from "./HomePage/CircleFlourish";
 
 interface Repo {
   id: string;
@@ -77,41 +78,31 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
 
   return (
     <>
-      <div className="block md:hidden mb-8 text-black dark:text-white">
-        <h2 className="text-3xl font-bold mb-2 w-full block">
-          <Icon
-            path={mdiGithub}
-            size={1.25}
-            className="inline-block mt-[-0.5rem] mr-2"
-          />
-          {title}
-        </h2>
-        <p>{blurb}</p>
+      <div className="w-full relative">
+        <div className="absolute flex top-0 left-0 w-full bg-red">
+          <div className="mx-auto">
+            <CircleFlourish isDark={false} />
+          </div>
+        </div>
+        <div className="relative block w-full py-5 mb-10 text-black dark:text-white">
+          <h2 className="text-4xl font-bold block w-full text-center">
+            {title}
+          </h2>
+        </div>
+        <div className="flex text-center w-full mb-10">
+          <a
+            className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 mx-auto"
+            role="button"
+            href="https://github.com/frankflitton"
+            target="_blank"
+          >
+            Follow me on Github
+          </a>
+        </div>
       </div>
       <div
         className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px] text-black dark:text-white`}
       >
-        <div className="col-span-3 md:col-span-1 hidden md:grid justify-between grid-cols-1">
-          <h2 className="text-3xl font-bold mb-2 block w-full">
-            <Icon
-              path={mdiGithub}
-              size={1.25}
-              className="inline-block mt-[-0.5rem] mr-2"
-            />
-            {title}
-          </h2>
-          <p>{blurb}</p>
-          <div>
-            <a
-              className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 self-end p-4 ml-[-1rem]"
-              role="button"
-              href="https://github.com/frankflitton"
-              target="_blank"
-            >
-              @FrankFlitton
-            </a>
-          </div>
-        </div>
         {repos &&
           repos.map((repo, i) => (
             <div
