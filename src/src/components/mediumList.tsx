@@ -1,43 +1,40 @@
-import { mediumPath } from "@/const/const";
-import { mdiBook } from "@mdi/js";
-import Icon from "@mdi/react";
 import kebabCase from "lodash/kebabCase";
+import CircleFlourish from "./HomePage/CircleFlourish";
 
 export const MediumList = ({
-  mediumFeed,
-  hideTitle,
+  mediumFeed
 }: {
   mediumFeed: any;
   hideTitle?: boolean;
 }) => {
   return (
-    <div className="w-full">
-      <div className="block w-full mb-4 text-black dark:text-white">
-        {!hideTitle && (
-          <h2 className="text-3xl font-bold mb-2 block w-full">
-            <Icon
-              path={mediumPath}
-              size={1.25}
-              className="inline-block mt-[-0.5rem] mr-2"
-            />
-            Medium Posts
-          </h2>
-        )}
+    <div className="w-full relative">
+      <div className="absolute flex top-0 left-0 w-full bg-red">
+        <div className="mx-auto">
+          <CircleFlourish isDark={false} />
+        </div>
+      </div>
+      <div className="relative block w-full py-5 mb-10 text-black dark:text-white">
+        <h2 className="text-4xl font-bold block w-full text-center">
+          Blog Posts
+        </h2>
+      </div>
+      <div className="flex w-3/4 mx-auto mb-10 text-center prose">
         <p>
           I share insights from my journey in software development, user
           experience, and entrepreneurship, with a focus on building scalable
           systems, tackling complex challenges, and driving innovation.
         </p>
-        <p className="pt-4">
-          <a
-            className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 self-end p-4 ml-[-1rem]"
-            role="button"
-            href="https://frankflitton.medium.com/"
-            target="_blank"
-          >
-            Follow me on Medium
-          </a>
-        </p>
+      </div>
+      <div className="flex text-center w-full mb-10">
+        <a
+          className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 mx-auto"
+          role="button"
+          href="https://frankflitton.medium.com/"
+          target="_blank"
+        >
+          Follow me on Medium
+        </a>
       </div>
 
       <div className="grid grid-cols-1 auto-rows-[175px] md:auto-rows-[200px] gap-4">
