@@ -1,6 +1,5 @@
 import Image from "next/image";
 import EndlessCircleAnimation from "./EndlessCircleAnimation";
-import LargeDotLine from "./LargeDotline";
 import useIsDark from "@/hooks/useIsDark";
 import { tagline } from "@/const/const";
 
@@ -8,7 +7,7 @@ export default function HeroSection() {
   const isDark = useIsDark();
   return (
     <>
-      <div className="w-[100cqw] h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip ml-[-1em]">
+      <div className="w-full h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip ml-[-1em]">
         <div className="absolute inset-0 sm:inset-10">
           {/* light */}
           <div className="absolute inset-5 bg-gradient-to-t from-slate-400 to-neutral-300 opacity-100 dark:opacity-0"></div>
