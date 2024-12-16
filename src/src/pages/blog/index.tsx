@@ -1,21 +1,27 @@
 import { GetStaticProps } from "next";
 import { Page } from "@/components/page";
-import { mediumRSSFeed } from "@/Content/medium";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { MediumList } from "@/components/mediumList";
 import { PageMeta } from "@/components/pageMeta";
+import { MDLoadDir } from "@/Content/loader";
+import { Blog } from "@/types";
+import { sortBlogs } from "@/util/sortBlogs";
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const mediumFeed = await mediumRSSFeed;
+  const blogs = await MDLoadDir<Blog>("../content/blog");
+
+  const simpleBlogs = blogs
+    .map((b) => b.data)
+    .sort(sortBlogs);
 
   return {
     props: {
-      mediumFeed: mediumFeed ?? null,
+      blogs: simpleBlogs,
     },
   };
 };
 
-export default function Home({ mediumFeed }: { mediumFeed: any | null }) {
+export default function Home({ blogs }: { blogs: Blog[] }) {
   const handleIframeResize = (e: MessageEvent<any>) => {
     if (globalThis.window) {
       if (e.data === "GIST_IFRAME_UPDATED") {
@@ -46,9 +52,9 @@ export default function Home({ mediumFeed }: { mediumFeed: any | null }) {
   return (
     <Page>
       <PageMeta title={"Frank's Blog"} color="#000000" />
-      {mediumFeed && (
+      {blogs && (
         <div className="w-full my-16 max-w-screen-lg m-auto">
-          <MediumList mediumFeed={mediumFeed} />
+          <MediumList blogs={blogs} />
         </div>
       )}
     </Page>

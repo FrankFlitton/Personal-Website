@@ -1,23 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Blog } from "@/types";
+import { Blog, MDXDocument } from "@/types";
 import Link from "next/link";
 import { Page } from "@/components/page";
-import { mediumRSSFeed } from "@/Content/medium";
-import parse from "html-react-parser";
-import { useEffect, useMemo } from "react";
-import kebabCase from "lodash/kebabCase";
+import { useEffect } from "react";
 import { MediumList } from "@/components/mediumList";
 import { PageMeta } from "@/components/pageMeta";
-import { fixMediumGistIframes } from "@/util/fixMediumGistIframes";
-import { fixMediumPublicationFooter } from "@/util/fixMediumPublicationFooter";
 import LargeDotLine from "@/components/HomePage/LargeDotline";
+import { MDLoadDir } from "@/Content/loader";
+import { MDRenderer } from "@/Content/renderer";
+import Image from "next/image";
+import { sortBlogs } from "@/util/sortBlogs";
 
 export const getStaticPaths = (async () => {
-  const mediumFeed = await mediumRSSFeed;
-
-  const paths = mediumFeed.items.map((item) => ({
+  const blogs = await MDLoadDir<Blog>("../content/blog");
+  const paths = blogs.map((blog) => ({
     params: {
-      slug: kebabCase(item.title),
+      slug: blog?.data?.slug,
     },
   }));
 
@@ -28,39 +26,28 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const mediumFeed = await mediumRSSFeed;
-  const slug = `${context?.params?.slug ?? ""}`;
-  const blog = mediumFeed.items.find((item) => kebabCase(item.title) === slug);
+  const blogs = await MDLoadDir<Blog>("../content/blog");
+  const slug = context?.params?.slug ?? "";
+  const currentBlog = blogs.find((blog) => blog?.data?.slug === slug);
 
-  if (blog) {
-    const html = blog ? blog["content:encoded"] : "";
-    const noPubFooter = fixMediumPublicationFooter(html);
-    const fixedIframes = await fixMediumGistIframes(noPubFooter);
-    blog["content:encoded"] = fixedIframes;
-  }
+  const simpleBlogs = blogs.map((b) => b.data).sort(sortBlogs);
 
   return {
     props: {
-      blog: blog ?? null,
-      mediumFeed: mediumFeed ?? null,
+      blog: currentBlog,
+      blogs: simpleBlogs,
     },
   };
 };
 
 export default function Home({
   blog,
-  mediumFeed,
+  blogs,
 }: {
-  blog: Blog | null;
-  mediumFeed: any | null;
+  blog: MDXDocument<Blog>;
+  blogs: Blog[];
 }) {
-  const html = blog ? blog["content:encoded"] : "";
-
-  const Content = useMemo(() => {
-    return () => parse(html);
-  }, [html]);
-
-  const pubDate = new Date(blog?.isoDate ?? "").toDateString();
+  const pubDate = blog.data.date ? new Date(blog.data.date).toDateString() : "";
 
   const handleIframeResize = (e: MessageEvent<any>) => {
     if (globalThis.window) {
@@ -91,12 +78,9 @@ export default function Home({
 
   if (!blog) return "not found";
 
-  const title = blog?.title;
-  const description = blog?.["content:encodedSnippet"]?.split("\n")[0];
-  const featureImage = blog?.["content:encoded"]
-    ?.match(/src="(.*?)"/g)
-    ?.at(0)
-    ?.replace(/(src=)?"/g, "");
+  const title = blog.data.title || "";
+  const description = blog.data.description || "";
+  const featureImage = blog.data.featuredImage || "";
 
   return (
     <Page>
@@ -108,32 +92,42 @@ export default function Home({
       />
       <div className="w-full max-w-screen-lg m-auto">
         <div className="text-center pt-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white pb-16">
             {title}
           </h2>
+          <p>
+            <Image
+              src={blog.data.featuredImage}
+              width={1920}
+              height={1080}
+              alt="Featured image for the article"
+            />
+          </p>
         </div>
         <div className="py-16 grid grid-cols-2 prose prose-slate dark:prose-invert m-auto">
           <div>
             <h3 className="text-md font-bold my-0">Published On</h3>
             <p className="text-gray-500 dark:text-gray-200 mb-2">{pubDate}</p>
           </div>
-          <div>
-            <h3 className="text-md font-bold my-0">Original Post</h3>
-            <p className="mb-2">
-              <Link
-                target="_blank"
-                href={blog.link}
-                className="text-gray-500 dark:text-gray-200 hover:underline-offset-4 no-underline hover:underline"
-              >
-                Medium Link
-              </Link>
-            </p>
-          </div>
+          {blog.data.link && (
+            <div>
+              <h3 className="text-md font-bold my-0">Original Post</h3>
+              <p className="mb-2">
+                <Link
+                  target="_blank"
+                  href={blog.data.link}
+                  className="text-gray-500 dark:text-gray-200 hover:underline-offset-4 no-underline hover:underline"
+                >
+                  Medium Link
+                </Link>
+              </p>
+            </div>
+          )}
           <div className="col-span-2">
             <h3 className="text-md font-bold my-0">Topics</h3>
             <ul className="mb-2 mt-2 w-full list-none p-0">
-              {blog.categories &&
-                blog.categories.map((item) => (
+              {blog.data.categories &&
+                blog.data.categories.map((item) => (
                   <li
                     key={item}
                     className="text-gray-500 dark:text-gray-200 my-0 w-auto inline-block rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 px-2 mr-1 mb-1 capitalize"
@@ -151,7 +145,7 @@ export default function Home({
             color="black"
             colorDark="white"
           />
-          <Content />
+          <MDRenderer source={blog.content} />
           <LargeDotLine
             className="relative h-4 w-[45%] my-16 mx-auto"
             color="black"
@@ -159,9 +153,9 @@ export default function Home({
           />
         </article>
       </div>
-      {mediumFeed && (
+      {blogs && (
         <div className="w-full mb-16 max-w-screen-lg m-auto">
-          <MediumList mediumFeed={mediumFeed} />
+          <MediumList blogs={blogs} />
         </div>
       )}
     </Page>

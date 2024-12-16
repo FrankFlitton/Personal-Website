@@ -1,5 +1,7 @@
 ---
 title: I Stuffed TensorFlow.js Into a React App
+featuredImage: https://cdn-images-1.medium.com/max/1024/1*YzW0WRoEe0n0gnXXWU_16g.png
+description: Here's what I learned about Web Workers
 slug: i-stuffed-tensor-flow-js-into-a-react-app
 date: Fri Jul 23 2021
 categories:
@@ -9,10 +11,6 @@ categories:
   - programming
   - tensorflow
 ---
-
-#### Here's what I learned about Web Workers.
-
-![](https://cdn-images-1.medium.com/max/1024/1*YzW0WRoEe0n0gnXXWU_16g.png)
 
 The project source code is at the bottom.
 [https://autoyeai.com/](https://autoyeai.com/)
@@ -61,11 +59,3 @@ See AutoYe in action: [https://autoyeai.com/](https://autoyeai.com/)
 
 Web-worker plugin: [https://www.npmjs.com/package/worker-plugin](https://www.npmjs.com/package/worker-plugin)
 React-app-rewired package: [https://github.com/timarney/react-app-rewired](https://github.com/timarney/react-app-rewired)
-
-_More content at_ [**_plainenglish.io_**](http://plainenglish.io/)
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=3fd8678019f5)
-
-- - -
-
-[I Stuffed TensorFlow.js Into a React App](https://javascript.plainenglish.io/i-stuffed-tensorflow-js-into-a-react-app-3fd8678019f5) was originally published in [JavaScript in Plain English](https://javascript.plainenglish.io) on Medium, where people are continuing the conversation by highlighting and responding to this story.

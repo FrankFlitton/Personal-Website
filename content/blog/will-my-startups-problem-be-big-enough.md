@@ -1,5 +1,7 @@
 ---
 title: Will My Startup's Problem Be Big Enough?
+description: How to evaluate the potential of a startup idea by understanding your Serviceable Obtainable Market, the Venn diagram of opportunity
+featuredImage: https://cdn-images-1.medium.com/max/1024/0*vBvNOXABsim1d3mi
 slug: will-my-startups-problem-be-big-enough
 date: Mon Apr 24 2023
 categories:
@@ -9,12 +11,6 @@ categories:
   - marketing
   - entrepreneurship
 ---
-
-#### How to evaluate the potential of a startup idea by understanding your Serviceable Obtainable Market, the Venn diagram of opportunity.
-
-![](https://cdn-images-1.medium.com/max/1024/0*vBvNOXABsim1d3mi)
-
-Photo by [Sam](https://unsplash.com/@shambam?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
 
 > _I'll be attaching a spreadsheet with the blog so you can add it to your toolkit, as well as follow the case study below better._ [_You can find the spreadsheet here_](https://docs.google.com/spreadsheets/d/1-qUz3ZYptwse77YJmNUcgaQ0gzfxU_7g_jNK5vbKfOk/edit#gid=0) _with all the figures broken down._
 
@@ -171,5 +167,3 @@ Ultimately, creating a product that people want and are willing to pay for is th
 \[3\]: [https://kb.rspca.org.au/knowledge-base/how-many-pets-are-there-in-australia/](https://kb.rspca.org.au/knowledge-base/how-many-pets-are-there-in-australia/)
 \[4\]: [https://animalmedicinesaustralia.org.au/wp-content/uploads/2022/11/AMAU008-Pet-Ownership22-Report\_v1.6\_WEB.pdf](https://animalmedicinesaustralia.org.au/wp-content/uploads/2022/11/AMAU008-Pet-Ownership22-Report_v1.6_WEB.pdf)
 \[5\]: [https://www.abc.net.au/everyday/how-much-does-it-cost-to-own-a-dog-money-diary/100402694](https://www.abc.net.au/everyday/how-much-does-it-cost-to-own-a-dog-money-diary/100402694)
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=402eb518d46f)

@@ -1,6 +1,8 @@
 ---
-title: Social Distance UX Research for iOS
-slug: social-distance-ux-research-for-i-os
+title: Social Distanced UX Research Strategies For your Next iOS App
+featuredImage: https://cdn-images-1.medium.com/max/1024/1*QhFcMBr0zov772nR8lhxIQ.jpeg
+description: COIVD forced us to stop using in-person UX research. Here are some tried and true methods we're keeping after the lockdowns lift
+slug: social-distance-ux-research-for-ios
 date: Mon Feb 15 2021
 categories:
   - ux
@@ -9,12 +11,6 @@ categories:
   - web-development
   - ux-strategy
 ---
-
-### **Social Distanced UX Research Strategies For your Next iOS App**
-
-#### COIVD has forced us to stop using in-person UX research. Here are some tried and true methods we're keeping after the lockdowns lift.
-
-![](https://cdn-images-1.medium.com/max/1024/1*QhFcMBr0zov772nR8lhxIQ.jpeg)
 
 In my current role as a lead developer & solution designer at TD Bank's Innovation Lab, creating inclusive experiences that increase financial literacy is at the heart of what I do. Making and testing prototypes of our upcoming experiences with a broad audience is crucial to solving customer needs.
 
@@ -108,5 +104,3 @@ The above methods helped my team scale their reach beyond our usual localized te
 When our reach extended beyond the primary users, it helped ensure our app was truly inclusive. By including users we normally couldn't meet in person (i.e. rural or international), we could easily challenge our own assumptions.
 
 In conclusion, on a shoestring budget, you can easily gather objective data from 1:1s and ad campaigns to help you develop products that solve your customer's needs.
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=7cfb9bea9dfa)

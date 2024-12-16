@@ -1,5 +1,7 @@
 ---
 title: UX Meets Database Design, a Match Made in Heaven
+description: Putting UX at the heart of user-centric SQL schema data modeling
+featuredImage: https://cdn-images-1.medium.com/max/1024/1*58bBEYQwF1NjIFj2A_l02w.png
 slug: ux-meets-database-design-a-match-made-in-heaven
 date: Sun Feb 12 2023
 categories:
@@ -9,10 +11,6 @@ categories:
   - sql
   - ux-design
 ---
-
-#### Putting UX at the heart of user-centric SQL schema data modeling
-
-![](https://cdn-images-1.medium.com/max/1024/1*58bBEYQwF1NjIFj2A_l02w.png)
 
 User experience (UX) is a crucial aspect of software development that directly impacts the success of a software project. From my experience working across teams at Google, TD Bank, as well as many at startups I've learnt that UX is not just about how the software looks. It's about how it functions to meets the needs of the end user.
 
@@ -67,13 +65,3 @@ With this extra table representing these relationships it would be possible to q
 In this case, UX informed the decision to use a through table instead of a foreign key to represent the many-to-many relationship between articles and authors. The through table approach allows the database to provide richer information through the application and more complex queries, thus providing more flexibility for future changes.
 
 In summary, taking UX into account when designing a database can lead to a better data structure, improved data quality, easier maintenance, and better user adoption. All of these factors can ultimately contribute to the success of a project.
-
-_More content at_ [**_PlainEnglish.io_**](https://plainenglish.io/)_. Sign up for our_ [**_free weekly newsletter_**](http://newsletter.plainenglish.io/)_. Follow us on_ [**_Twitter_**](https://twitter.com/inPlainEngHQ), [**_LinkedIn_**](https://www.linkedin.com/company/inplainenglish/)_,_ [**_YouTube_**](https://www.youtube.com/channel/UCtipWUghju290NWcn8jhyAw)_, and_ [**_Discord_**](https://discord.gg/GtDtUAvyhW)**_._**
-
-**_Interested in scaling your software startup_**_? Check out_ [**_Circuit_**](https://circuit.ooo?utm=publication-post-cta)_._
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=192e66729f21)
-
-- - -
-
-[UX Meets Database Design, a Match Made in Heaven](https://javascript.plainenglish.io/ux-meets-database-design-a-match-made-in-heaven-192e66729f21) was originally published in [JavaScript in Plain English](https://javascript.plainenglish.io) on Medium, where people are continuing the conversation by highlighting and responding to this story.

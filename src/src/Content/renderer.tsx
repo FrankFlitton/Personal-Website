@@ -18,6 +18,21 @@ const YouTube = ({ id }: { id: string }) => {
   );
 };
 
+const Gist = ({ id }: { id: string }) => {
+  return (
+    <p>
+      <iframe
+        id={`gist-${id}`}
+        src={`/gist/?gist=${id}`}
+        className="gist-iframe dark:outline dark:outline-black/50 dark:outline-1"
+        width="600"
+        height="auto"
+        frameBorder="0"
+      ></iframe>
+    </p>
+  );
+};
+
 const IFrame = (
   props: React.DetailedHTMLProps<
     React.IframeHTMLAttributes<HTMLIFrameElement>,
@@ -37,22 +52,28 @@ const IFrame = (
   );
 };
 
-const img = (
+const Img = (
   // @ts-ignore
   props
 ) => {
   return (
     // eslint-disable-next-line jsx-a11y/alt-text
-    <Image
-      {...props}
-      width={500}
-      height={500}
-      className="w-full mb-4 inline-block"
-    />
+    <p>
+      <figure>
+        <Image
+          {...props}
+          alt={props.alt ? props.alt : ""}
+          width={500}
+          height={500}
+          className="w-full mb-4 inline-block"
+        />
+        {props.alt && <figcaption>{props.alt}</figcaption>}
+      </figure>
+    </p>
   );
 };
 
-const components = { YouTube, IFrame, img };
+const components = { YouTube, IFrame, Img, Gist };
 
 export function MDRenderer({
   source,

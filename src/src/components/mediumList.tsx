@@ -1,10 +1,10 @@
-import kebabCase from "lodash/kebabCase";
 import CircleFlourish from "./HomePage/CircleFlourish";
+import { Blog } from "@/types";
 
 export const MediumList = ({
-  mediumFeed
+  blogs,
 }: {
-  mediumFeed: any;
+  blogs: Blog[];
   hideTitle?: boolean;
 }) => {
   return (
@@ -38,39 +38,38 @@ export const MediumList = ({
       </div>
 
       <div className="grid grid-cols-1 auto-rows-[175px] md:auto-rows-[200px] gap-4">
-        {mediumFeed.items.map((item: any) => {
-          // const pubDate = new Date(item.isoDate);
-          const subTitle = item["content:encodedSnippet"].split("\n")[0];
-          const featureImage = item["content:encoded"]
-            .match(/src="(.*?)"/g)[0]
-            .replace(/(src=)?"/g, "");
+        {blogs &&
+          blogs.map((blog) => {
+            // const pubDate = new Date(item.isoDate);
+            const subTitle = blog.description || "";
+            const featureImage = blog.featuredImage || "";
 
-          return (
-            <a
-              key={item.title}
-              className="col-span-1 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 row-span-2 md:row-span-1"
-              href={`/blog/${kebabCase(item.title)}`}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full">
-                <div className="w-full h-full col-span-1 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={featureImage}
-                    width={300}
-                    height={300}
-                    alt=""
-                    className="object-cover w-full h-full min-h-[175px] hover:scale-105 transition-all duration-200 ease"
-                  />
-                </div>
+            return (
+              <a
+                key={blog.title}
+                className="col-span-1 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 row-span-2 md:row-span-1"
+                href={`/blog/${blog.slug}`}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full">
+                  <div className="w-full h-full col-span-1 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={featureImage}
+                      width={300}
+                      height={300}
+                      alt=""
+                      className="object-cover w-full h-full min-h-[175px] hover:scale-105 transition-all duration-200 ease"
+                    />
+                  </div>
 
-                <div className="prose prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                  <p className="">{subTitle}</p>
+                  <div className="prose prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
+                    <h3 className="text-xl font-bold">{blog.title}</h3>
+                    <p className="">{subTitle}</p>
+                  </div>
                 </div>
-              </div>
-            </a>
-          );
-        })}
+              </a>
+            );
+          })}
       </div>
     </div>
   );

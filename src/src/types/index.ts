@@ -24,11 +24,10 @@ export interface MDXDocument<T = Record<string, unknown> | null> {
   >;
 }
 
-export interface ProjectMDXDocument extends MDXDocument<FeatureProjectData> {}
+export interface ProjectMDXDocument extends MDXDocument<FeatureProjectData> { }
 
 export type Blog = {
   bar: number;
-  categories: string[];
   "content:encoded": string;
   "content:encodedSnippet": string;
   creator: string;
@@ -37,5 +36,12 @@ export type Blog = {
   isoDate: string;
   link: string;
   pubDate: string;
+  // new fields
+
   title: string;
+  slug: string;
+  description: string;
+  featuredImage: string;
+  date: string;
+  categories: string[];
 };

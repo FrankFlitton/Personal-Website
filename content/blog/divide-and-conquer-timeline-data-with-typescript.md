@@ -1,5 +1,7 @@
 ---
 title: Divide and Conquer Timeline Data with Typescript
+featuredImage: https://cdn-images-1.medium.com/max/1024/0*I4BkdiY7dH9AfZEx
+description: Typescript time series and Date objects
 slug: divide-and-conquer-timeline-data-with-typescript
 date: Thu Oct 10 2024
 categories:
@@ -9,12 +11,6 @@ categories:
   - algorithms
   - software-development
 ---
-
-Typescript time series and Date objects
-
-![](https://cdn-images-1.medium.com/max/1024/0*I4BkdiY7dH9AfZEx)
-
-Photo by [Ishant Mishra](https://unsplash.com/@ishant_mishra54?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
 If your application is encountering performance issues with large data, checkout this date search typescript package. It works in node and browser runtimes.
 
@@ -30,8 +26,10 @@ Even if we only have a piece of data per every **15 minute** interval of data, t
 
 For cases when we need to know if a point exists, like “is there data on this date?” and “filter the transactions to this date” looping through the entire data set may not cut it.
 
+```js
 // itterates through the entire data set
 bigData.filter((data) => data.date === mydate);
+```
 
 // itterates though a portion of the data set
 // or the whole data set if there is no match.
@@ -49,9 +47,3 @@ As you can see, this scales quite well.
 4.  Web analytics applications: Time series data is used to track website traffic, user engagement, and other metrics over time to identify trends and make data-driven decisions.
 
 [date-search](https://www.npmjs.com/package/date-search)
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=1883f54b5449)
-
-- - -
-
-[Divide and Conquer Timeline Data with Typescript](https://javascript.plainenglish.io/divide-and-conquer-timeline-data-with-typescript-1883f54b5449) was originally published in [JavaScript in Plain English](https://javascript.plainenglish.io) on Medium, where people are continuing the conversation by highlighting and responding to this story.

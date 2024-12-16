@@ -1,6 +1,8 @@
 ---
 title: The Growing Importance of SMEs in AI Agent Design
-slug: the-growing-importance-of-sm-es-in-ai-agent-design
+description: AI agents are revolutionizing industries, but here's why they still need us more than ever
+featuredImage: https://cdn-images-1.medium.com/max/1024/1*270r7da2bM2PMteqOybLyQ.png
+slug: the-growing-importance-of-sme-in-ai-agent-design
 date: Wed Oct 09 2024
 categories:
   - product-management
@@ -8,10 +10,6 @@ categories:
   - user-research
   - llm
 ---
-
-#### AI agents are revolutionizing industries, but here's why they still need us more than ever.
-
-![](https://cdn-images-1.medium.com/max/1024/1*270r7da2bM2PMteqOybLyQ.png)
 
 Lately, there's been a lot of excitement around AI agents. These digital helpers seem poised to take on everything from booking appointments to handling complex business workflows. The promise is clear: AI agents will save us time, make decisions for us, and reduce the burden of mundane tasks. But as thrilling as this sounds, something deeper is unfolding in the AI space—Subject Matter Experts (SMEs) are playing a more crucial role than ever before.
 
@@ -26,5 +24,3 @@ Behind the Agent's logic, there's a SME who ensures that the agent is making dec
 Ultimately, AI is at its best when it works in harmony with human expertise. AI agents aren't replacing people—they're enhancing what we already do. SMEs are becoming the crucial bridge between AI agents and the real world, ensuring these systems deliver results that are both meaningful and effective.
 
 As AI agents evolve their success won't just be about the tech behind them. It'll be about the expertise guiding them. LLMs are smart, but without SMEs they may not be smart enough.
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=975f065988f6)

@@ -1,18 +1,12 @@
 import type { GetStaticProps, Metadata } from "next";
 import { MDLoadDir, MDLoadFile } from "@/Content/loader";
-import { MDRenderer } from "@/Content/renderer";
-import { FeatureSlider } from "@/components/featureSlider";
-import { ProjectList } from "@/components/projectList";
-import { FeatureProjectData, MDXDocument, ProjectMDXDocument } from "@/types";
+import { Blog, MDXDocument, ProjectMDXDocument } from "@/types";
 import { GithubList } from "@/components/githubList";
 import { Page } from "@/components/page";
-import { mediumRSSFeed } from "@/Content/medium";
 import { MediumList } from "@/components/mediumList";
-import Icon from "@mdi/react";
-import { mdiGuitarAcoustic } from "@mdi/js";
 import { PageMeta } from "@/components/pageMeta";
-import useIsDark from "@/hooks/useIsDark";
 import HeroSection from "@/components/HomePage/HeroSection";
+import { sortBlogs } from "@/util/sortBlogs";
 
 export const metadata: Metadata = {
   title: "Developing Great Products - Frank JE Flitton",
@@ -80,33 +74,25 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const githubRes = await githubReq.json();
 
-  const homeSource = await MDLoadFile("../content/pages/home.md");
-  const projectSources = await MDLoadDir<FeatureProjectData>(
-    "../content/projects"
-  );
-
-  const mediumFeed = await mediumRSSFeed;
+  const blogs = await MDLoadDir<Blog>("../content/blog");
+  const simpleBlogs = blogs.map((b) => b.data).sort(sortBlogs);
 
   return {
     props: {
-      about: homeSource,
-      projects: projectSources,
+      blogs: simpleBlogs,
       githubRes,
-      mediumFeed: mediumFeed,
     },
   };
 };
 
 export default function Home({
-  about,
-  projects,
   githubRes,
-  mediumFeed,
+  blogs,
 }: {
   about: MDXDocument;
   projects: ProjectMDXDocument[];
   githubRes: any;
-  mediumFeed: any;
+  blogs: Blog[];
 }) {
   return (
     <Page>
@@ -118,7 +104,7 @@ export default function Home({
         <GithubList githubRes={githubRes} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <MediumList mediumFeed={mediumFeed} />
+        <MediumList blogs={blogs} />
       </div>
     </Page>
   );

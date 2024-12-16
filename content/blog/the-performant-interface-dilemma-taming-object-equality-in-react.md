@@ -1,5 +1,7 @@
 ---
-title: The Performant Interface Dilemma: Taming Object Equality in React
+title: "The Performant Interface Dilemma: Taming Object Equality in React"
+description: A comprehensive guide for developers on handling object equality issues in JavaScript, with a focus on practical solutions for React applications
+featuredImage: https://cdn-images-1.medium.com/max/800/1*UWpvukClfCrcm1U0OQI5IA.png
 slug: the-performant-interface-dilemma-taming-object-equality-in-react
 date: Sun Oct 22 2023
 categories:
@@ -10,21 +12,13 @@ categories:
   - typescript
 ---
 
-#### A comprehensive guide for developers on handling object equality issues in JavaScript, with a focus on practical solutions for React applications.
-
-![](https://cdn-images-1.medium.com/max/800/1*UWpvukClfCrcm1U0OQI5IA.png)
-
-An abstract illustration representing comparing dynamic data in a store.
-
 Though Typescript has pushed the possibilities of what's possible with the JavaScript ecosystem, object equality remains an issue. Though everything is an object in JavaScript, working with objects, especially deeply nested ones, have caveats that are vital to understand.
 
 Afterall, Who doesn't like a snappy interface?
 
 JavaScript lacks a built-in deep comparison method for objects in its standard library. So, when comparing two objects, you can't simply use the === operator. You'll need to either create a deep comparison function yourself or rely on a library.
 
-![](https://cdn-images-1.medium.com/max/800/1*frx4jslsIIuZ8aMHOB-Rdw.png)
-
-An abstract illustration of dynamic movement through a system.
+![An abstract illustration of dynamic movement through a system.](https://cdn-images-1.medium.com/max/800/1*frx4jslsIIuZ8aMHOB-Rdw.png)
 
 If you've developed an app using React you're likely familiar with the challenges of handling JavaScript objects, particularly due to their mutable nature. When you modify an object in JavaScript, you're actually altering the original object in memory. This makes tracking changes difficult and can lead to unexpected side effects.
 
@@ -52,9 +46,7 @@ While immutability may seem more resource-intensive initially (as it involves cr
 
 ### Using React Hooks To Mutate A Reference Within Nested Data
 
-![](https://cdn-images-1.medium.com/max/800/1*w_3906m65YmVBMoWXBkt4Q.png)
-
-An abstract illustration of dynamic movement through a system.
+![An abstract illustration of dynamic movement through a system.](https://cdn-images-1.medium.com/max/800/1*w_3906m65YmVBMoWXBkt4Q.png)
 
 #### useRef for Reducing Unnecessary Re-renders
 
@@ -70,15 +62,20 @@ Certainly, useRef and useMemo can be combined to address the challenge of diffin
 
 Here's a simplified React Component example:
 
+<Gist id="9403e187a1d1441b8398794b50898415" />
+
 In this example, prevState.current always holds the previous state, and diff stores the difference between the previous and current state. The component re-renders only when the state changes, not when prevState.current or diff changes. This approach can efficiently manage complex state updates and enhance the performance of your React application.
 
 #### Child Component Updates Based on Specific Nested Value Changes
 
 To make a child component update only when a single value within an object passed from the parent changes, you can use React's useEffect and useMemo hooks. These hooks provide the means to fine-tune your component's behavior.
 
+<Gist id="453c4da5139b58a34be69b721f3990ba" />
+
 In this setup, the child component receives a node object from the parent. The child component maintains its own state for the nodeValue property of the node. By utilizing useMemo to memoize node.nodeValue and useEffect to update the child's nodeValue state, the child component re-renders exclusively when node.nodeValue changes, not when other bits of nested data change.
 
-![](https://cdn-images-1.medium.com/max/1024/1*uL_KNzXfQf-mCBK48AIVcQ.png)
+![Example of a nested JS Object updating between render cycles. A new node is added and two are updated. Ideally, above data change would result in only the 3 changed nodes updating their parts interface opposed to the whole graph representation.
+](https://cdn-images-1.medium.com/max/1024/1*uL_KNzXfQf-mCBK48AIVcQ.png)
 
 Example of a nested JS Object updating between render cycles. A new node is added and two are updated. Ideally, above data change would result in only the 3 changed nodes updating their parts interface opposed to the whole graph representation.
 
@@ -86,11 +83,11 @@ This approach is ideal for situations where you need to keep updates selective, 
 
 ### Diffing Objects in JavaScript vs. Java
 
-![](https://cdn-images-1.medium.com/max/800/1*hquEJ_-95CeR0JuT5NIpOg.png)
-
-An abstract illustration of dynamic movement through a system.
+![An abstract illustration of dynamic movement through a system.](https://cdn-images-1.medium.com/max/800/1*hquEJ_-95CeR0JuT5NIpOg.png)
 
 In JavaScript, objects are mutable and can be defined with curly braces containing key-value pairs. While this flexibility allows for dynamic changes to object structures, it also introduces complexity when comparing objects. JavaScript lacks a built-in method for deep comparison, making it necessary to implement custom comparison logic or use a library.
+
+<Gist id="5e6dc6fc0f20310a4ef7f110a9f2a7e9" />
 
 > The objects appear similar, but the JSON.strignify comparison returns false because the age property differs in type or insertion order.
 
@@ -98,15 +95,16 @@ This is not the case in other languages, like Java for example. Java, in contras
 
 Java provides built-in methods like equals() for comparing objects, but it often requires custom implementation for meaningful comparisons.
 
+<Gist id="d48214e7b180ed88460de9c3c395fe94" />
+
 In this Java example, the equals() method is overridden in the User class to perform a deep comparison. The comparison returns true because all properties of user1 and user2 are equal.
 
 While JavaScript offers flexibility and dynamic object changes, it lacks built-in deep comparison functionality. In contrast, Java's static typing and class-based approach make it more structured but require custom implementation for meaningful object comparisons.
 
 ### More on JSON.stringify and Object Diffing in JavaScript
 
-![](https://cdn-images-1.medium.com/max/800/1*6slZuEO9tzNbCM0TUNWoOQ.png)
-
-An abstract illustration of focusing a crosshair at a ball of energy.
+![An abstract illustration of focusing a crosshair at a ball of energy.
+](https://cdn-images-1.medium.com/max/800/1*6slZuEO9tzNbCM0TUNWoOQ.png)
 
 Using JSON.stringify for diffing objects in JavaScript can be resource-intensive, especially for medium to large datasets. The method converts an entire object into a string representation, which can be slow and memory-demanding for substantial objects. It's best to take an “I can't count that low” posture here as it can cause performance bottlenecks when processing your dataset.
 
@@ -114,9 +112,7 @@ JSON.stringify also doesn't guarantee consistent property ordering in its output
 
 For medium-sized datasets, the impact of using JSON.stringify may be less noticeable, but it's still not the most efficient or reliable method for diffing objects. If performance becomes a concern, consider alternative approaches for deep comparison, such as using libraries like Lodash's \_.isEqual method or crafting your own custom deep comparison function. While JSON.stringify may be suitable for simple or small objects, it has limitations and performance implications that make it less ideal for larger datasets or complex use cases.
 
-![](https://cdn-images-1.medium.com/max/800/1*XkJTR5qKDyz4P7W1Xc4urw.png)
-
-An abstract illustration of dynamic movement through a system.
+![An abstract illustration of dynamic movement through a system.](https://cdn-images-1.medium.com/max/800/1*XkJTR5qKDyz4P7W1Xc4urw.png)
 
 ### Conclusion
 
@@ -131,9 +127,3 @@ These comparison functions can be tailored to address specific needs, whether it
 Immutability, on the other hand, is akin to the guardian of stability in a rendering-sensitive environment. It ensures that changes to your application's state are predictable and controlled. By adhering to immutable data practices, you not only boost performance but also simplify the process of identifying when a component should re-render. React thrives when it can confidently track changes without worrying about unexpected mutations in your state.
 
 In the dynamic landscape of applications where rendering responsiveness is paramount, it's crucial to recognize that immutability and custom comparison logic serve as valuable allies. They empower you to optimize React's performance, ensuring efficient rendering and a seamless user experience.
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=da58d67b7621)
-
-- - -
-
-[The Performant Interface Dilemma: Taming Object Equality in React](https://javascript.plainenglish.io/the-performant-interface-dilemma-taming-object-equality-in-react-da58d67b7621) was originally published in [JavaScript in Plain English](https://javascript.plainenglish.io) on Medium, where people are continuing the conversation by highlighting and responding to this story.

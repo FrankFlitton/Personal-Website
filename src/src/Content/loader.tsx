@@ -42,9 +42,9 @@ export async function MDLoadDir<T>(path: string) {
   const documentSources = readdirSync(join(process.cwd(), path));
   const documents = await Promise.all(
     documentSources.map(async (document) => {
-      const projectSource = await MDLoadFile<T>(join(path, document));
+      const documentContent = await MDLoadFile<T>(join(path, document));
       return {
-        ...projectSource,
+        ...documentContent,
       } as MDXDocument<T & { id: string }>;
     })
   );

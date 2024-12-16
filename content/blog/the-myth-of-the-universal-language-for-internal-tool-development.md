@@ -1,5 +1,7 @@
 ---
 title: The Myth of the “Universal Language” for Internal Tool Development
+description: We've all heard this story before. You finally get buy-in to build a tool that solves your pet peeve. You have a plan figured out, but then your manager says the dreaded phrase, “Use a different language so that others can contribute”… which seldom happens.
+featuredImage: https://cdn-images-1.medium.com/max/1024/0*FxuhG2fh0HQo6PBX
 slug: the-myth-of-the-universal-language-for-internal-tool-development
 date: Tue Jul 16 2024
 categories:
@@ -9,12 +11,6 @@ categories:
   - product-management
   - javascript
 ---
-
-We've all heard this story before. You finally get buy-in to build a tool that solves your pet peeve. You have a plan figured out, but then your manager says the dreaded phrase, “Use a different language so that others can contribute”… which seldom happens.
-
-![](https://cdn-images-1.medium.com/max/1024/0*FxuhG2fh0HQo6PBX)
-
-Photo by [Kenny Eliason](https://unsplash.com/@neonbrand?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
 One common misconception in software development is the idea that choosing a widely known programming language for an internal tool will encourage contributions from the developer community or the open source community. While this may sound logical on the surface, the reality is far more complex and nuanced.
 
@@ -53,9 +49,3 @@ I believe the best engineers focus their efforts on creating comprehensive docum
 A well defined architecture ensures the tool remains scalable and maintainable as it evolves over time. Clear documentation and architecture diagrams help communicate the vision and structure of the tool, making collaboration more efficient. Who doesn't like a good diagram?
 
 Next time you develop a new internal tool, don't be afraid to defend your tech choices. A programming language doesn't guarantee contributions or thorough reviews. Focus on performance, scalability, and creating concise documentation. Prioritize practical decisions over popularity to build robust, efficient tools ready for real world challenges.
-
-![](https://medium.com/_/stat?event=post.clientViewed&referrerSource=full_rss&postId=314f66d0306c)
-
-- - -
-
-[The Myth of the “Universal Language” for Internal Tool Development](https://javascript.plainenglish.io/the-myth-of-the-universal-language-for-internal-tool-development-314f66d0306c) was originally published in [JavaScript in Plain English](https://javascript.plainenglish.io) on Medium, where people are continuing the conversation by highlighting and responding to this story.
