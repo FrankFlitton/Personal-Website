@@ -3,7 +3,7 @@ import { Blog, MDXDocument } from "@/types";
 import Link from "next/link";
 import { Page } from "@/components/page";
 import { useEffect } from "react";
-import { MediumList } from "@/components/mediumList";
+import { BlogList } from "@/components/blogList";
 import { PageMeta } from "@/components/pageMeta";
 import LargeDotLine from "@/components/HomePage/LargeDotline";
 import { MDLoadDir } from "@/Content/loader";
@@ -155,7 +155,7 @@ export default function Home({
       </div>
       {blogs && (
         <div className="w-full mb-16 max-w-screen-lg m-auto">
-          <MediumList blogs={blogs} />
+          <BlogList blogs={blogs} />
         </div>
       )}
     </Page>

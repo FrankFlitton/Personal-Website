@@ -3,7 +3,7 @@ import { MDLoadDir, MDLoadFile } from "@/Content/loader";
 import { Blog, MDXDocument, ProjectMDXDocument } from "@/types";
 import { GithubList } from "@/components/githubList";
 import { Page } from "@/components/page";
-import { MediumList } from "@/components/mediumList";
+import { BlogList } from "@/components/blogList";
 import { PageMeta } from "@/components/pageMeta";
 import HeroSection from "@/components/HomePage/HeroSection";
 import { sortBlogs } from "@/util/sortBlogs";
@@ -104,7 +104,7 @@ export default function Home({
         <GithubList githubRes={githubRes} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <MediumList blogs={blogs} />
+        <BlogList blogs={blogs} />
       </div>
     </Page>
   );

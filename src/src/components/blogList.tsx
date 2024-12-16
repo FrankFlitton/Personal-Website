@@ -1,7 +1,7 @@
 import CircleFlourish from "./HomePage/CircleFlourish";
 import { Blog } from "@/types";
 
-export const MediumList = ({
+export const BlogList = ({
   blogs,
 }: {
   blogs: Blog[];
