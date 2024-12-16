@@ -27,21 +27,11 @@ export interface MDXDocument<T = Record<string, unknown> | null> {
 export interface ProjectMDXDocument extends MDXDocument<FeatureProjectData> { }
 
 export type Blog = {
-  bar: number;
-  "content:encoded": string;
-  "content:encodedSnippet": string;
-  creator: string;
-  "dc:creator": string;
-  guid: string;
-  isoDate: string;
-  link: string;
-  pubDate: string;
-  // new fields
-
   title: string;
   slug: string;
   description: string;
   featuredImage: string;
   date: string;
+  link: string;
   categories: string[];
 };
