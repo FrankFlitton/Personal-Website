@@ -1,12 +1,7 @@
 import CircleFlourish from "./HomePage/CircleFlourish";
 import { Blog } from "@/types";
 
-export const BlogList = ({
-  blogs,
-}: {
-  blogs: Blog[];
-  hideTitle?: boolean;
-}) => {
+export const BlogList = ({ blogs }: { blogs: Blog[]; hideTitle?: boolean }) => {
   return (
     <div className="w-full relative">
       <div className="absolute flex top-0 left-0 w-full bg-red">
@@ -19,7 +14,7 @@ export const BlogList = ({
           Blog Posts
         </h2>
       </div>
-      <div className="flex w-3/4 mx-auto mb-10 text-center prose">
+      <div className="flex w-3/4 mx-auto mb-10 text-center prose dark:prose-invert">
         <p>
           I share insights from my journey in software development, user
           experience, and entrepreneurship, with a focus on building scalable
