@@ -123,16 +123,39 @@ export default function Header() {
           )}
           {!isMobile && (
             <div className="items-end justify-center">
-              <Link className="ml-2 px-3 py-2 text-lg" href={"/about/"}>
+              <Link
+                className="ml-2 px-3 py-2 text-lg"
+                href={"/about/"}
+                onClick={() => {
+                  setIsNavOpen(false);
+                }}
+              >
                 About
               </Link>
-              <Link className="ml-2 px-3 py-2 text-lg" href={"/blog/"}>
+              <Link
+                className="ml-2 px-3 py-2 text-lg"
+                href={"/blog/"}
+                onClick={() => {
+                  setIsNavOpen(false);
+                }}
+              >
                 Blog
               </Link>
-              <Link className="mx-2 px-3 py-2 text-lg" href={"/projects/"}>
+              <Link
+                className="mx-2 px-3 py-2 text-lg"
+                href={"/projects/"}
+                onClick={() => {
+                  setIsNavOpen(false);
+                }}
+              >
                 Projects
               </Link>
-              <button onClick={() => setIsNavOpen(!isNavOpen)}>
+              <button
+                onClick={() => {
+                  setIsNavOpen(!isNavOpen);
+                  setIsMobileNavOpen(false);
+                }}
+              >
                 <Icon
                   className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.75rem]"
                   path={isNavOpen ? mdiClose : mdiCoffee}
