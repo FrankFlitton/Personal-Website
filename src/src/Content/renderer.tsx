@@ -1,7 +1,6 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import { MDXRemote } from "next-mdx-remote";
 import { DialogSlider } from "@/components/dialogSlider";
-import "highlight.js/styles/default.min.css";
 import { Pre as pre } from "./render-blocks/Pre";
 import { YouTube } from "./render-blocks/YouTube";
 import { Img } from "./render-blocks/Img";

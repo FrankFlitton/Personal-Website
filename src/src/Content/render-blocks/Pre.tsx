@@ -1,6 +1,7 @@
 import hljs from "highlight.js";
 import { useMemo } from "react";
 import parse from "html-react-parser";
+import "highlight.js/styles/srcery.min.css";
 
 /**
  * markdown's ``` builtin
@@ -17,8 +18,8 @@ export const Pre = (props: any) => {
     return () => parse(code.value);
   }, [code.value]);
   return (
-    <div className="bg-slate-800 rounded-lg">
-      <pre>
+    <div className="rounded-lg">
+      <pre className="bg-zinc-900">
         <Content />
       </pre>
     </div>
