@@ -56,7 +56,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 height={200}
               />
             </div>
-            <div className="col-span-2 prose text-white">
+            <div className="col-span-2 prose prose-lg text-white">
               <h2 className="text-5xl mb-8 text-white">Let&apos;s Talk!</h2>
               <p>
                 As an ex-Google UX Engineer with a decade in software

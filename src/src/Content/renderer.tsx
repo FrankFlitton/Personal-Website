@@ -8,8 +8,9 @@ import { Gist } from "./render-blocks/Gist";
 import { IFrame } from "./render-blocks/IFrame";
 import { NPM } from "./render-blocks/NPM";
 import { Hr as hr } from "./render-blocks/Hr";
+import { Code as code } from "./render-blocks/Code";
 
-const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr };
+const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code };
 
 export function MDRenderer({
   source,
@@ -61,7 +62,7 @@ export function MDRenderer({
         onClose={(i) => setImageIndex(i)}
       />
       <div
-        className={`wrapper prose prose-slate dark:prose-invert ${className}`}
+        className={`wrapper prose prose-lg prose-slate dark:prose-invert ${className}`}
         ref={ref}
         onClick={handleClick}
       >

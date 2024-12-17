@@ -14,7 +14,7 @@ export const BlogList = ({ blogs }: { blogs: Blog[]; hideTitle?: boolean }) => {
           Blog Posts
         </h2>
       </div>
-      <div className="flex w-3/4 mx-auto mb-10 text-center prose dark:prose-invert">
+      <div className="flex w-3/4 mx-auto mb-10 text-center prose prose-lg dark:prose-invert">
         <p>
           I share insights from my journey in software development, user
           experience, and entrepreneurship, with a focus on building scalable
@@ -57,7 +57,7 @@ export const BlogList = ({ blogs }: { blogs: Blog[]; hideTitle?: boolean }) => {
                     />
                   </div>
 
-                  <div className="prose prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
+                  <div className="prose prose-lg prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
                     <h3 className="text-xl font-bold">{blog.title}</h3>
                     <p className="">{subTitle}</p>
                   </div>

@@ -14,7 +14,7 @@ export const ProjectMeta = ({
     { title: "Contributions", value: project.data.contributions },
   ];
   return (
-    <div className="prose prose-slate dark:prose-invert grid grid-cols-3 w-full">
+    <div className="prose prose-lg prose-slate dark:prose-invert grid grid-cols-3 w-full">
       {metaSection.map((meta) => (
         <div
           className={`mb-2 ${row ? "col-span-1" : "col-span-3"} w-full`}
@@ -36,7 +36,7 @@ export const ProjectMeta = ({
         </div>
       ))}
       <div
-        className={`mb-2 prose dark:prose-invert col-span-1 ${row ? "col-span-1" : "col-span-3"}`}
+        className={`mb-2 prose prose-lg dark:prose-invert col-span-1 ${row ? "col-span-1" : "col-span-3"}`}
       >
         <h3 className="text-md font-bold my-0">Project Link</h3>
         <p className="mb-2">

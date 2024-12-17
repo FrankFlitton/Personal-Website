@@ -40,7 +40,7 @@ export const ProjectList = ({
                     />
                   </div>
 
-                  <div className="prose prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
+                  <div className="prose prose-lg prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
                     <h3 className="text-xl font-bold">{item.title}</h3>
                     <p className="">{subTitle}</p>
                   </div>
