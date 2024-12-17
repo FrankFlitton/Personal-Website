@@ -14,7 +14,9 @@ categories:
 
 If your application is encountering performance issues with large data, checkout this date search typescript package. It works in node and browser runtimes.
 
-[date-search](https://www.npmjs.com/package/date-search)
+<NPM id="date-search" text="Universal time series search Search through your time series data with javascript. Find a value or its closest match." />
+
+---
 
 Web apps are used in all sorts of applications. Frontend developers are constantly challenged to visualize more and more big data while still providing an excellent User Experience.
 
@@ -46,4 +48,4 @@ As you can see, this scales quite well.
 3.  Health monitoring applications: Time series data is often used to monitor vital signs, such as heart rate, blood pressure, and oxygen levels, to identify trends and patterns that can help in disease diagnosis and treatment.
 4.  Web analytics applications: Time series data is used to track website traffic, user engagement, and other metrics over time to identify trends and make data-driven decisions.
 
-[date-search](https://www.npmjs.com/package/date-search)
+<NPM id="date-search" text="Universal time series search Search through your time series data with javascript. Find a value or its closest match." />

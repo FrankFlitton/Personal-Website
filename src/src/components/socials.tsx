@@ -1,5 +1,5 @@
-import { behancePath, mediumNoPaddingPath, mediumPath, xComPath } from "@/const/const";
-import { mdiGithub, mdiLinkedin, mdiPalette, mdiTwitter } from "@mdi/js";
+import { behancePath, mediumNoPaddingPath, xComPath } from "@/const/const";
+import { mdiGithub, mdiLinkedin } from "@mdi/js";
 import Icon from "@mdi/react";
 import { useId } from "react";
 

@@ -1,101 +1,16 @@
-import React, { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import { MDXRemote } from "next-mdx-remote";
-import Image from "next/image";
 import { DialogSlider } from "@/components/dialogSlider";
-import hljs from "highlight.js";
 import "highlight.js/styles/default.min.css";
-import parse from "html-react-parser";
+import { Pre as pre } from "./render-blocks/Pre";
+import { YouTube } from "./render-blocks/YouTube";
+import { Img } from "./render-blocks/Img";
+import { Gist } from "./render-blocks/Gist";
+import { IFrame } from "./render-blocks/IFrame";
+import { NPM } from "./render-blocks/NPM";
+import { Hr as hr } from "./render-blocks/Hr";
 
-const YouTube = ({ id }: { id: string }) => {
-  return (
-    <p>
-      <iframe
-        src={"https://www.youtube.com/embed/" + id}
-        width="100%"
-        height="480"
-        frameBorder="0"
-        allowFullScreen
-        style={{ maxWidth: 800, margin: "0 auto" }}
-      ></iframe>
-    </p>
-  );
-};
-
-const Gist = ({ id }: { id: string }) => {
-  return (
-    <p>
-      <iframe
-        id={`gist-${id}`}
-        src={`/gist/?gist=${id}`}
-        className="gist-iframe dark:outline dark:outline-black/50 dark:outline-1"
-        width="600"
-        height="auto"
-        frameBorder="0"
-      ></iframe>
-    </p>
-  );
-};
-
-const IFrame = (
-  props: React.DetailedHTMLProps<
-    React.IframeHTMLAttributes<HTMLIFrameElement>,
-    HTMLIFrameElement
-  >
-) => {
-  return (
-    <p>
-      <iframe
-        width="100%"
-        height="600"
-        frameBorder="0"
-        style={{ maxWidth: 800, margin: "0 auto" }}
-        {...props}
-      />
-    </p>
-  );
-};
-
-/**
- * markdown's ``` builtin
- * @param props
- * @returns
- */
-const pre = (props: any) => {
-  const code = hljs.highlight(`${props?.children?.props?.children || ""}`, {
-    language:
-      (props?.children?.props?.className).replace("language-", "") || null,
-  });
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const Content = useMemo(() => {
-    return () => parse(code.value);
-  }, [code.value]);
-  return (
-    <div className="bg-slate-800 rounded-lg">
-      <pre>
-        <Content />
-      </pre>
-    </div>
-  );
-};
-
-const Img = (props: any) => {
-  return (
-    <p>
-      <figure>
-        <Image
-          {...props}
-          alt={props.alt ? props.alt : ""}
-          width={500}
-          height={500}
-          className="w-full mb-4 inline-block"
-        />
-        {props.alt && <figcaption>{props.alt}?</figcaption>}
-      </figure>
-    </p>
-  );
-};
-
-const components = { YouTube, IFrame, Img, Gist, pre };
+const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr };
 
 export function MDRenderer({
   source,
