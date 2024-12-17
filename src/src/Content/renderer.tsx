@@ -1,7 +1,10 @@
-import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import React, { MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import { MDXRemote } from "next-mdx-remote";
 import Image from "next/image";
 import { DialogSlider } from "@/components/dialogSlider";
+import hljs from "highlight.js";
+import "highlight.js/styles/default.min.css";
+import parse from "html-react-parser";
 
 const YouTube = ({ id }: { id: string }) => {
   return (
@@ -52,12 +55,31 @@ const IFrame = (
   );
 };
 
-const Img = (
-  // @ts-ignore
-  props
-) => {
+/**
+ * markdown's ``` builtin
+ * @param props
+ * @returns
+ */
+const pre = (props: any) => {
+  const code = hljs.highlight(`${props?.children?.props?.children || ""}`, {
+    language:
+      (props?.children?.props?.className).replace("language-", "") || null,
+  });
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const Content = useMemo(() => {
+    return () => parse(code.value);
+  }, [code.value]);
   return (
-    // eslint-disable-next-line jsx-a11y/alt-text
+    <div className="bg-slate-800 rounded-lg">
+      <pre>
+        <Content />
+      </pre>
+    </div>
+  );
+};
+
+const Img = (props: any) => {
+  return (
     <p>
       <figure>
         <Image
@@ -67,13 +89,13 @@ const Img = (
           height={500}
           className="w-full mb-4 inline-block"
         />
-        {props.alt && <figcaption>{props.alt}</figcaption>}
+        {props.alt && <figcaption>{props.alt}?</figcaption>}
       </figure>
     </p>
   );
 };
 
-const components = { YouTube, IFrame, Img, Gist };
+const components = { YouTube, IFrame, Img, Gist, pre };
 
 export function MDRenderer({
   source,

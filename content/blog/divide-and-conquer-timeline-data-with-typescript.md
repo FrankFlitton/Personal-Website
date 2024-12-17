@@ -26,14 +26,14 @@ Even if we only have a piece of data per every **15 minute** interval of data, t
 
 For cases when we need to know if a point exists, like “is there data on this date?” and “filter the transactions to this date” looping through the entire data set may not cut it.
 
-```js
+```javascript
 // itterates through the entire data set
 bigData.filter((data) => data.date === mydate);
-```
 
 // itterates though a portion of the data set
 // or the whole data set if there is no match.
-bigData.has((data) => data.date === mydate)
+bigData.has((data) => data.date === mydate);
+```
 
 This is where a divide and conquer algorithm like binary search comes in handy.
 
