@@ -1,6 +1,6 @@
 ---
 title: Caching Isn’t a SaaS Product, It’s a Data Structure
-featuredImage: https://cdn-images-1.medium.com/fit/c/150/150/1*jOrHcxnaCz9ns2y3qscXhw.jpeg
+featuredImage: https://cdn-images-1.medium.com/max/1024/0*8dMF1W20joovW-WH
 description: The industry won’t tell you this, but a hashmap does 90% of what you need
 slug: you-dont-need-yet-another-managed-service-you-need-a-hashmap
 date: Mon Feb 17 2025
