@@ -8,6 +8,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/Content/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   plugins: [typographyPlugin, containerQueriesPlugin],
   theme: {
     extend: {

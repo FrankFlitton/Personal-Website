@@ -1,4 +1,4 @@
-import useIsDark from "@/hooks/useIsDark";
+import useTheme from "@/hooks/useTheme";
 import { FeatureProjectData, MDXDocument } from "@/types";
 
 export const ProjectList = ({
@@ -6,7 +6,7 @@ export const ProjectList = ({
 }: {
   projects: MDXDocument<FeatureProjectData>[];
 }) => {
-  const isDark = useIsDark();
+  const { isDark } = useTheme();
   return (
     <div className="w-full">
       <div className="block w-full mb-4 text-black dark:text-white">

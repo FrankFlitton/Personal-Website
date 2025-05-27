@@ -1,10 +1,10 @@
 import Image from "next/image";
 import EndlessCircleAnimation from "./EndlessCircleAnimation";
-import useIsDark from "@/hooks/useIsDark";
+import useTheme from "@/hooks/useTheme";
 import { tagline } from "@/const/const";
 
 export default function HeroSection() {
-  const isDark = useIsDark();
+  const { isDark } = useTheme();
   return (
     <>
       <div className="w-full h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip ml-[-1em]">

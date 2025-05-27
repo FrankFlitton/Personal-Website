@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { use, useLayoutEffect, useState } from "react";
-import { mdiClose, mdiCoffee, mdiHamburger, mdiNavigation } from "@mdi/js";
+import { mdiClose, mdiCoffee, mdiHamburger, mdiNavigation, mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ContactSection } from "./contactSection";
 import { motion, AnimatePresence } from "framer-motion";
-import useIsDark from "@/hooks/useIsDark";
+import useTheme from "@/hooks/useTheme";
 import { useIsScrollPastY } from "@/hooks/useIsScrollPastY";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePathname } from "next/navigation";
@@ -46,7 +46,7 @@ export default function Header() {
     }
   }, [isNavOpen, body?.classList, body]);
 
-  const isDark = useIsDark();
+  const { isDark, toggleTheme } = useTheme();
   const isHomePage = usePathname() === "/";
 
   return (
@@ -151,6 +151,18 @@ export default function Header() {
                 Projects
               </Link>
               <button
+                onClick={toggleTheme}
+                title="Toggle theme"
+                className="mx-1"
+              >
+                <Icon
+                  className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.75rem] transition-transform duration-200 hover:scale-110"
+                  path={isDark ? mdiWeatherSunny : mdiWeatherNight}
+                  color={isDark ? "white" : "black"}
+                  size={1.2}
+                />
+              </button>
+              <button
                 onClick={() => {
                   setIsNavOpen(!isNavOpen);
                   setIsMobileNavOpen(false);
@@ -213,6 +225,17 @@ export default function Header() {
                   >
                     Projects
                   </Link>
+                  <button 
+                    onClick={toggleTheme}
+                    title="Toggle theme"
+                    className="p-4 flex items-center"
+                  >
+                    <Icon
+                      path={isDark ? mdiWeatherSunny : mdiWeatherNight}
+                      color={isDark ? "white" : "black"}
+                      size={0.8}
+                    />
+                  </button>
                   <button onClick={() => setIsNavOpen(!isNavOpen)}>
                     <span className="p-4">Contact</span>
                   </button>
