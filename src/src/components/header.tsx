@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { use, useLayoutEffect, useState } from "react";
-import { mdiClose, mdiCoffee, mdiHamburger, mdiNavigation, mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
+import { useLayoutEffect, useState } from "react";
+import { mdiClose, mdiCoffee, mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ContactSection } from "./contactSection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -52,17 +52,16 @@ export default function Header() {
   return (
     <>
       <div
-        className={`font-futura z-10 w-full text-sm flex flex-col backdrop-blur-md bg-white/80 dark:bg-black/40 fixed ${
-          isNavOpen ? "h-screen" : "h-[80px]"
-        }`}
+        className={`font-futura z-10 w-full text-sm flex flex-col backdrop-blur-md bg-white/80 dark:bg-black/40 fixed ${isNavOpen ? "h-screen" : "h-[80px]"
+          }`}
         style={{
           height: isMobileNavOpen
             ? isNavOpen
               ? "100dvh"
               : 120
             : isNavOpen
-            ? "100dvh"
-            : 80,
+              ? "100dvh"
+              : 80,
         }}
       >
         <div className="w-screen items-center justify-between flex h-[80px] p-4">
@@ -112,9 +111,8 @@ export default function Header() {
               <Icon
                 className={`hover:bg-black/20 dark:hover:bg-white/20 p-2
                   transition-transform duration-200
-                ${
-                  isMobileNavOpen || isMobileNavOpen ? "rotate-0" : "rotate-45"
-                }`}
+                ${isMobileNavOpen || isMobileNavOpen ? "rotate-0" : "rotate-45"
+                  }`}
                 path={mdiClose}
                 color={isDark ? "white" : "black"}
                 size={1.5}
@@ -124,7 +122,7 @@ export default function Header() {
           {!isMobile && (
             <div className="items-end justify-center">
               <Link
-                className="ml-2 px-3 py-2 text-lg"
+                className="ml-2 px-3 py-2 text-lg text-black dark:text-white"
                 href={"/about/"}
                 onClick={() => {
                   setIsNavOpen(false);
@@ -133,7 +131,7 @@ export default function Header() {
                 About
               </Link>
               <Link
-                className="ml-2 px-3 py-2 text-lg"
+                className="ml-2 px-3 py-2 text-lg text-black dark:text-white"
                 href={"/blog/"}
                 onClick={() => {
                   setIsNavOpen(false);
@@ -142,7 +140,7 @@ export default function Header() {
                 Blog
               </Link>
               <Link
-                className="mx-2 px-3 py-2 text-lg"
+                className="mx-2 px-3 py-2 text-lg text-black dark:text-white"
                 href={"/projects/"}
                 onClick={() => {
                   setIsNavOpen(false);
@@ -150,13 +148,9 @@ export default function Header() {
               >
                 Projects
               </Link>
-              <button
-                onClick={toggleTheme}
-                title="Toggle theme"
-                className="mx-1"
-              >
+              <button onClick={toggleTheme} title="Toggle theme" className="">
                 <Icon
-                  className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.75rem] transition-transform duration-200 hover:scale-110"
+                  className="hover:bg-black/20 dark:hover:bg-white/20 hover:scale-110 mb-[-0.5rem] p-1"
                   path={isDark ? mdiWeatherSunny : mdiWeatherNight}
                   color={isDark ? "white" : "black"}
                   size={1.2}
@@ -169,7 +163,7 @@ export default function Header() {
                 }}
               >
                 <Icon
-                  className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.75rem]"
+                  className="hover:bg-black/20 dark:hover:bg-white/20 p-2 mb-[-0.75rem] hover:scale-110"
                   path={isNavOpen ? mdiClose : mdiCoffee}
                   color={isDark ? "white" : "black"}
                   size={1.5}
@@ -225,7 +219,7 @@ export default function Header() {
                   >
                     Projects
                   </Link>
-                  <button 
+                  <button
                     onClick={toggleTheme}
                     title="Toggle theme"
                     className="p-4 flex items-center"
