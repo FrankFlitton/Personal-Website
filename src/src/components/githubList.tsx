@@ -41,7 +41,12 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
     "Check out my open source code on Github. Here are a short list of software projects I can share.";
 
   const repos: Repo[] = githubRes?.data?.user?.pinnedItems?.nodes
-    ? ([...githubRes.data.user.pinnedItems.nodes] as Repo[])
+    ? ([...githubRes.data.user.pinnedItems.nodes] as Repo[]).sort((a, b) => {
+        // Sort items with custom open graph images first
+        if (a.usesCustomOpenGraphImage && !b.usesCustomOpenGraphImage) return -1;
+        if (!a.usesCustomOpenGraphImage && b.usesCustomOpenGraphImage) return 1;
+        return 0;
+      })
     : [];
 
   const languages = repos.map((r) =>
