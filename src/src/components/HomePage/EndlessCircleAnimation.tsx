@@ -223,13 +223,9 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
   return (
     <canvas
       ref={canvasRef}
+      className="block w-full h-full relative select-none bg-black"
       style={{
         backfaceVisibility: "hidden",
-        display: "block",
-        backgroundColor: "black",
-        position: "relative",
-        width: "100%",
-        height: "100%",
       }}
     />
   );

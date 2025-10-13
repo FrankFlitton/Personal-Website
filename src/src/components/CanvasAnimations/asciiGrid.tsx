@@ -64,7 +64,8 @@ const makeAsciiGrid = (
             } else {
                 // Optional: Draw a faint grid or leave blank
                 ctx.fillStyle = "#444"; // Faint color for inactive cells
-                ctx.fillText("•", x, y);
+                const char = Math.random() < 0.32 ? "▢" : "▣";
+                ctx.fillText(char, x, y);
             }
             charIndex++;
         }
@@ -186,6 +187,12 @@ const Component = ({ isDark }: { isDark: boolean }) => {
         // Initialize canvas size and variables
         resizeCanvas();
 
+        // Set up ResizeObserver to handle canvas resizing
+        const resizeObserver = new ResizeObserver(() => {
+            resizeCanvas();
+        });
+        resizeObserver.observe(canvas);
+
         let currentAngle = 0;
         const speed = 5; // Adjust the speed of the animation
         ctx.lineCap = "round";
@@ -206,6 +213,7 @@ const Component = ({ isDark }: { isDark: boolean }) => {
         return () => {
             // Cleanup function
             cancelAnimationFrame(animationFrameId);
+            resizeObserver.disconnect();
         };
     }, [isDark]);
 
@@ -213,13 +221,9 @@ const Component = ({ isDark }: { isDark: boolean }) => {
         <div className="w-full h-full">
             <canvas
                 ref={canvasRef}
+                className="bg-black block w-full h-full relative select-none"
                 style={{
                     backfaceVisibility: "hidden",
-                    display: "block",
-                    backgroundColor: "transparent",
-                    position: "relative",
-                    width: "100%",
-                    height: "100%",
                 }}
             />
         </div>

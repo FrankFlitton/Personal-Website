@@ -57,7 +57,7 @@ const ringCluster = (
   }
 };
 
-const CircleFlourish = ({ isDark }: { isDark: boolean }) => {
+const CircleFlourish = ({ isDark, full }: { isDark: boolean, full: boolean }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -96,6 +96,12 @@ const CircleFlourish = ({ isDark }: { isDark: boolean }) => {
     // Initialize canvas size and variables
     resizeCanvas();
 
+    // Set up ResizeObserver to handle canvas resizing
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    resizeObserver.observe(canvas);
+
     let currentAngle = 0;
     const speed = 0.005; // Adjust the speed of the animation
     ctx.lineCap = "round";
@@ -126,11 +132,12 @@ const CircleFlourish = ({ isDark }: { isDark: boolean }) => {
     return () => {
       // Cleanup function
       cancelAnimationFrame(animationFrameId);
+      resizeObserver.disconnect();
     };
   }, [isDark]);
 
   return (
-    <div className="w-20 h-20">
+    <div className={full ? "size-full" : "w-20 h-20"}>
       <canvas
         ref={canvasRef}
         style={{
