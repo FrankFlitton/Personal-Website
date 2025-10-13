@@ -84,135 +84,80 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
   return (
     <>
       <div className="w-full relative">
-        <div className="absolute flex top-0 left-0 w-full bg-red">
-          <div className="mx-auto">
-            <CircleFlourish isDark={false} />
-          </div>
-        </div>
-        <div className="relative block w-full py-5 mb-10 text-black dark:text-white">
-          <h2 className="text-4xl font-bold block w-full text-center">
+        <div className="relative block w-full py-5 mb-8 text-black dark:text-white">
+          <h3 className="text-2xl font-bold block w-full text-center opacity-80">
             {title}
-          </h2>
+          </h3>
         </div>
-        <div className="flex text-center w-full mb-10">
+        <div className="flex text-center w-full mb-8">
           <a
-            className="text-blue-500 hover:text-blue-700 hover:bg-blue-300 dark:hover:bg-blue-900/50 mx-auto"
+            className="text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 mx-auto px-4 py-2 rounded text-sm transition-colors duration-200"
             role="button"
             href="https://github.com/frankflitton"
             target="_blank"
           >
-            Follow me on Github
+            View on GitHub
           </a>
         </div>
       </div>
       <div
-        className={`grid grid-cols-3 gap-4 auto-rows-[175px] md:auto-rows-[200px] text-black dark:text-white`}
+        className={`grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[140px] text-black dark:text-white`}
       >
         {repos &&
-          repos.map((repo, i) => (
+          repos.slice(0, 8).map((repo, i) => (
             <div
               key={repo.id}
-              className={`col-span-3 ${
-                !!repo.usesCustomOpenGraphImage
-                  ? "row-span-2 md:row-span-1"
-                  : "row-span-1"
-              } bg-neutral-100 dark:bg-neutral-900 ${
-                !!repo.usesCustomOpenGraphImage
-                  ? "md:col-span-2"
-                  : "md:col-span-1"
-              } hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200`}
+              className={`col-span-1 row-span-1 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200 rounded`}
             >
-              <div
-                className={`grid ${
-                  !!repo.usesCustomOpenGraphImage
-                    ? "grid-rows-2 grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-2 md:gap-4"
-                    : "grid-rows-1 grid-cols-2 gap-4"
-                } grid-flow-col  w-full h-full`}
+              <a
+                href={repo.url}
+                target="_blank"
+                className="grid grid-rows-3 grid-flow-col gap-2 w-full h-full p-3"
               >
-                {!!repo.usesCustomOpenGraphImage && (
-                  <div className="h-full w-full overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      alt=""
-                      src={repo.openGraphImageUrl}
-                      className="object-cover h-full w-full hover:scale-105 transition-all duration-200 ease"
-                      width={100}
-                      height={100}
-                    ></img>
+                <div className="flex items-start justify-between">
+                  <div className="justify-start">
+                    <h4
+                      className={`text-sm font-semibold line-clamp-1 ${
+                        repo.name.includes("-") ? "capitalize" : ""
+                      }`}
+                    >
+                      {repo.name.includes("-")
+                        ? repo.name.replaceAll("-", " ")
+                        : repo.name}
+                    </h4>
                   </div>
-                )}
-                <div
-                  className={`grid grid-rows-3 grid-flow-col gap-4 w-full h-full ${
-                    !!repo.usesCustomOpenGraphImage ? "p-4" : "p-4 col-span-2"
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="justify-start">
-                      <h3
-                        className={`inline text-xl ${
-                          repo.name.includes("-") ? "capitalize" : ""
-                        }`}
-                      >
-                        {repo.name.includes("-")
-                          ? repo.name.replaceAll("-", " ")
-                          : repo.name}
-                      </h3>
-                    </div>
-                    <div className="flex justify-end align-middle text-black/70 dark:text-white/70">
-                      <Icon
-                        path={mdiStar}
-                        title="Github Stargazer Count"
-                        size={0.75}
-                        className="mt-[0.125rem]"
-                      />
-                      <span>{repo.stargazerCount}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start justify-start text-black/70 dark:text-white/70">
-                    <p className="line-clamp-2 md:line-clamp-2">
-                      {repo.description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-end justify-between">
-                    <div className="flex items-end justify-start">
-                      <a
-                        href={repo.url}
-                        target="_blank"
-                        role="button"
-                        className="hover:bg-black/10 dark:hover:bg-white/20 p-2 ml-[-0.5rem] mb-[-0.5rem]"
-                      >
-                        Code on GitHub
-                      </a>
-                      {repo.homepageUrl && (
-                        <a
-                          href={repo.homepageUrl}
-                          target="_blank"
-                          role="button"
-                          className="hover:bg-black/10 dark:hover:bg-white/20 p-2 mb-[-0.5rem]"
-                        >
-                          View Demo
-                        </a>
-                      )}
-                    </div>
-                    <div className="flex items-end justify-end">
-                      {languages[i] &&
-                        languages[i].map((lang) => (
-                          <Icon
-                            key={lang.name}
-                            id={`${repo.id}-${lang.name}`}
-                            path={formatLang(lang.name)}
-                            color={lang.color}
-                            title={lang.name}
-                            size={1}
-                            className="mt-[-0.5rem] inline-block bg-blend-multiply"
-                          />
-                        ))}
-                    </div>
+                  <div className="flex justify-end align-middle text-black/70 dark:text-white/70">
+                    <Icon
+                      path={mdiStar}
+                      title="Github Stargazer Count"
+                      size={0.6}
+                      className="mt-[0.125rem]"
+                    />
+                    <span className="text-xs">{repo.stargazerCount}</span>
                   </div>
                 </div>
-              </div>
+
+                <div className="flex items-start justify-start text-black/70 dark:text-white/70">
+                  <p className="line-clamp-2 text-xs">
+                    {repo.description}
+                  </p>
+                </div>
+
+                <div className="flex items-end justify-start">
+                  {languages[i] &&
+                    languages[i].slice(0, 3).map((lang) => (
+                      <Icon
+                        key={lang.name}
+                        id={`${repo.id}-${lang.name}`}
+                        path={formatLang(lang.name)}
+                        color={lang.color}
+                        title={lang.name}
+                        size={0.7}
+                        className="inline-block bg-blend-multiply mr-1"
+                      />
+                    ))}
+                </div>
+              </a>
             </div>
           ))}
       </div>

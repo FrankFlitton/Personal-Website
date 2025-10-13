@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { Page } from "@/components/page";
 import { useEffect } from "react";
-import { BlogList } from "@/components/blogList";
+import { AllBlogsList } from "@/components/AllBlogsList";
 import { PageMeta } from "@/components/pageMeta";
 import { MDLoadDir } from "@/Content/loader";
 import { Blog } from "@/types";
@@ -54,7 +54,7 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
       <PageMeta title={"Frank's Blog"} color="#000000" />
       {blogs && (
         <div className="w-full my-16 max-w-screen-lg m-auto">
-          <BlogList blogs={blogs} />
+          <AllBlogsList blogs={blogs} />
         </div>
       )}
     </Page>

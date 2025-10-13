@@ -100,11 +100,11 @@ export default function Home({
       <div className="mb-20">
         <HeroSection />
       </div>
-      <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <GithubList githubRes={githubRes} />
+      <div className="w-full mb-24 max-w-screen-lg m-auto">
+        <BlogList blogs={blogs} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
-        <BlogList blogs={blogs} />
+        <GithubList githubRes={githubRes} />
       </div>
     </Page>
   );
