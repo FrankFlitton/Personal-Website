@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "@/components/header";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 import "@/styles/globals.css";
 import "@/styles/progressRing.css";
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <>
+    <ThemeProvider>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -39,7 +40,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </> :
         <Component {...pageProps} />
       }
-
-    </>
+    </ThemeProvider>
   );
 }

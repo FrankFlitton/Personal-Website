@@ -35,3 +35,13 @@ export type Blog = {
   link: string;
   categories: string[];
 };
+
+export type Theme = "light" | "dark" | "system";
+
+export interface ThemeContextType {
+  theme: Theme;
+  isDark: boolean;
+  setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
+  systemPrefersDark: boolean;
+}

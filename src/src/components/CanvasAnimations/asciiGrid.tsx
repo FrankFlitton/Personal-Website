@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { applyGlitchEffect } from "@/utils/canvasGlitch";
 
 const amber500 = "#f59e0b";
 const amber400 = "#fbbf24";
@@ -147,9 +148,9 @@ const makeAsciiGrid = (
 
 };
 
-
 const Component = ({ isDark }: { isDark: boolean }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         if (!canvasRef.current) {
@@ -200,9 +201,13 @@ const Component = ({ isDark }: { isDark: boolean }) => {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
             makeAsciiGrid(ctx, currentAngle, w, h, centerX, centerY, radiusInner,
                 20, isDark ? blue600 : amber500, isDark ? blue800 : amber400);
+
+            // Apply glitch effect if hovering
+            if (isHovered) {
+                applyGlitchEffect(ctx, w, h);
+            }
 
             currentAngle += speed % (w * 2);
             animationFrameId = requestAnimationFrame(animate);
@@ -215,16 +220,18 @@ const Component = ({ isDark }: { isDark: boolean }) => {
             cancelAnimationFrame(animationFrameId);
             resizeObserver.disconnect();
         };
-    }, [isDark]);
+    }, [isDark, isHovered]);
 
     return (
         <div className="w-full h-full">
             <canvas
                 ref={canvasRef}
-                className="bg-black block w-full h-full relative select-none"
+                className="bg-black block w-full h-full relative select-none cursor-pointer"
                 style={{
                     backfaceVisibility: "hidden",
                 }}
+                onPointerEnter={() => setIsHovered(true)}
+                onPointerLeave={() => setIsHovered(false)}
             />
         </div>
     );

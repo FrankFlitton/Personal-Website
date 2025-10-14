@@ -8,6 +8,11 @@ const amber400 = "#fbbf24";
 const blue600 = "#2563eb";
 const blue800 = "#1e40af";
 
+const portraitCheck = (w: number, h: number) => {
+  const ratio = h / w;
+  return ratio > 1.8;
+};
+
 const angleToCartesian = (
   angle: number,
   magnitude: number
@@ -102,8 +107,11 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
     let w: number, h: number, cursorX: number, cursorY: number;
 
     const handleMouseMove = (e?: MouseEvent) => {
-      cursorX = isMobile ? 0 : e?.clientX || 0;
-      cursorY = isMobile ? 0 : e?.clientY || 0;
+      const isPortrait = portraitCheck(canvas.clientWidth, canvas.clientHeight);
+      cursorX =
+        isMobile || isPortrait ? canvas.clientWidth / 2 : e?.clientX || 0;
+      cursorY =
+        isMobile || isPortrait ? canvas.clientHeight / 2 : e?.clientY || 0;
       updateVariables();
     };
 
@@ -125,10 +133,36 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
 
     // Update variables when canvas size changes
     const updateVariables = () => {
-      centerX = isMobile ? w / 2 : w / 2 + ((cursorX - w) / w) * -50;
-      centerY = isMobile ? h * 0.45 : h * 0.45 + ((cursorY - h) / h) * -50;
-      radiusInner = isMobile ? Math.max(w, h) * 0.34 : Math.min(w, h) * 0.54;
-      radiusOuter = isMobile ? Math.max(w, h) * 0.89 : Math.min(w, h) * 1.32;
+      const isPortrait = portraitCheck(w, h);
+      centerX =
+        isMobile || isPortrait ? w / 2 : w / 2 + ((cursorX - w) / w) * -50;
+
+      centerY = h / 2; // Center vertically to fill height
+
+      if (isPortrait) {
+        // Base sizing on width for consistent scaling
+        // The logomark (inner circle content) should be 80% of canvas width
+        const logomarkSize = w * 0.9;
+
+        // Scale radii based on width to ensure logomark is 80% of canvas width
+        // The logomark is drawn at radiusInner * 0.34, so we need:
+        // radiusInner * 0.34 = logomarkSize
+        radiusInner = logomarkSize / 0.34;
+        radiusOuter = radiusInner * (isMobile || isPortrait ? 2.62 : 2.44); // Maintain proportional relationship
+      } else {
+        centerY =
+          isMobile || isPortrait
+            ? h * 0.45
+            : h * 0.45 + ((cursorY - h) / h) * -50;
+        radiusInner =
+          isMobile || isPortrait
+            ? Math.max(w, h) * 0.34
+            : Math.min(w, h) * 0.54;
+        radiusOuter =
+          isMobile || isPortrait
+            ? Math.max(w, h) * 0.89
+            : Math.min(w, h) * 1.32;
+      }
     };
 
     // Initialize canvas size and variables
@@ -138,6 +172,53 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
     const debouncedMouseMove = debounce(handleMouseMove, 5);
     window.addEventListener("resize", debouncedResize);
     window.addEventListener("mousemove", debouncedMouseMove);
+
+    // Create a MutationObserver to watch for DOM changes that might affect canvas size
+    const mutationObserver = new MutationObserver((mutations) => {
+      let shouldResize = false;
+
+      console.log(mutations );
+      mutations.forEach((mutation) => {
+        // Check if attributes related to size or visibility changed
+        if (mutation.type === "attributes") {
+          const attributeName = mutation.attributeName;
+          if (
+            attributeName === "style" ||
+            attributeName === "class" ||
+            attributeName === "width" ||
+            attributeName === "height"
+          ) {
+            shouldResize = true;
+          }
+        }
+        // Check if child nodes were added/removed (might affect layout)
+        else if (mutation.type === "childList") {
+          shouldResize = true;
+        }
+      });
+
+      if (shouldResize) {
+        debouncedResize();
+      }
+    });
+
+    // Observe the canvas element and its parent for changes
+    mutationObserver.observe(canvas, {
+      attributes: true,
+      attributeFilter: ["style", "class", "width", "height"],
+      childList: false,
+      subtree: false,
+    });
+
+    // Also observe the canvas parent for layout changes
+    if (canvas.parentElement) {
+      mutationObserver.observe(canvas.parentElement, {
+        attributes: true,
+        attributeFilter: ["style", "class"],
+        childList: true,
+        subtree: false,
+      });
+    }
 
     let currentAngle = 0;
     const speed = 0.02; // Adjust the speed of the animation
@@ -185,13 +266,15 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
         "#444444"
       );
 
+      const isPortrait = portraitCheck(w, h);
+
       // place image in center
       ctx.drawImage(
         image,
-        isMobile
+        isMobile || isPortrait
           ? centerX - radiusInner * 0.17
           : centerX - radiusInner * 0.17 + ((cursorX - w) / w) * -10,
-        isMobile
+        isMobile || isPortrait
           ? centerY - radiusInner * 0.17
           : centerY - radiusInner * 0.17 + ((cursorY - h) / h) * -10,
         radiusInner * 0.34,
@@ -216,6 +299,7 @@ const EndlessCircleAnimation = ({ isDark }: { isDark: boolean }) => {
       // Cleanup function
       window.removeEventListener("resize", debouncedResize);
       window.removeEventListener("mousemove", debouncedMouseMove);
+      mutationObserver.disconnect();
       cancelAnimationFrame(animationFrameId);
     };
   }, [isDark]);
