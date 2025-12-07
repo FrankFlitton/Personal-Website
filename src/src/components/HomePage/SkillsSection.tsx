@@ -1,10 +1,9 @@
-import useTheme from "@/hooks/useTheme";
+import CircleFlourish from "./CircleFlourish";
 
 interface SkillCategory {
   title: string;
   description: string;
   skills: string[];
-  color: string;
 }
 
 const skillCategories: SkillCategory[] = [
@@ -32,7 +31,6 @@ const skillCategories: SkillCategory[] = [
       "Protocol Buffers",
       "Express.js",
     ],
-    color: "blue",
   },
   {
     title: "AI/ML & Data",
@@ -49,7 +47,6 @@ const skillCategories: SkillCategory[] = [
       "Time Series Analysis",
       "BigQuery",
     ],
-    color: "purple",
   },
   {
     title: "Frontend & UX Engineering",
@@ -70,7 +67,6 @@ const skillCategories: SkillCategory[] = [
       "Accessibility (a11y)",
       "Performance Optimization",
     ],
-    color: "amber",
   },
   {
     title: "Leadership & Process",
@@ -86,68 +82,53 @@ const skillCategories: SkillCategory[] = [
       "Incident Response",
       "Mentorship",
     ],
-    color: "green",
   },
 ];
 
-const colorClasses = {
-  blue: {
-    bg: "bg-blue-50 dark:bg-blue-950/30",
-    border: "border-blue-200 dark:border-blue-800",
-    text: "text-blue-900 dark:text-blue-100",
-    badge: "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300",
-  },
-  purple: {
-    bg: "bg-purple-50 dark:bg-purple-950/30",
-    border: "border-purple-200 dark:border-purple-800",
-    text: "text-purple-900 dark:text-purple-100",
-    badge: "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300",
-  },
-  amber: {
-    bg: "bg-amber-50 dark:bg-amber-950/30",
-    border: "border-amber-200 dark:border-amber-800",
-    text: "text-amber-900 dark:text-amber-100",
-    badge: "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300",
-  },
-  green: {
-    bg: "bg-green-50 dark:bg-green-950/30",
-    border: "border-green-200 dark:border-green-800",
-    text: "text-green-900 dark:text-green-100",
-    badge: "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300",
-  },
-};
+const highlights = [
+  "Led Text-to-SQL LLM product with graph-based tool calling (Pydantic)",
+  "Architected AI/ML workflow builder driving 30% user growth at Union AI",
+  "Rebuilt secure hosting platform serving 40,000+ monthly users at Google",
+  "Managed $2 trillion in assets annually with AI-driven quant systems at Boosted AI",
+];
 
 export default function SkillsSection() {
-  const { isDark } = useTheme();
-
   return (
-    <div className="w-full mb-16 max-w-screen-lg mx-auto px-4">
-      <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4 text-center">
-        Technical Expertise
-      </h2>
-      <p className="text-center text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto">
-        Deep experience across the full stack, from distributed systems to user interfaces
-      </p>
+    <div className="w-full relative max-w-screen-lg mx-auto">
+      <div className="absolute flex top-0 left-0 w-full">
+        <div className="mx-auto">
+          <CircleFlourish isDark={false} />
+        </div>
+      </div>
+      <div className="relative block w-full py-5 mb-10 text-black dark:text-white">
+        <h2 className="text-4xl font-bold block w-full text-center">
+          Technical Expertise
+        </h2>
+      </div>
+      <div className="flex w-3/4 mx-auto mb-10 text-center prose prose-lg dark:prose-invert">
+        <p>
+          Deep experience across the full stack, from distributed systems to user interfaces
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         {skillCategories.map((category) => {
-          const colors = colorClasses[category.color as keyof typeof colorClasses];
           return (
             <div
               key={category.title}
-              className={`p-6 rounded-lg border ${colors.bg} ${colors.border} transition-all hover:shadow-lg`}
+              className="bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200 p-6"
             >
-              <h3 className={`text-xl font-semibold mb-2 ${colors.text}`}>
+              <h3 className="text-xl font-bold text-black dark:text-white mb-2">
                 {category.title}
               </h3>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+              <p className="text-sm text-black/70 dark:text-white/70 mb-4">
                 {category.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${colors.badge}`}
+                    className="px-2 py-1 text-xs bg-black/5 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
                   >
                     {skill}
                   </span>
@@ -158,35 +139,17 @@ export default function SkillsSection() {
         })}
       </div>
 
-      <div className="mt-8 p-6 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
-        <h3 className="text-lg font-semibold text-black dark:text-white mb-3">
+      <div className="bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200 p-6">
+        <h3 className="text-xl font-bold text-black dark:text-white mb-4">
           Recent Highlights
         </h3>
-        <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
-          <li className="flex items-start">
-            <span className="text-blue-500 mr-2">•</span>
-            <span>
-              Led Text-to-SQL LLM product with graph-based tool calling (Pydantic)
-            </span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-purple-500 mr-2">•</span>
-            <span>
-              Architected AI/ML workflow builder driving 30% user growth at Union AI
-            </span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-amber-500 mr-2">•</span>
-            <span>
-              Rebuilt secure hosting platform serving 40,000+ monthly users at Google
-            </span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-green-500 mr-2">•</span>
-            <span>
-              Managed $2 trillion in assets annually with AI-driven quant systems at Boosted AI
-            </span>
-          </li>
+        <ul className="space-y-3">
+          {highlights.map((highlight, i) => (
+            <li key={i} className="flex items-start text-black/70 dark:text-white/70">
+              <span className="mr-3 text-black/40 dark:text-white/40">•</span>
+              <span>{highlight}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
