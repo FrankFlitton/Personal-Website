@@ -1,7 +1,7 @@
 import Image from "next/image";
 import EndlessCircleAnimation from "./EndlessCircleAnimation";
 import useTheme from "@/hooks/useTheme";
-import { tagline } from "@/const/const";
+import { tagline, roleTargeting } from "@/const/const";
 
 export default function HeroSection() {
   const { isDark } = useTheme();
@@ -88,11 +88,12 @@ export default function HeroSection() {
           {/* end black */}
         </div>
       </div>
-      <div className="h-full max-w-screen-lg w-full mt-16 mx-auto">
-        <p
-          className="mx-auto text-center text-2xl text-neutral-500 dark:text-neutral-400 mb-16 w-full sm:w-2/3"
-        >
+      <div className="h-full max-w-screen-lg w-full mt-16 mx-auto px-4">
+        <p className="mx-auto text-center text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 mb-6 w-full sm:w-2/3">
           {tagline}
+        </p>
+        <p className="mx-auto text-center text-base md:text-lg text-neutral-500 dark:text-neutral-500 mb-16 w-full sm:w-3/4">
+          {roleTargeting}
         </p>
       </div>
     </>

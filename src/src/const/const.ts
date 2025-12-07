@@ -1,5 +1,8 @@
 export const tagline =
-  "Frank is a Lead Software Engineer and UX Designer with expertise in AI/ML, fintech, ad tech, and big data-driven web applications.";
+  "Senior Software Engineer | Ex-Google UXE | Backend Systems & AI/ML";
+
+export const roleTargeting =
+  "Full-stack engineer specializing in distributed systems, AI/ML platforms, and data-intensive applications. Led teams at Google, TD Bank, and high-growth AI startups. Open to Backend SWE and UX Engineering roles.";
 
 export const mediumPath =
   "M 0 0 L 24 0 L 24 24 L 0 24 Z M 20.107 7.691 C 19.614 7.691 19.213 9.62 19.213 12 C 19.213 14.381 19.614 16.311 20.107 16.311 C 20.599 16.311 21 14.381 21 12 C 21 9.62 20.599 7.691 20.107 7.691 Z M 16.183 7.189 C 14.782 7.189 13.645 9.343 13.645 12 C 13.645 14.657 14.782 16.812 16.183 16.812 C 17.585 16.812 18.722 14.657 18.722 12 C 18.722 9.343 17.585 7.189 16.183 7.189 Z M 8.077 6.889 C 5.273 6.889 3 9.179 3 12 C 3 14.823 5.273 17.111 8.077 17.111 C 10.88 17.111 13.153 14.823 13.153 12 C 13.153 9.179 10.88 6.889 8.077 6.889 Z";
