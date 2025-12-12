@@ -18,6 +18,22 @@ const config: Config = {
       screens: {
         'hzphone': { 'raw': '(min-device-width: 480px) and (max-height: 600px) and (orientation: landscape)' }
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            lineHeight: '1.7',
+          },
+        },
+        lg: {
+          css: {
+            lineHeight: '1.7',
+            p: {
+              marginTop: '1.25em',
+              marginBottom: '1.25em',
+            },
+          },
+        },
+      },
       keyframes: {
         featureSliderInKF: {
           "0%": { opacity: "0", left: "-300vw" },
