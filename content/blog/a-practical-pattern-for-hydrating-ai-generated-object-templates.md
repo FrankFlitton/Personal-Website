@@ -3,7 +3,7 @@ title: "A Practical Pattern for Hydrating AI-Generated Object Templates"
 description: "How I hydrate server-side LLM templates with client constants and API data using a queue-based pattern."
 featuredImage: https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1200
 slug: a-practical-pattern-for-hydrating-ai-generated-object-templates
-date: Fri Dec 12 2024
+date: Fri Dec 12 2025
 categories:
   - javascript
   - typescript
