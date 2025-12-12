@@ -1,9 +1,9 @@
 ---
-title: "Why Breadth-First Search Matters for JavaScript Objects"
-description: Most developers loop through objects recursively. Here's why BFS might be the better pattern for your next data transformation.
+title: "A Practical Pattern for Hydrating AI-Generated Object Templates"
+description: When LLMs generate config objects with placeholder strings, you need a better way to hydrate them than recursion. Here's why BFS wins.
 featuredImage: https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1200
-slug: why-breadth-first-search-matters-for-javascript-objects
-date: Sun Dec 08 2024
+slug: a-practical-pattern-for-hydrating-ai-generated-object-templates
+date: Fri Dec 12 2024
 categories:
   - javascript
   - typescript
@@ -16,9 +16,30 @@ When you need to traverse a JavaScript object, what's your first instinct? If yo
 
 But there's another way. One that gives you more control, better memory predictability, and clearer logic: breadth-first search using a queue.
 
-## The Problem With Recursive Object Traversal
+## The Problem: LLM-Generated Chart Configs
 
-Let's say you need to walk through a deeply nested API response and replace all instances of a deprecated URL with a new one. Or maybe you need to sanitize user data by finding and removing sensitive strings buried somewhere in a complex object tree.
+Here's a real scenario I ran into: using an LLM to generate Highcharts configurations. The LLM outputs something like this:
+
+```javascript
+{
+  series: [
+    { name: "NEGATIVE_SERIES", data: [1, 2, 3] },
+    { name: "POSITIVE_SERIES", data: [4, 5, 6] }
+  ],
+  colors: ["NEGATIVE_COLOR", "POSITIVE_COLOR"],
+  plotOptions: {
+    series: {
+      marker: {
+        fillColor: "NEGATIVE_COLOR"
+      }
+    }
+  }
+}
+```
+
+The LLM uses placeholder strings like `"NEGATIVE_SERIES"` and `"NEGATIVE_COLOR"` because it can't know your actual color scheme or series names ahead of time. Now you need to walk through this deeply nested config object and replace every instance of these placeholders with real values.
+
+You could try a simple `JSON.stringify` → replace → `JSON.parse` approach, but that's brittle and can break with special characters or circular references. Or you could write a recursive function... but we've all seen where that leads.
 
 The recursive approach looks elegant at first:
 
@@ -55,7 +76,7 @@ Here's a practical example: a function that finds and replaces a target string i
  * Performs a breadth-first search on any JavaScript object to find and replace a target string
  * with a new value in all string properties.
  */
-function bfsStringReplace(obj: any, target: string, replacement: string): number {
+function objectStringReplace(obj: any, target: string, replacement: string): number {
     if (!obj || typeof obj !== "object") {
         return 0;
     }
@@ -160,7 +181,19 @@ The fix? Don't default to recursion just because it's familiar. Ask yourself: do
 
 ## Practical Applications
 
-Beyond string replacement, here are scenarios where BFS shines:
+The Highcharts example is just the start. Here are other scenarios where BFS shines:
+
+**LLM-Generated Code Cleanup**: Any time an LLM generates structured data with placeholders, you need a reliable way to hydrate those placeholders with real values. BFS makes this trivial—just run multiple passes with different target/replacement pairs:
+
+```typescript
+const config = generateChartConfig(); // LLM output
+objectStringReplace(config, "NEGATIVE_SERIES", "Revenue Loss");
+objectStringReplace(config, "POSITIVE_SERIES", "Revenue Gain");
+objectStringReplace(config, "NEGATIVE_COLOR", "#ff4444");
+objectStringReplace(config, "POSITIVE_COLOR", "#44ff44");
+```
+
+Each pass processes the entire object tree without recursive overhead. Chain as many as you need.
 
 **API Response Transformation**: You receive a nested response and need to normalize it, rename keys, or strip metadata. BFS lets you transform everything in one pass without recursive overhead.
 
@@ -168,9 +201,7 @@ Beyond string replacement, here are scenarios where BFS shines:
 
 **Migration Scripts**: Updating legacy data structures to new formats. BFS makes it easy to find specific patterns and replace them, even when the nesting varies between records.
 
-**Finding Values at Specific Depths**: Need to locate all properties exactly three levels deep? With BFS, you just track depth as you queue items and filter accordingly.
-
-**Configuration Merging**: Combining multiple config objects where values at certain depths need special handling. BFS gives you precise control over when and how to merge.
+**Dynamic Theming**: Replace color placeholders throughout component configs when users switch themes. One BFS pass updates every color reference across the entire UI state tree.
 
 ## Keep It Simple
 
