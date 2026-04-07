@@ -9,7 +9,6 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
 
   return (
     <div className="max-w-2xl mx-auto px-6 pb-24 space-y-20 prose dark:prose-invert">
-
       {/* ── Recent Highlights ─────────────────────────────────────────── */}
       <section>
         <p className="text-xs tracking-widest uppercase text-neutral-400 mb-6">
@@ -48,14 +47,16 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
           </div>
           <div className="col-span-1 sm:col-span-2 p-6 flex flex-col justify-between">
             <div>
-              <p className="text-xs text-neutral-400 mb-2 m-0">TD Bank Innovation Lab</p>
+              <p className="text-xs text-neutral-400 mb-2 m-0">
+                TD Bank Innovation Lab
+              </p>
               <h2 className="text-base font-medium mb-3 mt-1 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
                 Shopping Optimizer
               </h2>
               <p className="text-sm text-neutral-500 leading-relaxed m-0">
                 Turned real-time flyer data and user research into an optimized
-                grocery routing tool — from discovery through to a filed Canadian
-                patent.
+                grocery routing tool — from discovery through to a filed
+                Canadian patent.
               </p>
             </div>
             <span className="text-sm text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors mt-4 block">
@@ -89,7 +90,9 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
                   />
                 </div>
               )}
-              <div className={`${recentPosts[0].featuredImage ? "col-span-1 sm:col-span-2" : "col-span-1 sm:col-span-5"} p-5 flex flex-col justify-center`}>
+              <div
+                className={`${recentPosts[0].featuredImage ? "col-span-1 sm:col-span-2" : "col-span-1 sm:col-span-5"} p-5 flex flex-col justify-center`}
+              >
                 <h3 className="text-sm font-medium mb-2 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
                   {recentPosts[0].title}
                 </h3>
@@ -156,7 +159,9 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
                   <p className="text-sm font-medium mb-0.5 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors m-0">
                     {repo.name}
                   </p>
-                  <p className="text-sm text-neutral-500 m-0">{repo.description}</p>
+                  <p className="text-sm text-neutral-500 m-0">
+                    {repo.description}
+                  </p>
                 </div>
                 <span className="text-xs text-neutral-400 flex-shrink-0 mt-1">
                   GitHub →
@@ -179,7 +184,6 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
       <div className="flex justify-center pointer-events-none">
         <CircleFlourish isDark={isDark} />
       </div>
-
     </div>
   );
 }
@@ -187,10 +191,11 @@ export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
 // ─── Static data ──────────────────────────────────────────────────────────────
 
 const highlights = [
-  "Led Text-to-SQL LLM product with graph-based tool calling at Boosted AI",
+  "Led Text-to-SQL LLM product with graph-based tool calling at Summation",
   "Architected AI/ML workflow builder driving 30% user growth at Union AI",
   "Rebuilt secure hosting platform serving 40,000+ monthly users at Google",
-  "Named inventor on Canadian patent CA 3,092,840 — real-time group financial reconciliation",
+  "Powered AI-driven quant recommendations across $2 trillion in assets annually at Boosted AI",
+  "Named inventor on Canadian patent CA 3092840, real-time group financial reconciliation",
 ];
 
 const openSource = [
