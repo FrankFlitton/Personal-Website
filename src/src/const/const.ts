@@ -4,6 +4,8 @@ export const taglineParts = [
   "Backend Systems & AI/ML"
 ];
 
+export const tagline = taglineParts.join(" · ");
+
 export const roleTargeting =
   "Full-stack engineer specializing in distributed systems, AI/ML platforms, and data-intensive applications. Led teams at Google, TD Bank, and high-growth AI startups.";
 
