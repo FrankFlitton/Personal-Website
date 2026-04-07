@@ -5,11 +5,10 @@ featuredImage: https://cdn-images-1.medium.com/max/1024/1*CjdKpwBLO0K4JDwyngV0Dw
 slug: how-to-deploy-flutter-for-web-apps-with-netlify
 date: Mon Feb 08 2021
 categories:
-  - netlify
   - flutter
   - devops
-  - flutter-web
   - deployment-pipelines
+  - netlify
 ---
 
 Have you ever wanted to turn your iPad or iPhone app into a website? Flutter can do that now and this script can help you share your product with the world in an easy way.

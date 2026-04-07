@@ -5,10 +5,10 @@ featuredImage: https://cdn-images-1.medium.com/max/1024/1*270r7da2bM2PMteqOybLyQ
 slug: the-growing-importance-of-sme-in-ai-agent-design
 date: Wed Oct 09 2024
 categories:
+  - ai
+  - ai-agents
+  - ux-research
   - product-management
-  - ai-agent
-  - user-research
-  - llm
 ---
 
 Lately, there's been a lot of excitement around AI agents. These digital helpers seem poised to take on everything from booking appointments to handling complex business workflows. The promise is clear: AI agents will save us time, make decisions for us, and reduce the burden of mundane tasks. But as thrilling as this sounds, something deeper is unfolding in the AI space—Subject Matter Experts (SMEs) are playing a more crucial role than ever before.

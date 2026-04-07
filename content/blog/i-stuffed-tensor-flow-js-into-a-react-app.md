@@ -5,11 +5,11 @@ description: Here's what I learned about Web Workers
 slug: i-stuffed-tensor-flow-js-into-a-react-app
 date: Fri Jul 23 2021
 categories:
+  - ai
+  - machine-learning
   - react
   - javascript
-  - software-development
-  - programming
-  - tensorflow
+  - web-workers
 ---
 
 The project source code is at the bottom.

@@ -5,11 +5,11 @@ featuredImage: https://images.unsplash.com/photo-1711831521065-e546a5aca68e
 slug: a-practical-pattern-for-hydrating-ai-generated-object-templates
 date: Fri Dec 12 2025
 categories:
+  - ai
   - javascript
   - typescript
   - algorithms
-  - data-structures
-  - software-development
+  - software-architecture
 ---
 
 LLMs produce structured output. You save it to a database, ship it to a client, and render it. The problem is that some values in that structure cannot be known at generation time. Colors derived from a gradient based on live data. A user's first and last name. A preference pulled from your database at runtime. If you burn those values into the LLM output, you lose the ability to update them without regenerating everything.

@@ -5,11 +5,10 @@ featuredImage: https://cdn-images-1.medium.com/max/1024/0*vBvNOXABsim1d3mi
 slug: will-my-startups-problem-be-big-enough
 date: Mon Apr 24 2023
 categories:
-  - product-strategy
   - startup
-  - product-management
-  - marketing
+  - product-strategy
   - entrepreneurship
+  - product-management
 ---
 
 > _I'll be attaching a spreadsheet with the blog so you can add it to your toolkit, as well as follow the case study below better._ [_You can find the spreadsheet here_](https://docs.google.com/spreadsheets/d/1-qUz3ZYptwse77YJmNUcgaQ0gzfxU_7g_jNK5vbKfOk/edit#gid=0) _with all the figures broken down._

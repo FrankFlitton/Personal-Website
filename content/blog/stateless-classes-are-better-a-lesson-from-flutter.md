@@ -5,10 +5,9 @@ featuredImage: /img/blog/stateless-classes-are-better-a-lesson-from-flutter.jpg
 slug: stateless-classes-are-better-a-lesson-from-flutter
 date: Sat Dec 07 2025
 categories:
-  - software-development
   - flutter
-  - architecture
-  - distributed-systems
+  - state-management
+  - software-architecture
   - testing
 ---
 

@@ -6,10 +6,9 @@ slug: divide-and-conquer-timeline-data-with-typescript
 date: Thu Oct 10 2024
 categories:
   - typescript
-  - fintech
   - javascript
   - algorithms
-  - software-development
+  - fintech
 ---
 
 If your application is encountering performance issues with large data, checkout this date search typescript package. It works in node and browser runtimes.

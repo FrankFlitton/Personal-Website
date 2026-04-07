@@ -5,11 +5,10 @@ description: COIVD forced us to stop using in-person UX research. Here are some 
 slug: social-distance-ux-research-for-ios
 date: Mon Feb 15 2021
 categories:
-  - ux
   - ux-research
-  - ios-app-development
-  - web-development
-  - ux-strategy
+  - product-design
+  - ios
+  - remote-work
 ---
 
 In my current role as a lead developer & solution designer at TD Bank's Innovation Lab, creating inclusive experiences that increase financial literacy is at the heart of what I do. Making and testing prototypes of our upcoming experiences with a broad audience is crucial to solving customer needs.

@@ -5,11 +5,11 @@ featuredImage: https://cdn-images-1.medium.com/max/800/1*UWpvukClfCrcm1U0OQI5IA.
 slug: the-performant-interface-dilemma-taming-object-equality-in-react
 date: Sun Oct 22 2023
 categories:
-  - javascript
-  - functional-programming
-  - react-hook
   - react
   - typescript
+  - javascript
+  - performance
+  - frontend-architecture
 ---
 
 Though Typescript has pushed the possibilities of what's possible with the JavaScript ecosystem, object equality remains an issue. Though everything is an object in JavaScript, working with objects, especially deeply nested ones, have caveats that are vital to understand.

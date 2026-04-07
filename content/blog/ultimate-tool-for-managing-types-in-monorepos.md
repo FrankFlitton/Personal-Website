@@ -4,6 +4,11 @@ description: gRPC Is the Secret Weapon Your Monorepo Desperately Needs
 slug: ultimate-tool-for-managing-types-in-monorepos
 featuredImage: '/img/blog/cat-wth-yarn.png'
 date: Mon Dec 15 2024
+categories:
+  - typescript
+  - software-architecture
+  - monorepos
+  - backend-architecture
 ---
 
 Monorepos promise harmony. Everything - packages, APIs, and shared logic - lives together, conveniently organized and ready to scale. But as your codebase grows, so does the complexity. That shared `PaymentTransaction` interface? It's defined differently in five packages. The frontend assumes `currency` is a string, while the backend expects an enum. One package uses `BigInt` for `amount`, while another passes it as a string. And don't even get started on the chaos around `Date` formats.

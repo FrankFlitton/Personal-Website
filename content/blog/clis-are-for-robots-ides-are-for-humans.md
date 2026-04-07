@@ -5,10 +5,10 @@ featuredImage: https://images.unsplash.com/photo-1626732837545-107a241ded38
 slug: clis-are-for-robots-ides-are-for-humans
 date: Mon Apr 06 2026
 categories:
-  - software-development
   - ai
+  - agentic-coding
   - developer-experience
-  - workflows
+  - software-development
 ---
 
 CLIs are for robots, IDEs are for humans. That's the mental model I keep coming back to when thinking about agentic coding. Agents do their best work in text and terminal space, executing, iterating, grinding through boilerplate. Humans do their best work from within the editor, reading, judging, reshaping. The workflow clicks when you stop treating those two things as the same surface. The brief friction of those two modes of creation being separated provides a much needed brief boundary for clarity and reflection. 

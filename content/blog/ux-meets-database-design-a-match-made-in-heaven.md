@@ -5,11 +5,10 @@ featuredImage: https://cdn-images-1.medium.com/max/1024/1*58bBEYQwF1NjIFj2A_l02w
 slug: ux-meets-database-design-a-match-made-in-heaven
 date: Sun Feb 12 2023
 categories:
-  - software-development
-  - project-management
   - ux
   - sql
-  - ux-design
+  - database-design
+  - software-architecture
 ---
 
 User experience (UX) is a crucial aspect of software development that directly impacts the success of a software project. From my experience working across teams at Google, TD Bank, as well as many at startups I've learnt that UX is not just about how the software looks. It's about how it functions to meets the needs of the end user.

@@ -6,10 +6,10 @@ slug: you-dont-need-yet-another-managed-service-you-need-a-hashmap
 date: Mon Feb 17 2025
 categories:
   - typescript
-  - fintech
   - javascript
   - algorithms
-  - software-development
+  - performance
+  - software-architecture
 ---
 
 The other day, I witnessed something painful that happens way too often: I watched a developer struggle through a problem that would have been a slam dunk for a hashmap. Instead of using the right tool they went full exponential mode, looping through an ordered array like leetcode never existed. And when I brought up caching the result? They talked about it like it’s something you integrate from a vendor, not just a hashmap in their service’s search method.

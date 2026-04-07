@@ -6,10 +6,9 @@ slug: treat-your-chart-like-mvvm-client-side-etl-for-better-visualizations
 date: Sun Jun 08 2025
 categories:
   - data-visualization
-  - javascript
   - react
+  - javascript
   - frontend-architecture
-  - data-processing
 ---
 
 Most frontend charting problems boil down to this: dirty data goes in, janky chart comes out. Developers assume the charting library will "handle it." It won't.

@@ -5,10 +5,9 @@ featuredImage: https://cdn-images-1.medium.com/max/1024/0*FxuhG2fh0HQo6PBX
 slug: the-myth-of-the-universal-language-for-internal-tool-development
 date: Tue Jul 16 2024
 categories:
-  - prototyping
-  - golang
-  - programming
+  - engineering-culture
   - product-management
+  - golang
   - javascript
 ---
 
