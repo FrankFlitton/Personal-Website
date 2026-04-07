@@ -16,7 +16,7 @@ const AboutPage = () => {
           I build the layer where design and engineering actually meet.
         </h1>
         <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12">
-          My background spans both sides of the stack — I've shipped production
+          My background spans both sides of the stack. I've shipped production
           engineering and led UX research, often on the same project. That
           combination lets me build things that hold up technically and feel
           right to use. I started in the music industry designing and building
@@ -36,7 +36,7 @@ const AboutPage = () => {
           <TimelineItem
             period="Now"
             org="Building AI-native tools and design systems"
-            detail="Focused on the intersection of engineering quality and user experience — internal tooling, component libraries, and developer-facing products."
+            detail="Focused on the intersection of engineering quality and user experience: internal tooling, component libraries, and developer-facing products."
             active
           />
 
