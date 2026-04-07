@@ -12,7 +12,7 @@ import LargeDotLine from "@/components/HomePage/LargeDotline";
 
 export const getStaticPaths = (async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
-    "../content/projects"
+    "../content/projects",
   );
   const paths = projectSources.map((project) => ({
     params: {
@@ -28,11 +28,11 @@ export const getStaticPaths = (async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
-    "../content/projects"
+    "../content/projects",
   );
   const slug = context?.params?.slug ?? "";
   const project = projectSources.find(
-    (project) => project?.data?.slug === slug
+    (project) => project?.data?.slug === slug,
   );
 
   let longDescription = null;
@@ -76,12 +76,14 @@ export default function Home({
           <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
             {title}
           </h2>
-          <Link
-            href={project?.data?.projectUrl}
-            className="text-xl md:text-2xl hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white p-4 inline-block min-w-40"
-          >
-            Buy
-          </Link>
+          {project?.data?.projectUrl && (
+            <Link
+              href={project?.data?.projectUrl}
+              className="text-xl md:text-2xl hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white p-4 inline-block min-w-40"
+            >
+              Buy
+            </Link>
+          )}
         </div>
 
         <div className="w-full max-w-screen-xl m-auto">

@@ -39,7 +39,9 @@ export async function MDLoadFile<T>(path: string) {
 }
 
 export async function MDLoadDir<T>(path: string) {
-  const documentSources = readdirSync(join(process.cwd(), path));
+  const documentSources = readdirSync(join(process.cwd(), path)).sort((a, b) =>
+    a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
+  );
   const documents = await Promise.all(
     documentSources.map(async (document) => {
       const documentContent = await MDLoadFile<T>(join(path, document));
