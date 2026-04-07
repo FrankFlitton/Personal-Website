@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Socials } from "./socials";
 
 export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
@@ -9,7 +9,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
   const [message, setMessage] = useState("");
 
   // add focus to first input when nav opens
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!globalThis.window) return;
     setTimeout(() => {
       const isMobile = window.innerWidth < 640;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import EndlessCircleAnimation from "./EndlessCircleAnimation";
 import useTheme from "@/hooks/useTheme";
-import { tagline, roleTargeting } from "@/const/const";
+import { taglineParts, roleTargeting } from "@/const/const";
 
 export default function HeroSection() {
   const { isDark } = useTheme();
@@ -89,11 +89,16 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="h-full max-w-screen-lg w-full mt-16 mx-auto px-4">
-        <p className="mx-auto text-center text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 mb-6 w-full sm:w-2/3">
-          {tagline}
-        </p>
-        <p className="mx-auto text-center text-base md:text-lg text-neutral-500 dark:text-neutral-500 mb-16 w-full sm:w-3/4">
+        <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-8 text-xs md:text-sm uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
+          {taglineParts.map((part, i) => (
+            <span key={i}>{part}</span>
+          ))}
+        </div>
+        <p className="mx-auto text-center text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4 w-full sm:w-3/4 lg:w-2/3">
           {roleTargeting}
+        </p>
+        <p className="mx-auto text-center text-sm text-neutral-500 dark:text-neutral-500 mb-16">
+          Open to SWE and UX Engineering roles.
         </p>
       </div>
     </>
