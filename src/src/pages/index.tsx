@@ -6,12 +6,13 @@ import { Page } from "@/components/page";
 import { BlogList } from "@/components/blogList";
 import { PageMeta } from "@/components/pageMeta";
 import HeroSection from "@/components/HomePage/HeroSection";
+import SkillsSection from "@/components/HomePage/SkillsSection";
 import { sortBlogs } from "@/util/sortBlogs";
 
 export const metadata: Metadata = {
-  title: "Developing Great Products - Frank JE Flitton",
+  title: "Frank Flitton - Senior Software Engineer | Ex-Google UXE",
   description:
-    "Frank is a Software Engineer and Lead Designer specializing engineering software for the web, UX research, and product design.",
+    "Full-stack engineer specializing in distributed systems, AI/ML platforms, and data-intensive applications. Ex-Google UXE with experience at TD Bank and leading AI companies.",
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -99,6 +100,9 @@ export default function Home({
       <PageMeta color="#000000" />
       <div className="mb-20">
         <HeroSection />
+      </div>
+      <div className="w-full mb-16">
+        <SkillsSection />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />

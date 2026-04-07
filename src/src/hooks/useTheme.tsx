@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
 
@@ -9,7 +9,7 @@ const useTheme = () => {
   const [systemPrefersDark, setSystemPrefersDark] = useState(false);
 
   // Listen to system preference changes
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!globalThis.window) return;
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -21,7 +21,7 @@ const useTheme = () => {
   }, []);
 
   // Load saved theme preference on mount
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!globalThis.window) return;
 
     const savedTheme = localStorage.getItem("theme") as Theme;

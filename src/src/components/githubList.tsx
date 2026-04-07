@@ -120,7 +120,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                 !!repo.usesCustomOpenGraphImage
                   ? "md:col-span-2"
                   : "md:col-span-1"
-              } hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200`}
+              } hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors duration-200 border-l-2 border-neutral-300 dark:border-neutral-700`}
             >
               <div
                 className={`grid ${
@@ -158,7 +158,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                           : repo.name}
                       </h3>
                     </div>
-                    <div className="flex justify-end align-middle text-black/70 dark:text-white/70">
+                    {!!repo.stargazerCount && <div className="flex justify-end align-middle text-black/70 dark:text-white/70">
                       <Icon
                         path={mdiStar}
                         title="Github Stargazer Count"
@@ -166,7 +166,7 @@ export const GithubList = ({ githubRes }: { githubRes: any }) => {
                         className="mt-[0.125rem]"
                       />
                       <span>{repo.stargazerCount}</span>
-                    </div>
+                    </div>}
                   </div>
 
                   <div className="flex items-start justify-start text-black/70 dark:text-white/70">

@@ -1,9 +1,9 @@
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useIsScrollPastY = (y: number) => {
   const [isPastY, setIsPastY] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > y) {
         setIsPastY(true);

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { mdiClose, mdiCoffee, mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 import Icon from "@mdi/react";
 import { ContactSection } from "./contactSection";
@@ -17,14 +17,14 @@ export default function Header() {
   const isMobile = useIsMobile();
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isMobile) {
       setIsNavOpen(false);
       return;
     }
   }, [isMobileNavOpen, isMobile]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!globalThis.window) return;
     // setIsNavOpen false when pressing esc key
     const onEsc = (e: KeyboardEvent) => {
@@ -37,7 +37,7 @@ export default function Header() {
   }, []);
 
   // Add noscroll class to body when nav is open
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!body) return;
     if (isNavOpen) {
       body.classList.add("no-scroll");

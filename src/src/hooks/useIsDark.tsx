@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useIsDark = () => {
   const [prefersDarkMode, setPrefersDarkMode] = useState(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!globalThis.window) return;
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
