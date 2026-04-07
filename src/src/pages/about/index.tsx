@@ -16,7 +16,7 @@ const AboutPage = () => {
           I build the layer where design and engineering actually meet.
         </h1>
         <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12">
-          My background spans both sides of the stack. I've shipped production
+          My background spans both sides of the stack. I&apos;ve shipped production
           engineering and led UX research, often on the same project. That
           combination lets me build things that hold up technically and feel
           right to use. I started in the music industry designing and building
@@ -75,13 +75,13 @@ const AboutPage = () => {
 
         {/* Focus */}
         <p className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
-          What I'm focused on
+          What I&apos;m focused on
         </p>
         <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12">
-          I'm looking for Staff or Lead UXE roles where the work is internal
+          I&apos;m looking for Staff or Lead UXE roles where the work is internal
           tooling, design systems, or developer-facing products, places where
           engineering quality and user experience quality are equally on the
-          line. I'm based in the Seattle area and open to hybrid or remote.
+          line. I&apos;m based in the Seattle area and open to hybrid or remote.
         </p>
 
         <hr className="border-t border-neutral-200 dark:border-neutral-800 mb-12" />

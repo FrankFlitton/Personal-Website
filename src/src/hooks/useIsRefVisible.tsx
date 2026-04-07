@@ -13,7 +13,8 @@ export const useIsVisible = (ref: React.RefObject<HTMLElement>) => {
     return () => {
       observer.disconnect();
     };
-  }, [ref?.current]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref]);
 
   return isIntersecting;
 };

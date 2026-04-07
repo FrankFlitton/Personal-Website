@@ -18,7 +18,7 @@ export function PatentCallout() {
           CA 3092840 · Named inventor
         </p>
         <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-          Led the engineering initiative at TD Bank's Innovation Lab that turned
+          Led the engineering initiative at TD Bank&apos;s Innovation Lab that turned
           user research findings, how people actually pool and manage shared
           money, into a patented system for real-time account-based group
           budgeting and reconciliation.
