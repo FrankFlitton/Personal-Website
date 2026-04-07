@@ -36,6 +36,16 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onEsc);
   }, []);
 
+  useEffect(() => {
+    if (!globalThis.window) return;
+    const openContact = () => {
+      setIsNavOpen(true);
+      setIsMobileNavOpen(false);
+    };
+    window.addEventListener("open-contact", openContact);
+    return () => window.removeEventListener("open-contact", openContact);
+  }, []);
+
   // Add noscroll class to body when nav is open
   useEffect(() => {
     if (!body) return;
