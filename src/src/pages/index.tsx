@@ -6,7 +6,7 @@ import { Page } from "@/components/page";
 import { BlogList } from "@/components/blogList";
 import { PageMeta } from "@/components/pageMeta";
 import HeroSection from "@/components/HomePage/HeroSection";
-import SkillsSection from "@/components/HomePage/SkillsSection";
+import HomepageBelowFold from "@/components/HomePage/HomepageBelowFold";
 import { sortBlogs } from "@/util/sortBlogs";
 
 export const metadata: Metadata = {
@@ -101,15 +101,13 @@ export default function Home({
       <div className="mb-20">
         <HeroSection />
       </div>
-      <div className="w-full mb-16">
-        <SkillsSection />
-      </div>
-      <div className="w-full mb-16 max-w-screen-lg m-auto">
+      <HomepageBelowFold blogs={blogs} />
+      {/* <div className="w-full mb-16 max-w-screen-lg m-auto">
         <GithubList githubRes={githubRes} />
       </div>
       <div className="w-full mb-16 max-w-screen-lg m-auto">
         <BlogList blogs={blogs} />
-      </div>
+      </div> */}
     </Page>
   );
 }

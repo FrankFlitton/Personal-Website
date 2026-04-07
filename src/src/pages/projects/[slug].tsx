@@ -9,6 +9,8 @@ import { Page } from "@/components/page";
 import { PageMeta } from "@/components/pageMeta";
 import { ProjectList } from "@/components/projectList";
 import LargeDotLine from "@/components/HomePage/LargeDotline";
+import CircleFlourish from "@/components/HomePage/CircleFlourish";
+import useTheme from "@/hooks/useTheme";
 
 export const getStaticPaths = (async () => {
   const projectSources = await MDLoadDir<FeatureProjectData>(
@@ -58,6 +60,7 @@ export default function Home({
   project: MDXDocument<FeatureProjectData>;
   longDescription: any;
 }) {
+  const { isDark } = useTheme();
   const title = project?.data?.title;
   const description = project?.data?.description;
   const featureImage = project?.data?.featuredImage;
@@ -118,8 +121,27 @@ export default function Home({
           />
         </div>
       </div>
-      <div className="w-full my-20 max-w-screen-lg m-auto">
+      <div className="max-w-2xl mx-auto px-6 py-16 prose dark:prose-invert">
+        <p className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
+          More work
+        </p>
+        <h2 className="text-3xl font-medium leading-snug mb-6">
+          Selected projects.
+        </h2>
+        <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-10">
+          A selection of product and engineering work spanning design systems,
+          AI/ML tooling, fintech, and creative software.
+        </p>
         {!!projects?.length && <ProjectList projects={projects} />}
+        <Link
+          href="/projects"
+          className="inline-block mt-8 text-sm text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+        >
+          All projects →
+        </Link>
+        <div className="flex justify-center mt-20">
+          <CircleFlourish isDark={isDark} />
+        </div>
       </div>
     </Page>
   );

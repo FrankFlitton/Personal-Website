@@ -1,54 +1,95 @@
-import useTheme from "@/hooks/useTheme";
 import { FeatureProjectData, MDXDocument } from "@/types";
+import Link from "next/link";
 
 export const ProjectList = ({
   projects,
 }: {
   projects: MDXDocument<FeatureProjectData>[];
 }) => {
-  const { isDark } = useTheme();
+  if (!projects?.length) return null;
+
+  const [featured, ...rest] = projects;
+  const featuredItem = featured.data;
+
   return (
-    <div className="w-full">
-      <div className="block w-full mb-4 text-black dark:text-white">
-        <h2 className="text-3xl font-bold mb-2 block w-full">UI/UX Projects</h2>
-        <p>A selection of UI/UX design projects.</p>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {/* Featured project — full width on sm+, horizontal split */}
+      <Link
+        href={`/projects/${featuredItem.slug}`}
+        className="col-span-1 sm:col-span-2 group grid grid-cols-1 sm:grid-cols-5 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors no-underline"
+      >
+        {featuredItem.featuredImage && (
+          <div className="col-span-1 sm:col-span-3 h-48 sm:h-auto overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={featuredItem.featuredImage}
+              alt=""
+              className="w-full m-0 h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+            />
+          </div>
+        )}
+        <div
+          className={`${featuredItem.featuredImage ? "col-span-1 sm:col-span-2" : "col-span-1 sm:col-span-5"} p-5 flex flex-col justify-between`}
+        >
+          <div>
+            {featuredItem.client && (
+              <p className="text-xs text-neutral-400 mb-2">
+                {featuredItem.client}
+              </p>
+            )}
+            <h3 className="text-base font-medium mb-2 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
+              {featuredItem.title}
+            </h3>
+            <p className="text-sm text-neutral-500 leading-relaxed">
+              {featuredItem.description}
+            </p>
+          </div>
+          {featuredItem.category && (
+            <p className="text-xs text-neutral-400 mt-4">
+              {featuredItem.category}
+            </p>
+          )}
+        </div>
+      </Link>
 
-      <div className="grid grid-cols-1 auto-rows-[175px] md:auto-rows-[200px] gap-4">
-        {projects &&
-          projects.map((project) => {
-            const item = project.data;
-            // const pubDate = new Date(item.isoDate);
-            const subTitle = item.description;
-            const featureImage = item.featuredImage;
-
-            return (
-              <a
-                key={item.title}
-                className="col-span-1 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 row-span-2 md:row-span-1"
-                href={`/projects/${item.slug}`}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 h-full">
-                  <div className="w-full h-full col-span-1 overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={featureImage}
-                      width={300}
-                      height={300}
-                      alt=""
-                      className="object-cover w-full h-full min-h-[175px] hover:scale-105 transition-all duration-200 ease"
-                    />
-                  </div>
-
-                  <div className="prose prose-lg prose-slate dark:prose-invert col-span-2 py-4 pr-4 pl-4 md:pl-0">
-                    <h3 className="text-xl font-bold">{item.title}</h3>
-                    <p className="">{subTitle}</p>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-      </div>
+      {/* Remaining projects — stack on mobile, side-by-side on sm+ */}
+      {rest.map((project) => {
+        const item = project.data;
+        return (
+          <Link
+            key={item.slug}
+            href={`/projects/${item.slug}`}
+            className="col-span-1 group flex flex-col border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors no-underline"
+          >
+            {item.featuredImage && (
+              <div className="w-full h-36 overflow-hidden bg-neutral-100 dark:bg-neutral-900 flex-shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.featuredImage}
+                  alt=""
+                  className="w-full m-0 h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+                />
+              </div>
+            )}
+            <div className="p-4 flex flex-col flex-1 justify-between">
+              <div>
+                {item.client && (
+                  <p className="text-xs text-neutral-400 mb-1">{item.client}</p>
+                )}
+                <h3 className="text-sm font-medium mb-1 group-hover:text-neutral-500 dark:group-hover:text-neutral-400 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+              {item.category && (
+                <p className="text-xs text-neutral-400 mt-3">{item.category}</p>
+              )}
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

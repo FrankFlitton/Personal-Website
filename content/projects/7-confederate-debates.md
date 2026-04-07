@@ -4,7 +4,7 @@ slug: confederation-debates
 featured: false
 description: Celebrating Canada's birth as a nation in 1867.
 featuredImage: /img/projects/confed/confed-featuredImage.jpg
-client: U Vic, Daniel Heidt
+client: U Vic, Dr. Daniel Heidt
 clientUrl: https://hcmc.uvic.ca/confederation/
 projectUrl: https://hcmc.uvic.ca/confederation/
 color: "#f44336"

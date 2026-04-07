@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { BlogList } from "@/components/blogList";
 import { PageMeta } from "@/components/pageMeta";
 import LargeDotLine from "@/components/HomePage/LargeDotline";
+import CircleFlourish from "@/components/HomePage/CircleFlourish";
+import useTheme from "@/hooks/useTheme";
 import { MDLoadDir } from "@/Content/loader";
 import { MDRenderer } from "@/Content/renderer";
 import Image from "next/image";
@@ -48,6 +50,7 @@ export default function Home({
   blog: MDXDocument<Blog>;
   blogs: Blog[];
 }) {
+  const { isDark } = useTheme();
   const pubDate = blog.data.date ? new Date(blog.data.date).toDateString() : "";
 
   const handleIframeResize = (e: MessageEvent<any>) => {
@@ -108,8 +111,26 @@ export default function Home({
         </article>
       </div>
       {blogs && (
-        <div className="w-full mb-16 max-w-screen-lg m-auto">
+        <div className="max-w-2xl mx-auto px-6 py-16 prose dark:prose-invert">
+          <p className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
+            More writing
+          </p>
+          <h2 className="text-3xl font-medium leading-snug mb-6">
+            Recent posts.
+          </h2>
+          <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-10">
+            Notes on engineering, design, and building products.
+          </p>
           <BlogList blogs={blogs} />
+          <Link
+            href="/blog"
+            className="inline-block mt-8 text-sm text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+          >
+            All posts →
+          </Link>
+          <div className="flex justify-center mt-20">
+            <CircleFlourish isDark={isDark} />
+          </div>
         </div>
       )}
     </Page>

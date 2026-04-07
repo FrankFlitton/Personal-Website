@@ -7,7 +7,7 @@ import { mdiEmail, mdiGithub, mdiLinkedin } from "@mdi/js";
 const AboutPage = () => {
   return (
     <Page>
-      <main className="max-w-2xl mx-auto px-6 py-16 prose">
+      <main className="max-w-2xl mx-auto px-6 py-16 prose dark:prose-invert">
         {/* Positioning */}
         <p className="text-xs tracking-widest uppercase text-neutral-400 mb-3">
           About
