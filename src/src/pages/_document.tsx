@@ -10,7 +10,7 @@ import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(
-    ctx: DocumentContext
+    ctx: DocumentContext,
   ): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
@@ -57,7 +57,7 @@ class MyDocument extends Document {
             <input type="hidden" name="form-name" value="contact" />
             <input name="name" />
             <input name="email" />
-            <textarea name="message"> </textarea>
+            <textarea name="message"></textarea>
           </form>
         </body>
       </Html>
