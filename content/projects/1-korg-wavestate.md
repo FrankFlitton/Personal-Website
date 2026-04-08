@@ -37,11 +37,11 @@ Sweetwater reviewers captured the tension well. Users loved the instrument's dir
 
 Two goals emerged from the research: make sound design genuinely better, and keep the live performance experience excellent.
 
-## Art Direction & Design Philosophy
+## Visual Language & Design Principles
 
 The Wavestate hardware has a distinct visual identity — a futuristic instrument that feels warmly familiar. Key motifs informed the visual language of the software: the diamond border, the blue and white linework around the vector joystick, the glowing white step keys, and the retro pixel display that communicates state at a glance.
 
-![Art direction moodboard: lively colors, blend of nature and futurism, clean line work with natural noise textures](/img/projects/korg-wavestate/art-direction.jpg)
+![Visual language moodboard: lively colors, blend of nature and futurism, clean line work with natural noise textures](/img/projects/korg-wavestate/art-direction.jpg)
 
 The design philosophy drew from two complementary traditions: Japandi aesthetics (the blend of Japanese and Scandinavian minimalism, where nature, function, and style coexist quietly) and the Swiss Typographic Style (a humanistic mathematical grid that makes complex information feel navigable). Together these set the tone for an interface that is sophisticated and minimal, with geometric clarity and bright color used specifically to call out interactive elements and active states.
 
@@ -67,7 +67,7 @@ The signal path (oscillators, filters, effects, vector envelope, modulation matr
 
 This pattern extended throughout the design: step cells, effect slots, generator tiles, and voice-assign controls all follow the same select-and-inspect interaction model, making the interface learnable even when the underlying parameter space is vast.
 
-## Layout Exploration
+## Information Architecture & Layout
 
 The four-layer architecture presented a fundamental layout challenge: how do you show all four layers at once without overwhelming the user, while still giving each layer access to six independent timelines?
 
@@ -85,7 +85,7 @@ The **Belt** layout used a top-bottom split: global settings and layer controls 
 
 The final design drew most heavily from the Accordion paradigm, adapting it into a tabbed layer view that keeps all four layers visible while letting any one expand into its full parameter set.
 
-## High Fidelity Designs
+## High Fidelity Mockups
 
 ### Performance Overview
 
