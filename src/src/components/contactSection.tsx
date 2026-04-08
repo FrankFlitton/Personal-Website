@@ -80,7 +80,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
           >
             <div className="grid grid-cols-1 gap-4 p-4">
               <div>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name" className="text-black dark:text-white">Name</label>
                 <input
                   className={inputClass}
                   type="text"
@@ -102,7 +102,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 className="hidden"
               ></input>
               <div>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" className="text-black dark:text-white">Email</label>
                 <input
                   className={inputClass}
                   type="email"
@@ -113,7 +113,7 @@ export const ContactSection = ({ isNavOpen }: { isNavOpen: boolean }) => {
                 />
               </div>
               <div>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message" className="text-black dark:text-white">Message</label>
                 <textarea
                   className={inputClass}
                   name="message"
