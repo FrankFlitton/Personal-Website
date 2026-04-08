@@ -7,7 +7,7 @@ export default function HeroSection() {
   const { isDark } = useTheme();
   return (
     <>
-      <div className="w-full h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip ml-[-1em]">
+      <div className="w-full h-[75vh] h-max-[75vh] mx-auto relative overflow-x-clip">
         <div className="absolute inset-0 sm:inset-10">
           {/* light */}
           <div className="absolute inset-5 bg-gradient-to-t from-slate-400 to-neutral-300 opacity-100 dark:opacity-0"></div>
