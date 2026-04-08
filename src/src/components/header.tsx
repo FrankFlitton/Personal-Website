@@ -68,7 +68,7 @@ export default function Header() {
           height: isMobileNavOpen
             ? isNavOpen
               ? "100dvh"
-              : 120
+              : 128
             : isNavOpen
               ? "100dvh"
               : 80,
@@ -186,7 +186,7 @@ export default function Header() {
           {isMobileNavOpen && (
             <motion.div
               className="relative w-full"
-              style={{ height: 40, minHeight: 40 }}
+              style={{ height: 48, minHeight: 48 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -196,11 +196,10 @@ export default function Header() {
             >
               <div
                 key="mobile-nav-container"
-                className="w-full flex flex-row-reverse pr-3"
+                className="w-full h-full flex items-center justify-end px-4 gap-1 text-black dark:text-white"
               >
-                <div className="items-end text-lg">
                   <Link
-                    className="px-4"
+                    className="px-3 py-1 text-base"
                     href={"/about/"}
                     onClick={() => {
                       setIsMobileNavOpen(false);
@@ -210,7 +209,7 @@ export default function Header() {
                     About
                   </Link>
                   <Link
-                    className="p-4"
+                    className="px-3 py-1 text-base"
                     href={"/blog/"}
                     onClick={() => {
                       setIsMobileNavOpen(false);
@@ -220,7 +219,7 @@ export default function Header() {
                     Blog
                   </Link>
                   <Link
-                    className="p-4"
+                    className="px-3 py-1 text-base"
                     href={"/projects/"}
                     onClick={() => {
                       setIsMobileNavOpen(false);
@@ -232,7 +231,7 @@ export default function Header() {
                   <button
                     onClick={toggleTheme}
                     title="Toggle theme"
-                    className="p-4 flex items-center"
+                    className="px-2 py-1 flex items-center"
                   >
                     <Icon
                       path={isDark ? mdiWeatherSunny : mdiWeatherNight}
@@ -240,10 +239,12 @@ export default function Header() {
                       size={0.8}
                     />
                   </button>
-                  <button onClick={() => setIsNavOpen(!isNavOpen)}>
-                    <span className="p-4">Contact</span>
+                  <button
+                    onClick={() => setIsNavOpen(!isNavOpen)}
+                    className="px-3 py-1 text-base"
+                  >
+                    Contact
                   </button>
-                </div>
               </div>
             </motion.div>
           )}
