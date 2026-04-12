@@ -97,11 +97,6 @@ export default function Home({
       <BlogHeroSection blog={blog.data} />
       <div className="w-full max-w-screen-lg m-auto">
         <article className="prose prose-lg prose-slate dark:prose-invert m-auto mb-16">
-          <LargeDotLine
-            className="relative h-4 w-[45%] mb-16 mx-auto"
-            color="black"
-            colorDark="white"
-          />
           <MDRenderer source={blog.content} />
           <LargeDotLine
             className="relative h-4 w-[45%] my-16 mx-auto"
