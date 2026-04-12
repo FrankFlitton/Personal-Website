@@ -20,7 +20,8 @@ const useTheme = () => {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
-  // Load saved theme preference on mount
+  // Load saved theme preference on mount, and re-sync when another
+  // useTheme instance broadcasts a change via custom window event.
   useEffect(() => {
     if (!globalThis.window) return;
 
@@ -28,6 +29,13 @@ const useTheme = () => {
     if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
       setTheme(savedTheme);
     }
+
+    const handleThemeChange = (e: Event) => {
+      setTheme((e as CustomEvent<Theme>).detail);
+    };
+
+    window.addEventListener("themechange", handleThemeChange);
+    return () => window.removeEventListener("themechange", handleThemeChange);
   }, []);
 
   // Apply theme to document
@@ -48,6 +56,7 @@ const useTheme = () => {
   const setThemeAndSave = (newTheme: Theme) => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+    window.dispatchEvent(new CustomEvent<Theme>("themechange", { detail: newTheme }));
   };
 
   const toggleTheme = () => {

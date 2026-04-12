@@ -27,7 +27,38 @@ TD Lab's research identified groceries as a persistent, high-friction pain point
 
 The core frustration wasn't just cost. It was complexity. A simple weekly shop involves six distinct decision points: taking inventory, choosing stores, finding transportation, locating items, checking prices at checkout, and getting home. Each step carries its own tradeoffs, and no single app addressed all of them.
 
-![The grocery user journey across six stages: deciding, planning, finding transport, shopping, paying, and getting home](/img/projects/shopping-optimizer/user-journey.jpg)
+<UserJourneyMap
+  title="The Grocery Shopping Journey"
+  showChart={false}
+  phases={[
+    {
+      name: "Deciding",
+      steps: [
+        { id: 1, description: "Take inventory of missing grocery items and compile a list of required items", sentiment: 3 }
+      ]
+    },
+    {
+      name: "Planning",
+      steps: [
+        { id: 2, description: "Decide what store(s) to go to", sentiment: 3 },
+        { id: 3, description: "Find transportation to the store", sentiment: 2 }
+      ]
+    },
+    {
+      name: "Shopping",
+      steps: [
+        { id: 4, description: "Look for items in the store on her list", sentiment: 4 },
+        { id: 5, description: "Pay for the items", sentiment: 2 }
+      ]
+    },
+    {
+      name: "Post Shop",
+      steps: [
+        { id: 6, description: "Take transportation home", sentiment: 3 }
+      ]
+    }
+  ]}
+/>
 
 We ran a broad research sprint covering 10 user interviews, 50 survey responses from students and recent graduates, and extensive secondary research on food insecurity, competitor apps, and emerging fintech trends to validate and sharpen the opportunity.
 
@@ -49,7 +80,51 @@ The key insight: these users shared being price conscious and wanting a simpler,
 
 ![A student grocery shopping, weighing cost and convenience at the store](/img/projects/shopping-optimizer/featured.png)
 
-![User journey map for grocery shopping](/img/projects/shopping-optimizer/user-journey-map.png)
+<UserJourneyMap
+  title="Rina — Grocery Shopping Journey"
+  persona={{
+    name: "Rina",
+    role: "Student",
+    bio: "Rina is looking for ways to eat healthier foods while staying on a tight budget. She finds herself relying on food assistance programs and would prefer to reduce her dependence on them. She is trying to become more independent and learn how to manage her budget better.",
+  }}
+  expectations={[
+    "To be able to walk or bus to get her groceries",
+    "To know how much her groceries will cost beforehand because of her tight budget",
+    "Ability to share the list with other family members",
+    "To be able to eat healthily on a budget"
+  ]}
+  phases={[
+    {
+      name: "Deciding",
+      steps: [
+        { id: 1, description: "Looks through pantry/fridge to see what she needs to buy", sentiment: 3, quote: "Figuring out what I need for the week is the easiest part of shopping" },
+        { id: 2, description: "Determines grocery budget", sentiment: 2, quote: "Organizing my weekly budget is always a challenge" }
+      ]
+    },
+    {
+      name: "Planning",
+      steps: [
+        { id: 3, description: "Writes out a list of items that she needs", sentiment: 4, quote: "Collaborating with my family members on the list makes it much easier" },
+        { id: 4, description: "Decides what store(s) to go to", sentiment: 3 },
+        { id: 5, description: "Finds transportation to the store", sentiment: 2, quote: "Taking the bus to the store often takes longer than I'd like" }
+      ]
+    },
+    {
+      name: "Shopping",
+      steps: [
+        { id: 6, description: "Looks for items in the store", sentiment: 4, quote: "It's so satisfying to find the items I need and check them off my list" },
+        { id: 7, description: "Adds prices to her running total to stay within budget", sentiment: 1, quote: "I can never find everything I need at one store and end up over budget" }
+      ]
+    },
+    {
+      name: "Post Shop",
+      steps: [
+        { id: 8, description: "Pays for the items", sentiment: 2 },
+        { id: 9, description: "Takes transportation home", sentiment: 3, quote: "Struggling with all the grocery bags is always exhausting" }
+      ]
+    }
+  ]}
+/>
 
 
 ## Competitive Landscape

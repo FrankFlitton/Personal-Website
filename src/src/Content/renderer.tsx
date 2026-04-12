@@ -11,8 +11,9 @@ import { Hr as hr } from "./render-blocks/Hr";
 import { Code as code } from "./render-blocks/Code";
 import { Mermaid } from "./render-blocks/Mermaid";
 import { UserJourney } from "./render-blocks/UserJourney";
+import { UserJourneyMap } from "./render-blocks/UserJourneyMap";
 
-const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code, Mermaid, UserJourney };
+const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code, Mermaid, UserJourney, UserJourneyMap };
 
 /** Build ordered media list (images + diagrams) from current DOM state. */
 function collectMedia(root: HTMLElement): { urls: string[]; alts: string[]; elements: Element[] } {

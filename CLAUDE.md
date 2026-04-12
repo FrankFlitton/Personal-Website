@@ -46,7 +46,8 @@ npm run lint
   - `<Gist id="gist-id" />` - GitHub Gist iframes (renders via `/gist/?gist={id}`)
   - `<IFrame>`, `<Img>` with dialog slider integration
   - `<Mermaid chart="..." title="..." />` - Inline diagram (any mermaid syntax)
-  - `<UserJourney title="..." actor="..." sections={[...]} />` - Structured user journey map
+  - `<UserJourney title="..." actor="..." sections={[...]} />` - Mermaid-based simple journey diagram
+  - `<UserJourneyMap persona={...} expectations={[...]} phases={[...]} />` - Rich custom journey map with persona card, phase columns, and SVG sentiment chart
   - Fenced ` ```mermaid ` blocks — intercepted by `Pre.tsx`, rendered as diagrams
 
 ### Diagram System (Mermaid)
@@ -68,7 +69,7 @@ npm run lint
   <Mermaid title="Auth Flow" chart={`graph TD
     A --> B`} />
 
-  # Structured user journey
+  # Mermaid-based simple journey (score 1-5 per task)
   <UserJourney
     title="Onboarding"
     actor="User"
@@ -76,7 +77,20 @@ npm run lint
       { name: "Discovery", tasks: [{ label: "Finds page", score: 4 }] }
     ]}
   />
+
+  # Rich journey map (persona + phases + SVG sentiment chart)
+  <UserJourneyMap
+    title="Checkout Flow"
+    persona={{ name: "Alex", role: "First-time buyer", bio: "...", photo: "/img/..." }}
+    expectations={["Fast checkout", "Clear pricing"]}
+    phases={[
+      { name: "Browse", steps: [{ id: 1, description: "Lands on PDP", sentiment: 4, quote: "Nice layout" }] },
+      { name: "Purchase", steps: [{ id: 2, description: "Enters payment", sentiment: 2 }] }
+    ]}
+  />
   ```
+- **`UserJourneyMap` props**: `title?` (string), `persona` (`{ name, role, bio, photo? }`), `expectations` (string[]), `phases` (`{ name, steps: { id, description, sentiment (1–5), quote? }[] }[]`)
+- **Sentiment chart colors**: teal (avg ≥ 3.75), slate (2.75–3.75), red (< 2.75); quote callouts above/below the data point based on sentiment
 
 ### State Management Patterns
 - **No External Libraries**: Uses React built-in state with specific patterns
