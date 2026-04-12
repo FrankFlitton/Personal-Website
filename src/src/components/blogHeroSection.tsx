@@ -35,20 +35,21 @@ export default function BlogHeroSection({ blog }: { blog: Blog }) {
 
       {/* 2-col layout: text left, card right — stacks on mobile */}
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-screen-lg mx-auto px-10 md:px-6 pt-16 pb-12 md:pt-20 md:pb-16 items-center">
-
         {/* Left: title, description, metadata */}
         <div className="flex flex-col justify-center">
-          <h2 className="text-4xl md:text-5xl text-black dark:text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl text-black dark:text-white mb-6 leading-tight md:leading-tight text-wrap-pretty">
             {blog.title}
           </h2>
-          <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
+          <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed text-wrap-pretty">
             {blog.description}
           </p>
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">
               Published On
             </h3>
-            <p className="text-neutral-700 dark:text-neutral-200">{blog.date}</p>
+            <p className="text-neutral-700 dark:text-neutral-200 md:pb-5">
+              {blog.date}
+            </p>
           </div>
         </div>
 
@@ -70,7 +71,6 @@ export default function BlogHeroSection({ blog }: { blog: Blog }) {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
