@@ -3,6 +3,7 @@ import { readFileSync, readdirSync } from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
 import { parse } from "yaml";
+import remarkGfm from "remark-gfm";
 
 export async function MDLoadFile<T>(path: string) {
   const readFile = readFileSync(join(process.cwd(), path), "utf8");
@@ -10,7 +11,7 @@ export async function MDLoadFile<T>(path: string) {
   const fileName = path.split("/").pop() ?? "";
 
   if (!readFile.trim().startsWith("---")) {
-    const mdxSource = await serialize(readFile);
+    const mdxSource = await serialize(readFile, { mdxOptions: { remarkPlugins: [remarkGfm] } });
     const doc: MDXDocument<null> = {
       id: fileName,
       data: null,
@@ -28,7 +29,7 @@ export async function MDLoadFile<T>(path: string) {
   const data: T = parse(yamlString);
 
   const contentSource = readLines.slice(yamlEndIndex + 1).join("\n");
-  const mdxSource = await serialize(contentSource);
+  const mdxSource = await serialize(contentSource, { mdxOptions: { remarkPlugins: [remarkGfm] } });
 
   const doc: MDXDocument<T> = {
     id: fileName,

@@ -16,6 +16,7 @@
     "highlight.js": "^11.11.0",
     "html-react-parser": "^5.0.11",
     "lodash": "^4.17.21",
+    "mermaid": "^11.14.0",
     "next": "^14.2.10",
     "next-mdx-remote": "^4.4.1",
     "next-sitemap": "^4.2.3",
@@ -25,6 +26,7 @@
     "react-dom": "^18",
     "react-embed-gist": "^1.0.22",
     "react-swipeable": "^7.0.1",
+    "remark-gfm": "^3.0.1",
     "rss-parser": "^3.13.0",
     "yaml": "^2.3.4"
   },

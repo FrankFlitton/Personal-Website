@@ -9,8 +9,10 @@ import { IFrame } from "./render-blocks/IFrame";
 import { NPM } from "./render-blocks/NPM";
 import { Hr as hr } from "./render-blocks/Hr";
 import { Code as code } from "./render-blocks/Code";
+import { Mermaid } from "./render-blocks/Mermaid";
+import { UserJourney } from "./render-blocks/UserJourney";
 
-const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code };
+const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code, Mermaid, UserJourney };
 
 export function MDRenderer({
   source,
