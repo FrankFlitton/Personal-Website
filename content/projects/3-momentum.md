@@ -39,7 +39,52 @@ Unlike other loop platforms, Momentum is completely free and doesn’t have any 
 
 The workflow for working with samples is very similar across audio engineering creative industry. Users that specialize in composing original music and or producing a client's track use samples (loops or one-shots) in their digital audio workstations. Although they treat the samples differently to achieve specific outcomes, the workflow is near identical.
 
-![Momentum User Journey Diagram](/img/projects/momentum/momentumUserJourney.jpg)
+<UserJourneyMap
+  title="Momentum — Composer & Producer Journey"
+  persona={{
+    name: "Jennifer",
+    role: "Composer & Producer",
+    bio: "Jennifer wants to find a sound for a new piece of music that she's working on. She has a deadline approaching and needs quick, flexible inspiration."
+  }}
+  expectations={[
+    "Ability to compare samples with the rest of the music",
+    "Smooth integration into her composition with consideration to speed, key, pitch, and rhythm",
+    "Find new sounds quickly"
+  ]}
+  phases={[
+    {
+      name: "Inspiration",
+      steps: [
+        { id: 1, description: "Point of inspiration", sentiment: 4, quote: "I need a great beat or some ear-candy" }
+      ]
+    },
+    {
+      name: "Sample Auditions",
+      steps: [
+        { id: 2, description: "Rummage through sound library folder", sentiment: 2, quote: "Leaving the music software breaks my concentration" },
+        { id: 3, description: "Audition sound candidates from your sound library folders", sentiment: 1, quote: "It's hard to know what's in the pack and if it will work in my composition" },
+        { id: 4, description: "Find nothing, look for new samples online", sentiment: 1 },
+        { id: 5, description: "Find a sample pack that works for your music piece", sentiment: 3, quote: "Found the needle in a haystack" },
+        { id: 6, description: "Add the sample to your library and composition", sentiment: 4 }
+      ]
+    },
+    {
+      name: "Tuning",
+      steps: [
+        { id: 7, description: "It doesn't quite fit: pitch, speed, volume", sentiment: 2, quote: "Ugh… more busy work. Could be an hour of fine tuning." },
+        { id: 8, description: "Re-position samples on the timeline", sentiment: 2 },
+        { id: 9, description: "Humanize each sample instance", sentiment: 3 }
+      ]
+    },
+    {
+      name: "Mixing",
+      steps: [
+        { id: 10, description: "Blend the new sample into the composition", sentiment: 4, quote: "I LOVE it when it comes together" },
+        { id: 11, description: "Play with the composition, feel inspired", sentiment: 5, quote: "Tweaking the FX is where the magic lives." }
+      ]
+    }
+  ]}
+/>
 
 Very quickly we honed in on 2 primary pain points.
 

@@ -76,6 +76,97 @@ function wrapText(text: string, maxChars = 24): string[] {
   return lines.slice(0, 3);
 }
 
+// ─── Mobile sentiment arc ─────────────────────────────────────────────────────
+function SentimentChartMobile({
+  steps,
+  isDark,
+  phases,
+}: {
+  steps: JourneyStep[];
+  isDark: boolean;
+  phases: JourneyPhase[];
+}) {
+  const n = steps.length;
+  const VBW = 380;
+  const VBH = 110;
+  const PL = 15;
+  const PR = 365;
+  const PT = 26;   // headroom for phase labels
+  const PB = 100;
+  const CR = 9;
+  const PW = PR - PL;
+  const PH = PB - PT;
+
+  const sx = (i: number) => (n <= 1 ? (PL + PR) / 2 : PL + (i / (n - 1)) * PW);
+  const sy = (s: number) => PT + ((5 - s) / 4) * PH;
+
+  const bgFill  = isDark ? "#18181b" : "#ffffff";
+  const numColor = isDark ? "#f4f4f5" : "#1e293b";
+  const refColor = isDark ? "#3f3f46" : "#e2e8f0";
+  const labelColor = isDark ? "#52525b" : "#94a3b8";
+
+  // Phase label positions and divider X values
+  let offset = 0;
+  const phaseMeta = phases.map((phase) => {
+    const start = offset;
+    const end   = offset + phase.steps.length - 1;
+    offset += phase.steps.length;
+    return { name: phase.name, start, end, labelX: (sx(start) + sx(end)) / 2 };
+  });
+
+  return (
+    <svg viewBox={`0 0 ${VBW} ${VBH}`} className="w-full" aria-hidden="true">
+      {/* Phase labels */}
+      {phaseMeta.map(({ name, labelX }) => (
+        <text key={name} x={labelX} y={13} textAnchor="middle" fontSize="8" fontWeight="bold" fill={labelColor}>
+          {name.toUpperCase()}
+        </text>
+      ))}
+
+      {/* Phase dividers */}
+      {phaseMeta.slice(0, -1).map(({ end }, pi) => {
+        const divX = (sx(end) + sx(end + 1)) / 2;
+        return (
+          <line key={pi} x1={divX} y1={PT - 4} x2={divX} y2={PB + 4}
+            stroke={refColor} strokeWidth="0.8" strokeDasharray="3 3" />
+        );
+      })}
+
+      {/* Neutral reference line */}
+      <line x1={PL} y1={sy(3)} x2={PR} y2={sy(3)}
+        stroke={refColor} strokeWidth="0.8" strokeDasharray="4 4" />
+
+      {/* Segment lines */}
+      {steps.slice(0, -1).map((step, i) => {
+        const next = steps[i + 1];
+        return (
+          <line key={`ms-${i}`}
+            x1={sx(i)}  y1={sy(step.sentiment)}
+            x2={sx(i + 1)} y2={sy(next.sentiment)}
+            stroke={segColor(step.sentiment, next.sentiment, isDark)}
+            strokeWidth="2" strokeLinecap="round" />
+        );
+      })}
+
+      {/* Dots */}
+      {steps.map((step, i) => {
+        const cx = sx(i);
+        const cy = sy(step.sentiment);
+        const color = dotColor(step.sentiment, isDark);
+        return (
+          <g key={`md-${step.id}`}>
+            <circle cx={cx} cy={cy} r={CR} fill={bgFill} stroke={color} strokeWidth="2" />
+            <text x={cx} y={cy + 1} textAnchor="middle" dominantBaseline="middle"
+              fontSize="9" fontWeight="bold" fill={numColor}>
+              {step.id}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 // ─── Sentiment chart ──────────────────────────────────────────────────────────
 function SentimentChart({
   steps,
@@ -306,45 +397,94 @@ export const UserJourneyMap = ({
         </div>
       )}
 
-      {/* ── Phases + Steps ── */}
-      <div className={`overflow-x-auto border-b ${b}`}>
-      <div
-        className="grid"
-        style={{
-          gridTemplateColumns: `repeat(${phases.length}, minmax(140px, 1fr))`,
-          minWidth: `${phases.length * 140}px`,
-        }}
-      >
+      {/* ── Mobile: vertical stacked phases with inline quotes ── */}
+      <div className={`sm:hidden border-b ${b}`}>
         {phases.map((phase, pi) => (
-          <div
-            key={phase.name}
-            className={`p-4 ${pi < phases.length - 1 ? `border-r ${b}` : ""}`}
-          >
-            <div className="text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 px-2 py-1 rounded mb-3 text-center">
-              {phase.name}
+          <div key={phase.name} className={pi < phases.length - 1 ? `border-b ${b}` : ""}>
+            <div className={`px-4 py-2 bg-slate-100 dark:bg-zinc-800`}>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+                {phase.name}
+              </span>
             </div>
-            <div className="space-y-2.5">
-              {phase.steps.map((step) => (
-                <div key={step.id} className="flex gap-2 items-start">
-                  <span className="w-5 h-5 rounded-full bg-slate-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5">
+            {phase.steps.map((step, si) => {
+              const color = dotColor(step.sentiment, isDark);
+              return (
+                <div
+                  key={step.id}
+                  className={`px-4 py-3 flex gap-3 ${si < phase.steps.length - 1 ? `border-b ${b}` : ""}`}
+                >
+                  <div
+                    className="w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5"
+                    style={{ borderColor: color, color }}
+                  >
                     {step.id}
-                  </span>
-                  <span className="text-sm text-slate-700 dark:text-zinc-300 leading-snug">
-                    {step.description}
-                  </span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm text-slate-700 dark:text-zinc-300 leading-snug m-0">
+                      {step.description}
+                    </p>
+                    {step.quote && (
+                      <p className="text-xs italic text-slate-500 dark:text-zinc-400 mt-1.5 m-0 leading-relaxed">
+                        "{step.quote}"
+                      </p>
+                    )}
+                  </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         ))}
       </div>
+
+      {/* ── Desktop: horizontal scrollable phase grid ── */}
+      <div className="relative hidden sm:block">
+        <div className={`overflow-x-auto border-b ${b}`}>
+          <div
+            className="grid"
+            style={{
+              gridTemplateColumns: `repeat(${phases.length}, minmax(140px, 1fr))`,
+              minWidth: `${phases.length * 140}px`,
+            }}
+          >
+            {phases.map((phase, pi) => (
+              <div
+                key={phase.name}
+                className={`p-4 ${pi < phases.length - 1 ? `border-r ${b}` : ""}`}
+              >
+                <div className="text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 px-2 py-1 rounded mb-3 text-center">
+                  {phase.name}
+                </div>
+                <div className="space-y-2.5">
+                  {phase.steps.map((step) => (
+                    <div key={step.id} className="flex gap-2 items-start">
+                      <span className="w-5 h-5 rounded-full bg-slate-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs flex items-center justify-center flex-shrink-0 font-bold mt-0.5">
+                        {step.id}
+                      </span>
+                      <span className="text-sm text-slate-700 dark:text-zinc-300 leading-snug">
+                        {step.description}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* ── Sentiment chart ── */}
       {showChart && (
-        <div className="px-2 py-1">
-          <SentimentChart steps={allSteps} isDark={isDark} />
-        </div>
+        <>
+          {/* Mobile: compact arc chart preserving up/down sentiment positioning */}
+          <div className={`sm:hidden px-3 py-3 border-t ${b}`}>
+            <SentimentChartMobile steps={allSteps} isDark={isDark} phases={phases} />
+          </div>
+
+          {/* Desktop: full SVG chart */}
+          <div className="hidden sm:block px-2 py-1">
+            <SentimentChart steps={allSteps} isDark={isDark} />
+          </div>
+        </>
       )}
     </div>
   );
