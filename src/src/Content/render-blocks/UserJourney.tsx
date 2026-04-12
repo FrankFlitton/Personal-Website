@@ -36,5 +36,5 @@ export const UserJourney = ({
   sections,
 }: UserJourneyProps) => {
   const chart = buildChart(title, actor, sections);
-  return <MermaidDiagram chart={chart} />;
+  return <MermaidDiagram chart={chart} title={title} />;
 };

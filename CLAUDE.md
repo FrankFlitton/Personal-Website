@@ -45,12 +45,44 @@ npm run lint
   - `<YouTube id="video-id" />` - Video embeds
   - `<Gist id="gist-id" />` - GitHub Gist iframes (renders via `/gist/?gist={id}`)
   - `<IFrame>`, `<Img>` with dialog slider integration
+  - `<Mermaid chart="..." title="..." />` - Inline diagram (any mermaid syntax)
+  - `<UserJourney title="..." actor="..." sections={[...]} />` - Structured user journey map
+  - Fenced ` ```mermaid ` blocks — intercepted by `Pre.tsx`, rendered as diagrams
+
+### Diagram System (Mermaid)
+- **Library**: `mermaid` (client-side only, dynamically imported in `useEffect`)
+- **Core renderer**: `src/Content/render-blocks/MermaidDiagram.tsx` — handles SSR safety, theming, viewBox clipping
+- **Theming**: `base` theme with slate palette (light) and zinc palette (dark); re-renders on theme toggle
+- **ViewBox clipping**: `getBBox()` trims dead vertical space after render (important for journey/gantt diagrams)
+- **Gallery integration**: Diagrams are included in the `DialogSlider` lightbox alongside images; clicking opens the fullscreen viewer. SVGs are serialized to data URLs at click time. `MutationObserver` in `renderer.tsx` watches for async diagram renders to keep the media list current.
+- **Label resolution** (`extractDiagramLabel` in `MermaidDiagram.tsx`): caption priority is explicit `title` prop → mermaid frontmatter `title:` → inline `title` keyword → diagram type name → "Diagram"
+- **Authoring patterns**:
+  ```mdx
+  # Fenced block (auto-detects type for caption)
+  ```mermaid
+  flowchart LR
+    A --> B --> C
+  ```
+
+  # Direct component with explicit caption
+  <Mermaid title="Auth Flow" chart={`graph TD
+    A --> B`} />
+
+  # Structured user journey
+  <UserJourney
+    title="Onboarding"
+    actor="User"
+    sections={[
+      { name: "Discovery", tasks: [{ label: "Finds page", score: 4 }] }
+    ]}
+  />
+  ```
 
 ### State Management Patterns
 - **No External Libraries**: Uses React built-in state with specific patterns
 - **Custom Hooks**: `useTheme`, `useIsRefVisible`, `useIsMobile`, `useIsScrollPastY`
 - **Event-Driven**: PostMessage API, IntersectionObserver, MediaQuery listeners
-- **Image Gallery System**: Auto-generated lightbox from MDX `<img>` tags with swipe navigation
+- **Media Gallery System**: Auto-generated lightbox from MDX `<img>` tags and mermaid diagrams with swipe navigation; `MutationObserver` in `MDRenderer` keeps the list current as async content renders
 
 ### GitHub API Integration
 - **Build-Time Fetching**: GraphQL API in `getStaticProps` for pinned repositories

@@ -18,24 +18,44 @@ export const DialogSlider = ({
     setImageIndex(openToIndex);
   }, [openToIndex]);
 
+  const isOpen = imageIndex > -1;
+
   const goToImage = (index: number) => {
     setImageIndex(index);
   };
 
-  // esc key to close
+  // Lock body scroll while open
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  // Keyboard: Escape closes, arrow keys navigate (and prevent page scroll)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (!isOpen) return;
+
       if (e.key === "Escape") {
         setImageIndex(-1);
         onClose(-1);
+        return;
+      }
+
+      if (["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown"].includes(e.key)) {
+        e.preventDefault();
+        const isPrev = e.key === "ArrowLeft" || e.key === "ArrowUp";
+        setImageIndex((current) => {
+          const newVal = isPrev ? current - 1 : current + 1;
+          return newVal < 0 ? images.length - 1 : newVal % images.length;
+        });
       }
     };
 
-    window.addEventListener("keydown", handleEsc);
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
-  }, [onClose]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isOpen, images.length, onClose]);
 
   const config = {
     delta: 10, // min distance(px) before a swipe starts. *See Notes*
@@ -66,7 +86,7 @@ export const DialogSlider = ({
       className={`dialog fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black w-full h-[100dvh]
         ${imageIndex > -1 ? `opacity-100` : `opacity-0`}
         `}
-      open={imageIndex > -1}
+      open={isOpen}
       {...swipeProps}
     >
       {images.map((image, index) => {
@@ -83,7 +103,7 @@ export const DialogSlider = ({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              className="absolute top-0 left-0 w-full h-full object-contain p-[2rem] bg-black"
+              className="absolute top-0 left-0 w-full h-full object-contain p-[2rem] bg-black m-0"
               src={image}
               alt={descriptions[index]}
               title={descriptions[imageIndex]}

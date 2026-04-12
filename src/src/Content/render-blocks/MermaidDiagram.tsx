@@ -31,7 +31,54 @@ const darkVars = {
 
 const PADDING = 20;
 
-export const MermaidDiagram = ({ chart }: { chart: string }) => {
+/** Map diagram type keyword → human-readable label. */
+const DIAGRAM_TYPES: [RegExp, string][] = [
+  [/^flowchart\b/i, "Flowchart"],
+  [/^graph\b/i, "Flowchart"],
+  [/^sequencediagram\b/i, "Sequence Diagram"],
+  [/^journey\b/i, "User Journey"],
+  [/^erdiagram\b/i, "ER Diagram"],
+  [/^gantt\b/i, "Gantt Chart"],
+  [/^classdiagram\b/i, "Class Diagram"],
+  [/^statediagram/i, "State Diagram"],
+  [/^pie\b/i, "Pie Chart"],
+  [/^mindmap\b/i, "Mind Map"],
+  [/^gitgraph\b/i, "Git Graph"],
+  [/^timeline\b/i, "Timeline"],
+  [/^quadrantchart\b/i, "Quadrant Chart"],
+  [/^xychart\b/i, "XY Chart"],
+];
+
+/**
+ * Derive a human-readable label from a mermaid chart definition.
+ * Priority: explicit title prop → mermaid frontmatter title → inline title keyword → diagram type → "Diagram"
+ */
+function extractDiagramLabel(chart: string, explicitTitle?: string): string {
+  if (explicitTitle) return explicitTitle;
+
+  const trimmed = chart.trim();
+
+  // Mermaid v10 frontmatter: ---\ntitle: My Title\n---
+  const frontmatter = trimmed.match(/^---\s*\n(?:.*\n)*?title:\s*(.+?)\s*\n/);
+  if (frontmatter) return frontmatter[1];
+
+  // Strip frontmatter block before checking inline keywords
+  const body = trimmed.replace(/^---[\s\S]*?---\s*\n/, "").trim();
+
+  // Inline title keyword (journey, sequence, gantt, etc.): "title My Title"
+  const inlineTitle = body.match(/^\s*title\s+(.+)/m);
+  if (inlineTitle) return inlineTitle[1].trim();
+
+  // Derive from diagram type
+  for (const [pattern, label] of DIAGRAM_TYPES) {
+    if (pattern.test(body)) return label;
+  }
+
+  return "Diagram";
+}
+
+export const MermaidDiagram = ({ chart, title }: { chart: string; title?: string }) => {
+  const label = extractDiagramLabel(chart, title);
   const { isDark } = useTheme();
   const reactId = useId();
   const renderCount = useRef(0);
@@ -118,7 +165,9 @@ export const MermaidDiagram = ({ chart }: { chart: string }) => {
   return (
     <div
       ref={containerRef}
-      className="my-6 overflow-x-auto rounded-lg p-4 bg-slate-50 dark:bg-zinc-900"
+      data-diagram="true"
+      data-diagram-title={label}
+      className="my-6 overflow-x-auto rounded-lg p-4 bg-slate-50 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-slate-300 dark:hover:ring-zinc-600 transition-shadow"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );

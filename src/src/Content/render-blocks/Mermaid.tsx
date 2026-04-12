@@ -1,5 +1,5 @@
 import { MermaidDiagram } from "./MermaidDiagram";
 
-export const Mermaid = ({ chart }: { chart: string }) => (
-  <MermaidDiagram chart={chart} />
+export const Mermaid = ({ chart, title }: { chart: string; title?: string }) => (
+  <MermaidDiagram chart={chart} title={title} />
 );
