@@ -53,9 +53,61 @@ Before any pixels were placed, the goal was to map how users actually move throu
 
 These modes have very different flows and very different information needs. A performer needs the layer overview and library front and center. A sound designer needs deep timeline access without losing track of which layer is playing which sound.
 
+The journey below is a composite drawn from Sweetwater reviews, forum threads, and user interviews, mapped onto a representative sound design session.
+
+<UserJourneyMap
+  title="Wavestate Hardware — Sound Design Session"
+  persona={{
+    name: "Jordan",
+    role: "Sound Designer",
+    bio: "Jordan designs patches for film scoring and live performance. They love the Wavestate's sound engine but spend more time navigating the hardware's display than actually composing — especially once a patch has more than two active layers."
+  }}
+  expectations={[
+    "See all 4 layers and their current state at a glance",
+    "Edit any layer's wave sequence without losing track of the others",
+    "Stay in a compositional flow — not break to decode menu trees"
+  ]}
+  phases={[
+    {
+      name: "Playing",
+      steps: [
+        { id: 1, description: "Load a preset, start playing", sentiment: 5, quote: "The way this evolves is unlike anything else" },
+        { id: 2, description: "Decide to customize the sound for a project", sentiment: 4 }
+      ]
+    },
+    {
+      name: "Orientation",
+      steps: [
+        { id: 3, description: "Press Edit, enter menu navigation", sentiment: 3 },
+        { id: 4, description: "Try to identify which of the 4 layers is making which sound", sentiment: 2, quote: "Which layer is doing that?" },
+        { id: 5, description: "Realize only one layer is visible on the display at a time", sentiment: 3, quote: "I can't see the whole picture at once" }
+      ]
+    },
+    {
+      name: "Layer Editing",
+      steps: [
+        { id: 6, description: "Navigate into a specific layer's wave sequence", sentiment: 2, quote: "Four button presses just to get here" },
+        { id: 7, description: "Edit a step value, return to play mode to hear it", sentiment: 2 }
+      ]
+    },
+    {
+      name: "Resolution",
+      steps: [
+        { id: 8, description: "Write layer state on paper to keep track", sentiment: 2, quote: "Paper notes. On a modern synthesizer." },
+        { id: 9, description: "Complete the edit methodically across multiple passes", sentiment: 3 },
+        { id: 10, description: "Hear the finished patch — it works", sentiment: 4, quote: "Great result. But it shouldn't take this long." }
+      ]
+    }
+  ]}
+/>
+
+The pattern was consistent: the instrument's sound engine was a source of genuine delight, while the experience of editing it across layers was a source of friction. Users could not see what all four layers were doing simultaneously, could not tell which sound belonged to which layer at a glance, and frequently lost context navigating menu trees mid-session. Writing layer state on paper came up independently across multiple interviews and reviews — a reliable signal of where the hardware's display reached its limit.
+
+Those pain points shaped the software directly. The persistent four-layer overview, the Inspector panel, and the color-coded wave sequence editor each address a specific moment in that curve. It also became clear after mapping the detailed user journey that the software needed to serve two distinct modes: a streamlined auditioning experience for performers browsing and playing patches, and a deep sound design environment for users coordinating timelines and modulation across all four layers. The decision flow below maps both usage modes in full.
+
 ![High-level decision flow: performance mode vs. sound design mode, with callouts for key UX pain points](/img/projects/korg-wavestate/decision-flow.jpg)
 
-Key pain points identified: editing across layers was repetitive and lacked transparency; users couldn't tell which sound belonged to which layer at a glance; arpeggiation and automation needed to be accessible without leaving the main view; and the library and layer overview would be used in almost every session.
+
 
 ## A Config-Driven Design System
 
