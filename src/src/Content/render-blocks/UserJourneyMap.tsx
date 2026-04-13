@@ -255,38 +255,21 @@ function SentimentChart({
         const boxH = lines.length * QLH + QPad * 2;
         const boxX = Math.max(PL, Math.min(PR - QW, cx - QW / 2));
         const boxY = above ? cy - CR - 8 - boxH : cy + CR + 8;
-
         const sentColor = dotColor(step.sentiment, isDark);
         return (
           <g key={`quote-${step.id}`}>
             <line
-              x1={cx}
-              y1={above ? cy - CR : cy + CR}
-              x2={cx}
-              y2={above ? boxY + boxH : boxY}
-              stroke={sentColor}
-              strokeWidth="1"
-              strokeDasharray="3 3"
+              x1={cx} y1={above ? cy - CR : cy + CR}
+              x2={cx} y2={above ? boxY + boxH : boxY}
+              stroke={sentColor} strokeWidth="1" strokeDasharray="3 3"
             />
             <rect
-              x={boxX}
-              y={boxY}
-              width={QW}
-              height={boxH}
-              rx={4}
-              fill={qBg}
-              stroke={sentColor}
-              strokeWidth="1.5"
+              x={boxX} y={boxY} width={QW} height={boxH} rx={4}
+              fill={qBg} stroke={sentColor} strokeWidth="1.5"
             />
             {lines.map((line, li) => (
-              <text
-                key={li}
-                x={boxX + QPad}
-                y={boxY + QPad + 12 + li * QLH}
-                fontSize="11"
-                fontStyle="italic"
-                fill={qText}
-              >
+              <text key={li} x={boxX + QPad} y={boxY + QPad + 12 + li * QLH}
+                fontSize="11" fontStyle="italic" fill={qText}>
                 {line}
               </text>
             ))}
