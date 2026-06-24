@@ -131,7 +131,7 @@ npm run lint
 - **Theme Support**: Import `useTheme` hook, destructure `{ isDark }`, use `dark:` Tailwind classes
 - **Responsive Design**: Use `useIsMobile` hook for conditional rendering, `hzphone` breakpoint for horizontal mobile
 - **Animation**: Framer Motion with consistent `initial/animate/exit` patterns, custom Tailwind animations for complex sequences
-- **Image Handling**: All images in `/public/img/` organized by content type, use Next.js `Image` component with `unoptimized: true`
+- **Image Handling**: Static assets live in **`src/public/`** (the Next.js public dir), served at the site root — e.g. a file at `src/public/img/foo.png` is referenced as `/img/foo.png`. ⚠️ Gotcha: the Next app root is `/src`, so the public dir is `src/public/`, **not** a `public/` folder at the repo root. Putting images in a repo-root `public/` silently fails — the build won't copy them into `out/` and they 404 in production. Images are organized by content type under `src/public/img/`; use the Next.js `Image` component with `unoptimized: true`.
 
 ### Common Utilities
 - **Content Loading**: Use `MDLoadFile<T>` for single files, `MDLoadDir<T>` for directories with typed frontmatter

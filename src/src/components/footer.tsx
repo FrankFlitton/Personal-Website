@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import {
   taglineParts,
@@ -196,24 +197,24 @@ export const Footer = () => {
               © {new Date().getFullYear()} Frank Flitton
             </p>
             <nav className="flex gap-4 text-xs text-white/30">
-              <a
+              <Link
                 href="/about/"
                 className="hover:text-white/70 transition-colors"
               >
                 About
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/blog/"
                 className="hover:text-white/70 transition-colors"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/projects/"
                 className="hover:text-white/70 transition-colors"
               >
                 Projects
-              </a>
+              </Link>
             </nav>
           </div>
         </div>

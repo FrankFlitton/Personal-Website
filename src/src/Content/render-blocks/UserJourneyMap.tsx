@@ -408,7 +408,7 @@ export const UserJourneyMap = ({
                     </p>
                     {step.quote && (
                       <p className="text-xs italic text-slate-500 dark:text-zinc-400 mt-1.5 m-0 leading-relaxed">
-                        "{step.quote}"
+                        &ldquo;{step.quote}&rdquo;
                       </p>
                     )}
                   </div>

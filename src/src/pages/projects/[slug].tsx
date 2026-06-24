@@ -84,7 +84,7 @@ export default function Home({
               href={project?.data?.projectUrl}
               className="text-xl md:text-2xl hover:bg-black/10 dark:hover:bg-white/10 text-black dark:text-white p-4 inline-block min-w-40"
             >
-              Buy
+              {project?.data?.cta ?? "Buy"}
             </Link>
           )}
         </div>

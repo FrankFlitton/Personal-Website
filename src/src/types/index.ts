@@ -13,6 +13,7 @@ export interface FeatureProjectData {
   category: string;
   contributions: string[];
   longDescription: string;
+  cta?: string;
 }
 
 export interface MDXDocument<T = Record<string, unknown> | null> {
