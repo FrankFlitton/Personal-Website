@@ -15,6 +15,101 @@ import { UserJourneyMap } from "./render-blocks/UserJourneyMap";
 
 const components = { YouTube, IFrame, Img, Gist, pre, NPM, hr, code, Mermaid, UserJourney, UserJourneyMap };
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+
+/**
+ * Embedded Futura @font-face CSS for serialized SVGs.
+ *
+ * Diagrams are serialized to standalone `data:` URLs and shown in an <img>,
+ * which is isolated from the page's stylesheet — so the site's webfont never
+ * loads and text falls back to serif. We fetch the woff2 files once, base64
+ * them, and inline an @font-face block into each SVG so it keeps Futura in the
+ * lightbox. Cached at module scope so every diagram/rebuild reuses it.
+ */
+let fontFaceCSS: string | null = null;
+let fontFacePromise: Promise<string> | null = null;
+
+function loadFontFaceCSS(): Promise<string> {
+  if (fontFaceCSS != null) return Promise.resolve(fontFaceCSS);
+  if (fontFacePromise) return fontFacePromise;
+
+  const toBase64 = async (url: string) => {
+    const buf = await (await fetch(url)).arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    let binary = "";
+    for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+    return btoa(binary);
+  };
+
+  fontFacePromise = (async () => {
+    try {
+      const [book, bold] = await Promise.all([
+        toBase64("/fonts/book.woff2"),
+        toBase64("/fonts/bold.woff2"),
+      ]);
+      fontFaceCSS =
+        `@font-face{font-family:"Futura";font-weight:normal;font-style:normal;` +
+        `src:url("data:font/woff2;base64,${book}") format("woff2");}` +
+        `@font-face{font-family:"Futura";font-weight:700;font-style:normal;` +
+        `src:url("data:font/woff2;base64,${bold}") format("woff2");}`;
+    } catch {
+      fontFaceCSS = ""; // give up gracefully; text falls back to sans-serif
+    }
+    return fontFaceCSS;
+  })();
+
+  return fontFacePromise;
+}
+
+/**
+ * Serialize a rendered diagram SVG to a self-contained data URL: pick the
+ * visible SVG (components like UserJourneyMap render hidden mobile + desktop
+ * variants), embed the webfont, and paint a theme-matched background so it
+ * reads on the lightbox's dark backdrop.
+ */
+function serializeDiagram(el: Element): string | null {
+  const svgs = Array.from(el.querySelectorAll("svg"));
+  if (!svgs.length) return null; // not rendered yet — skip
+  const svgEl =
+    svgs.find((s) => s.getBoundingClientRect().width > 0) ?? svgs[0];
+
+  const clone = svgEl.cloneNode(true) as SVGSVGElement;
+  clone.setAttribute("xmlns", SVG_NS);
+
+  const isDark = document.documentElement.classList.contains("dark");
+  const bg = isDark ? "#18181b" : "#ffffff";
+
+  // Background rect sized to the viewBox (fallback to the rendered box).
+  const vb = clone.getAttribute("viewBox");
+  let x = 0, y = 0, w = 0, h = 0;
+  if (vb) {
+    [x, y, w, h] = vb.split(/[\s,]+/).map(Number);
+  } else {
+    const box = svgEl.getBoundingClientRect();
+    w = box.width;
+    h = box.height;
+  }
+  if (w && h) {
+    const rect = document.createElementNS(SVG_NS, "rect");
+    rect.setAttribute("x", String(x));
+    rect.setAttribute("y", String(y));
+    rect.setAttribute("width", String(w));
+    rect.setAttribute("height", String(h));
+    rect.setAttribute("fill", bg);
+    clone.insertBefore(rect, clone.firstChild);
+  }
+
+  if (fontFaceCSS) {
+    const style = document.createElementNS(SVG_NS, "style");
+    style.textContent = fontFaceCSS;
+    clone.insertBefore(style, clone.firstChild);
+  }
+  clone.style.fontFamily = 'Futura, ui-sans-serif, system-ui, sans-serif';
+
+  const svgStr = new XMLSerializer().serializeToString(clone);
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgStr);
+}
+
 /** Build ordered media list (images + diagrams) from current DOM state. */
 function collectMedia(root: HTMLElement): { urls: string[]; alts: string[]; elements: Element[] } {
   const urls: string[] = [];
@@ -29,10 +124,9 @@ function collectMedia(root: HTMLElement): { urls: string[]; alts: string[]; elem
       alts.push(img.alt);
       elements.push(el);
     } else {
-      const svgEl = el.querySelector("svg");
-      if (!svgEl) return; // not rendered yet — skip
-      const svgStr = new XMLSerializer().serializeToString(svgEl);
-      urls.push("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgStr));
+      const url = serializeDiagram(el);
+      if (!url) return; // not rendered yet — skip
+      urls.push(url);
       alts.push((el as HTMLElement).dataset.diagramTitle || "Diagram");
       elements.push(el);
     }
@@ -90,6 +184,9 @@ export function MDRenderer({
     };
 
     rebuild();
+
+    // Embed the webfont, then rebuild so cached SVG data URLs include it.
+    loadFontFaceCSS().then(() => rebuild());
 
     let timer: ReturnType<typeof setTimeout>;
     const observer = new MutationObserver(() => {
