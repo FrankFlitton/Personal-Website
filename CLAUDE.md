@@ -40,6 +40,7 @@ npm run lint
   - `/content/blog/` - Blog posts with metadata (title, slug, date, categories, featuredImage)
   - `/content/projects/` - Project case studies with rich metadata (client, projectUrl, color, contributions)
   - `/content/pages/` - Static pages
+- **Test/scratch content (`*.test.md`)**: Any content file ending in `.test.md` is treated as test/scratch content. `MDLoadDir` (`src/Content/loader.tsx`) skips these files unless the `INCLUDE_TEST_MD` env var is set, so they never ship to production builds. The `dev` script sets `INCLUDE_TEST_MD=true`, so they render on the local dev server but are excluded from `npm run build`. Use this for diagram/component experiments you want to keep in the repo without publishing.
 - **Custom MDX Components**: Supports embedded JSX in Markdown:
   - `<NPM id="package-name" />` - Styled package cards
   - `<YouTube id="video-id" />` - Video embeds

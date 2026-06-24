@@ -40,9 +40,15 @@ export async function MDLoadFile<T>(path: string) {
 }
 
 export async function MDLoadDir<T>(path: string) {
-  const documentSources = readdirSync(join(process.cwd(), path)).sort((a, b) =>
-    a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
-  );
+  // Files matching `*.test.md` are test/scratch content. They're excluded from
+  // loading unless INCLUDE_TEST_MD is set (the dev server sets it on boot), so
+  // they never ship to production builds while staying easy to preview locally.
+  const includeTestMd = !!process.env.INCLUDE_TEST_MD;
+  const documentSources = readdirSync(join(process.cwd(), path))
+    .filter((document) => includeTestMd || !document.endsWith(".test.md"))
+    .sort((a, b) =>
+      a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
+    );
   const documents = await Promise.all(
     documentSources.map(async (document) => {
       const documentContent = await MDLoadFile<T>(join(path, document));
