@@ -161,8 +161,8 @@ export const Footer = () => {
                   ))}
                 </div>
                 <p className="text-sm text-white/50 max-w-[32ch] leading-relaxed">
-                  Open to senior SWE and UX Engineering roles. Let&apos;s build
-                  something together.
+                  Open to senior Full Stack Engineering and UX Engineering
+                  roles. Let&apos;s build something together.
                 </p>
               </div>
 

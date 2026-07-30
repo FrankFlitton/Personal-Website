@@ -15,8 +15,8 @@ export const PageMeta = ({
 }) => {
   const router = useRouter();
   const metaTitle = title
-    ? `${title} | Frank JE Flitton | Tech Lead and UX Designer`
-    : "Frank JE Flitton | Tech Lead and UX Designer";
+    ? `${title} | Frank JE Flitton | Full Stack Engineer & Tech Lead`
+    : "Frank JE Flitton | Full Stack Engineer & Tech Lead";
   const metaDescription = description ? description : tagline;
   const metaImage = !!image?.length ? image : "/img/og-image.jpg";
   const metaImageURL = metaImage.startsWith("http")
