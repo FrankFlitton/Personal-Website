@@ -78,10 +78,11 @@ const AboutPage = () => {
           What I&apos;m focused on
         </p>
         <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12">
-          I&apos;m looking for Staff or Lead UXE roles where the work is internal
-          tooling, design systems, or developer-facing products, places where
-          engineering quality and user experience quality are equally on the
-          line. I&apos;m based in the Seattle area and open to hybrid or remote.
+          I&apos;m looking for Staff or Lead Full Stack Engineering roles, or
+          UXE roles, where the work is internal tooling, design systems, or
+          developer-facing products, places where engineering quality and
+          user experience quality are equally on the line. I&apos;m based in
+          the Seattle area and open to hybrid or remote.
         </p>
 
         <hr className="border-t border-neutral-200 dark:border-neutral-800 mb-12" />

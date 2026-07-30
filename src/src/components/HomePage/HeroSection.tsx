@@ -98,7 +98,7 @@ export default function HeroSection() {
           {roleTargeting}
         </p>
         <p className="mx-auto text-center text-sm text-neutral-500 dark:text-neutral-500 mb-16">
-          Open to SWE and UX Engineering roles.
+          Open to Full Stack Engineering and UX Engineering roles.
         </p>
       </div>
     </>
