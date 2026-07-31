@@ -1,7 +1,8 @@
 export const taglineParts = [
   "Senior Software Engineer",
-  "Ex-Google UXE",
-  "AI Product Interfaces"
+  "Full Stack",
+  "Ex-Google",
+  "AI Products"
 ];
 
 export const tagline = taglineParts.join(" · ");
