@@ -1,6 +1,7 @@
 export const taglineParts = [
   "Senior Software Engineer",
-  "Ex-Google UXE",
+  "Full Stack",
+  "Ex-Google",
   "AI Product Interfaces"
 ];
 
