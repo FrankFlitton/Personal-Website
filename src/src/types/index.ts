@@ -35,4 +35,18 @@ export type Blog = {
   date: string;
   link: string;
   categories: string[];
+  /**
+   * Set `false` to keep a post off the home page. It still appears at /blog.
+   * Omitted means eligible.
+   */
+  homepage?: boolean;
+  /**
+   * Posts sharing a series name collapse into a single home-page slot, so a
+   * burst of related posts can't take over the page.
+   */
+  series?: string;
+  /**
+   * Within a series, represent it with this post instead of the newest one.
+   */
+  seriesLead?: boolean;
 };

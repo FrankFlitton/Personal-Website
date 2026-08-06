@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Blog } from "@/types";
 import CircleFlourish from "./CircleFlourish";
 import useTheme from "@/hooks/useTheme";
+import { selectHomepageBlogs } from "@/util/selectHomepageBlogs";
 
 export default function HomepageBelowFold({ blogs }: { blogs: Blog[] }) {
   const { isDark } = useTheme();
-  const recentPosts = blogs.slice(0, 3);
+  const recentPosts = selectHomepageBlogs(blogs, 3);
 
   return (
     <div className="max-w-2xl mx-auto px-6 pb-24 space-y-20 prose dark:prose-invert">

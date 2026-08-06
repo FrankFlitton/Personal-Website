@@ -31,6 +31,17 @@ const darkVars = {
 
 const PADDING = 20;
 
+/**
+ * Ceiling on rendered diagram height, in px.
+ *
+ * Diagrams are laid out by mermaid at a natural size that reads well at 1:1.
+ * Stretching a small diagram to fill the prose column blows the type up to
+ * headline size; letting a tall one render at full width pushes it past a
+ * screen height. We never scale past 1:1, and shrink proportionally when a
+ * diagram would otherwise be taller than this.
+ */
+const MAX_HEIGHT = 560;
+
 /** Map diagram type keyword → human-readable label. */
 const DIAGRAM_TYPES: [RegExp, string][] = [
   [/^flowchart\b/i, "Flowchart"],
@@ -139,11 +150,24 @@ export const MermaidDiagram = ({ chart, title }: { chart: string; title?: string
     try {
       const bbox = svgEl.getBBox();
       if (bbox.height > 0) {
-        const newViewBox = `${bbox.x - PADDING} ${bbox.y - PADDING} ${bbox.width + PADDING * 2} ${bbox.height + PADDING * 2}`;
+        const naturalWidth = bbox.width + PADDING * 2;
+        const naturalHeight = bbox.height + PADDING * 2;
+
+        const newViewBox = `${bbox.x - PADDING} ${bbox.y - PADDING} ${naturalWidth} ${naturalHeight}`;
         svgEl.setAttribute("viewBox", newViewBox);
         svgEl.removeAttribute("height");
-        svgEl.style.maxWidth = "100%";
+        svgEl.removeAttribute("width");
+
+        // Shrink to fit the column, but never enlarge past the size mermaid
+        // laid the diagram out at — upscaling is what turns a four-node chart
+        // into headline-sized type. Tall diagrams shrink further so they stay
+        // under MAX_HEIGHT; the width cap does the scaling so the aspect ratio
+        // is preserved without letterboxing.
+        const scale = Math.min(1, MAX_HEIGHT / naturalHeight);
+
         svgEl.style.width = "100%";
+        svgEl.style.height = "auto";
+        svgEl.style.maxWidth = `${Math.round(naturalWidth * scale)}px`;
       }
     } catch {
       // getBBox can throw in some environments — leave SVG as-is
@@ -167,7 +191,7 @@ export const MermaidDiagram = ({ chart, title }: { chart: string; title?: string
       ref={containerRef}
       data-diagram="true"
       data-diagram-title={label}
-      className="my-6 overflow-x-auto rounded-lg p-4 bg-slate-50 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-slate-300 dark:hover:ring-zinc-600 transition-shadow"
+      className="my-6 flex justify-center overflow-x-auto rounded-lg p-4 bg-slate-50 dark:bg-zinc-900 cursor-pointer hover:ring-2 hover:ring-slate-300 dark:hover:ring-zinc-600 transition-shadow"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );

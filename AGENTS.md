@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -56,43 +56,6 @@ npm run lint
 - **Core renderer**: `src/Content/render-blocks/MermaidDiagram.tsx` — handles SSR safety, theming, viewBox clipping
 - **Theming**: `base` theme with slate palette (light) and zinc palette (dark); re-renders on theme toggle
 - **ViewBox clipping**: `getBBox()` trims dead vertical space after render (important for journey/gantt diagrams)
-- **Sizing**: after clipping, the SVG is capped at its *natural* size (`maxWidth = naturalWidth × scale`) and never upscaled. Diagrams taller than `MAX_HEIGHT` (560px) shrink proportionally. Upscaling a small diagram to fill the column is what renders four boxes at headline size, so don't reintroduce a bare `width: 100%`.
-
-#### Drafting diagrams: aim for landscape-letter proportions
-
-**Target aspect ratio ≈ 1.3 : 1 (horizontal 8.5×11).** Acceptable band is roughly
-**1.1 : 1 to 1.8 : 1.** This is the single most important authoring constraint —
-it governs orientation, label wrapping, and how much you put in one diagram.
-
-Both failure modes are common and neither is obvious from the source:
-
-| Failure | What it looks like | Cause |
-|---|---|---|
-| **Too tall** (< 1.1:1) | Runs past a screen height; reader loses the thread scrolling | A `TD` chain with many sequential levels |
-| **Too wide** (> 1.8:1) | Shrinks to fit the column; type becomes unreadably small | An `LR` chain of many nodes, or long single-line labels |
-
-Rules that keep a diagram in the band:
-
-- **Count levels, not nodes.** Depth drives the aspect ratio far more than node
-  count. In `TD`, keep it to **5–7 levels**; past that, merge steps or split
-  into two diagrams.
-- **Orientation follows semantics first, then shape.** Stacks and layers read
-  `TD`; pipelines and state machines read `LR`. If the natural orientation
-  overshoots the band, wrap it rather than flipping it.
-- **Wrap long flows into rows** with `flowchart TB` + `direction LR` subgraphs.
-  This is the main tool for fitting a 7+ step pipeline. The subgraph labels
-  double as useful section headings.
-- **`<br/>` makes nodes tall and narrow.** Use it to *widen* a too-tall diagram
-  (fewer, wider boxes) and avoid it when a diagram is already too wide.
-- **Very small diagrams (≤ 4 nodes) are fine tall** — they render at natural
-  size and won't be blown up. Don't pad them out to hit a ratio.
-
-Verify before committing. `getBBox` returns real numbers only in a browser, so
-check the rendered diagram on the dev server (`npm run dev`) rather than
-eyeballing the source — a definition that looks balanced as text frequently
-isn't. Fenced ```mermaid blocks in `*.test.md` files are the intended scratch
-pad for this (see the test-content note above); they render locally and are
-excluded from `npm run build`.
 - **Gallery integration**: Diagrams are included in the `DialogSlider` lightbox alongside images; clicking opens the fullscreen viewer. SVGs are serialized to data URLs at click time. `MutationObserver` in `renderer.tsx` watches for async diagram renders to keep the media list current.
 - **Label resolution** (`extractDiagramLabel` in `MermaidDiagram.tsx`): caption priority is explicit `title` prop → mermaid frontmatter `title:` → inline `title` keyword → diagram type name → "Diagram"
 - **Authoring patterns**:
@@ -162,10 +125,6 @@ excluded from `npm run build`.
 
 ### Adding New Content
 - **Blog Posts**: Create `.md` file in `/content/blog/` with YAML frontmatter (title, slug, description, featuredImage, date, categories)
-- **Home page post selection** (`src/util/selectHomepageBlogs.ts`): the home page shows 3 posts. Plain recency lets a burst of related posts take every slot, so two optional frontmatter keys control it:
-  - `series: <name>` — posts sharing a name collapse into **one** home-page slot, represented by the series' newest entry. They all still appear at `/blog`.
-  - `seriesLead: true` — represent the series with this post instead of the newest one (use for the pillar post).
-  - `homepage: false` — keep a post off the home page entirely.
 - **Projects**: Create `.md` file in `/content/projects/` with project metadata (client, projectUrl, color, contributions array)
 - **Custom Components**: Add to `/src/Content/render-blocks/` and import in `renderer.tsx`
 
