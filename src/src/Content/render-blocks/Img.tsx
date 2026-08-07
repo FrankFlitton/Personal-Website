@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 type ImgProps = {
+  src: string;
   alt?: string;
   /**
    * Rounded corners + drop shadow + hairline border.
