@@ -15,6 +15,18 @@ type ImgProps = {
    * arrives as `true`; the string forms are tolerated for hand-written cases.
    */
   framed?: boolean | string;
+  /**
+   * Constrain by viewport height instead of column width.
+   *
+   * Phone captures are far taller than they are wide, so the default
+   * `w-full` stretches them across the prose column and down several screen
+   * heights. `tall` caps the height, lets the width follow the image's own
+   * aspect ratio, and centres the result. Since the image is never scaled
+   * past its natural size it also stays sharp.
+   *
+   * Authored as a bare attribute in MDX (`<Img src="…" tall />`).
+   */
+  tall?: boolean | string;
   className?: string;
   [key: string]: any;
 };
@@ -25,8 +37,17 @@ const FRAME_CLASSES = [
   "ring-1 ring-slate-900/10 dark:ring-white/10",
 ].join(" ");
 
-export const Img = ({ alt, framed, className = "", ...props }: ImgProps) => {
-  const isFramed = framed === true || framed === "" || framed === "true";
+const isSet = (v?: boolean | string) => v === true || v === "" || v === "true";
+
+export const Img = ({ alt, framed, tall, className = "", ...props }: ImgProps) => {
+  const isFramed = isSet(framed);
+  const isTall = isSet(tall);
+
+  // w-full and w-auto would both land in the class list otherwise, and there's
+  // no tailwind-merge here to resolve them — pick one sizing rule up front.
+  const sizing = isTall
+    ? "max-h-[80vh] w-auto mx-auto block"
+    : "w-full inline-block";
 
   return (
     <p>
@@ -37,7 +58,8 @@ export const Img = ({ alt, framed, className = "", ...props }: ImgProps) => {
           width={500}
           height={500}
           className={[
-            "w-full mb-4 inline-block",
+            sizing,
+            "mb-4",
             isFramed ? FRAME_CLASSES : "",
             className,
           ]

@@ -31,6 +31,8 @@ Government student loans in Canada don't cover the full cost of attendance. Most
 
 Launched on October 2, 2020 and hosted on the [TD Student Advice Hub](https://www.td.com/ca/en/personal-banking/solutions/student-advice), the SBC walks students through five steps to build a complete picture of their post-secondary costs — tuition, living expenses, and everything in between — alongside their expected funding sources: scholarships, bursaries, family contributions, part-time income, and loans. Two real-time meters show costs versus contributions, so the gap is impossible to miss.
 
+<Img src="/img/projects/td-sbc/sbc-results-desktop.png" alt="Results step: side-by-side cost and contribution meters totalling $29,580 against $25,300, with an “Almost there!” callout showing the $4,280 shortfall" framed />
+
 The business case was equally clear. Students are HENRY candidates — High Earners Not Rich Yet — and the banks that earn their trust early tend to keep them. The SBC positioned TD not as a lender pushing products but as a genuine financial literacy resource, converting student relationships into long-term ones.
 
 ## Origin
@@ -38,6 +40,12 @@ The business case was equally clear. Students are HENRY candidates — High Earn
 The idea came from the students themselves. In summer 2019, [TD Lab](https://www.td.com/ca/en/about-td/who-we-are/innovation) — TD's innovation team at the Communitech Hub in Kitchener-Waterloo — challenged their co-op students to solve a real problem in student banking. Two interns, Estelle Chung and Tri Nhan Nguyen, were paired up. They researched what already existed and found that every bank had some version of a student budget tool. Every single one was a variation of a spreadsheet.
 
 They built something different: visual, fast, mobile-friendly, and focused on financial literacy rather than product upselling. Their prototype was tested with focus groups of 50 students, then refined with feedback from over 300 students at Wilfrid Laurier University via TD Lab's dedicated research platform, tdlab.io.
+
+<Img src="/img/projects/td-sbc/sbc-expenses-desktop.png" alt="Expenses step: grocery and entertainment spending entered as tappable presets with dollar amounts, with a custom-amount field as fallback" framed />
+
+The anti-spreadsheet decision shows up everywhere in the input design. Rather than asking a student to know their annual grocery spend, the app offers plain-language presets — "A few meals, $50/wk" — with a custom field for anyone who does know. Fields also carry benchmark ranges drawn from real cost data, so an unfamiliar number arrives with context instead of a blank box.
+
+<Img src="/img/projects/td-sbc/sbc-housing-desktop.png" alt="Housing step: selecting “Renting off campus” reveals rent and utilities fields, each with a typical-cost range, while the cost meter updates live" framed />
 
 The concept was strong enough to move from prototype to production — and the work eventually yielded a patent. [US20220084111A1](https://patents.google.com/patent/US20220084111A1/en), *Systems and Methods for Managing Resource Accounts*, was filed by Toronto Dominion Bank in September 2020 and published in March 2022. It covers the method of aggregating anonymized transaction data across peer accounts to surface realistic cost benchmarks for students in similar programs and situations.
 
@@ -65,6 +73,8 @@ The UI is built on Angular Material, themed to TD's brand. Material gave us a so
 
 Budget breakdowns are visualized as charts that adapt to screen size — not just scaled down, but re-laid out. On smaller viewports, chart labels reposition and legends collapse to keep the data readable without horizontal scrolling. Chart dimensions are bound to the Angular change detection cycle so they update live as users adjust inputs.
 
+<Img src="/img/projects/td-sbc/sbc-results-mobile.png" alt="The same two meters on a phone viewport: bars narrow, segment labels move inline beside each band, and the pair sits above the totals rather than in a sidebar" framed tall />
+
 ## Accessibility
 
 The SBC meets WCAG 2.1 AA compliance, which is a hard requirement for TD's public-facing products.
@@ -74,6 +84,10 @@ Every interaction in the app is reachable and operable by keyboard alone — tab
 Accessibility wasn't bolted on at the end. ARIA attributes were baked into components during build, and I tested continuously with VoiceOver and NVDA throughout development.
 
 ## Localization
+
+<Img src="/img/projects/td-sbc/sbc-language-menu.png" alt="Language menu open in the app header, offering English, Français, 简体中文 and 繁體中文 without leaving the current step" framed />
+
+<Img src="/img/projects/td-sbc/sbc-french-hero.png" alt="The calculator in French: “Calculateur de budget étudiant”, with the step labels École, Logement, Dépenses, Contributions and Résultats" framed />
 
 Supporting four writing systems, including Simplified and Traditional Chinese, required more than just swapping strings. Typography sizing, line heights, and container widths had to accommodate the density and character width variation between Latin and CJK scripts. Number formatting follows locale conventions for each target market.
 
