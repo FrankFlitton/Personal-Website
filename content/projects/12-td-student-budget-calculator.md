@@ -73,7 +73,7 @@ The UI is built on Angular Material, themed to TD's brand. Material gave us a so
 
 Budget breakdowns are visualized as charts that adapt to screen size — not just scaled down, but re-laid out. On smaller viewports, chart labels reposition and legends collapse to keep the data readable without horizontal scrolling. Chart dimensions are bound to the Angular change detection cycle so they update live as users adjust inputs.
 
-<Img src="/img/projects/td-sbc/sbc-results-mobile.png" alt="The same two meters on a phone viewport: bars narrow, segment labels move inline beside each band, and the pair sits above the totals rather than in a sidebar" framed />
+<Img src="/img/projects/td-sbc/sbc-results-mobile.png" alt="The same two meters on a phone viewport: bars narrow, segment labels move inline beside each band, and the pair sits above the totals rather than in a sidebar" framed tall />
 
 ## Accessibility
 
