@@ -1,0 +1,81 @@
+{
+  "root": true,
+  "imagePrefix": "src/public",
+  "components": [
+    {
+      "name": "YouTube",
+      "kind": "flow",
+      "props": {
+        "id": { "type": "string", "required": true, "description": "YouTube video ID" }
+      }
+    },
+    {
+      "name": "IFrame",
+      "kind": "flow",
+      "props": {
+        "src": { "type": "string", "required": true }
+      }
+    },
+    {
+      "name": "Img",
+      "kind": "flow",
+      "props": {
+        "src": { "type": "string", "required": true },
+        "alt": { "type": "string" },
+        "framed": { "type": "boolean" },
+        "tall": { "type": "boolean" }
+      }
+    },
+    {
+      "name": "Gist",
+      "kind": "flow",
+      "props": {
+        "id": { "type": "string", "required": true, "description": "GitHub Gist ID" }
+      }
+    },
+    {
+      "name": "NPM",
+      "kind": "flow",
+      "props": {
+        "id": { "type": "string", "required": true, "description": "npm package name" },
+        "text": { "type": "string", "required": true }
+      }
+    },
+    {
+      "name": "Mermaid",
+      "kind": "flow",
+      "props": {
+        "chart": { "type": "expression", "required": true, "description": "Mermaid diagram source" },
+        "title": { "type": "string" }
+      }
+    },
+    {
+      "name": "UserJourney",
+      "kind": "flow",
+      "props": {
+        "title": { "type": "string", "required": true },
+        "actor": { "type": "string" },
+        "sections": {
+          "type": "expression",
+          "required": true,
+          "description": "Array<{ name: string; tasks: { label: string; score: number }[] }>"
+        }
+      }
+    },
+    {
+      "name": "UserJourneyMap",
+      "kind": "flow",
+      "props": {
+        "title": { "type": "string" },
+        "persona": { "type": "expression", "description": "{ name, role, bio, photo? }" },
+        "expectations": { "type": "expression", "description": "string[]" },
+        "phases": {
+          "type": "expression",
+          "required": true,
+          "description": "{ name: string; steps: { id, description, sentiment, quote? }[] }[]"
+        },
+        "showChart": { "type": "boolean" }
+      }
+    }
+  ]
+}
