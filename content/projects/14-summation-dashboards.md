@@ -47,6 +47,18 @@ holistically or one cell at a time.
 
 <Img src="/img/projects/summation-dashboards/returns-overview.png" alt="A generated returns analysis: KPI row, agent-written commentary calling out the largest lever, and supporting charts." framed />
 
+## What a person gets to touch
+
+Generation is the first draft, not the last word. Select any card and **Ask**
+about it, and the answer streams into the chat pane with that card as context.
+Or switch to **Edit with AI**, click the cards you want changed, describe each
+change, and the edits queue up to go to the agent as a single request. Anything
+the agent built can also be opened in the editor and changed by hand.
+
+<Img src="/img/projects/summation-dashboards/ask-addison.png" alt="A KPI card selected on a dashboard, with an Ask Addison input attached directly beneath it." framed />
+
+<Img src="/img/projects/summation-dashboards/edit-queue.png" alt="Edit with AI mode on a P&L dashboard: a queued instruction pinned to the P&L table card, and a bottom bar holding one edit with Discard and Submit." framed />
+
 ## Architecture, in four layers
 
 ### 1. Agentic orchestration
@@ -76,6 +88,8 @@ The same contract powers the React editor pane, the Python server-side
 validators, and the agent's own output checking. Any setting a person can change
 in the editor, the agent can change too, and neither can produce a state the
 other rejects.
+
+<Img src="/img/projects/summation-dashboards/config-pane-style.png" alt="The card config pane's Style tab for a bar series: chart type, display name, conditional gradient color stops, and bar styling. Every control maps to a field in the schema." framed tall />
 
 ```mermaid
 flowchart LR
@@ -123,6 +137,8 @@ coerces the incoming value to that column's actual type. Some values want to
 stay strings. Others have to become numbers before a `BETWEEN` will mean
 anything.
 
+<Img src="/img/projects/summation-dashboards/filter-date.png" alt="A date filter using the Period to Date operator, with week, month, quarter and year-to-date presets. The operators offered depend on the resolved column type." framed />
+
 Two rules make the rewrite safe. The filter only attaches when its column is a
 genuine base column on a table the card reads directly — a `SELECT` alias or an
 aggregate is invisible to the injection, and quietly does nothing rather than
@@ -131,6 +147,8 @@ erroring. And when the card's own SQL already constrains that column, the filter
 cleanly overrides a card's built-in default. Cards whose identity is pinned to a
 value — a KPI whose title says "2025" — opt into intersect mode instead, so a
 mismatched filter returns no rows rather than silently relabelling the card.
+
+<Img src="/img/projects/summation-dashboards/filter-bar.png" alt="A dashboard filter bar: a saved date-range filter, two temporary filters marked with blue dots, a collapsed +1 group, and Add Filter offering the columns from the resolved source table." framed />
 
 ```mermaid
 flowchart TD
@@ -190,3 +208,6 @@ React, TypeScript, JSON Schema, Python validators, Highcharts, ag-Grid,
 TanStack, Claude Agent SDK.
 
 *All figures shown are synthetic.*
+
+The shipped feature set, card by card, is documented in the
+[Summation docs](https://docs.summation.com/features/artifacts/dashboards).
